@@ -1,0 +1,58 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "HBoxContainer",
+"class": "HButtonContainer",
+"language": "GDScript",
+"path": "res://ui_classes/HButtonContainer.gd"
+}, {
+"base": "Button",
+"class": "MouseButton",
+"language": "GDScript",
+"path": "res://ui_classes/MouseButton.gd"
+}, {
+"base": "VBoxContainer",
+"class": "VButtonContainer",
+"language": "GDScript",
+"path": "res://ui_classes/VButtonContainer.gd"
+} ]
+_global_script_class_icons={
+"HButtonContainer": "",
+"MouseButton": "",
+"VButtonContainer": ""
+}
+
+[application]
+
+config/name="PCF Dashboard"
+run/main_scene="res://splash_screen/splash.tscn"
+boot_splash/show_image=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://project.png"
+config/macos_native_icon="res://project.icns"
+config/windows_native_icon="res://project.ico"
+config/auto_accept_quit=false
+
+[display]
+
+window/size/width=1366
+window/size/height=768
+window/dpi/allow_hidpi=true
+window/energy_saving/keep_screen_on=false
+window/stretch/aspect="expand"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

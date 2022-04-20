@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/fonts/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://themes/project.tres" type="Theme" id=2]
+[ext_resource path="res://closing_screen/closing_screen.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/PCF_Logo_no_back_v2.png" type="Texture" id=4]
+[ext_resource path="res://closing_screen/Quiet_Night_Tokyo_Music_Walker_No_Copyright_Music.ogg" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spatial/Sprite3D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spatial/Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "RotatingLogo"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spatial/Sprite3D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spatial/Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="ViewportTexture" id=5]
+viewport_path = NodePath("Viewport")
+
+[node name="Control" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 3 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 640, 480 )
+own_world = true
+transparent_bg = true
+render_target_v_flip = true
+
+[node name="Spatial" type="Spatial" parent="Viewport"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Viewport/Spatial"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+texture = ExtResource( 4 )
+
+[node name="Camera" type="Camera" parent="Viewport/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Viewport"]
+anims/RESET = SubResource( 3 )
+anims/RotatingLogo = SubResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 40.0
+margin_right = 1366.0
+margin_bottom = 244.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "
+[center]Thanks for using!
+Check out the [url=http://api.proclubsfederation.com/docs]api[/url] yourself.
+"
+text = "
+Thanks for using!
+Check out the api yourself.
+"
+fit_content_height = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+margin_top = 248.0
+margin_right = 1366.0
+margin_bottom = 728.0
+rect_min_size = Vector2( 640, 480 )
+texture = SubResource( 5 )
+expand = true
+stretch_mode = 4
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -12.041
+
+[connection signal="meta_clicked" from="VBoxContainer/Label" to="." method="_on_Label_meta_clicked"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui_classes/MouseButton.gd" type="Script" id=1]
+
+[node name="UserClub" type="Button"]
+anchor_right = 0.158203
+anchor_bottom = 0.0833333
+size_flags_horizontal = 3
+script = ExtResource( 1 )

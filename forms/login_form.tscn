@@ -1,0 +1,122 @@
+[gd_scene format=2]
+
+[node name="LoginForm" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+margin_left = 278.0
+margin_top = 212.0
+margin_right = 746.0
+margin_bottom = 388.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 461.0
+margin_bottom = 169.0
+custom_constants/margin_right = 50
+custom_constants/margin_top = 10
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+margin_left = 50.0
+margin_top = 10.0
+margin_right = 404.0
+margin_bottom = 152.0
+custom_constants/separation = 8
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 354.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 0, 35 )
+size_flags_vertical = 3
+text = "Login FORM"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 43.0
+margin_right = 354.0
+margin_bottom = 67.0
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 150.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Username:    "
+align = 1
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 154.0
+margin_right = 354.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 200, 24 )
+size_flags_horizontal = 5
+placeholder_text = "Enter username"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 75.0
+margin_right = 354.0
+margin_bottom = 99.0
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 150.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Password:    "
+align = 1
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 154.0
+margin_right = 354.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 6
+placeholder_text = "Enter password"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 107.0
+margin_right = 354.0
+margin_bottom = 142.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Login" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 71.0
+margin_right = 146.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 75, 35 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Login"
+
+[node name="Login2" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 166.0
+margin_right = 282.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 75, 35 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Forget Password"
