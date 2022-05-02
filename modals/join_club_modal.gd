@@ -3,7 +3,6 @@ extends WindowDialog
 signal submit(club_id)
 
 
-
 func _on_Join_pressed():
 	var club_id = $MarginContainer/VBoxContainer/ID/LineEdit.text
 	emit_signal("submit", club_id)

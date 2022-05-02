@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://themes/project.tres" type="Theme" id=2]
 [ext_resource path="res://closing_screen/closing_screen.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/PCF_Logo_no_back_v2.png" type="Texture" id=4]
-[ext_resource path="res://closing_screen/Quiet_Night_Tokyo_Music_Walker_No_Copyright_Music.ogg" type="AudioStream" id=5]
+[ext_resource path="res://closing_screen/closing_msx.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/fonts/Open_Sans/OpenSans-ExtraBold.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -69,6 +70,10 @@ font_data = ExtResource( 1 )
 [sub_resource type="ViewportTexture" id=5]
 viewport_path = NodePath("Viewport")
 
+[sub_resource type="DynamicFont" id=6]
+size = 36
+font_data = ExtResource( 6 )
+
 [node name="Control" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -77,7 +82,7 @@ color = Color( 0, 0, 0, 1 )
 script = ExtResource( 3 )
 
 [node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 640, 480 )
+size = Vector2( 1920, 1080 )
 own_world = true
 transparent_bg = true
 render_target_v_flip = true
@@ -102,29 +107,42 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="Label" type="RichTextLabel" parent="VBoxContainer"]
-margin_top = 40.0
 margin_right = 1366.0
-margin_bottom = 244.0
+margin_bottom = 204.0
+size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "
-[center]Thanks for using!
-Check out the [url=http://api.proclubsfederation.com/docs]api[/url] yourself.
+[center]Thanks for using the app!
+Check out the [url=http://api.proclubsfederation.com/docs]api[/url] here.
 "
 text = "
-Thanks for using!
-Check out the api yourself.
+Thanks for using the app!
+Check out the api here.
 "
 fit_content_height = true
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-margin_top = 248.0
+margin_top = 208.0
 margin_right = 1366.0
-margin_bottom = 728.0
+margin_bottom = 688.0
 rect_min_size = Vector2( 640, 480 )
+size_flags_vertical = 6
 texture = SubResource( 5 )
 expand = true
-stretch_mode = 4
+stretch_mode = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+margin_top = 717.0
+margin_right = 1366.0
+margin_bottom = 768.0
+size_flags_vertical = 10
+custom_fonts/bold_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center][b][wave][rainbow]Credits to [url=https://twitter.com/SairamTheDev]SairamTheDev[/url][/rainbow][/wave][/b][/center]"
+text = "Credits to SairamTheDev"
+fit_content_height = true
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -134,8 +152,9 @@ autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -12.041
+volume_db = -6.021
 
 [connection signal="meta_clicked" from="VBoxContainer/Label" to="." method="_on_Label_meta_clicked"]
+[connection signal="meta_clicked" from="VBoxContainer/RichTextLabel" to="." method="_on_Label_meta_clicked"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

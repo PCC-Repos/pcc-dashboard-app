@@ -1,7 +1,9 @@
 extends WindowDialog
 
-var club_id
 signal submit(club_id, club_name, club_description)
+
+var club_id
+
 
 func _on_Clubs_show_edit_club_modal(_club_id):
 	popup_centered()

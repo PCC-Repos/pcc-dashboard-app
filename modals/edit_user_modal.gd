@@ -1,8 +1,9 @@
 extends WindowDialog
 
+signal submit(us_name, us_reason)
+
 var us_id
 
-signal submit(us_name, us_reason)
 
 func _on_Save_pressed():
 	var us_name = $MarginContainer/VBoxContainer/Name/LineEdit.text
@@ -16,4 +17,3 @@ func _on_Save_pressed():
 func _on_Users_show_edit_user_modal(_us_id):
 	us_id = _us_id
 	popup_centered()
-

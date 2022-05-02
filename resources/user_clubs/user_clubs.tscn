@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui_classes/VButtonContainer.gd" type="Script" id=1]
 [ext_resource path="res://resources/user_clubs/user_clubs.gd" type="Script" id=2]
+[ext_resource path="res://themes/project.tres" type="Theme" id=3]
 
 [node name="UserClubs" type="VBoxContainer"]
 margin_right = 126.0
@@ -43,6 +44,7 @@ text = "Join a Club"
 [node name="UserClubsMenu" type="PopupMenu" parent="CanvasLayer"]
 margin_right = 130.0
 margin_bottom = 74.0
+theme = ExtResource( 3 )
 items = [ "Leave", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, false, 1, 0, null, "", true, "Copy ID", null, 0, false, false, 2, 0, null, "", false ]
 __meta__ = {
 "_edit_use_anchors_": false

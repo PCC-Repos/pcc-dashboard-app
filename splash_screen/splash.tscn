@@ -145,7 +145,9 @@ margin_right = 225.0
 margin_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
+rect_pivot_offset = Vector2( 225, 225 )
 stream = ExtResource( 1 )
+volume_db = -6.02
 
 [node name="ColorRect" type="ColorRect" parent="VideoPlayer"]
 visible = false
@@ -193,10 +195,13 @@ margin_bottom = 225.0
 rect_pivot_offset = Vector2( 225, 225 )
 texture = ExtResource( 3 )
 expand = true
+stretch_mode = 6
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -12.041
+volume_db = -6.021
+pitch_scale = 0.75
+bus = "Music"
 
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

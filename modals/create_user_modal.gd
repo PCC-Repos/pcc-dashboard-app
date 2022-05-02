@@ -2,6 +2,7 @@ extends WindowDialog
 
 signal submit(us_name, us_reason)
 
+
 func _on_Create_pressed():
 	var us_name = $MarginContainer/VBoxContainer/Name/LineEdit.text
 	var us_reason = $MarginContainer/VBoxContainer/Reason/LineEdit.text

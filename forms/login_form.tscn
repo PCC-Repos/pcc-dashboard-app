@@ -1,24 +1,21 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="LoginForm" type="Control"]
+[ext_resource path="res://forms/login_form.gd" type="Script" id=1]
+
+[node name="LoginForm" type="Control" groups=["api_base"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
-margin_left = 278.0
-margin_top = 212.0
-margin_right = 746.0
-margin_bottom = 388.0
+margin_left = 449.0
+margin_top = 296.0
+margin_right = 917.0
+margin_bottom = 472.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -44,7 +41,7 @@ margin_right = 354.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 0, 35 )
 size_flags_vertical = 3
-text = "Login FORM"
+text = "Login Form"
 align = 1
 valign = 1
 uppercase = true
@@ -61,7 +58,7 @@ margin_bottom = 24.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Username:    "
+text = "Email:"
 align = 1
 valign = 1
 
@@ -71,7 +68,7 @@ margin_right = 354.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 200, 24 )
 size_flags_horizontal = 5
-placeholder_text = "Enter username"
+placeholder_text = "Enter email"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 margin_top = 75.0
@@ -84,7 +81,7 @@ margin_right = 150.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Password:    "
+text = "Password:"
 align = 1
 valign = 1
 
@@ -94,6 +91,7 @@ margin_right = 354.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 6
+secret = true
 placeholder_text = "Enter password"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -104,19 +102,30 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="Login" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 71.0
-margin_right = 146.0
+margin_left = 24.0
+margin_right = 99.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 75, 35 )
 size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "Login"
 
-[node name="Login2" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 166.0
-margin_right = 282.0
+[node name="Register" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 119.0
+margin_right = 194.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 75, 35 )
 size_flags_horizontal = 4
 size_flags_vertical = 3
-text = "Forget Password"
+text = "Register"
+
+[node name="ForgotPass" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 214.0
+margin_right = 330.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 75, 35 )
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Forgot Password"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/Login" to="." method="_on_Login_pressed"]
