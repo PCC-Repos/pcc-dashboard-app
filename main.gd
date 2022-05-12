@@ -1,11 +1,11 @@
 extends Control
 
-const API_BASE = "https://api.proclubsfederation.com/api/v1/"
-const DebugAPI_BASE = "http://127.0.0.1:8000/api/latest/"
+const API_BASE = "https://api.proclubsfederation.com/v1/"
+const DebugAPI_BASE = "http://127.0.0.1:8000/"
 
 
 var api_base
-var debug = true
+var debug = false
 
 var user
 var logged_in = false
@@ -69,9 +69,13 @@ func init_admin():
 	
 	get_tree().call_group("login_ready", "ready")
 	
+	$LoginForm.hide()
+	
 func logged_out():
 	get_tree().set_group("login_ready", "headers", PoolStringArray())
 	get_tree().set_group("login_ready", "user", Dictionary())
 	
 	remove_child(admin_form)
 	admin_form.queue_free()
+	
+	$LoginForm.show()

@@ -36,8 +36,9 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "RotatingLogo"
-length = 3.0
+length = 2.0
 loop = true
+step = 0.025
 tracks/0/type = "value"
 tracks/0/path = NodePath("Spatial/Sprite3D:rotation_degrees")
 tracks/0/interp = 1
@@ -45,7 +46,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
@@ -57,7 +58,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.7, 2 ),
+"times": PoolRealArray( -0.1, 0.5, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -100,14 +101,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
 anims/RESET = SubResource( 3 )
 anims/RotatingLogo = SubResource( 4 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 1341.0
+margin_bottom = 743.0
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="RichTextLabel" parent="VBoxContainer"]
-margin_right = 1366.0
+[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+margin_right = 1316.0
 margin_bottom = 204.0
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 1 )
@@ -122,20 +133,20 @@ Check out the api here.
 "
 fit_content_height = true
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 margin_top = 208.0
-margin_right = 1366.0
-margin_bottom = 688.0
-rect_min_size = Vector2( 640, 480 )
+margin_right = 1316.0
+margin_bottom = 568.0
+rect_min_size = Vector2( 480, 360 )
 size_flags_vertical = 6
 texture = SubResource( 5 )
 expand = true
 stretch_mode = 6
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
-margin_top = 717.0
-margin_right = 1366.0
-margin_bottom = 768.0
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+margin_top = 667.0
+margin_right = 1316.0
+margin_bottom = 718.0
 size_flags_vertical = 10
 custom_fonts/bold_font = SubResource( 6 )
 custom_fonts/normal_font = SubResource( 1 )
@@ -154,7 +165,7 @@ autostart = true
 stream = ExtResource( 5 )
 volume_db = -6.021
 
-[connection signal="meta_clicked" from="VBoxContainer/Label" to="." method="_on_Label_meta_clicked"]
-[connection signal="meta_clicked" from="VBoxContainer/RichTextLabel" to="." method="_on_Label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Label" to="." method="_on_Label_meta_clicked"]
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_Label_meta_clicked"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

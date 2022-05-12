@@ -5,7 +5,7 @@ var video_anim_played = false
 
 func _ready():
 	OS.request_permissions()
-	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_DISABLED, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(768, 768))
+	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(768, 768))
 	$TextureRect.show()
 	$AnimationPlayer.play("show_img_rect")
 	$AudioStreamPlayer.play()

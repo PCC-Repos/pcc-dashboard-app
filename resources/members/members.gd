@@ -91,7 +91,7 @@ func delete_member_api(club_id, user_id):
 	var http_req = HTTPRequest.new()
 	http_req.connect("request_completed", self, "_delete_member_api", [http_req, str(user_id)])
 	add_child(http_req)
-	http_req.request(api_base + 'clubs/%s/members/%s/' % [club_id, user_id], PoolStringArray(), true, HTTPClient.METHOD_DELETE)
+	http_req.request(api_base + 'clubs/%s/members/%s/' % [club_id, user_id], headers, true, HTTPClient.METHOD_DELETE)
 
 
 func _delete_member_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, user_id: String):
@@ -120,7 +120,7 @@ func create_member_api(user_id):
 	http_req.connect("request_completed", self, "_create_member_api", [http_req])
 	add_child(http_req)
 	var dict = {"user_id": user_id}
-	http_req.request(api_base + 'clubs/%s/members/' % current_club_id, PoolStringArray(["Content-Type: application/json"]), true, HTTPClient.METHOD_POST, to_json(dict))
+	http_req.request(api_base + 'clubs/%s/members/' % current_club_id, PoolStringArray(["Content-Type: application/json"]) + headers, true, HTTPClient.METHOD_POST, to_json(dict))
 
 
 func _on_AddMemberModal_submit(user_id, reason):
@@ -131,3 +131,6 @@ func connect_if_disconnected(object: Object, signal_name, to_object, function_na
 	if object.is_connected(signal_name, to_object, function_name):
 		object.disconnect(signal_name, to_object, function_name)
 	return object.connect(signal_name, to_object, function_name, binds, flags)
+
+func refresh():
+	_on_Clubs_club_changed(current_club_id)

@@ -2,34 +2,31 @@
 
 [ext_resource path="res://modals/create_user_modal.gd" type="Script" id=1]
 
-[node name="CreateUserModal" type="WindowDialog"]
-margin_left = 577.328
-margin_top = 177.983
-margin_right = 937.328
-margin_bottom = 335.983
-window_title = "Create New User"
+[node name="RegisterModal" type="WindowDialog"]
+margin_left = 577.0
+margin_top = 178.0
+margin_right = 937.0
+margin_bottom = 324.0
+window_title = "Register"
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = 4.0
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
 custom_constants/margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 355.0
-margin_bottom = 157.0
+margin_bottom = 145.0
 
 [node name="Name" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_right = 350.0
@@ -41,43 +38,87 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Name"]
 margin_top = 5.0
-margin_right = 62.0
+margin_right = 122.0
 margin_bottom = 19.0
-text = "Name:     "
+text = "Name:                    "
 
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Name"]
-margin_left = 66.0
+margin_left = 126.0
 margin_right = 350.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-placeholder_text = "Enter the name of the user"
+placeholder_text = "Enter your name"
 
-[node name="Reason" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Email" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 28.0
 margin_right = 350.0
-margin_bottom = 128.0
+margin_bottom = 52.0
+size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Reason"]
-margin_top = 43.0
-margin_right = 62.0
-margin_bottom = 57.0
-text = "Reason:   "
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Email"]
+margin_top = 5.0
+margin_right = 123.0
+margin_bottom = 19.0
+text = "Email:                     "
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Email"]
+margin_left = 127.0
+margin_right = 350.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+placeholder_text = "Enter your email"
+
+[node name="Password" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 350.0
+margin_bottom = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Password"]
+margin_top = 5.0
+margin_right = 124.0
+margin_bottom = 19.0
+text = "Password:               "
 align = 2
 
-[node name="LineEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/Reason"]
-margin_left = 66.0
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/Password"]
+margin_left = 128.0
 margin_right = 350.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
+margin_bottom = 24.0
 size_flags_horizontal = 3
+placeholder_text = "Enter your password"
+
+[node name="ConfirmPassword" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 84.0
+margin_right = 350.0
+margin_bottom = 108.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ConfirmPassword"]
+margin_top = 5.0
+margin_right = 122.0
+margin_bottom = 19.0
+text = "Confirm Password: "
+align = 2
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/ConfirmPassword"]
+margin_left = 126.0
+margin_right = 350.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+placeholder_text = "Enter your password again"
 
 [node name="Create" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 132.0
+margin_top = 112.0
 margin_right = 350.0
-margin_bottom = 152.0
+margin_bottom = 132.0
 text = "Create User"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Create" to="." method="_on_Create_pressed"]

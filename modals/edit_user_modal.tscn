@@ -4,7 +4,7 @@
 
 [node name="EditUserModal" type="WindowDialog"]
 margin_right = 561.0
-margin_bottom = 160.0
+margin_bottom = 61.0
 window_title = "Edit User"
 script = ExtResource( 1 )
 
@@ -20,7 +20,7 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 556.0
-margin_bottom = 157.0
+margin_bottom = 56.0
 
 [node name="Name" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_right = 551.0
@@ -41,34 +41,12 @@ margin_left = 66.0
 margin_right = 551.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-placeholder_text = "Enter the ID of the member"
-
-[node name="Reason" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 28.0
-margin_right = 551.0
-margin_bottom = 128.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Reason"]
-margin_top = 43.0
-margin_right = 62.0
-margin_bottom = 57.0
-text = "Reason:   "
-align = 2
-
-[node name="LineEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/Reason"]
-margin_left = 66.0
-margin_right = 551.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
-size_flags_horizontal = 3
+placeholder_text = "Enter the user's name or your name."
 
 [node name="Save" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 132.0
+margin_top = 28.0
 margin_right = 551.0
-margin_bottom = 152.0
+margin_bottom = 48.0
 text = "Save User"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Save" to="." method="_on_Save_pressed"]

@@ -5,7 +5,7 @@ var logged_in
 var headers
 var api_base
 
-onready var account_btn = $VBoxContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MenuButton
+onready var account_btn = $VBoxContainer/Header/PanelContainer/MarginContainer/HBoxContainer/AccountButton
 func ready():
 	$AudioStreamRandomPlayer.play()
 	account_btn.text = user.name
@@ -16,6 +16,9 @@ func _id_pressed(id):
 		0:
 			print("logging out")
 			logout()
+		2:
+			print("refreshing")
+			refresh_main()
 
 func logout():
 	var http_req = HTTPRequest.new()
@@ -30,3 +33,9 @@ func _request_completed(result: int, response_code: int, headers: PoolStringArra
 		return
 	
 	get_tree().call_group("main", "logged_out")
+
+func refresh_main():
+	get_tree().call_group("login_ready", "refresh")
+
+func refresh(): # do nothing
+	pass

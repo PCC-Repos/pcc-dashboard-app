@@ -11,9 +11,6 @@ margin_bottom = 590.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 10
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="."]
 margin_right = 126.0
@@ -45,7 +42,7 @@ null_is_allowed = true
 margin_top = 570.0
 margin_right = 126.0
 margin_bottom = 590.0
-text = "Add a member"
+text = "Invite a member"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

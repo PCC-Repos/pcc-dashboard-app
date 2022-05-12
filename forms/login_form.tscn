@@ -1,131 +1,114 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://forms/login_form.gd" type="Script" id=1]
+[ext_resource path="res://ui_classes/Field.tscn" type="PackedScene" id=2]
+[ext_resource path="res://modals/create_user_modal.tscn" type="PackedScene" id=3]
 
 [node name="LoginForm" type="Control" groups=["api_base"]]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -683.0
+margin_top = -384.0
+margin_right = 683.0
+margin_bottom = 384.0
 script = ExtResource( 1 )
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
-margin_left = 449.0
-margin_top = 296.0
-margin_right = 917.0
-margin_bottom = 472.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -192.0
+margin_right = 192.0
+margin_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 461.0
-margin_bottom = 169.0
-custom_constants/margin_right = 50
-custom_constants/margin_top = 10
-custom_constants/margin_left = 50
-custom_constants/margin_bottom = 10
+margin_right = 377.0
+margin_bottom = 377.0
+custom_constants/margin_right = 30
+custom_constants/margin_top = 30
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
-margin_left = 50.0
-margin_top = 10.0
-margin_right = 404.0
-margin_bottom = 152.0
-custom_constants/separation = 8
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 340.0
+margin_bottom = 340.0
+custom_constants/separation = 10
+alignment = 1
 
-[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_right = 354.0
-margin_bottom = 35.0
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 81.0
+margin_right = 310.0
+margin_bottom = 116.0
 rect_min_size = Vector2( 0, 35 )
-size_flags_vertical = 3
+size_flags_vertical = 0
 text = "Login Form"
 align = 1
 valign = 1
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 43.0
-margin_right = 354.0
-margin_bottom = 67.0
-alignment = 1
+[node name="Email" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+field_name = "Email:       "
+placeholder_text = "Enter your email.."
 
-[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 150.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 150, 0 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Email:"
-align = 1
-valign = 1
-
-[node name="LineEdit" type="LineEdit" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 154.0
-margin_right = 354.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 200, 24 )
-size_flags_horizontal = 5
-placeholder_text = "Enter email"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 75.0
-margin_right = 354.0
-margin_bottom = 99.0
-alignment = 1
-
-[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_right = 150.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Password:"
-align = 1
-valign = 1
-
-[node name="LineEdit" type="LineEdit" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 154.0
-margin_right = 354.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 200, 0 )
-size_flags_horizontal = 6
+[node name="Password" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 160.0
+margin_bottom = 184.0
+size_flags_vertical = 0
+field_name = "Password: "
 secret = true
-placeholder_text = "Enter password"
+placeholder_text = "Enter your password.."
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 107.0
-margin_right = 354.0
-margin_bottom = 142.0
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 194.0
+margin_right = 310.0
+margin_bottom = 229.0
 custom_constants/separation = 20
 alignment = 1
 
-[node name="Login" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 24.0
-margin_right = 99.0
+[node name="Login" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 2.0
+margin_right = 77.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 75, 35 )
 size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "Login"
 
-[node name="Register" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 119.0
-margin_right = 194.0
+[node name="Register" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 97.0
+margin_right = 172.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 75, 35 )
 size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "Register"
 
-[node name="ForgotPass" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 214.0
-margin_right = 330.0
+[node name="ForgotPass" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 192.0
+margin_right = 308.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 75, 35 )
 size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "Forgot Password"
 
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/Login" to="." method="_on_Login_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RegisterModal" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[connection signal="show_register_modal" from="." to="CanvasLayer/RegisterModal" method="_on_LoginForm_show_register_modal"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/Login" to="." method="_on_Login_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/Register" to="." method="_on_Register_pressed"]
+[connection signal="submit" from="CanvasLayer/RegisterModal" to="." method="_on_RegisterModal_submit"]

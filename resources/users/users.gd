@@ -1,7 +1,6 @@
 extends VBoxContainer
 
 signal user_changed(user_id)
-signal show_create_user_modal()
 signal show_edit_user_modal(user_id)
 
 const UserButton = preload("res://resources/users/user.tscn")
@@ -13,27 +12,29 @@ var user
 
 
 func ready():
-	fetch_users()
-
-
-func fetch_users():
-	print("Fetching users")
-	var http_req = HTTPRequest.new()
-	http_req.connect("request_completed", self, "_fetch_users", [http_req])
-	add_child(http_req)
-	print(api_base + 'users/')
-	http_req.request(api_base + 'users/')
-
-
-func _fetch_users(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
-	if response_code != 200:
-		print("Something went wrong")
-		print(body.get_string_from_utf8())
-	http_req.queue_free()
-	var json = parse_json(body.get_string_from_utf8())
-	for user in json:
-		_create_user(user)
+	_create_user(user)
 	$Users/VBoxContainer.update()
+#	fetch_users()
+
+#
+#func fetch_users():
+#	print("Fetching users")
+#	var http_req = HTTPRequest.new()
+#	http_req.connect("request_completed", self, "_fetch_users", [http_req])
+#	add_child(http_req)
+#	print(api_base + 'users/')
+#	http_req.request(api_base + 'users/')
+
+#
+#func _fetch_users(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
+#	if response_code != 200:
+#		print("Something went wrong")
+#		print(body.get_string_from_utf8())
+#	http_req.queue_free()
+#	var json = parse_json(body.get_string_from_utf8())
+#	for user in json:
+#		_create_user(user)
+#	$Users/VBoxContainer.update()
 
 
 func _create_user(user: Dictionary):
@@ -90,30 +91,37 @@ func _delete_user(user_id):
 	$Users/VBoxContainer.update()
 
 
-func _create_user_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
-	if response_code != 200:
-		print("Something went wrong")
-		print(body.get_string_from_utf8())
-	http_req.queue_free()
-	var json = parse_json(body.get_string_from_utf8())
-	_create_user(json)
-	$Users/VBoxContainer.update()
-
 
 func _on_VBoxContainer_button_toggled(button_pressed, button):
 	if button_pressed:
 		emit_signal("user_changed", int(button.name))
 
 
+func logout():
+	var http_req = HTTPRequest.new()
+	http_req.connect("request_completed", self, "_request_completed", [http_req])
+	add_child(http_req)
+	http_req.request(api_base + "auth/revoke/", headers, true, HTTPClient.METHOD_POST)
+
+func _request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
+	http_req.queue_free()
+	if response_code != 200:
+		prints(response_code, "Something went terribly wrong when trying to signout.")
+		return
+	
+	get_tree().call_group("main", "logged_out")
+
+
 func _on_Create_pressed():
-	emit_signal("show_create_user_modal")
+	logout()
+#	emit_signal("show_create_user_modal")
 
 
-func create_user_api(us_name):
+func create_user_api(us_name, us_email, us_pass):
 	var http_req = HTTPRequest.new()
 	http_req.connect("request_completed", self, "_create_user_api", [http_req])
 	add_child(http_req)
-	var dict = {"name": us_name, 'discord_id': -1, 'guild_id': -1}
+	var dict = {"name": us_name, 'email': us_email, "password": us_pass}
 	http_req.request(api_base + 'users/', PoolStringArray(["Content-Type: application/json"]), true, HTTPClient.METHOD_POST, to_json(dict))
 
 
@@ -124,7 +132,7 @@ func edit_user_api(us_id, us_name):
 	var dict = {
 		"name": us_name
 	}
-	http_req.request(api_base + 'users/%s/' % us_id, PoolStringArray(["Content-Type: application/json"]), true, HTTPClient.METHOD_PATCH, to_json(dict))
+	http_req.request(api_base + 'users/%s/' % us_id, PoolStringArray(["Content-Type: application/json"]) + headers, true, HTTPClient.METHOD_PATCH, to_json(dict))
 
 
 func _edit_user_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, user_id: String):
@@ -142,7 +150,7 @@ func _edit_user(user: Dictionary):
 
 
 func _on_CreateUserModal_submit(us_name, us_reason):
-	create_user_api(us_name)
+	create_user_api(us_name, us_reason, us_name)
 
 
 func connect_if_disconnected(object: Object, signal_name, to_object, function_name, binds = [], flags = 0):
@@ -154,3 +162,7 @@ func connect_if_disconnected(object: Object, signal_name, to_object, function_na
 
 func _on_EditUserModal_submit(us_id, us_name, us_reason):
 	edit_user_api(us_id, us_name)
+
+
+func refresh():  # ignore
+	pass

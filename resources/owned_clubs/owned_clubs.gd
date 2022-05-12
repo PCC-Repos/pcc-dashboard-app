@@ -17,7 +17,7 @@ func _on_Users_user_changed(user_id):
 	var http_req = HTTPRequest.new()
 	http_req.connect("request_completed", self, "_fetch_clubs", [http_req])
 	add_child(http_req)
-	http_req.request(api_base + 'users/%s/clubs/' % user_id)
+	http_req.request(api_base + 'users/%s/' % user_id)
 	current_user_id = user_id
 
 
@@ -29,7 +29,7 @@ func _fetch_clubs(result: int, response_code: int, headers: PoolStringArray, bod
 	print("Response recieved, fetched clubs.")
 	http_req.queue_free()
 	var json = parse_json(body.get_string_from_utf8())
-	for club in json:
+	for club in json.get("owned_clubs", []):
 		_create_club(club)
 	$UserClubs/VBoxContainer.show()
 
@@ -96,14 +96,15 @@ func delete_user_club_api(user_id, club_id):
 	var http_req = HTTPRequest.new()
 	http_req.connect("request_completed", self, "_delete_user_club_api", [http_req, str(club_id)])
 	add_child(http_req)
-	http_req.request(api_base + 'users/%s/clubs/%s/' % [user_id, club_id], headers, true, HTTPClient.METHOD_DELETE)
+	http_req.request(api_base + 'clubs/%s/' % [club_id], headers, true, HTTPClient.METHOD_DELETE)
 
 
 func _delete_user_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, club_id: String):
-	if response_code != 200:
+	http_req.queue_free()
+	if response_code != 204:
 		print("Something went wrong")
 		print(body.get_string_from_utf8())
-	http_req.queue_free()
+		return
 	_delete_user_club(club_id)
 
 
@@ -124,7 +125,6 @@ func connect_if_disconnected(object: Object, signal_name, to_object, function_na
 	if object.is_connected(signal_name, to_object, function_name):
 		object.disconnect(signal_name, to_object, function_name)
 	return object.connect(signal_name, to_object, function_name, binds, flags)
-
 
 func refresh():
 	_on_Users_user_changed(current_user_id)

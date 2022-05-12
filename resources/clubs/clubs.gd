@@ -44,13 +44,13 @@ func _on_CreateNewButton_pressed():
 	emit_signal("show_create_club_modal")
 
 
-func create_club_api(club_name, club_description):
+func create_club_api(club_name, club_description, club_public):
 	print("Creating club..")
 	var http_req = HTTPRequest.new()
 	http_req.connect("request_completed", self, "_create_club_api", [http_req])
 	add_child(http_req)
-	var dict = {"name": club_name, "description": club_description}
-	http_req.request(api_base + 'clubs/', PoolStringArray(["Content-Type: application/json"]), true, HTTPClient.METHOD_POST, to_json(dict))
+	var dict = {"name": club_name, "description": club_description, "public": club_public}
+	http_req.request(api_base + 'clubs/', PoolStringArray(["Content-Type: application/json"]) + headers, true, HTTPClient.METHOD_POST, to_json(dict))
 
 
 func _create_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
@@ -86,8 +86,8 @@ func _show_popup(club_id):
 func _show_popup_touch(_index, _long_tap_time, club_id):
 	_show_popup(club_id)
 
-func _on_CreateClubModal_submit(club_name, club_description):
-	create_club_api(club_name, club_description)
+func _on_CreateClubModal_submit(club_name, club_description, club_public):
+	create_club_api(club_name, club_description, club_public)
 
 
 func _edit_club(club: Dictionary):
@@ -105,7 +105,7 @@ func edit_club_api(club_id, club_name, club_description, _club_money):
 		"name": club_name,
 		"description": club_description
 	}
-	http_req.request(api_base + 'clubs/%s/' % club_id, PoolStringArray(["Content-Type: application/json"]), true, HTTPClient.METHOD_PATCH, to_json(dict))
+	http_req.request(api_base + 'clubs/%s/' % club_id, PoolStringArray(["Content-Type: application/json"]) + headers, true, HTTPClient.METHOD_PATCH, to_json(dict))
 
 
 func _edit_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, club_id: String):
@@ -121,7 +121,7 @@ func delete_club_api(club_id):
 	var http_req = HTTPRequest.new()
 	http_req.connect("request_completed", self, "_delete_club_api", [http_req, str(club_id)])
 	add_child(http_req)
-	http_req.request(api_base + 'clubs/%s/' % club_id, PoolStringArray(), true, HTTPClient.METHOD_DELETE)
+	http_req.request(api_base + 'clubs/%s/' % club_id, headers, true, HTTPClient.METHOD_DELETE)
 
 
 func _delete_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, club_id: String):
@@ -159,3 +159,13 @@ func connect_if_disconnected(object: Object, signal_name, to_object, function_na
 
 func _on_EditClubModal_submit(club_id, club_name, club_description):
 	edit_club_api(club_id, club_name, club_description, 0)
+
+
+
+func clear_children(node: Node):
+	for child in node.get_children():
+		child.queue_free()
+
+func refresh():
+	clear_children($Clubs/VBoxContainer)
+	fetch_clubs()
