@@ -12,7 +12,7 @@ onready var us_name_node = $PanelContainer/MarginContainer/VBoxContainer/Email
 onready var us_pass_node = $PanelContainer/MarginContainer/VBoxContainer/Password
 
 # Called by my code.
-func ready(): 
+func ready():
 	prints("got api base", api_base)
 
 # Called by the engine.
@@ -23,7 +23,7 @@ func _on_Login_pressed():
 	us_email = us_name_node.text
 	us_pass = us_pass_node.text
 	login()
-	
+
 func login():
 	var http_req = HTTPRequest.new()
 	http_req.connect("request_completed", self, "_request_completed", [http_req])
@@ -41,11 +41,11 @@ func _request_completed(result: int, response_code: int, headers: PoolStringArra
 		if response_code == 401:
 			prints(headers)
 		return
-	
+
 	var res = parse_json(body.get_string_from_utf8())
 	if res.has("access_token"):
 		emit_signal("access_token_received", res["access_token"])
-	
+
 	save_access_token(res)
 
 func save_access_token(res: Dictionary):

@@ -11,17 +11,14 @@ script = ExtResource( 1 )
 placeholder_text = "Enter email"
 
 [node name="Label" type="Label" parent="."]
-margin_left = 53.0
-margin_right = 53.0
-margin_bottom = 24.0
+margin_bottom = 44.0
 size_flags_vertical = 3
-align = 1
 valign = 1
 
 [node name="LineEdit" type="LineEdit" parent="."]
-margin_left = 57.0
-margin_right = 257.0
-margin_bottom = 24.0
+margin_left = 4.0
+margin_right = 310.0
+margin_bottom = 44.0
 rect_min_size = Vector2( 200, 24 )
-size_flags_horizontal = 5
+size_flags_horizontal = 3
 placeholder_text = "Enter email"

@@ -1,13 +1,55 @@
-[gd_resource type="Theme" load_steps=4 format=2]
+[gd_resource type="Theme" load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.105882, 0.137255, 0.2, 1 )
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color( 0.345098, 0.439216, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 0.064, 0.0776, 0.2, 1, 0, 0.00392157, 0.0392157, 1 )
+
+[sub_resource type="GradientTexture2D" id=6]
+gradient = SubResource( 5 )
+use_hdr = true
+fill_from = Vector2( 1, 0 )
+fill_to = Vector2( 1, 0.420833 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = SubResource( 6 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0.00392157, 0.0470588, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=1]
+size = 24
 font_data = ExtResource( 1 )
 
 [resource]
 default_font = SubResource( 1 )
+LineEdit/styles/normal = SubResource( 7 )
+LoginPanel/base_type = "PanelContainer"
+LoginPanel/styles/panel = SubResource( 4 )
+PanelContainer/styles/panel = SubResource( 3 )
 PopupMenu/fonts/font = SubResource( 2 )
+Titles/base_type = "Label"

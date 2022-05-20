@@ -37,8 +37,8 @@ func _on_LoginForm_access_token_received(_access_token):
 	logged_in = true
 	headers = PoolStringArray(["Authorization: Bearer %s" % access_token])
 	fetch_current_user()
-	
-	
+
+
 func fetch_current_user():
 	var http_req = HTTPRequest.new()
 	http_req.connect("request_completed", self, "_request_completed", [http_req])
@@ -52,30 +52,30 @@ func _request_completed(result: int, response_code: int, _headers: PoolStringArr
 		if response_code == 401:
 			prints(headers)
 		return
-	
+
 	var res = parse_json(body.get_string_from_utf8())
 	user = res
-	
+
 	call_deferred("init_admin")
 
 func init_admin():
 	admin_form = load("res://forms/admin_form.tscn").instance()
 	add_child(admin_form)
-	
-	
+
+
 	get_tree().set_group("login_ready", "headers", headers)
 	get_tree().set_group("login_ready", "api_base", api_base)
 	get_tree().set_group("login_ready", "user", user)
-	
+
 	get_tree().call_group("login_ready", "ready")
-	
+
 	$LoginForm.hide()
-	
+
 func logged_out():
 	get_tree().set_group("login_ready", "headers", PoolStringArray())
 	get_tree().set_group("login_ready", "user", Dictionary())
-	
+
 	remove_child(admin_form)
 	admin_form.queue_free()
-	
+
 	$LoginForm.show()
