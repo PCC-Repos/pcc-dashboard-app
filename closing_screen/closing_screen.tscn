@@ -98,6 +98,7 @@ texture = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Viewport"]
+playback_speed = 0.75
 anims/RESET = SubResource( 3 )
 anims/RotatingLogo = SubResource( 4 )
 

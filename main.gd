@@ -1,11 +1,11 @@
 extends Control
 
-const API_BASE = "https://api.proclubsfederation.com/v1/"
+const API_BASE = "https://api.proclubsfederation.com/v2/"
 const DebugAPI_BASE = "http://127.0.0.1:8000/"
 
 
 var api_base
-var debug = false
+var debug = true
 
 var user
 var logged_in = false
@@ -39,13 +39,13 @@ func _on_LoginForm_access_token_received(_access_token):
 	fetch_current_user()
 	
 	
-func fetch_current_user():
+func fetch_current_user(refresh = false):
 	var http_req = HTTPRequest.new()
-	http_req.connect("request_completed", self, "_request_completed", [http_req])
+	http_req.connect("request_completed", self, "_request_completed", [http_req, refresh])
 	add_child(http_req)
 	http_req.request((api_base + "users/@me/").http_unescape(), headers, true, HTTPClient.METHOD_GET)
 
-func _request_completed(result: int, response_code: int, _headers: PoolStringArray, body: PoolByteArray, http_req):
+func _request_completed(result: int, response_code: int, _headers: PoolStringArray, body: PoolByteArray, http_req, refresh: bool):
 	http_req.queue_free()
 	if response_code != 200:
 		prints(response_code, "Something went wrong, plz check!")
@@ -55,8 +55,11 @@ func _request_completed(result: int, response_code: int, _headers: PoolStringArr
 	
 	var res = parse_json(body.get_string_from_utf8())
 	user = res
+	if not refresh:
+		call_deferred("init_admin")
+	else:
+		get_tree().set_group("login_ready", "user", user)
 	
-	call_deferred("init_admin")
 
 func init_admin():
 	admin_form = load("res://forms/admin_form.tscn").instance()
@@ -79,3 +82,7 @@ func logged_out():
 	admin_form.queue_free()
 	
 	$LoginForm.show()
+
+func refresh():
+	fetch_current_user(true)
+	
