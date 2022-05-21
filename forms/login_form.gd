@@ -1,4 +1,4 @@
-extends Control
+extends Panel
 
 signal access_token_received(access_token)
 signal show_register_modal
@@ -8,8 +8,8 @@ var api_base
 var us_email
 var us_pass
 
-onready var us_name_node = $PanelContainer/MarginContainer/VBoxContainer/Email
-onready var us_pass_node = $PanelContainer/MarginContainer/VBoxContainer/Password
+onready var us_name_node = $"HBoxContainer/VBoxContainer/Email"
+onready var us_pass_node = $"HBoxContainer/VBoxContainer/Password"
 
 # Called by my code.
 func ready():

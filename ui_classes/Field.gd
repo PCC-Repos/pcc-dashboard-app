@@ -1,5 +1,5 @@
 tool
-extends HBoxContainer
+extends VBoxContainer
 
 export(String, MULTILINE) var text setget set_text, get_text
 export(String, MULTILINE) var field_name setget set_field_name, get_field_name

@@ -32,7 +32,7 @@ func _request_completed(result: int, response_code: int, headers: PoolStringArra
 	if response_code != 200:
 		prints(response_code, "Something went terribly wrong when trying to signout.")
 		return
-	
+
 	get_tree().call_group("main", "logged_out")
 
 func refresh_main():
