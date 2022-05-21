@@ -46,8 +46,6 @@ config/quit_on_go_back=false
 
 window/size/width=1366
 window/size/height=768
-window/size/test_width=384
-window/size/test_height=768
 window/dpi/allow_hidpi=true
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation="sensor"
@@ -57,7 +55,6 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/file_protocols/plugin.cfg", "res://addons/zylann.editor_debugger/plugin.cfg" )
-"<<<<<<<HEAD[gui]theme/custom"="res://themes/project.tres"
 
 [gui]
 

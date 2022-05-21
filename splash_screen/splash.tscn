@@ -149,35 +149,6 @@ rect_pivot_offset = Vector2( 225, 225 )
 stream = ExtResource( 1 )
 volume_db = -6.02
 
-[node name="ColorRect" type="ColorRect" parent="VideoPlayer"]
-visible = false
-margin_right = 280.0
-margin_bottom = 718.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="ColorRect3" type="ColorRect" parent="VideoPlayer"]
-visible = false
-margin_left = 112.0
-margin_right = 1109.0
-margin_bottom = 169.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="ColorRect4" type="ColorRect" parent="VideoPlayer"]
-visible = false
-margin_left = 112.0
-margin_top = 546.0
-margin_right = 1109.0
-margin_bottom = 729.0
-color = Color( 0, 0, 0, 1 )
-
-[node name="ColorRect2" type="ColorRect" parent="VideoPlayer"]
-visible = false
-margin_left = 947.0
-margin_top = -25.0
-margin_right = 1261.0
-margin_bottom = 714.0
-color = Color( 0, 0, 0, 1 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/show_img_rect = SubResource( 3 )
