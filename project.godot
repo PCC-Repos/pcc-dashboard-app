@@ -55,7 +55,6 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/file_protocols/plugin.cfg", "res://addons/zylann.editor_debugger/plugin.cfg" )
-"<<<<<<<HEAD[gui]theme/custom"="res://themes/project.tres"
 
 [gui]
 
