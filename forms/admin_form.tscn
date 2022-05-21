@@ -1,9 +1,12 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://forms/admin_form.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/PCF_Logo_no_back_v2.png" type="Texture" id=2]
 [ext_resource path="res://audio/audio_stream_random_player.gd" type="Script" id=3]
 [ext_resource path="res://resources/owned_clubs/OwnedClubs.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/free_agents/free_agents.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/invites/invites.tscn" type="PackedScene" id=6]
+[ext_resource path="res://resources/items/items.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/user_clubs/user_clubs.tscn" type="PackedScene" id=12]
 [ext_resource path="res://modals/add_member_modal.tscn" type="PackedScene" id=13]
 [ext_resource path="res://resources/clubs/clubs.tscn" type="PackedScene" id=14]
@@ -19,7 +22,7 @@
 [ext_resource path="res://assets/music/music4.mp3" type="AudioStream" id=26]
 [ext_resource path="res://assets/music/music3.mp3" type="AudioStream" id=27]
 
-[node name="AdminForm" type="Control" groups=["login_ready"]]
+[node name="AdminForm" type="Control" groups=["admin_form", "login_ready"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 24 )
@@ -83,7 +86,7 @@ size_flags_horizontal = 10
 text = "Sairam"
 flat = false
 icon_align = 1
-items = [ "Logout", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, false, 1, 0, null, "", true, "Refresh", null, 0, false, false, 2, 0, null, "", false ]
+items = [ "Refresh", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, false, 1, 0, null, "", true, "Logout", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="Tabs" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 58.0
@@ -123,8 +126,14 @@ margin_bottom = -4.0
 margin_right = 148.0
 margin_bottom = 641.0
 
+[node name="Invites" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Clubs" instance=ExtResource( 6 )]
+margin_left = 152.0
+margin_right = 300.0
+margin_bottom = 641.0
+rect_min_size = Vector2( 148, 0 )
+
 [node name="Members" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Clubs" groups=["login_ready"] instance=ExtResource( 16 )]
-margin_left = 1189.0
+margin_left = 1198.0
 margin_right = 1324.0
 margin_bottom = 641.0
 
@@ -133,7 +142,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 41.0
+margin_top = 33.0
 margin_right = -4.0
 margin_bottom = -4.0
 custom_constants/separation = 10
@@ -161,14 +170,12 @@ margin_top = 33.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Marketplace"]
-margin_right = 40.0
-margin_bottom = 23.0
+[node name="Items" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Marketplace" groups=["login_ready"] instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1324.0
+margin_bottom = 641.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Coming soon!"
-align = 1
-valign = 1
 
 [node name="Transactions" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/TabContainer"]
 visible = false
@@ -180,13 +187,27 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="Label" type="Label" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Transactions"]
-margin_right = 40.0
-margin_bottom = 23.0
+margin_right = 1324.0
+margin_bottom = 641.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Coming soon!"
 align = 1
 valign = 1
+
+[node name="FreeAgents" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 33.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Agents" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/FreeAgents" groups=["login_ready"] instance=ExtResource( 5 )]
+margin_left = 0.0
+margin_right = 126.0
+margin_bottom = 641.0
 
 [node name="Modals" type="CanvasLayer" parent="."]
 
