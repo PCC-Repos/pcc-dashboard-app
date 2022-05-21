@@ -71,31 +71,40 @@ theme_type_variation = "LoginHSeperator"
 margin_top = 140.0
 margin_right = 529.0
 margin_bottom = 459.0
-rect_min_size = Vector2( 0, 300 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.23
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/ScrollContainer"]
-margin_right = 529.0
-margin_bottom = 316.0
+margin_right = 517.0
+margin_bottom = 396.0
 size_flags_horizontal = 3
 
 [node name="Name" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_right = 529.0
+margin_right = 517.0
 margin_bottom = 76.0
 theme_type_variation = "RegisterLabels"
-field_name = "Name:"
-placeholder_text = "Enter your Full Name..."
+field_name = "PSN Username:"
+placeholder_text = "Enter your PCS Username..."
+
+[node name="Name2" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 80.0
+margin_right = 517.0
+margin_bottom = 156.0
+theme_type_variation = "RegisterLabels"
+field_name = "Player's Name:"
+placeholder_text = "Enter Player's Name..."
 
 [node name="Email" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 80.0
-margin_right = 529.0
-margin_bottom = 156.0
+margin_top = 160.0
+margin_right = 517.0
+margin_bottom = 236.0
 theme_type_variation = "RegisterLabels"
 field_name = "Email:"
 placeholder_text = "Enter Email..."
@@ -103,9 +112,9 @@ placeholder_text = "Enter Email..."
 [node name="Pass" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 160.0
-margin_right = 529.0
-margin_bottom = 236.0
+margin_top = 240.0
+margin_right = 517.0
+margin_bottom = 316.0
 theme_type_variation = "RegisterLabels"
 field_name = "Password:"
 placeholder_text = "Enter your New Password..."
@@ -113,9 +122,9 @@ placeholder_text = "Enter your New Password..."
 [node name="ConPass" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 240.0
-margin_right = 529.0
-margin_bottom = 316.0
+margin_top = 320.0
+margin_right = 517.0
+margin_bottom = 396.0
 theme_type_variation = "RegisterLabels"
 field_name = "Confirm Password:"
 placeholder_text = "Re-enter the above typed Password..."

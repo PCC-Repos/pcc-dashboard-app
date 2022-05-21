@@ -56,7 +56,7 @@ func save_access_token(res: Dictionary):
 
 
 func _on_Register_pressed():
-	get_tree().change_scene("res://forms/register_form.tscn")
+	get_tree().current_scene.get_node("TabContainer").current_tab = 1
 
 
 func _on_RegisterModal_submit(_us_name, _us_email, _us_password):
