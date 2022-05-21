@@ -38,7 +38,6 @@ func _on_LoginForm_access_token_received(_access_token):
 	headers = PoolStringArray(["Authorization: Bearer %s" % access_token])
 	fetch_current_user()
 
-
 func fetch_current_user(refresh = false):
 	var http_req = HTTPRequest.new()
 	http_req.connect("request_completed", self, "_request_completed", [http_req, refresh])
@@ -86,4 +85,3 @@ func logged_out():
 
 func refresh():
 	fetch_current_user(true)
-
