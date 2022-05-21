@@ -5,7 +5,7 @@
 [ext_resource path="res://dialogs/create_user_dialog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=4]
 [ext_resource path="res://themes/project.tres" type="Theme" id=5]
-[ext_resource path="res://assets/fonts/predefined_fonts/Title.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/fonts/Title.tres" type="DynamicFont" id=6]
 
 [node name="LoginForm" type="Panel" groups=["api_base"]]
 anchor_right = 1.0
@@ -49,13 +49,13 @@ margin_bottom = 540.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.23
-custom_constants/separation = 30
+custom_constants/separation = 15
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 46.0
+margin_top = 24.0
 margin_right = 530.0
-margin_bottom = 156.0
+margin_bottom = 134.0
 rect_min_size = Vector2( 0, 35 )
 size_flags_vertical = 1
 theme_type_variation = "Titles"
@@ -64,61 +64,71 @@ text = "Login"
 valign = 1
 uppercase = true
 
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+margin_top = 149.0
+margin_right = 530.0
+margin_bottom = 149.0
+theme_type_variation = "LoginHSeperator"
+
 [node name="Email" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 186.0
+margin_top = 164.0
 margin_right = 530.0
-margin_bottom = 268.0
+margin_bottom = 250.0
 field_name = "Email: "
 placeholder_text = "Enter Email..."
 
 [node name="Password" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 298.0
+margin_top = 265.0
 margin_right = 530.0
-margin_bottom = 419.0
+margin_bottom = 390.0
 size_flags_vertical = 0
 field_name = "Password: "
 secret = true
 placeholder_text = "Enter Password..."
 
 [node name="ForgotPass" type="LinkButton" parent="HBoxContainer/VBoxContainer/Password"]
-margin_top = 86.0
+margin_top = 90.0
 margin_right = 530.0
-margin_bottom = 121.0
+margin_bottom = 125.0
 rect_min_size = Vector2( 75, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Forgot Password"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 449.0
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+margin_top = 405.0
 margin_right = 530.0
-margin_bottom = 493.0
+margin_bottom = 405.0
+theme_type_variation = "LoginHSeperator"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 420.0
+margin_right = 530.0
+margin_bottom = 466.0
 custom_constants/separation = 20
 alignment = 1
 
 [node name="Login" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 168.0
-margin_right = 243.0
-margin_bottom = 44.0
+margin_right = 530.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 75, 35 )
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Login"
 
-[node name="Register" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
-margin_left = 263.0
-margin_right = 362.0
-margin_bottom = 44.0
+[node name="Register" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+margin_left = 148.0
+margin_top = 481.0
+margin_right = 381.0
+margin_bottom = 516.0
 rect_min_size = Vector2( 75, 35 )
-mouse_default_cursor_shape = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-text = "Register"
+size_flags_horizontal = 6
+text = "New user? Create an Account..."
 
 [node name="Dialogs" type="Control" parent="."]
 
@@ -131,5 +141,5 @@ margin_bottom = 123.0
 
 [connection signal="show_register_modal" from="." to="Dialogs/RegisterModal" method="_on_LoginForm_show_register_modal"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer3/Login" to="." method="_on_Login_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer3/Register" to="." method="_on_Register_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Register" to="." method="_on_Register_pressed"]
 [connection signal="submit" from="Dialogs/RegisterModal" to="." method="_on_RegisterModal_submit"]
