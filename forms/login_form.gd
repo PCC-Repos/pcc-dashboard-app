@@ -15,6 +15,9 @@ onready var us_pass_node = $"HBoxContainer/VBoxContainer/Password"
 func ready():
 	prints("got api base", api_base)
 
+#func _process(delta: float) -> void:
+#	OS.set_window_title(str(OS.window_size))
+
 # Called by the engine.
 func _ready():
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(768, 768))
@@ -53,7 +56,7 @@ func save_access_token(res: Dictionary):
 
 
 func _on_Register_pressed():
-	emit_signal("show_register_modal")
+	get_tree().change_scene("res://forms/register_form.tscn")
 
 
 func _on_RegisterModal_submit(_us_name, _us_email, _us_password):

@@ -6,25 +6,27 @@
 anchor_right = 1.0
 margin_left = 159.0
 margin_right = -159.0
-margin_bottom = 82.0
+margin_bottom = 86.0
 size_flags_horizontal = 3
 script = ExtResource( 1 )
+field_name = "Example:"
+placeholder_text = "Placeholder Text"
 
 [node name="Label" type="Label" parent="."]
 margin_right = 706.0
-margin_bottom = 34.0
+margin_bottom = 36.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Example: "
+text = "Example:"
 valign = 1
 
 [node name="LineEdit" type="LineEdit" parent="."]
-margin_top = 38.0
+margin_top = 40.0
 margin_right = 706.0
-margin_bottom = 82.0
+margin_bottom = 86.0
 rect_min_size = Vector2( 200, 24 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.7
-placeholder_text = "Enter email"
+placeholder_text = "Placeholder Text"
 caret_blink = true
 caret_blink_speed = 0.5

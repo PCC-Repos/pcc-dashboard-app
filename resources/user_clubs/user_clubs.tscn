@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ui_classes/VButtonContainer.gd" type="Script" id=1]
 [ext_resource path="res://resources/user_clubs/user_clubs.gd" type="Script" id=2]
-[ext_resource path="res://themes/project.tres" type="Theme" id=3]
+[ext_resource path="res://themes/default.tres" type="Theme" id=3]
 
 [node name="UserClubs" type="VBoxContainer"]
 margin_right = 126.0

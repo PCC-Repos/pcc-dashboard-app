@@ -75,7 +75,8 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxLine" id=12]
 color = Color( 0.188235, 0.270588, 0.603922, 1 )
-grow_end = -277.0
+grow_begin = 0.0
+grow_end = 0.0
 thickness = 2
 
 [sub_resource type="Gradient" id=5]
@@ -110,7 +111,7 @@ corner_radius_bottom_left = 5
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 26
+size = 22
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )

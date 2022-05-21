@@ -1,0 +1,154 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://forms/register_form.gd" type="Script" id=1]
+[ext_resource path="res://ui_classes/Field.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/Title.tres" type="DynamicFont" id=6]
+
+[node name="RegisterForm" type="Panel" groups=["api_base"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_type_variation = "LoginPanel"
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 31.0
+margin_top = 35.0
+margin_right = -31.0
+margin_bottom = -35.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+margin_right = 429.0
+margin_bottom = 530.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 50
+custom_constants/margin_left = 50
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PcfLogoNoBackV2" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+margin_left = 50.0
+margin_right = 379.0
+margin_bottom = 530.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 433.0
+margin_right = 962.0
+margin_bottom = 530.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.23
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 529.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 0, 35 )
+size_flags_vertical = 1
+theme_type_variation = "Titles"
+custom_fonts/font = ExtResource( 6 )
+text = "Register"
+valign = 1
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+margin_top = 125.0
+margin_right = 375.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 375, 0 )
+size_flags_horizontal = 0
+theme_type_variation = "LoginHSeperator"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 140.0
+margin_right = 529.0
+margin_bottom = 459.0
+rect_min_size = Vector2( 0, 300 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/ScrollContainer"]
+margin_right = 529.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+
+[node name="Name" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_left = 0.0
+margin_right = 529.0
+margin_bottom = 76.0
+theme_type_variation = "RegisterLabels"
+field_name = "Name:"
+placeholder_text = "Enter your Full Name..."
+
+[node name="Email" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 80.0
+margin_right = 529.0
+margin_bottom = 156.0
+theme_type_variation = "RegisterLabels"
+field_name = "Email:"
+placeholder_text = "Enter Email..."
+
+[node name="Pass" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 160.0
+margin_right = 529.0
+margin_bottom = 236.0
+theme_type_variation = "RegisterLabels"
+field_name = "Password:"
+placeholder_text = "Enter your New Password..."
+
+[node name="ConPass" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 240.0
+margin_right = 529.0
+margin_bottom = 316.0
+theme_type_variation = "RegisterLabels"
+field_name = "Confirm Password:"
+placeholder_text = "Re-enter the above typed Password..."
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBoxContainer"]
+margin_top = 474.0
+margin_right = 529.0
+margin_bottom = 474.0
+size_flags_horizontal = 3
+theme_type_variation = "LoginHSeperator"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 489.0
+margin_right = 529.0
+margin_bottom = 530.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Register" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_right = 529.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 75, 35 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Register"
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 38.0
+margin_top = 34.0
+margin_right = 143.0
+margin_bottom = 75.0
+mouse_default_cursor_shape = 2
+text = "< Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

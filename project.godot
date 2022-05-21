@@ -44,8 +44,8 @@ config/quit_on_go_back=false
 
 [display]
 
-window/size/test_width=1100
-window/size/test_height=800
+window/size/test_width=1314
+window/size/test_height=768
 window/dpi/allow_hidpi=true
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation="sensor"
@@ -59,7 +59,7 @@ enabled=PoolStringArray( "res://addons/file_protocols/plugin.cfg", "res://addons
 
 [gui]
 
-theme/custom="res://themes/project.tres"
+theme/custom="res://themes/default.tres"
 
 [input_devices]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/items/items.gd" type="Script" id=1]
-[ext_resource path="res://themes/project.tres" type="Theme" id=2]
+[ext_resource path="res://themes/default.tres" type="Theme" id=2]
 [ext_resource path="res://assets/fonts/Open_Sans/OpenSans-Bold.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
