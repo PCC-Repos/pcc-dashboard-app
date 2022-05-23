@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/Title.tres" type="DynamicFont" id=6]
 
-[node name="RegisterForm" type="Panel" groups=["api_base"]]
+[node name="RegisterForm" type="Control" groups=["api_base"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_type_variation = "LoginPanel"
@@ -87,7 +87,7 @@ margin_right = 517.0
 margin_bottom = 76.0
 theme_type_variation = "RegisterLabels"
 field_name = "PSN Username:"
-placeholder_text = "Enter your PCS Username..."
+placeholder_text = "Enter your PSN Username..."
 
 [node name="Name2" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -96,7 +96,7 @@ margin_top = 80.0
 margin_right = 517.0
 margin_bottom = 156.0
 theme_type_variation = "RegisterLabels"
-field_name = "Player's Name:"
+field_name = "Player/Avatar Name:"
 placeholder_text = "Enter Player's Name..."
 
 [node name="Email" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]

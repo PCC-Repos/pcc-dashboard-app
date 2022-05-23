@@ -11,7 +11,7 @@ func _ready():
 	$AudioStreamPlayer.play()
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	if video_anim_played:
 		get_tree().change_scene("res://main.tscn")
 	$VideoPlayer.self_modulate.a = 1

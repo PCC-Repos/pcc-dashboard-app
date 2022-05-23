@@ -80,6 +80,7 @@ grow_end = 0.0
 thickness = 2
 
 [sub_resource type="Gradient" id=5]
+interpolation_mode = 2
 colors = PoolColorArray( 0.064, 0.0776, 0.2, 1, 0, 0.00392157, 0.0392157, 1 )
 
 [sub_resource type="GradientTexture2D" id=6]

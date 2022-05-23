@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/Title.tres" type="DynamicFont" id=6]
 
-[node name="LoginForm" type="Panel" groups=["api_base"]]
+[node name="LoginForm" type="Control" groups=["api_base"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_type_variation = "LoginPanel"

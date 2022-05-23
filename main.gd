@@ -4,14 +4,16 @@ const API_BASE = "https://api.proclubsfederation.com/v2/"
 const DebugAPI_BASE = "http://127.0.0.1:8000/"
 
 
-var api_base
-var debug = true
+export(bool) var debug: = true
 
+var api_base
 var user
 var logged_in = false
 var access_token = ""
 var headers = PoolStringArray()
 var admin_form
+
+onready var notif = $NotifPopup
 
 func _ready():
 	if OS.has_feature('debug') and debug:
@@ -47,9 +49,11 @@ func fetch_current_user(refresh = false):
 func _request_completed(result: int, response_code: int, _headers: PoolStringArray, body: PoolByteArray, http_req, refresh: bool):
 	http_req.queue_free()
 	if response_code != 200:
-		prints(response_code, "Something went wrong, plz check!")
+		print_debug(response_code, "Something went wrong, plz check!")
+		notif.text = "%s: Something went wrong, plz check!" % response_code
 		if response_code == 401:
-			prints(headers)
+			print_debug(headers)
+			self.notif.text = "Failed to Login.\nPlease check that you entered the details correctly or create a New Account."
 		return
 
 	var res = parse_json(body.get_string_from_utf8())

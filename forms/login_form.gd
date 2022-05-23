@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 signal access_token_received(access_token)
 signal show_register_modal
@@ -56,7 +56,7 @@ func save_access_token(res: Dictionary):
 
 
 func _on_Register_pressed():
-	get_tree().current_scene.get_node("TabContainer").current_tab = 1
+	get_tree().current_scene.get_node("TabContainer").current_tab = get_tree().current_scene.get_node("TabContainer").find_node("RegisterForm").get_index()
 
 
 func _on_RegisterModal_submit(_us_name, _us_email, _us_password):
