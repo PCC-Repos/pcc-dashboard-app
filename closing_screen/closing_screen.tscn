@@ -114,30 +114,26 @@ custom_constants/margin_bottom = 25
 margin_left = 25.0
 margin_top = 25.0
 margin_right = 999.0
-margin_bottom = 648.0
+margin_bottom = 575.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 margin_right = 974.0
-margin_bottom = 204.0
+margin_bottom = 102.0
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "
-[center]Thanks for using the app!
-Check out the [url=http://api.proclubsfederation.com/docs]api[/url] here.
-"
-text = "
-Thanks for using the app!
-Check out the api here.
-"
+bbcode_text = "[center]Thanks for using the app!
+Check out the [url=http://api.proclubsfederation.com/docs]api[/url] here."
+text = "Thanks for using the app!
+Check out the api here."
 fit_content_height = true
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-margin_top = 208.0
+margin_top = 106.0
 margin_right = 974.0
-margin_bottom = 568.0
+margin_bottom = 466.0
 rect_min_size = Vector2( 480, 360 )
 size_flags_vertical = 6
 texture = SubResource( 5 )
@@ -145,9 +141,9 @@ expand = true
 stretch_mode = 6
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-margin_top = 572.0
+margin_top = 499.0
 margin_right = 974.0
-margin_bottom = 623.0
+margin_bottom = 550.0
 size_flags_vertical = 10
 custom_fonts/bold_font = SubResource( 6 )
 custom_fonts/normal_font = SubResource( 1 )

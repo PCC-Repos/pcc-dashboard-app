@@ -117,6 +117,7 @@ margin_right = 517.0
 margin_bottom = 316.0
 theme_type_variation = "RegisterLabels"
 field_name = "Password:"
+secret = true
 placeholder_text = "Enter your New Password..."
 
 [node name="ConPass" parent="HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
@@ -160,4 +161,5 @@ margin_bottom = 75.0
 mouse_default_cursor_shape = 2
 text = "< Back"
 
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer3/Register" to="." method="_on_Create_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
