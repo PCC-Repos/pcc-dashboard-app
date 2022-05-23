@@ -6,23 +6,17 @@
 [ext_resource path="res://ui_classes/NotificationPopup.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main.gd" type="Script" id=9]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=8]
 interpolation_mode = 2
-offsets = PoolRealArray( 0, 0 )
 colors = PoolColorArray( 0.064, 0.0776, 0.2, 1, 0, 0.00392157, 0.0392157, 1 )
 
-[sub_resource type="GradientTexture2D" id=6]
-gradient = SubResource( 5 )
-use_hdr = true
+[sub_resource type="GradientTexture2D" id=9]
+gradient = SubResource( 8 )
 fill_from = Vector2( 1, 0 )
-fill_to = Vector2( 1, 0.420833 )
+fill_to = Vector2( 1, 1 )
 
-[sub_resource type="StyleBoxTexture" id=4]
-content_margin_left = 50.0
-content_margin_right = 50.0
-content_margin_top = 50.0
-content_margin_bottom = 50.0
-texture = SubResource( 6 )
+[sub_resource type="StyleBoxTexture" id=10]
+texture = SubResource( 9 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="Animation" id=7]
@@ -50,7 +44,7 @@ script = ExtResource( 9 )
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 10 )
 
 [node name="TabContainer" type="TabContainer" parent="."]
 anchor_right = 1.0
