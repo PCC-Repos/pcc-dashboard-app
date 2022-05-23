@@ -8,6 +8,7 @@
 
 [sub_resource type="Gradient" id=5]
 interpolation_mode = 2
+offsets = PoolRealArray( 0, 0 )
 colors = PoolColorArray( 0.064, 0.0776, 0.2, 1, 0, 0.00392157, 0.0392157, 1 )
 
 [sub_resource type="GradientTexture2D" id=6]
@@ -45,7 +46,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 9 )
-debug = false
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0

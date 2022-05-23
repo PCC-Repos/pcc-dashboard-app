@@ -12,7 +12,6 @@ onready var tween: SceneTreeTween = create_tween()
 
 
 func set_text(new):
-	print(new)
 	if new:
 		text = new
 		$Label.text = text

@@ -43,6 +43,7 @@ func _request_completed(result: int, response_code: int, headers: PoolStringArra
 		prints(response_code, "Something went wrong, plz check!")
 		if response_code == 401:
 			prints(headers)
+			emit_signal("access_token_received", null)
 		return
 
 	var res = parse_json(body.get_string_from_utf8())
@@ -50,6 +51,7 @@ func _request_completed(result: int, response_code: int, headers: PoolStringArra
 		emit_signal("access_token_received", res["access_token"])
 
 	save_access_token(res)
+	
 
 func save_access_token(res: Dictionary):
 	pass
