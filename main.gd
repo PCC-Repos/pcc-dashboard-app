@@ -35,6 +35,10 @@ func _notification(what):
 
 
 func _on_LoginForm_access_token_received(_access_token):
+	if !_access_token:
+		notif.text = "Failed to Login.\nPlease check that you entered the details correctly or create a New Account."
+		notif.show()
+		return
 	access_token = _access_token
 	logged_in = true
 	headers = PoolStringArray(["Authorization: Bearer %s" % access_token])
@@ -53,7 +57,7 @@ func _request_completed(result: int, response_code: int, _headers: PoolStringArr
 		notif.text = "%s: Something went wrong, plz check!" % response_code
 		if response_code == 401:
 			print_debug(headers)
-			self.notif.text = "Failed to Login.\nPlease check that you entered the details correctly or create a New Account."
+			notif.text = "Failed to Login.\nPlease check that you entered the details correctly or create a New Account."
 		return
 
 	var res = parse_json(body.get_string_from_utf8())
@@ -76,7 +80,7 @@ func init_admin():
 
 	get_tree().call_group("login_ready", "ready")
 
-	$LoginForm.hide()
+	$TabContainer.hide()
 
 func logged_out():
 	get_tree().set_group("login_ready", "headers", PoolStringArray())
@@ -85,7 +89,7 @@ func logged_out():
 	remove_child(admin_form)
 	admin_form.queue_free()
 
-	$LoginForm.show()
+	$TabContainer.show()
 
 func refresh():
 	fetch_current_user(true)
