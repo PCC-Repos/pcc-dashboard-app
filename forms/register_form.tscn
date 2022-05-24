@@ -1,8 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://forms/register_form.gd" type="Script" id=1]
 [ext_resource path="res://ui_classes/Field.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/fonts/Title.tres" type="DynamicFont" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "tool
+extends Fields
+
+
+func _ready() -> void:
+	value.connect(\"text_changed\", self, \"_on_LineEdit_text_changed\")
+
+
+func _on_LineEdit_text_changed(text: String):
+	var regex: RegEx = RegEx.new()
+	regex.compile(\"\\\\b.+@.+\\\\.com\\\\b\")
+	var result: RegExMatch = regex.search(text)
+	verify_label.visible = not text.empty()
+	verify_label.modulate = Color.white
+	if result:
+		verify_label.text = \"The email is Valid.\"
+		verify_label.modulate = Color.green
+	else:
+		verify_label.text = \"The email is Invalid.\"
+		verify_label.modulate = Color.red
+"
 
 [node name="RegisterForm" type="Control" groups=["api_base"]]
 anchor_right = 1.0
@@ -44,86 +67,103 @@ theme_type_variation = "LoginHSeperator"
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 140.0
 margin_right = 924.0
-margin_bottom = 373.0
+margin_bottom = 387.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.23
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
 margin_right = 912.0
-margin_bottom = 396.0
+margin_bottom = 336.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 
-[node name="Name" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 902.0
+margin_bottom = 326.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Name" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
-margin_right = 912.0
-margin_bottom = 76.0
+margin_right = 892.0
+margin_bottom = 60.0
 theme_type_variation = "RegisterLabels"
-field_name = "PSN Username:"
-placeholder_text = "Enter your PSN Username..."
+field_name = "PCS Username:"
+placeholder_text = "Enter your PCS Username..."
 
-[node name="Name2" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="Name2" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 80.0
-margin_right = 912.0
-margin_bottom = 156.0
+margin_top = 64.0
+margin_right = 892.0
+margin_bottom = 124.0
 theme_type_variation = "RegisterLabels"
 field_name = "Player/Avatar Name:"
-placeholder_text = "Enter Player's Name..."
+placeholder_text = "Enter your Player/Avatar Name..."
 
-[node name="Email" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="Email" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 160.0
-margin_right = 912.0
-margin_bottom = 236.0
-theme_type_variation = "RegisterLabels"
+margin_top = 128.0
+margin_right = 892.0
+margin_bottom = 188.0
+script = SubResource( 1 )
 field_name = "Email:"
 placeholder_text = "Enter Email..."
 
-[node name="Pass" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="Pass" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 240.0
-margin_right = 912.0
-margin_bottom = 316.0
+margin_top = 192.0
+margin_right = 892.0
+margin_bottom = 252.0
 theme_type_variation = "RegisterLabels"
 field_name = "Password:"
-secret = true
-placeholder_text = "Enter your New Password..."
+password = true
+placeholder_text = "Create your Password..."
 
-[node name="ConPass" parent="VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="ConPass" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 320.0
-margin_right = 912.0
-margin_bottom = 396.0
+margin_top = 256.0
+margin_right = 892.0
+margin_bottom = 316.0
 theme_type_variation = "RegisterLabels"
 field_name = "Confirm Password:"
-secret = true
+password = true
 placeholder_text = "Re-enter the above typed Password..."
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 388.0
+margin_top = 402.0
 margin_right = 924.0
-margin_bottom = 388.0
+margin_bottom = 402.0
 size_flags_horizontal = 3
 theme_type_variation = "LoginHSeperator"
 
 [node name="Register" type="Button" parent="VBoxContainer"]
-margin_top = 403.0
+margin_top = 417.0
 margin_right = 924.0
-margin_bottom = 444.0
+margin_bottom = 452.0
 rect_min_size = Vector2( 75, 35 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 text = "Register"
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
-margin_top = 459.0
-margin_right = 77.0
+margin_top = 467.0
+margin_right = 58.0
 margin_bottom = 500.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 2

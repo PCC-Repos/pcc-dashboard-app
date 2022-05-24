@@ -1,30 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://forms/login_form.gd" type="Script" id=1]
 [ext_resource path="res://ui_classes/Field.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/fonts/Title.tres" type="DynamicFont" id=6]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends Fields
-
-
-func _ready() -> void:
-	value.connect(\"text_changed\", self, \"_on_LineEdit_text_changed\")
-
-
-func _on_LineEdit_text_changed(text: String):
-	var regex: RegEx = RegEx.new()
-	regex.compile(\".+@.+\\\\.com\")
-	var result: RegExMatch = regex.search(text)
-	verify_label.visible = text != null
-	verify_label.modulate = Color.white
-	if result:
-		verify_label.text = \"The email is Valid.\"
-		verify_label.modulate = Color.green
-	else:
-		verify_label.text = \"The email is Invalid.\"
-		verify_label.modulate = Color.red
-"
 
 [node name="LoginForm" type="Control" groups=["api_base"]]
 anchor_right = 1.0
@@ -71,10 +49,8 @@ margin_left = 0.0
 margin_top = 187.0
 margin_right = 924.0
 margin_bottom = 247.0
-script = SubResource( 1 )
-text = ""
+size_flags_vertical = 0
 field_name = "Email:"
-secret = false
 placeholder_text = "Enter Email..."
 
 [node name="Password" parent="VBoxContainer" instance=ExtResource( 2 )]
@@ -84,9 +60,8 @@ margin_top = 262.0
 margin_right = 924.0
 margin_bottom = 349.0
 size_flags_vertical = 0
-text = ""
 field_name = "Password:"
-secret = false
+password = true
 placeholder_text = "Enter Password..."
 
 [node name="ForgotPass" type="LinkButton" parent="VBoxContainer/Password"]

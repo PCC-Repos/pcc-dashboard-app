@@ -17,10 +17,10 @@ func _on_BackButton_pressed() -> void:
 
 
 func _on_Create_pressed():
-	var us_name = $HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Name.text
-	us_email = $HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Email.text
-	us_pass = $HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Pass.text
-	var us_conf_pass = $HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/ConPass.text
+	var us_name = $"%Name".text
+	us_email = $"%Email".text
+	us_pass = $"%Pass".text
+	var us_conf_pass = $"%ConPass".text
 	if us_pass == us_conf_pass:
 		prints(us_conf_pass, us_pass, "Passwords didn't match!")
 

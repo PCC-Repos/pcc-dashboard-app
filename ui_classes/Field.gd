@@ -4,7 +4,7 @@ class_name Fields
 
 export(String, MULTILINE) var text setget set_text, get_text
 export(String, MULTILINE) var field_name setget set_field_name, get_field_name
-export(bool) var secret setget set_secret, get_secret
+export(bool) var password setget set_password, get_password
 export(String, MULTILINE) var placeholder_text setget set_placeholder_text, get_placeholder_text
 
 onready var label: = $"%Label"
@@ -14,8 +14,11 @@ onready var value = $"%Value"
 func _ready():
 	set("text", text)
 	set("field_name", field_name)
-	set("secret", secret)
+	set("password", password)
 	set("placeholder_text", placeholder_text)
+	pass
+
+	value.get_node("Show").visible = password
 
 func set_text(new: String):
 	text = new
@@ -50,13 +53,17 @@ func get_placeholder_text():
 		return placeholder_text
 	return value.placeholder_text
 
-func set_secret(new: bool):
-	secret = new
+func set_password(new: bool):
+	password = new
 	if !is_inside_tree():
 		return
-	value.secret = secret
+	value.secret = password
 
-func get_secret():
+func get_password():
 	if !is_inside_tree():
-		return secret
+		return password
 	return value.secret
+
+
+func _on_Show_toggled(button_pressed: bool) -> void:
+	self.password = not button_pressed

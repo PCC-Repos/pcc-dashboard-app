@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui_classes/Field.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/UI/Eye Close.svg" type="Texture" id=2]
+[ext_resource path="res://assets/images/UI/Eye Open.svg" type="Texture" id=3]
 
 [node name="Field" type="VBoxContainer"]
 anchor_right = 1.0
@@ -9,19 +11,15 @@ margin_right = -159.0
 margin_bottom = 86.0
 size_flags_horizontal = 3
 script = ExtResource( 1 )
-text = null
-field_name = null
-secret = null
-placeholder_text = null
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 706.0
-margin_bottom = 31.0
+margin_bottom = 23.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 93.0
-margin_bottom = 31.0
+margin_right = 68.0
+margin_bottom = 23.0
 size_flags_vertical = 3
 text = "Example:"
 valign = 1
@@ -40,12 +38,28 @@ valign = 1
 
 [node name="Value" type="LineEdit" parent="."]
 unique_name_in_owner = true
-margin_top = 35.0
+margin_top = 27.0
 margin_right = 706.0
-margin_bottom = 68.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 200, 24 )
+rect_pivot_offset = Vector2( 397, 326 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.7
-placeholder_text = "Placeholder Text"
+placeholder_text = "Placeholder Text..."
 caret_blink = true
 caret_blink_speed = 0.5
+
+[node name="Show" type="TextureButton" parent="Value"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -35.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[connection signal="toggled" from="Value/Show" to="." method="_on_Show_toggled"]
