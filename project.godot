@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "VBoxContainer",
+"class": "Fields",
+"language": "GDScript",
+"path": "res://ui_classes/Field.gd"
+}, {
 "base": "HBoxContainer",
 "class": "HButtonContainer",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://ui_classes/VButtonContainer.gd"
 } ]
 _global_script_class_icons={
+"Fields": "",
 "HButtonContainer": "",
 "MouseButton": "",
 "VButtonContainer": ""

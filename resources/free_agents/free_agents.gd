@@ -70,7 +70,7 @@ func _option_selected(option_id, user_id):
 		0:
 			# inviting
 			emit_signal("show_invite_user_modal", user_id)
-		# 1 is separator 
+		# 1 is separator
 		2:
 			# copy id
 			OS.clipboard = str(user_id)
@@ -116,7 +116,7 @@ func _on_Invite_pressed():
 			edit_agent_api("not_interested")
 		"not_interested":
 			edit_agent_api("free")
-			
+
 
 func edit_agent_api(agent_type):
 	var http_req = HTTPRequest.new()

@@ -8,7 +8,7 @@ var us_pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	get_tree().current_scene.get_node("AnimationPlayer").play("LightsON")
 
 
 func _on_BackButton_pressed() -> void:
@@ -22,9 +22,8 @@ func _on_Create_pressed():
 	us_pass = $HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/Pass.text
 	var us_conf_pass = $HBoxContainer/VBoxContainer/ScrollContainer/VBoxContainer/ConPass.text
 	if us_pass == us_conf_pass:
-		print(us_conf_pass, us_pass)
-		print("Not matched!!!")
-	
+		prints(us_conf_pass, us_pass, "Passwords didn't match!")
+
 	create_user_api(us_name, us_email, us_pass)
 
 func create_user_api(us_name, us_email, us_pass):
@@ -40,6 +39,6 @@ func _create_user_api(result: int, response_code: int, headers: PoolStringArray,
 		print(body.get_string_from_utf8())
 	http_req.queue_free()
 	var json = parse_json(body.get_string_from_utf8())
-	
+
 	get_tree().current_scene.get_node("TabContainer").find_node("LoginForm").call_deferred("login", us_email, us_pass)
-	
+

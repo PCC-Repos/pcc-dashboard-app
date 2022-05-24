@@ -9,21 +9,40 @@ margin_right = -159.0
 margin_bottom = 86.0
 size_flags_horizontal = 3
 script = ExtResource( 1 )
-field_name = "Example:"
-placeholder_text = "Placeholder Text"
+text = null
+field_name = null
+secret = null
+placeholder_text = null
 
-[node name="Label" type="Label" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 706.0
-margin_bottom = 36.0
-size_flags_horizontal = 3
+margin_bottom = 31.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 93.0
+margin_bottom = 31.0
 size_flags_vertical = 3
 text = "Example:"
 valign = 1
 
-[node name="LineEdit" type="LineEdit" parent="."]
-margin_top = 40.0
+[node name="Verify" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_left = 97.0
 margin_right = 706.0
-margin_bottom = 86.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = "VerifyLabel"
+text = "The text is valid/invalid."
+valign = 1
+
+[node name="Value" type="LineEdit" parent="."]
+unique_name_in_owner = true
+margin_top = 35.0
+margin_right = 706.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 200, 24 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.7

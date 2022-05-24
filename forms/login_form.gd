@@ -8,8 +8,8 @@ var api_base
 var us_email
 var us_pass
 
-onready var us_name_node = $"HBoxContainer/VBoxContainer/Email"
-onready var us_pass_node = $"HBoxContainer/VBoxContainer/Password"
+onready var us_name_node = $VBoxContainer/Email
+onready var us_pass_node = $VBoxContainer/Password
 
 # Called by my code.
 func ready():
@@ -40,9 +40,9 @@ func login(_us_email = us_email, _us_pass = us_pass):
 func _request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req):
 	http_req.queue_free()
 	if response_code != 200:
-		prints(response_code, "Something went wrong, plz check!")
+		print_debug(response_code, " Something went wrong, plz check!")
 		if response_code == 401:
-			prints(headers)
+			print_debug(headers)
 			emit_signal("access_token_received", null)
 		return
 
@@ -51,7 +51,7 @@ func _request_completed(result: int, response_code: int, headers: PoolStringArra
 		emit_signal("access_token_received", res["access_token"])
 
 	save_access_token(res)
-	
+
 
 func save_access_token(res: Dictionary):
 	pass

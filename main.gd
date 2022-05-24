@@ -5,6 +5,7 @@ const DebugAPI_BASE = "http://127.0.0.1:8000/"
 
 
 export(bool) var debug: = true
+export(float) var tween_duration: = 0.5
 
 var api_base
 var user
@@ -25,12 +26,18 @@ func _ready():
 	get_tree().set_group("api_base", "api_base", api_base)
 	get_tree().call_group("api_base", "ready")
 
+#	var tween: SceneTreeTween = create_tween()
+#	tween.tween_property($"%TabContainer", "rect_position:x", 512, tween_duration).from(OS.window_size.x + 10)
+#	tween.tween_property($"MarginContainer", "rect_position:x", 0, tween_duration).from($MarginContainer.rect_size.x - 10)
+
 func _notification(what):
 	match what:
 		NOTIFICATION_WM_QUIT_REQUEST:
 			print("Quit request")
+# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://closing_screen/closing_screen.tscn")
 		NOTIFICATION_WM_GO_BACK_REQUEST:
+# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://closing_screen/closing_screen.tscn")
 
 
@@ -50,10 +57,10 @@ func fetch_current_user(refresh = false):
 	add_child(http_req)
 	http_req.request((api_base + "users/@me/").http_unescape(), headers, true, HTTPClient.METHOD_GET)
 
-func _request_completed(result: int, response_code: int, _headers: PoolStringArray, body: PoolByteArray, http_req, refresh: bool):
+func _request_completed(_result: int, response_code: int, _headers: PoolStringArray, body: PoolByteArray, http_req, refresh: bool):
 	http_req.queue_free()
 	if response_code != 200:
-		print_debug(response_code, "Something went wrong, plz check!")
+		print_debug(response_code, " Something went wrong, plz check!")
 		notif.text = "%s: Something went wrong, plz check!" % response_code
 		if response_code == 401:
 			print_debug(headers)
@@ -80,7 +87,7 @@ func init_admin():
 
 	get_tree().call_group("login_ready", "ready")
 
-	$TabContainer.hide()
+	$"%TabContainer".hide()
 
 func logged_out():
 	get_tree().set_group("login_ready", "headers", PoolStringArray())
@@ -89,7 +96,11 @@ func logged_out():
 	remove_child(admin_form)
 	admin_form.queue_free()
 
-	$TabContainer.show()
+	$"%TabContainer".show()
 
 func refresh():
 	fetch_current_user(true)
+
+
+func _on_Form_visibility_changed() -> void:
+	$AnimationPlayer.play("LightsON")

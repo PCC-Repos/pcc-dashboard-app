@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=2]
+[gd_resource type="Theme" load_steps=22 format=2]
 
 [ext_resource path="res://assets/fonts/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 
@@ -113,8 +113,51 @@ corner_radius_bottom_left = 5
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
 
+[sub_resource type="Gradient" id=15]
+colors = PoolColorArray( 0.031723, 0.0989876, 0.300781, 1, 0, 0.0100708, 0.117188, 1 )
+
+[sub_resource type="GradientTexture2D" id=16]
+gradient = SubResource( 15 )
+fill_from = Vector2( 1, 0 )
+fill_to = Vector2( 1, 1 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+texture = SubResource( 16 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0, 0.00784314, 0.113725, 1 )
+border_width_top = 5
+border_color = Color( 0, 0.317647, 0.529412, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+
+[sub_resource type="StyleBoxFlat" id=18]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.0313726, 0.0980392, 0.298039, 1 )
+border_width_top = 5
+border_color = Color( 0.0666667, 0.729412, 0.933333, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+
+[sub_resource type="DynamicFont" id=20]
+size = 12
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=1]
-size = 22
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
@@ -138,4 +181,9 @@ MainTabContainer/base_type = "TabContainer"
 MainTabContainer/styles/panel = SubResource( 14 )
 PanelContainer/styles/panel = SubResource( 3 )
 PopupMenu/fonts/font = SubResource( 2 )
+TabContainer/styles/panel = SubResource( 17 )
+TabContainer/styles/tab_bg = SubResource( 19 )
+TabContainer/styles/tab_fg = SubResource( 18 )
 Titles/base_type = "Label"
+VerifyLabel/base_type = "Label"
+VerifyLabel/fonts/font = SubResource( 20 )

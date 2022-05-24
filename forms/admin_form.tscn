@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://forms/admin_form.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/PCF_Logo_no_back_v2.png" type="Texture" id=2]
@@ -22,11 +22,28 @@
 [ext_resource path="res://assets/music/music4.mp3" type="AudioStream" id=26]
 [ext_resource path="res://assets/music/music3.mp3" type="AudioStream" id=27]
 
+[sub_resource type="Gradient" id=8]
+interpolation_mode = 2
+colors = PoolColorArray( 0.158875, 0.314679, 0.535156, 1, 0, 0.00392157, 0.0392157, 1 )
+
+[sub_resource type="GradientTexture2D" id=11]
+gradient = SubResource( 8 )
+use_hdr = true
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = SubResource( 11 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
 [node name="AdminForm" type="Control" groups=["admin_form", "login_ready"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 24 )
 script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 10 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -117,25 +134,25 @@ __meta__ = {
 [node name="Clubs" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 49.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 20.0
+margin_top = 61.0
+margin_right = -20.0
+margin_bottom = -20.0
 
 [node name="Clubs" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Clubs" groups=["login_ready"] instance=ExtResource( 14 )]
 margin_right = 197.0
-margin_bottom = 441.0
+margin_bottom = 413.0
 
 [node name="Invites" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Clubs" instance=ExtResource( 6 )]
 margin_left = 201.0
 margin_right = 349.0
-margin_bottom = 441.0
+margin_bottom = 413.0
 rect_min_size = Vector2( 148, 0 )
 
 [node name="Members" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Clubs" groups=["login_ready"] instance=ExtResource( 16 )]
-margin_left = 850.0
-margin_right = 976.0
-margin_bottom = 441.0
+margin_left = 818.0
+margin_right = 944.0
+margin_bottom = 413.0
 
 [node name="Users" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/TabContainer"]
 visible = false
@@ -243,7 +260,6 @@ __meta__ = {
 
 [node name="AudioStreamRandomPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 22 )
-volume_db = -6.021
 bus = "Music"
 script = ExtResource( 3 )
 audio_stream_list = [ ExtResource( 22 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ) ]

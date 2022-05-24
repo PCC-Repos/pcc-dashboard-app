@@ -1,54 +1,111 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://themes/default.tres" type="Theme" id=1]
 [ext_resource path="res://forms/login_form.tscn" type="PackedScene" id=2]
 [ext_resource path="res://forms/register_form.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui_classes/NotificationPopup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=5]
 [ext_resource path="res://main.gd" type="Script" id=9]
 
 [sub_resource type="Gradient" id=8]
 interpolation_mode = 2
+offsets = PoolRealArray( 0, 0 )
 colors = PoolColorArray( 0.064, 0.0776, 0.2, 1, 0, 0.00392157, 0.0392157, 1 )
 
 [sub_resource type="GradientTexture2D" id=9]
 gradient = SubResource( 8 )
+use_hdr = true
 fill_from = Vector2( 1, 0 )
-fill_to = Vector2( 1, 1 )
+fill_to = Vector2( 0.779167, 0.408333 )
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=14]
 texture = SubResource( 9 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="Animation" id=7]
 resource_name = "LightsON"
 length = 0.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Panel:custom_styles/panel:texture:gradient:offsets")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.307786, 1 ),
+"update": 0,
+"values": [ PoolRealArray( 0, 0 ), PoolRealArray( 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ PoolRealArray( 0, 0 ), PoolRealArray( 0, 1 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
+
+[sub_resource type="Environment" id=11]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/6 = true
+glow_levels/7 = true
+glow_intensity = 1.07
+glow_strength = 1.03
+glow_bloom = 1.0
+glow_bicubic_upscale = true
+glow_high_quality = true
 
 [node name="Main" type="Control" groups=["main"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 9 )
+debug = false
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 14 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_bottom = 1.0
+margin_right = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 50
+custom_constants/margin_left = 50
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PcfLogoNoBackV2" type="TextureRect" parent="MarginContainer"]
+margin_left = 50.0
+margin_right = 462.0
+margin_bottom = 600.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
 
 [node name="TabContainer" type="TabContainer" parent="."]
+unique_name_in_owner = true
+anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -0.000976562
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.21
 theme_type_variation = "MainTabContainer"
 tabs_visible = false
 
@@ -62,7 +119,12 @@ margin_left = -131.0
 margin_right = 131.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "LightsON"
 anims/LightsON = SubResource( 7 )
+anims/RESET = SubResource( 13 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 11 )
 
 [connection signal="access_token_received" from="TabContainer/LoginForm" to="." method="_on_LoginForm_access_token_received"]
+[connection signal="visibility_changed" from="TabContainer/LoginForm" to="." method="_on_Form_visibility_changed"]
+[connection signal="visibility_changed" from="TabContainer/RegisterForm" to="." method="_on_Form_visibility_changed"]
