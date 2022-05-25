@@ -90,17 +90,18 @@ margin_bottom = 326.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Name" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="PSNName" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
 margin_right = 892.0
 margin_bottom = 60.0
 theme_type_variation = "RegisterLabels"
-field_name = "PCS Username:"
-placeholder_text = "Enter your PCS Username..."
+field_name = "PSN Username:"
+placeholder_text = "Enter your PSN Username..."
 
-[node name="Name2" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="Name" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
 margin_top = 64.0

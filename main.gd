@@ -41,7 +41,7 @@ func _ready():
 
 func ready_tween():
 	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_QUART)
-	tween.parallel().tween_property($"%TabContainer", "rect_position:x", OS.window_size.x / 2, tween_duration).from(OS.window_size.x + 10)
+	tween.parallel().tween_property($"%TabContainer", "rect_position:x", OS.window_size.x / 2 - (OS.window_size.y / 16), tween_duration).from(OS.window_size.x + 10)
 	tween.parallel().tween_property($"MarginContainer", "rect_position:x", 0.0, tween_duration).from(-$MarginContainer.rect_size.x - 10)
 
 func _on_LoginForm_access_token_received(_access_token):

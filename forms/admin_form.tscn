@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://forms/admin_form.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/PCF_Logo_no_back_v2.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=2]
 [ext_resource path="res://audio/audio_stream_random_player.gd" type="Script" id=3]
 [ext_resource path="res://resources/owned_clubs/OwnedClubs.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/free_agents/free_agents.tscn" type="PackedScene" id=5]

@@ -121,8 +121,8 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 14 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_bottom = 1.0
-margin_right = 512.0
+margin_right = 598.0
+margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 50
@@ -133,8 +133,8 @@ __meta__ = {
 
 [node name="PcfLogoNoBackV2" type="TextureRect" parent="MarginContainer"]
 margin_left = 50.0
-margin_right = 462.0
-margin_bottom = 600.0
+margin_right = 548.0
+margin_bottom = 768.0
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
@@ -144,7 +144,7 @@ unique_name_in_owner = true
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -0.000976562
+margin_left = -85.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.21
