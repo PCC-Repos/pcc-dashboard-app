@@ -25,18 +25,19 @@ func _ready():
 	prints("Using API base", api_base)
 	get_tree().set_group("api_base", "api_base", api_base)
 	get_tree().call_group("api_base", "ready")
+	get_tree().set_auto_accept_quit(true)
 
 	ready_tween()
 
-func _notification(what):
-	match what:
-		NOTIFICATION_WM_QUIT_REQUEST:
-			print("Quit request")
-# warning-ignore:return_value_discarded
-			get_tree().change_scene("res://closing_screen/closing_screen.tscn")
-		NOTIFICATION_WM_GO_BACK_REQUEST:
-# warning-ignore:return_value_discarded
-			get_tree().change_scene("res://closing_screen/closing_screen.tscn")
+#func _notification(what):
+#	match what:
+#		NOTIFICATION_WM_QUIT_REQUEST:
+#			print("Quit request")
+## warning-ignore:return_value_discarded
+#			get_tree().change_scene("res://closing_screen/closing_screen.tscn")
+#		NOTIFICATION_WM_GO_BACK_REQUEST:
+## warning-ignore:return_value_discarded
+#			get_tree().change_scene("res://closing_screen/closing_screen.tscn")
 
 func ready_tween():
 	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_QUART)
@@ -90,6 +91,8 @@ func init_admin():
 	get_tree().call_group("login_ready", "ready")
 
 	$"%TabContainer".hide()
+	
+	$AudioStreamPlayer.stop()
 
 func logged_out():
 	get_tree().set_group("login_ready", "headers", PoolStringArray())
@@ -99,6 +102,7 @@ func logged_out():
 	admin_form.queue_free()
 
 	$"%TabContainer".show()
+	$AudioStreamPlayer.play()
 
 func refresh():
 	fetch_current_user(true)

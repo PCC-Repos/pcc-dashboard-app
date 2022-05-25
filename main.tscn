@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://themes/default.tres" type="Theme" id=1]
 [ext_resource path="res://forms/login_form.tscn" type="PackedScene" id=2]
 [ext_resource path="res://forms/register_form.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui_classes/NotificationPopup.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=5]
+[ext_resource path="res://closing_screen/closing_msx.ogg" type="AudioStream" id=6]
 [ext_resource path="res://main.gd" type="Script" id=9]
 
 [sub_resource type="Gradient" id=8]
@@ -168,6 +169,12 @@ next/LightsON = "LightsMoving"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 11 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -6.021
+pitch_scale = 1.5
+autoplay = true
 
 [connection signal="access_token_received" from="TabContainer/LoginForm" to="." method="_on_LoginForm_access_token_received"]
 [connection signal="visibility_changed" from="TabContainer/LoginForm" to="." method="_on_Form_visibility_changed"]
