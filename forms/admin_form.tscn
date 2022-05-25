@@ -24,7 +24,7 @@
 
 [sub_resource type="Gradient" id=8]
 interpolation_mode = 2
-colors = PoolColorArray( 0.158875, 0.314679, 0.535156, 1, 0, 0.00392157, 0.0392157, 1 )
+colors = PoolColorArray( 0.158875, 0.314679, 0.535156, 1, 0, 0.028, 0.28, 1 )
 
 [sub_resource type="GradientTexture2D" id=11]
 gradient = SubResource( 8 )
@@ -50,7 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Header" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 1024.0
+margin_right = 1366.0
 margin_bottom = 64.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
@@ -60,20 +60,20 @@ custom_constants/margin_bottom = 1
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Header"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 1014.0
+margin_right = 1356.0
 margin_bottom = 63.0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header/PanelContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 994.0
+margin_right = 1336.0
 margin_bottom = 43.0
 custom_constants/margin_right = 20
 custom_constants/margin_left = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header/PanelContainer/MarginContainer"]
 margin_left = 20.0
-margin_right = 964.0
+margin_right = 1306.0
 margin_bottom = 33.0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Header/PanelContainer/MarginContainer/HBoxContainer"]
@@ -95,8 +95,8 @@ valign = 1
 uppercase = true
 
 [node name="AccountButton" type="MenuButton" parent="VBoxContainer/Header/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 849.0
-margin_right = 944.0
+margin_left = 1191.0
+margin_right = 1286.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 95, 0 )
 size_flags_horizontal = 10
@@ -107,8 +107,8 @@ items = [ "Refresh", null, 0, false, false, 0, 0, null, "", false, "", null, 0, 
 
 [node name="Tabs" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 68.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1366.0
+margin_bottom = 768.0
 size_flags_vertical = 3
 custom_constants/margin_right = 10
 custom_constants/margin_top = 0
@@ -117,14 +117,14 @@ custom_constants/margin_bottom = 10
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Tabs"]
 margin_left = 10.0
-margin_right = 1014.0
-margin_bottom = 522.0
+margin_right = 1356.0
+margin_bottom = 690.0
 
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer/Tabs/PanelContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 994.0
-margin_bottom = 512.0
+margin_right = 1336.0
+margin_bottom = 680.0
 tab_align = 0
 drag_to_rearrange_enabled = true
 __meta__ = {
@@ -141,18 +141,18 @@ margin_bottom = -20.0
 
 [node name="Clubs" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Clubs" groups=["login_ready"] instance=ExtResource( 14 )]
 margin_right = 146.0
-margin_bottom = 429.0
+margin_bottom = 597.0
 
 [node name="Invites" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Clubs" instance=ExtResource( 6 )]
 margin_left = 150.0
 margin_right = 298.0
-margin_bottom = 429.0
+margin_bottom = 597.0
 rect_min_size = Vector2( 148, 0 )
 
 [node name="Members" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Clubs" groups=["login_ready"] instance=ExtResource( 16 )]
-margin_left = 818.0
-margin_right = 944.0
-margin_bottom = 429.0
+margin_left = 1160.0
+margin_right = 1286.0
+margin_bottom = 597.0
 
 [node name="Users" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/TabContainer"]
 visible = false

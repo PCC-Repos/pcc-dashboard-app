@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://themes/default.tres" type="Theme" id=1]
 [ext_resource path="res://forms/login_form.tscn" type="PackedScene" id=2]
@@ -21,6 +21,9 @@ fill_to = Vector2( 0.779167, 0.408333 )
 [sub_resource type="StyleBoxTexture" id=14]
 texture = SubResource( 9 )
 region_rect = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+draw_center = false
 
 [sub_resource type="Animation" id=15]
 resource_name = "LightsMoving"
@@ -148,7 +151,7 @@ margin_left = -85.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.21
-theme_type_variation = "MainTabContainer"
+custom_styles/panel = SubResource( 16 )
 tabs_visible = false
 
 [node name="LoginForm" parent="TabContainer" instance=ExtResource( 2 )]

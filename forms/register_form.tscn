@@ -46,7 +46,7 @@ size_flags_stretch_ratio = 1.23
 custom_constants/separation = 15
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 924.0
+margin_right = 1266.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 0, 35 )
 size_flags_vertical = 1
@@ -66,15 +66,15 @@ theme_type_variation = "LoginHSeperator"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 140.0
-margin_right = 924.0
-margin_bottom = 387.0
+margin_right = 1266.0
+margin_bottom = 555.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.23
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
-margin_right = 912.0
-margin_bottom = 336.0
+margin_right = 1266.0
+margin_bottom = 415.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 10
@@ -85,8 +85,8 @@ custom_constants/margin_bottom = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 902.0
-margin_bottom = 326.0
+margin_right = 1256.0
+margin_bottom = 405.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -94,7 +94,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
-margin_right = 892.0
+margin_right = 1246.0
 margin_bottom = 60.0
 theme_type_variation = "RegisterLabels"
 field_name = "PSN Username:"
@@ -105,7 +105,7 @@ unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
 margin_top = 64.0
-margin_right = 892.0
+margin_right = 1246.0
 margin_bottom = 124.0
 theme_type_variation = "RegisterLabels"
 field_name = "Player/Avatar Name:"
@@ -116,7 +116,7 @@ unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
 margin_top = 128.0
-margin_right = 892.0
+margin_right = 1246.0
 margin_bottom = 188.0
 script = SubResource( 1 )
 field_name = "Email:"
@@ -127,7 +127,7 @@ unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
 margin_top = 192.0
-margin_right = 892.0
+margin_right = 1246.0
 margin_bottom = 252.0
 theme_type_variation = "RegisterLabels"
 field_name = "Password:"
@@ -139,7 +139,7 @@ unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
 margin_top = 256.0
-margin_right = 892.0
+margin_right = 1246.0
 margin_bottom = 316.0
 theme_type_variation = "RegisterLabels"
 field_name = "Confirm Password:"
@@ -147,28 +147,28 @@ password = true
 placeholder_text = "Re-enter the above typed Password..."
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 402.0
-margin_right = 924.0
-margin_bottom = 402.0
+margin_top = 570.0
+margin_right = 1266.0
+margin_bottom = 570.0
 size_flags_horizontal = 3
 theme_type_variation = "LoginHSeperator"
 
 [node name="Register" type="Button" parent="VBoxContainer"]
-margin_top = 417.0
-margin_right = 924.0
-margin_bottom = 452.0
+margin_top = 585.0
+margin_right = 1266.0
+margin_bottom = 620.0
 rect_min_size = Vector2( 75, 35 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 text = "Register"
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
-margin_top = 467.0
-margin_right = 58.0
-margin_bottom = 500.0
+margin_top = 635.0
+margin_right = 71.0
+margin_bottom = 668.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 2
-text = "< Back"
+text = "◀ Back"
 
 [connection signal="pressed" from="VBoxContainer/Register" to="." method="_on_Create_pressed"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

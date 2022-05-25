@@ -91,7 +91,7 @@ func init_admin():
 	get_tree().call_group("login_ready", "ready")
 
 	$"%TabContainer".hide()
-	
+
 	$AudioStreamPlayer.stop()
 
 func logged_out():

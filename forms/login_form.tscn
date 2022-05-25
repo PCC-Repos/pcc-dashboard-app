@@ -24,9 +24,9 @@ custom_constants/separation = 15
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 47.0
-margin_right = 924.0
-margin_bottom = 157.0
+margin_top = 131.0
+margin_right = 1266.0
+margin_bottom = 241.0
 rect_min_size = Vector2( 0, 35 )
 size_flags_vertical = 1
 theme_type_variation = "Titles"
@@ -36,9 +36,9 @@ valign = 1
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 172.0
+margin_top = 256.0
 margin_right = 250.0
-margin_bottom = 172.0
+margin_bottom = 256.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 0
 theme_type_variation = "LoginHSeperator"
@@ -46,9 +46,9 @@ theme_type_variation = "LoginHSeperator"
 [node name="Email" parent="VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 187.0
-margin_right = 924.0
-margin_bottom = 247.0
+margin_top = 271.0
+margin_right = 1266.0
+margin_bottom = 331.0
 size_flags_vertical = 0
 field_name = "Email:"
 placeholder_text = "Enter Email..."
@@ -56,9 +56,9 @@ placeholder_text = "Enter Email..."
 [node name="Password" parent="VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 262.0
-margin_right = 924.0
-margin_bottom = 349.0
+margin_top = 346.0
+margin_right = 1266.0
+margin_bottom = 433.0
 size_flags_vertical = 0
 field_name = "Password:"
 password = true
@@ -68,38 +68,41 @@ placeholder_text = "Enter Password..."
 margin_top = 64.0
 margin_right = 128.0
 margin_bottom = 87.0
+hint_tooltip = "Click it, if you forgot your password for logging in!"
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Forgot Password"
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 364.0
-margin_right = 924.0
-margin_bottom = 364.0
+margin_top = 448.0
+margin_right = 1266.0
+margin_bottom = 448.0
 size_flags_horizontal = 3
 theme_type_variation = "LoginHSeperator"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 379.0
-margin_right = 924.0
-margin_bottom = 414.0
+margin_top = 463.0
+margin_right = 1266.0
+margin_bottom = 498.0
 custom_constants/separation = 20
 alignment = 1
 
 [node name="Login" type="Button" parent="VBoxContainer/HBoxContainer3"]
-margin_right = 924.0
+margin_right = 1266.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 75, 35 )
+hint_tooltip = "Log into your Dashboard."
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Login"
 
 [node name="Register" type="LinkButton" parent="VBoxContainer"]
-margin_left = 345.0
-margin_top = 429.0
-margin_right = 578.0
-margin_bottom = 452.0
+margin_left = 516.0
+margin_top = 513.0
+margin_right = 749.0
+margin_bottom = 536.0
+hint_tooltip = "...or click it, if you want to create a different account."
 size_flags_horizontal = 6
 size_flags_vertical = 0
 text = "New user? Create an Account..."
