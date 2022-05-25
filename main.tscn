@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://themes/default.tres" type="Theme" id=1]
 [ext_resource path="res://forms/login_form.tscn" type="PackedScene" id=2]
@@ -22,9 +22,27 @@ fill_to = Vector2( 0.779167, 0.408333 )
 texture = SubResource( 9 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
+[sub_resource type="Animation" id=15]
+resource_name = "LightsMoving"
+length = 10.0
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:custom_styles/panel:texture:gradient:offsets")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5, 5, 7.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolRealArray( 0, 1 ), PoolRealArray( 0, 1.25 ), PoolRealArray( 0, 0.75 ), PoolRealArray( 0, 1.25 ), PoolRealArray( 0, 1 ) ]
+}
+
 [sub_resource type="Animation" id=7]
 resource_name = "LightsON"
-length = 0.5
+length = 5.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Panel:custom_styles/panel:texture:gradient:offsets")
@@ -33,7 +51,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 4.75 ),
 "transitions": PoolRealArray( 0.307786, 1 ),
 "update": 0,
 "values": [ PoolRealArray( 0, 0 ), PoolRealArray( 0, 1 ) ]
@@ -52,6 +70,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel:custom_styles/panel:texture:fill_to")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.779167, 0.408333 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Panel:custom_styles/panel:texture:gradient:offsets")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolRealArray( 0, 0 ) ]
 }
 
 [sub_resource type="Environment" id=11]
@@ -119,6 +161,7 @@ margin_left = -131.0
 margin_right = 131.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/LightsMoving = SubResource( 15 )
 anims/LightsON = SubResource( 7 )
 anims/RESET = SubResource( 13 )
 
@@ -128,3 +171,4 @@ environment = SubResource( 11 )
 [connection signal="access_token_received" from="TabContainer/LoginForm" to="." method="_on_LoginForm_access_token_received"]
 [connection signal="visibility_changed" from="TabContainer/LoginForm" to="." method="_on_Form_visibility_changed"]
 [connection signal="visibility_changed" from="TabContainer/RegisterForm" to="." method="_on_Form_visibility_changed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

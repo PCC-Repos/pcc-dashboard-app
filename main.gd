@@ -104,3 +104,9 @@ func refresh():
 
 func _on_Form_visibility_changed() -> void:
 	$AnimationPlayer.play("LightsON")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	match anim_name:
+		"LightsON":
+			$AnimationPlayer.play("LightsMoving")
