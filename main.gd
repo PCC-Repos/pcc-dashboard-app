@@ -26,9 +26,7 @@ func _ready():
 	get_tree().set_group("api_base", "api_base", api_base)
 	get_tree().call_group("api_base", "ready")
 
-#	var tween: SceneTreeTween = create_tween()
-#	tween.tween_property($"%TabContainer", "rect_position:x", 512, tween_duration).from(OS.window_size.x + 10)
-#	tween.tween_property($"MarginContainer", "rect_position:x", 0, tween_duration).from($MarginContainer.rect_size.x - 10)
+	ready_tween()
 
 func _notification(what):
 	match what:
@@ -40,6 +38,10 @@ func _notification(what):
 # warning-ignore:return_value_discarded
 			get_tree().change_scene("res://closing_screen/closing_screen.tscn")
 
+func ready_tween():
+	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_QUART)
+	tween.parallel().tween_property($"%TabContainer", "rect_position:x", OS.window_size.x / 2, tween_duration).from(OS.window_size.x + 10)
+	tween.parallel().tween_property($"MarginContainer", "rect_position:x", 0.0, tween_duration).from(-$MarginContainer.rect_size.x - 10)
 
 func _on_LoginForm_access_token_received(_access_token):
 	if !_access_token:
@@ -104,9 +106,4 @@ func refresh():
 
 func _on_Form_visibility_changed() -> void:
 	$AnimationPlayer.play("LightsON")
-
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	match anim_name:
-		"LightsON":
-			$AnimationPlayer.play("LightsMoving")
+	ready_tween()
