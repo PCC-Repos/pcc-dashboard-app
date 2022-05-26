@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/closing_msx.ogg-62e424045d76409aaedaaf0ca74d843c.oggstr"
+
+[deps]
+
+source_file="res://assets/music/closing_msx.ogg"
+dest_files=[ "res://.import/closing_msx.ogg-62e424045d76409aaedaaf0ca74d843c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
