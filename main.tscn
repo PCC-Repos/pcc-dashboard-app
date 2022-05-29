@@ -159,10 +159,6 @@ tabs_visible = false
 [node name="RegisterForm" parent="TabContainer" instance=ExtResource( 3 )]
 visible = false
 
-[node name="NotifPopup" parent="." instance=ExtResource( 4 )]
-margin_left = -131.0
-margin_right = 131.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "LightsON"
 anims/LightsMoving = SubResource( 15 )
@@ -178,6 +174,13 @@ stream = ExtResource( 6 )
 volume_db = -6.021
 pitch_scale = 1.5
 autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="NotifPopup" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = -131.0
+margin_right = 131.0
 
 [connection signal="access_token_received" from="TabContainer/LoginForm" to="." method="_on_LoginForm_access_token_received"]
 [connection signal="visibility_changed" from="TabContainer/LoginForm" to="." method="_on_Form_visibility_changed"]

@@ -76,7 +76,7 @@ func _option_selected(option_id, user_id):
 		1:
 			# kicking/deleting
 			delete_member_api(current_club_id, user_id)
-		
+
 		# 2 is seperator
 		3:
 			# copy id

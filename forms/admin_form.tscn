@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://forms/admin_form.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://resources/free_agents/free_agents.tscn" type="PackedScene" id=5]
 [ext_resource path="res://resources/invites/invites.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/items/items.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/images/UI/AdminBadge.svg" type="Texture" id=8]
 [ext_resource path="res://resources/user_clubs/user_clubs.tscn" type="PackedScene" id=12]
 [ext_resource path="res://dialogs/add_member_dialog.tscn" type="PackedScene" id=13]
 [ext_resource path="res://resources/clubs/clubs.tscn" type="PackedScene" id=14]
@@ -51,7 +52,7 @@ anchor_bottom = 1.0
 
 [node name="Header" type="MarginContainer" parent="VBoxContainer"]
 margin_right = 1366.0
-margin_bottom = 64.0
+margin_bottom = 73.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -61,24 +62,24 @@ custom_constants/margin_bottom = 1
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1356.0
-margin_bottom = 63.0
+margin_bottom = 72.0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header/PanelContainer"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1336.0
-margin_bottom = 43.0
+margin_bottom = 52.0
 custom_constants/margin_right = 20
 custom_constants/margin_left = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header/PanelContainer/MarginContainer"]
 margin_left = 20.0
 margin_right = 1306.0
-margin_bottom = 33.0
+margin_bottom = 42.0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Header/PanelContainer/MarginContainer/HBoxContainer"]
 margin_right = 45.0
-margin_bottom = 33.0
+margin_bottom = 42.0
 rect_min_size = Vector2( 45, 29 )
 texture = ExtResource( 2 )
 expand = true
@@ -87,7 +88,7 @@ stretch_mode = 6
 [node name="Label" type="Label" parent="VBoxContainer/Header/PanelContainer/MarginContainer/HBoxContainer"]
 margin_left = 49.0
 margin_right = 178.0
-margin_bottom = 33.0
+margin_bottom = 42.0
 size_flags_vertical = 3
 text = "pcf dashboard"
 align = 1
@@ -95,18 +96,18 @@ valign = 1
 uppercase = true
 
 [node name="AccountButton" type="MenuButton" parent="VBoxContainer/Header/PanelContainer/MarginContainer/HBoxContainer"]
-margin_left = 1191.0
+margin_left = 1188.0
 margin_right = 1286.0
-margin_bottom = 33.0
+margin_bottom = 42.0
 rect_min_size = Vector2( 95, 0 )
 size_flags_horizontal = 10
 text = "Sairam"
+icon = ExtResource( 8 )
 flat = false
-icon_align = 1
 items = [ "Refresh", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, false, 1, 0, null, "", true, "Logout", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="Tabs" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 68.0
+margin_top = 77.0
 margin_right = 1366.0
 margin_bottom = 768.0
 size_flags_vertical = 3
@@ -118,13 +119,13 @@ custom_constants/margin_bottom = 10
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Tabs"]
 margin_left = 10.0
 margin_right = 1356.0
-margin_bottom = 690.0
+margin_bottom = 681.0
 
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer/Tabs/PanelContainer"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1336.0
-margin_bottom = 680.0
+margin_bottom = 671.0
 tab_align = 0
 drag_to_rearrange_enabled = true
 __meta__ = {
@@ -141,18 +142,18 @@ margin_bottom = -20.0
 
 [node name="Clubs" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Clubs" groups=["login_ready"] instance=ExtResource( 14 )]
 margin_right = 146.0
-margin_bottom = 597.0
+margin_bottom = 588.0
 
 [node name="Invites" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Clubs" instance=ExtResource( 6 )]
 margin_left = 150.0
 margin_right = 298.0
-margin_bottom = 597.0
+margin_bottom = 588.0
 rect_min_size = Vector2( 148, 0 )
 
 [node name="Members" parent="VBoxContainer/Tabs/PanelContainer/TabContainer/Clubs" groups=["login_ready"] instance=ExtResource( 16 )]
 margin_left = 1160.0
 margin_right = 1286.0
-margin_bottom = 597.0
+margin_bottom = 588.0
 
 [node name="Users" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/TabContainer"]
 visible = false

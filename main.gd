@@ -14,7 +14,7 @@ var access_token = ""
 var headers = PoolStringArray()
 var admin_form
 
-onready var notif = $NotifPopup
+onready var notif = $CanvasLayer/NotifPopup
 
 func _ready():
 	if OS.has_feature('debug') and debug:
