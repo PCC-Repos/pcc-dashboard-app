@@ -178,9 +178,7 @@ autoplay = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="NotifPopup" parent="CanvasLayer" instance=ExtResource( 4 )]
-margin_left = -131.0
-margin_right = 131.0
+[node name="Notif" parent="CanvasLayer" instance=ExtResource( 4 )]
 
 [connection signal="access_token_received" from="TabContainer/LoginForm" to="." method="_on_LoginForm_access_token_received"]
 [connection signal="visibility_changed" from="TabContainer/LoginForm" to="." method="_on_Form_visibility_changed"]

@@ -14,7 +14,7 @@ var access_token = ""
 var headers = PoolStringArray()
 var admin_form
 
-onready var notif = $CanvasLayer/NotifPopup
+onready var notif = $CanvasLayer/Notif
 
 func _ready():
 	if OS.has_feature('debug') and debug:
@@ -25,7 +25,6 @@ func _ready():
 	prints("Using API base", api_base)
 	get_tree().set_group("api_base", "api_base", api_base)
 	get_tree().call_group("api_base", "ready")
-	get_tree().set_auto_accept_quit(true)
 
 	ready_tween()
 
@@ -40,13 +39,13 @@ func _ready():
 #			get_tree().change_scene("res://closing_screen/closing_screen.tscn")
 
 func ready_tween():
-	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_QUART)
-	tween.parallel().tween_property($"%TabContainer", "rect_position:x", OS.window_size.x / 2 - (OS.window_size.y / 16), tween_duration).from(OS.window_size.x + 10)
-	tween.parallel().tween_property($"MarginContainer", "rect_position:x", 0.0, tween_duration).from(-$MarginContainer.rect_size.x - 10)
+	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_QUART).set_parallel()
+	tween.tween_property($"%TabContainer", "rect_position:x", OS.window_size.x / 2 - (OS.window_size.y / 16), tween_duration).from(OS.window_size.x + 10)
+	tween.tween_property($"MarginContainer", "rect_position:x", 0.0, tween_duration).from(-$MarginContainer.rect_size.x - 10)
 
 func _on_LoginForm_access_token_received(_access_token):
 	if !_access_token:
-		notif.text = "Failed to Login.\nPlease check that you entered the details correctly or create a New Account."
+		notif.text = "Error:\nFailed to Login.\nPlease check that you entered the details correctly or create a New Account."
 		notif.show()
 		return
 	access_token = _access_token
@@ -67,7 +66,6 @@ func _request_completed(_result: int, response_code: int, _headers: PoolStringAr
 		notif.text = "%s: Something went wrong, plz check!" % response_code
 		if response_code == 401:
 			print_debug(headers)
-			notif.text = "Failed to Login.\nPlease check that you entered the details correctly or create a New Account."
 		return
 
 	var res = parse_json(body.get_string_from_utf8())
