@@ -38,11 +38,12 @@ func _ready() -> void:
 
 func tween_sequence():
 	popup_panel.self_modulate = Color.white
+	popup_panel.rect_global_position.x = OS.window_size.x/2 - popup_panel.rect_size.x/2
 #	modulate.a = 0
 # warning-ignore:return_value_discarded
 	tween.set_trans(Tween.TRANS_BACK).set_parallel()
 # warning-ignore:return_value_discarded
-	tween.tween_property(popup_panel, "rect_position:y", OS.window_size.y - popup_panel.rect_size.y - height, fade_time)
+	tween.tween_property(popup_panel, "rect_position:y", height, fade_time)
 # warning-ignore:return_value_discarded
 	tween.tween_property(popup_panel, "modulate:a", 1.0, fade_time).from(0.0)
 
@@ -60,7 +61,7 @@ func tween_sequence():
 # warning-ignore:return_value_discarded
 	tween.tween_interval(wait_time)
 # warning-ignore:return_value_discarded
-	tween.chain().tween_property(popup_panel, "rect_position:y", OS.window_size.y + popup_panel.rect_size.y, fade_time)
+	tween.chain().tween_property(popup_panel, "rect_position:y", -popup_panel.rect_size.y, fade_time)
 # warning-ignore:return_value_discarded
 	tween.tween_property(popup_panel, "modulate:a", 0.0, fade_time)
 	error = false

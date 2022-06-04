@@ -21,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 1 )
+height = 20.0
 
 [node name="NotifPopup" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -28,9 +29,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 557.0
-margin_top = 23.0
+margin_top = -844.0
 margin_right = -557.0
-margin_bottom = 76.0
+margin_bottom = -791.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
