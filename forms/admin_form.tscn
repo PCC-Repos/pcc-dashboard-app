@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://forms/admin_form.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://resources/invites/invites.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/items/items.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/images/UI/AdminBadge.svg" type="Texture" id=8]
+[ext_resource path="res://ui_classes/WheelButtons.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/user_clubs/user_clubs.tscn" type="PackedScene" id=12]
 [ext_resource path="res://dialogs/add_member_dialog.tscn" type="PackedScene" id=13]
 [ext_resource path="res://resources/clubs/clubs.tscn" type="PackedScene" id=14]
@@ -226,6 +227,14 @@ margin_bottom = -4.0
 margin_left = 0.0
 margin_right = 126.0
 margin_bottom = 641.0
+
+[node name="WheelButtons" parent="VBoxContainer/Tabs" instance=ExtResource( 9 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_right = 1356.0
+margin_bottom = 681.0
 
 [node name="Modals" type="CanvasLayer" parent="."]
 

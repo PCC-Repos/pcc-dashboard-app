@@ -1,78 +1,86 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/images/UI/WheelButtonLogo.svg" type="Texture" id=1]
+[ext_resource path="res://assets/images/UI/WheelButtonLogo-Empty.svg" type="Texture" id=1]
 [ext_resource path="res://ui_classes/WheelButtons.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/UI/WheelButtonLogo-Filled.svg" type="Texture" id=3]
 
 [node name="WheelButtons" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-focus_mode = 1
 mouse_filter = 1
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="MainButton" type="TextureRect" parent="."]
+[node name="MainButton" type="TextureProgress" parent="."]
 unique_name_in_owner = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 31.0
-margin_bottom = 31.0
-texture = ExtResource( 1 )
-expand = true
-stretch_mode = 6
+margin_left = -26.5
+margin_top = -26.5
+margin_right = 26.5
+margin_bottom = 26.5
+value = 100.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 3 )
+fill_mode = 4
+radial_fill_degrees = 37.3
+nine_patch_stretch = true
 
 [node name="Button" type="Button" parent="MainButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -201.5
-margin_top = -16.5
-margin_right = -112.5
-margin_bottom = 16.5
+margin_left = -44.5
+margin_top = -138.0
+margin_right = 44.5
+margin_bottom = -105.0
 focus_mode = 0
-text = "Some Text"
+mouse_filter = 1
+text = "Up"
 
 [node name="Button2" type="Button" parent="MainButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -31.0
-margin_top = -124.5
-margin_right = 31.0
-margin_bottom = -91.5
+margin_left = 168.0
+margin_top = -16.5
+margin_right = 230.0
+margin_bottom = 16.5
 focus_mode = 0
-text = "Button"
+mouse_filter = 1
+text = "Right"
 
 [node name="Button3" type="Button" parent="MainButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 96.5
-margin_top = -16.5
-margin_right = 201.5
-margin_bottom = 16.5
+margin_left = -52.5
+margin_top = 111.0
+margin_right = 52.5
+margin_bottom = 144.0
 focus_mode = 0
-text = "Right Button"
+mouse_filter = 1
+text = "Down"
 
 [node name="Button4" type="Button" parent="MainButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -31.0
-margin_top = 89.5
-margin_right = 31.0
-margin_bottom = 122.5
+margin_left = -234.0
+margin_top = -16.5
+margin_right = -172.0
+margin_bottom = 16.5
 focus_mode = 0
-text = "Button"
+mouse_filter = 1
+text = "Left"
 
-[connection signal="gui_input" from="." to="." method="_on_WheelButtons_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="is_mouse_in" binds= [ true ]]
+[connection signal="mouse_exited" from="." to="." method="is_mouse_in" binds= [ false ]]
