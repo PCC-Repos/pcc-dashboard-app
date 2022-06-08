@@ -5,12 +5,21 @@ var logged_in
 var headers
 var api_base
 
-onready var account_btn = $VBoxContainer/Header/PanelContainer/MarginContainer/HBoxContainer/AccountButton
+onready var account_btn = $"%AccountButton"
 
 func ready():
 	$AudioStreamRandomPlayer.play()
 	account_btn.text = user.name
 	account_btn.get_popup().connect("id_pressed", self, "_id_pressed")
+	$"%TabContainer".set_tab_icon(0, load("res://assets/images/UI/Clubs.svg"))
+
+
+	$"%WheelButtons".buttons = {}
+	for child_index in $"%TabContainer".get_child_count():
+		$"%WheelButtons".buttons[$"%TabContainer".get_child(child_index).name] = preload("res://assets/images/PCF_Logo.png")
+	yield(get_tree(), "idle_frame")
+	$"%WheelButtons"._ready()
+
 
 func _id_pressed(id):
 	match id:

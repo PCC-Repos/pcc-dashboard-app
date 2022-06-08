@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ButtonGroup" id=1]
+
+[node name="Button" type="Button"]
+margin_right = 52.0
+margin_bottom = 33.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = "TabButtons"
+toggle_mode = true
+group = SubResource( 1 )
+text = "Clubs"
+expand_icon = true

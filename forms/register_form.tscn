@@ -2,7 +2,7 @@
 
 [ext_resource path="res://forms/register_form.gd" type="Script" id=1]
 [ext_resource path="res://ui_classes/Field.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/fonts/Title.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/fonts/BigTitle.tres" type="DynamicFont" id=6]
 
 [sub_resource type="GDScript" id=1]
 script/source = "tool

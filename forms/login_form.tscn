@@ -2,7 +2,7 @@
 
 [ext_resource path="res://forms/login_form.gd" type="Script" id=1]
 [ext_resource path="res://ui_classes/Field.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/fonts/Title.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/fonts/BigTitle.tres" type="DynamicFont" id=6]
 
 [node name="LoginForm" type="Control" groups=["api_base"]]
 anchor_right = 1.0
