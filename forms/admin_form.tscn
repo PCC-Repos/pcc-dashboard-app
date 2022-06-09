@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://forms/admin_form.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=2]
@@ -20,11 +20,14 @@
 [ext_resource path="res://dialogs/create_club_dialog.tscn" type="PackedScene" id=18]
 [ext_resource path="res://dialogs/join_club_dialog.tscn" type="PackedScene" id=19]
 [ext_resource path="res://dialogs/edit_user_dialog.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/images/UI/Users.svg" type="Texture" id=21]
 [ext_resource path="res://assets/music/music1.mp3" type="AudioStream" id=22]
+[ext_resource path="res://assets/images/UI/Marketplace.svg" type="Texture" id=23]
 [ext_resource path="res://themes/default.tres" type="Theme" id=24]
 [ext_resource path="res://assets/music/music2.mp3" type="AudioStream" id=25]
 [ext_resource path="res://assets/music/music4.mp3" type="AudioStream" id=26]
 [ext_resource path="res://assets/music/music3.mp3" type="AudioStream" id=27]
+[ext_resource path="res://assets/images/UI/Transactions.svg" type="Texture" id=28]
 
 [sub_resource type="Gradient" id=8]
 interpolation_mode = 2
@@ -140,46 +143,56 @@ custom_constants/separation = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer"]
 margin_right = 1326.0
-margin_bottom = 35.0
+margin_bottom = 40.0
 
 [node name="Clubs" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 10 )]
 margin_right = 262.0
-margin_bottom = 35.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
 pressed = true
 group = SubResource( 12 )
 icon = ExtResource( 11 )
+tab_container = NodePath("../../TabContainer")
 
 [node name="Users" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 10 )]
 margin_left = 266.0
 margin_right = 528.0
-margin_bottom = 35.0
+margin_bottom = 40.0
 group = SubResource( 12 )
 text = "Users"
+icon = ExtResource( 21 )
+tab_container = NodePath("../../TabContainer")
 
 [node name="Marketplace" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 10 )]
 margin_left = 532.0
 margin_right = 794.0
-margin_bottom = 35.0
+margin_bottom = 40.0
 group = SubResource( 12 )
 text = "Marketplace"
+icon = ExtResource( 23 )
+tab_container = NodePath("../../TabContainer")
 
 [node name="Transactions" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 10 )]
 margin_left = 798.0
 margin_right = 1060.0
-margin_bottom = 35.0
+margin_bottom = 40.0
 group = SubResource( 12 )
 text = "Trasactions"
+icon = ExtResource( 28 )
+tab_container = NodePath("../../TabContainer")
 
 [node name="FreeAgents" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 10 )]
 margin_left = 1064.0
 margin_right = 1326.0
-margin_bottom = 35.0
+margin_bottom = 40.0
 group = SubResource( 12 )
 text = "FreeAgents"
+icon = ExtResource( 21 )
+tab_container = NodePath("../../TabContainer")
 
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 35.0
+margin_top = 40.0
 margin_right = 1326.0
 margin_bottom = 661.0
 size_flags_horizontal = 3
@@ -201,23 +214,23 @@ margin_bottom = -20.0
 
 [node name="Clubs" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs" groups=["login_ready"] instance=ExtResource( 14 )]
 margin_right = 160.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs"]
 margin_left = 164.0
 margin_right = 168.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 
 [node name="Invites" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs" instance=ExtResource( 6 )]
 margin_left = 172.0
 margin_right = 320.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 rect_min_size = Vector2( 148, 0 )
 
 [node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs"]
 margin_left = 324.0
 margin_right = 328.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 
 [node name="Members" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs" groups=["login_ready"] instance=ExtResource( 16 )]
 anchor_left = 0.0
@@ -225,7 +238,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1160.0
 margin_right = 1286.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 
 [node name="Users" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -298,7 +311,7 @@ margin_bottom = 641.0
 [node name="WheelButtons" parent="." instance=ExtResource( 9 )]
 unique_name_in_owner = true
 margin_left = 16.0
-margin_top = 120.0
+margin_top = 121.0
 margin_right = -16.0
 margin_bottom = -10.0
 button_container = NodePath("../VBoxContainer/Tabs/PanelContainer/VBoxContainer/HBoxContainer")

@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui_classes/TabButtons.gd" type="Script" id=1]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -14,3 +16,6 @@ toggle_mode = true
 group = SubResource( 1 )
 text = "Clubs"
 expand_icon = true
+script = ExtResource( 1 )
+
+[connection signal="toggled" from="." to="." method="_on_Button_toggled"]

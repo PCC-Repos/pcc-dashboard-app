@@ -45,7 +45,7 @@ func ready_tween():
 
 func _on_LoginForm_access_token_received(_access_token):
 	if !_access_token:
-		notif.text = "Error:\nFailed to Login.\nPlease check that you entered the details correctly or create a New Account."
+		notif.set_text("Failed to Login.\nPlease check that you entered the details correctly or create a New Account.", notif.Type.Error)
 		notif.show()
 		return
 	access_token = _access_token

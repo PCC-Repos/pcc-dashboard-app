@@ -88,6 +88,7 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="Login" type="Button" parent="VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
 margin_right = 1266.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 75, 35 )
@@ -107,5 +108,8 @@ size_flags_horizontal = 6
 size_flags_vertical = 0
 text = "New user? Create an Account..."
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="VBoxContainer/Register" to="." method="_on_Register_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
