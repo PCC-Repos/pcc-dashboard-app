@@ -39,6 +39,7 @@ self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -688.0
+mouse_filter = 2
 texture = SubResource( 3 )
 expand = true
 

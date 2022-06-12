@@ -39,6 +39,10 @@ gradient = SubResource( 8 )
 use_hdr = true
 
 [sub_resource type="StyleBoxTexture" id=10]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
 texture = SubResource( 11 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
@@ -57,38 +61,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 10 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="Header" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 1366.0
-margin_bottom = 73.0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 1
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Header"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 1356.0
-margin_bottom = 72.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header/PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer"]
+margin_right = 1346.0
+margin_bottom = 62.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1336.0
 margin_bottom = 52.0
-custom_constants/margin_right = 20
-custom_constants/margin_left = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header/PanelContainer/MarginContainer"]
-margin_left = 20.0
-margin_right = 1306.0
-margin_bottom = 42.0
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Header/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer/HBoxContainer"]
 margin_right = 45.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 45, 29 )
@@ -96,7 +88,7 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="VBoxContainer/Header/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer/HBoxContainer"]
 margin_left = 49.0
 margin_right = 196.0
 margin_bottom = 42.0
@@ -107,10 +99,10 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="AccountButton" type="MenuButton" parent="VBoxContainer/Header/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="AccountButton" type="MenuButton" parent="Panel/VBoxContainer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 1191.0
-margin_right = 1286.0
+margin_left = 1231.0
+margin_right = 1326.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 95, 0 )
 size_flags_horizontal = 10
@@ -119,36 +111,28 @@ icon = ExtResource( 8 )
 flat = false
 items = [ "Refresh", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, false, 1, 0, null, "", true, "Logout", null, 0, false, false, 2, 0, null, "", false ]
 
-[node name="Tabs" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 77.0
-margin_right = 1366.0
-margin_bottom = 768.0
-size_flags_vertical = 3
-custom_constants/margin_right = 10
-custom_constants/margin_top = 0
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Tabs"]
-margin_left = 10.0
-margin_right = 1356.0
-margin_bottom = 681.0
+[node name="PanelContainer2" type="PanelContainer" parent="Panel/VBoxContainer"]
+margin_top = 72.0
+margin_right = 1346.0
+margin_bottom = 748.0
 mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1336.0
-margin_bottom = 671.0
+margin_bottom = 666.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
-[node name="TabHeaders" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer"]
+[node name="TabButtons" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer"]
 margin_right = 1326.0
 margin_bottom = 35.0
 
-[node name="Clubs" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabHeaders" instance=ExtResource( 10 )]
+[node name="Clubs" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
 unique_name_in_owner = true
 margin_right = 262.0
 margin_bottom = 35.0
@@ -157,25 +141,25 @@ group = SubResource( 12 )
 icon = ExtResource( 11 )
 tab_container = NodePath("../../TabContainer")
 
-[node name="Users" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabHeaders" instance=ExtResource( 10 )]
+[node name="Users" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
 margin_left = 266.0
 margin_right = 528.0
 margin_bottom = 35.0
 group = SubResource( 12 )
-text = "Users"
+text = "Players"
 icon = ExtResource( 21 )
 tab_container = NodePath("../../TabContainer")
 
-[node name="Marketplace" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabHeaders" instance=ExtResource( 10 )]
+[node name="Marketplace" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
 margin_left = 532.0
 margin_right = 794.0
 margin_bottom = 35.0
 group = SubResource( 12 )
-text = "Marketplace"
+text = "Transfer Market"
 icon = ExtResource( 23 )
 tab_container = NodePath("../../TabContainer")
 
-[node name="Transactions" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabHeaders" instance=ExtResource( 10 )]
+[node name="Transactions" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
 margin_left = 798.0
 margin_right = 1060.0
 margin_bottom = 35.0
@@ -184,7 +168,7 @@ text = "Trasactions"
 icon = ExtResource( 28 )
 tab_container = NodePath("../../TabContainer")
 
-[node name="FreeAgents" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabHeaders" instance=ExtResource( 10 )]
+[node name="FreeAgents" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
 margin_left = 1064.0
 margin_right = 1326.0
 margin_bottom = 35.0
@@ -193,11 +177,11 @@ text = "Free Agents"
 icon = ExtResource( 21 )
 tab_container = NodePath("../../TabContainer")
 
-[node name="TabContainer" type="TabContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer"]
+[node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer"]
 unique_name_in_owner = true
 margin_top = 35.0
 margin_right = 1326.0
-margin_bottom = 661.0
+margin_bottom = 656.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tab_align = 0
@@ -207,7 +191,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Clubs" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer"]
+[node name="Clubs" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
@@ -215,40 +199,39 @@ margin_top = 20.0
 margin_right = -20.0
 margin_bottom = -20.0
 
-[node name="Clubs" type="VBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs" groups=["login_ready"]]
+[node name="Clubs" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs" groups=["login_ready"]]
 margin_right = 420.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 3
 script = ExtResource( 14 )
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs"]
 margin_right = 420.0
 margin_bottom = 23.0
 text = "Clubs"
 align = 1
 valign = 1
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs"]
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs"]
 margin_top = 27.0
 margin_right = 420.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 
-[node name="Clubs" type="ScrollContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs"]
+[node name="Clubs" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs"]
 margin_top = 35.0
 margin_right = 420.0
-margin_bottom = 549.0
+margin_bottom = 544.0
 size_flags_vertical = 3
-scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs/Clubs"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs/Clubs"]
 margin_right = 420.0
-margin_bottom = 514.0
+margin_bottom = 509.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs/Clubs/VBoxContainer"]
+[node name="Name" type="Button" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs/Clubs/VBoxContainer"]
 margin_left = 110.0
 margin_right = 310.0
 margin_bottom = 33.0
@@ -259,10 +242,10 @@ theme_type_variation = "ListButton"
 group = SubResource( 13 )
 text = "Name"
 
-[node name="CreateNewButton" type="Button" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs"]
-margin_top = 553.0
+[node name="CreateNewButton" type="Button" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs"]
+margin_top = 548.0
 margin_right = 420.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 rect_min_size = Vector2( 160, 0 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -272,11 +255,10 @@ icon = ExtResource( 2 )
 icon_align = 2
 expand_icon = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs"]
 visible = false
 
-[node name="ClubsMenu" type="PopupMenu" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs/CanvasLayer"]
-visible = true
+[node name="ClubsMenu" type="PopupMenu" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs/CanvasLayer"]
 margin_right = 130.0
 margin_bottom = 92.0
 theme = ExtResource( 24 )
@@ -285,56 +267,67 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs"]
+[node name="VSeparator" type="VSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs"]
 margin_left = 424.0
 margin_right = 428.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 
-[node name="Invites" type="VBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs"]
+[node name="Invites" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs"]
 margin_left = 432.0
 margin_right = 853.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 rect_min_size = Vector2( 148, 0 )
 size_flags_horizontal = 3
 script = ExtResource( 16 )
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Invites"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites"]
 margin_right = 421.0
 margin_bottom = 23.0
 text = "Invites"
 align = 1
 valign = 1
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Invites"]
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites"]
 margin_top = 27.0
 margin_right = 421.0
 margin_bottom = 31.0
 
-[node name="Invites" type="ScrollContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Invites"]
+[node name="Invites" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites"]
 margin_top = 35.0
 margin_right = 421.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 size_flags_vertical = 3
-scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Invites/Invites"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites/Invites"]
 margin_right = 421.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 script = ExtResource( 29 )
 toggle_mode = true
 default = 0
 null_is_allowed = true
 
-[node name="CreateNewButton" type="Button" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Invites"]
+[node name="Invite" type="Button" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites/Invites/VBoxContainer"]
+margin_left = 110.0
+margin_right = 310.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 200, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 6
+theme_type_variation = "ListButton"
+group = SubResource( 13 )
+text = "Invite"
+
+[node name="CreateNewButton" type="Button" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites"]
 visible = false
 margin_top = 570.0
 margin_right = 126.0
 margin_bottom = 590.0
 text = "Create a invite"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Invites"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites"]
 
-[node name="ClubsMenu" type="PopupMenu" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Invites/CanvasLayer"]
+[node name="ClubsMenu" type="PopupMenu" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites/CanvasLayer"]
 margin_right = 130.0
 margin_bottom = 92.0
 theme = ExtResource( 24 )
@@ -343,43 +336,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs"]
+[node name="VSeparator2" type="VSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs"]
 margin_left = 857.0
 margin_right = 861.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 
-[node name="Members" type="VBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs" groups=["login_ready"]]
+[node name="Members" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs" groups=["login_ready"]]
 margin_left = 865.0
 margin_right = 1286.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 7
 script = ExtResource( 6 )
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members"]
 margin_right = 421.0
 margin_bottom = 23.0
 text = "Members"
 align = 1
 valign = 1
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members"]
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members"]
 margin_top = 27.0
 margin_right = 421.0
 margin_bottom = 31.0
 
-[node name="Members" type="ScrollContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members"]
+[node name="Members" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members"]
 margin_top = 35.0
 margin_right = 421.0
-margin_bottom = 586.0
+margin_bottom = 581.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members/Members"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members/Members"]
 margin_right = 421.0
-margin_bottom = 551.0
+margin_bottom = 546.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 29 )
@@ -387,22 +380,33 @@ toggle_mode = true
 default = 0
 null_is_allowed = true
 
-[node name="Add" type="Button" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members"]
+[node name="Member" type="Button" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members/Members/VBoxContainer"]
+margin_left = 110.0
+margin_right = 310.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 200, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 6
+theme_type_variation = "ListButton"
+group = SubResource( 13 )
+text = "Member Name"
+
+[node name="Add" type="Button" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members"]
 visible = false
 margin_top = 570.0
 margin_right = 126.0
 margin_bottom = 590.0
 text = "Invite a member"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members"]
 
-[node name="MembersMenu" type="PopupMenu" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members/CanvasLayer"]
+[node name="MembersMenu" type="PopupMenu" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members/CanvasLayer"]
 margin_right = 130.0
 margin_bottom = 92.0
 theme = ExtResource( 24 )
 items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "Kick", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Copy ID", null, 0, false, false, 3, 0, null, "", false ]
 
-[node name="Users" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer"]
+[node name="Users" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -411,21 +415,21 @@ margin_right = -4.0
 margin_bottom = -4.0
 custom_constants/separation = 10
 
-[node name="Users" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Users" groups=["login_ready"] instance=ExtResource( 17 )]
+[node name="Users" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Users" groups=["login_ready"] instance=ExtResource( 17 )]
 margin_left = 0.0
 margin_right = 126.0
 margin_bottom = 641.0
 
-[node name="OwnedClubs" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Users" groups=["login_ready"] instance=ExtResource( 4 )]
+[node name="OwnedClubs" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Users" groups=["login_ready"] instance=ExtResource( 4 )]
 margin_left = 1062.0
 margin_right = 1188.0
 
-[node name="UserClubs" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Users" groups=["login_ready"] instance=ExtResource( 12 )]
+[node name="UserClubs" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Users" groups=["login_ready"] instance=ExtResource( 12 )]
 margin_left = 1198.0
 margin_right = 1324.0
 margin_bottom = 641.0
 
-[node name="Marketplace" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer"]
+[node name="Marketplace" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -433,14 +437,14 @@ margin_left = 4.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Items" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Marketplace" groups=["login_ready"] instance=ExtResource( 7 )]
+[node name="Items" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Marketplace" groups=["login_ready"] instance=ExtResource( 7 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1324.0
 margin_bottom = 641.0
 size_flags_horizontal = 3
 
-[node name="Transactions" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer"]
+[node name="Transactions" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -448,7 +452,7 @@ margin_left = 4.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Transactions"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions"]
 margin_right = 1324.0
 margin_bottom = 641.0
 size_flags_horizontal = 3
@@ -457,7 +461,7 @@ text = "Coming soon!"
 align = 1
 valign = 1
 
-[node name="FreeAgents" type="HBoxContainer" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer"]
+[node name="FreeAgents" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -465,19 +469,18 @@ margin_left = 4.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Agents" parent="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/FreeAgents" groups=["login_ready"] instance=ExtResource( 5 )]
+[node name="Agents" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/FreeAgents" groups=["login_ready"] instance=ExtResource( 5 )]
 margin_left = 0.0
 margin_right = 126.0
 margin_bottom = 641.0
 
 [node name="WheelButtons" parent="." instance=ExtResource( 9 )]
 unique_name_in_owner = true
-visible = false
 margin_left = 16.0
 margin_top = 121.0
 margin_right = -16.0
 margin_bottom = -10.0
-button_container = NodePath("../VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabHeaders")
+button_container = NodePath("../Panel/VBoxContainer/PanelContainer/VBoxContainer/TabHeaders")
 
 [node name="Modals" type="CanvasLayer" parent="."]
 
@@ -517,21 +520,24 @@ bus = "Music"
 script = ExtResource( 3 )
 audio_stream_list = [ ExtResource( 22 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 26 ) ]
 
-[connection signal="club_changed" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members" method="_on_Clubs_club_changed"]
-[connection signal="show_create_club_modal" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs" to="Modals/CreateClubModal" method="_on_Clubs_show_create_club_modal"]
-[connection signal="show_edit_club_modal" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs" to="Modals/EditClubModal" method="_on_Clubs_show_edit_club_modal"]
-[connection signal="pressed" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs/CreateNewButton" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs" method="_on_CreateNewButton_pressed"]
-[connection signal="button_toggled" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Invites/Invites/VBoxContainer" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Invites" method="_on_VBoxContainer_button_toggled"]
-[connection signal="pressed" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Invites/CreateNewButton" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Invites" method="_on_CreateNewButton_pressed"]
-[connection signal="show_add_member_modal" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members" to="Modals/AddMemberModal" method="_on_Members_show_add_member_modal"]
-[connection signal="pressed" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members/Add" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members" method="_on_Add_pressed"]
-[connection signal="show_edit_user_modal" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Users/Users" to="Modals/EditUserModal" method="_on_Users_show_edit_user_modal"]
-[connection signal="user_changed" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Users/Users" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Users/OwnedClubs" method="_on_Users_user_changed"]
-[connection signal="user_changed" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Users/Users" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Users/UserClubs" method="_on_Users_user_changed"]
-[connection signal="show_join_club_modal" from="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Users/UserClubs" to="Modals/JoinClubModal" method="_on_UserClubs_show_join_club_modal"]
-[connection signal="submit" from="Modals/CreateClubModal" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs" method="_on_CreateClubModal_submit"]
-[connection signal="submit" from="Modals/AddMemberModal" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Members" method="_on_AddMemberModal_submit"]
-[connection signal="submit" from="Modals/JoinClubModal" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Users/UserClubs" method="_on_JoinClubModal_submit"]
-[connection signal="submit" from="Modals/EditClubModal" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Clubs/Clubs" method="_on_EditClubModal_submit"]
-[connection signal="submit" from="Modals/EditUserModal" to="VBoxContainer/Tabs/PanelContainer/VBoxContainer/TabContainer/Users/Users" method="_on_EditUserModal_submit"]
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="club_changed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members" method="_on_Clubs_club_changed"]
+[connection signal="show_create_club_modal" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs" to="Modals/CreateClubModal" method="_on_Clubs_show_create_club_modal"]
+[connection signal="show_edit_club_modal" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs" to="Modals/EditClubModal" method="_on_Clubs_show_edit_club_modal"]
+[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs/CreateNewButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs" method="_on_CreateNewButton_pressed"]
+[connection signal="button_toggled" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites/Invites/VBoxContainer" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites" method="_on_VBoxContainer_button_toggled"]
+[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites/CreateNewButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Invites" method="_on_CreateNewButton_pressed"]
+[connection signal="show_add_member_modal" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members" to="Modals/AddMemberModal" method="_on_Members_show_add_member_modal"]
+[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members/Add" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members" method="_on_Add_pressed"]
+[connection signal="show_edit_user_modal" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Users/Users" to="Modals/EditUserModal" method="_on_Users_show_edit_user_modal"]
+[connection signal="user_changed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Users/Users" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Users/OwnedClubs" method="_on_Users_user_changed"]
+[connection signal="user_changed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Users/Users" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Users/UserClubs" method="_on_Users_user_changed"]
+[connection signal="show_join_club_modal" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Users/UserClubs" to="Modals/JoinClubModal" method="_on_UserClubs_show_join_club_modal"]
+[connection signal="submit" from="Modals/CreateClubModal" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs" method="_on_CreateClubModal_submit"]
+[connection signal="submit" from="Modals/AddMemberModal" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Members" method="_on_AddMemberModal_submit"]
+[connection signal="submit" from="Modals/JoinClubModal" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Users/UserClubs" method="_on_JoinClubModal_submit"]
+[connection signal="submit" from="Modals/EditClubModal" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Clubs/Clubs" method="_on_EditClubModal_submit"]
+[connection signal="submit" from="Modals/EditUserModal" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Users/Users" method="_on_EditUserModal_submit"]
 [connection signal="finished" from="AudioStreamRandomPlayer" to="AudioStreamRandomPlayer" method="_on_AudioStreamRandomPlayer_finished"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_request_completed"]

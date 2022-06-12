@@ -154,10 +154,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/API/addons/proclubsfederation-api-godot/PCFMetadata.gd"
 }, {
+"base": "Node",
+"class": "PCFRESTClient",
+"language": "GDScript",
+"path": "res://addons/API/addons/proclubsfederation-api-godot/rest/PCFRESTClient.gd"
+}, {
 "base": "Reference",
 "class": "PCFUtils",
 "language": "GDScript",
 "path": "res://addons/API/addons/proclubsfederation-api-godot/PCFUtils.gd"
+}, {
+"base": "Node",
+"class": "PCFWSClient",
+"language": "GDScript",
+"path": "res://addons/API/addons/proclubsfederation-api-godot/websocket/PCFWSClient.gd"
 }, {
 "base": "Reference",
 "class": "PartialAward",
@@ -254,7 +264,9 @@ _global_script_class_icons={
 "MouseButton": "",
 "PCFClient": "",
 "PCFMetadata": "",
+"PCFRESTClient": "",
 "PCFUtils": "",
+"PCFWSClient": "",
 "PartialAward": "",
 "PartialClub": "",
 "PartialClubMember": "",
@@ -291,12 +303,10 @@ window/dpi/allow_hidpi=true
 window/vsync/vsync_via_compositor=true
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation="sensor"
-window/stretch/mode="2d"
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/file_protocols/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/API/addons/proclubsfederation-api-godot/plugin.cfg", "res://addons/file_protocols/plugin.cfg" )
 "<<<<<<<HEAD[gui]theme/custom"="res://themes/project.tres"
 
 [gui]

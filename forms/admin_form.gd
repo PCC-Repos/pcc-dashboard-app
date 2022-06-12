@@ -6,6 +6,7 @@ var headers
 var api_base
 
 onready var account_btn = $"%AccountButton"
+onready var http: = $HTTPRequest
 
 func ready():
 	$AudioStreamRandomPlayer.play()
@@ -33,15 +34,13 @@ func _id_pressed(id):
 			refresh_main()
 
 func logout():
-	var http_req = HTTPRequest.new()
-	http_req.connect("request_completed", self, "_request_completed", [http_req])
-	add_child(http_req)
-	http_req.request(api_base + "auth/revoke/", headers, true, HTTPClient.METHOD_POST)
+	http.request(api_base + "auth/revoke/", headers, true, HTTPClient.METHOD_POST)
 
-func _request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
-	http_req.queue_free()
+func _request_completed(_result: int, response_code: int, _headers: PoolStringArray, _body: PoolByteArray):
+	http.queue_free()
 	if response_code != 200:
 		print_debug(response_code, " Something went wrong when trying to signout.")
+		get_tree().current_scene.notif.set_text("Could not Log Out.\nSomething went wrong!", get_tree().current_scene.notif.Type.Error)
 		return
 
 	get_tree().call_group("main", "logged_out")

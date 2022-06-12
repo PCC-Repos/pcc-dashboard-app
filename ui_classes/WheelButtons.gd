@@ -103,3 +103,8 @@ func button_pressed(index: int):
 #func is_mouse_in(value: bool) -> void:
 #	is_mouse_in = value
 #	set_process(value)
+
+
+func _on_WheelButtons_visibility_changed() -> void:
+	for child in get_children():
+		child.visible = visible

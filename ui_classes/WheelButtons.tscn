@@ -31,19 +31,20 @@ buttons = {
 "Third": ExtResource( 4 )
 }
 
-[node name="CanvasLayer = -1" type="CanvasLayer" parent="."]
-layer = -1
+[node name="CanvasLayer = -5" type="CanvasLayer" parent="."]
+layer = -5
 
-[node name="BackLight" type="Light2D" parent="CanvasLayer = -1"]
+[node name="BackLight" type="Light2D" parent="CanvasLayer = -5"]
 unique_name_in_owner = true
-position = Vector2( 684, 602.04 )
+position = Vector2( 683, 601.04 )
 texture = SubResource( 2 )
 texture_scale = 5.22
 energy = 2.0
 
-[node name="CanvasLayer = 1" type="CanvasLayer" parent="."]
+[node name="CanvasLayer = 10" type="CanvasLayer" parent="."]
+layer = 10
 
-[node name="MainButton" type="TextureProgress" parent="CanvasLayer = 1"]
+[node name="MainButton" type="TextureProgress" parent="CanvasLayer = 10"]
 unique_name_in_owner = true
 anchor_left = 0.5
 anchor_top = 0.5
@@ -53,26 +54,29 @@ margin_left = -26.5001
 margin_top = 190.54
 margin_right = 26.4999
 margin_bottom = 243.54
+rect_pivot_offset = Vector2( 26.5, 26.5 )
 value = 100.0
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 3 )
 fill_mode = 4
+radial_initial_angle = 320.0
 radial_fill_degrees = 45.0
 nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Button" type="Button" parent="CanvasLayer = 1/MainButton"]
+[node name="Button" type="Button" parent="CanvasLayer = 10/MainButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -44.5
-margin_top = -237.0
-margin_right = 44.5
-margin_bottom = -204.0
-mouse_filter = 1
+margin_left = -37.5
+margin_top = -240.04
+margin_right = 37.5
+margin_bottom = -207.04
 theme_type_variation = "WheelButton"
 text = "Up"
 expand_icon = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_WheelButtons_visibility_changed"]

@@ -21,6 +21,7 @@ func ready():
 
 # Called by the engine.
 func _ready():
+	$"%Login".disabled = false
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(768, 768))
 
 func _on_Login_pressed():

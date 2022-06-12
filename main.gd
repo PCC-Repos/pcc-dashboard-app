@@ -98,10 +98,10 @@ func logged_out():
 	get_tree().set_group("login_ready", "headers", PoolStringArray())
 	get_tree().set_group("login_ready", "user", Dictionary())
 
-	remove_child(admin_form)
 	admin_form.queue_free()
 
 	$"%TabContainer".show()
+	$"%TabContainer/LoginForm"._ready()
 	$AudioStreamPlayer.play()
 
 func refresh():
