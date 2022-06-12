@@ -1,0 +1,3 @@
+[submodule "addons/pcf_api"]
+	path = addons/pcf_api
+	url = https://github.com/3ddelano/proclubsfederation-api-godot
