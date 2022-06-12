@@ -28,7 +28,7 @@ func set_text(new: String, type: int = Type.Normal):
 				print_debug(queue)
 				$"%Text".text = queue[0].values()[0]
 				yield(get_tree(), "idle_frame")
-				popup_panel.set_anchors_preset(7)
+#				popup_panel.set_anchors_preset(7)
 				popup_panel.rect_size = Vector2.ZERO
 				popup_panel.modulate = Color.white
 				yield(get_tree(), "idle_frame")
@@ -42,13 +42,12 @@ func set_text(new: String, type: int = Type.Normal):
 
 
 func _ready() -> void:
-	$"%Text".percent_visible = 0.0
 	backlight.rect_size.y = height + popup_panel.rect_size.y
 	backlight.self_modulate = 0
-	tween_sequence(Type.Normal)
+	tween_sequence()
 
 
-func tween_sequence(type: int):
+func tween_sequence(type: int = Type.Normal):
 # warning-ignore:return_value_discarded
 	tween.set_trans(Tween.TRANS_QUAD).set_parallel()
 	match type:
@@ -62,16 +61,16 @@ func tween_sequence(type: int):
 			tween.tween_property(backlight, "self_modulate:g", 3.0, wait_time/3)
 		_:
 			backlight.self_modulate = Color.white
-
-
 # warning-ignore:return_value_discarded
 	tween.tween_property(backlight, "self_modulate:a", 1.0, wait_time/3).from(0.0)
 # warning-ignore:return_value_discarded
-	tween.chain().set_trans(Tween.TRANS_BACK)
+	tween.set_trans(Tween.TRANS_BACK)
 # warning-ignore:return_value_discarded
 	tween.tween_property(popup_panel, "rect_position:y", height, fade_time)
 # warning-ignore:return_value_discarded
-	tween.tween_property($"%Text", "percent_visible", 1.0, wait_time/1.5)
+	tween.tween_property($"%Text", "self_modulate:a", 1.0, wait_time/1.5).from(0.0)
+# warning-ignore:return_value_discarded
+	tween.tween_property($"%Text", "percent_visible", 1.0, wait_time/1.5).from(0.0)
 # warning-ignore:return_value_discarded
 	tween.tween_property(popup_panel, "modulate:a", 1.0, fade_time).from(0.0)
 
