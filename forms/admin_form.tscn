@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://forms/admin_form.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://assets/music/music3.mp3" type="AudioStream" id=27]
 [ext_resource path="res://assets/images/UI/Transactions.svg" type="Texture" id=28]
 [ext_resource path="res://ui_classes/VButtonContainer.gd" type="Script" id=29]
+[ext_resource path="res://resources/transactions/transactions.tscn" type="PackedScene" id=30]
 
 [sub_resource type="Gradient" id=8]
 interpolation_mode = 2
@@ -315,6 +316,7 @@ rect_min_size = Vector2( 200, 0 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 6
 theme_type_variation = "ListButton"
+toggle_mode = true
 group = SubResource( 13 )
 text = "Invite"
 
@@ -388,6 +390,8 @@ rect_min_size = Vector2( 200, 0 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 6
 theme_type_variation = "ListButton"
+toggle_mode = true
+pressed = true
 group = SubResource( 13 )
 text = "Member Name"
 
@@ -452,14 +456,9 @@ margin_left = 4.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions"]
-margin_right = 1324.0
-margin_bottom = 641.0
+[node name="Transactions" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions" instance=ExtResource( 30 )]
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Coming soon!"
-align = 1
-valign = 1
 
 [node name="FreeAgents" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
 visible = false

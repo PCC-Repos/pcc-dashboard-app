@@ -183,6 +183,7 @@ autoplay = true
 layer = 2
 
 [node name="Notif" parent="CanvasLayer" instance=ExtResource( 4 )]
+visible = true
 
 [connection signal="access_token_received" from="HBoxContainer/TabContainer/LoginForm" to="." method="_on_LoginForm_access_token_received"]
 [connection signal="visibility_changed" from="HBoxContainer/TabContainer/LoginForm" to="." method="_on_Form_visibility_changed"]

@@ -1,0 +1,117 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/transactions/transactions.gd" type="Script" id=1]
+[ext_resource path="res://resources/transactions/transaction.tscn" type="PackedScene" id=2]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1356.0
+margin_bottom = 758.0
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1346.0
+margin_bottom = 23.0
+size_flags_vertical = 1
+text = "Transactions"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_top = 27.0
+margin_right = 1346.0
+margin_bottom = 70.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1336.0
+margin_bottom = 33.0
+rect_pivot_offset = Vector2( -565, -113 )
+
+[node name="Button5" type="Label" parent="PanelContainer/HBoxContainer"]
+margin_right = 328.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buyer"
+align = 1
+valign = 1
+
+[node name="Button2" type="Label" parent="PanelContainer/HBoxContainer"]
+margin_left = 332.0
+margin_right = 661.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Seller"
+align = 1
+valign = 1
+
+[node name="Button3" type="Label" parent="PanelContainer/HBoxContainer"]
+margin_left = 665.0
+margin_right = 993.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Item"
+align = 1
+valign = 1
+
+[node name="Button4" type="Label" parent="PanelContainer/HBoxContainer"]
+margin_left = 997.0
+margin_right = 1326.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Price"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_top = 74.0
+margin_right = 1346.0
+margin_bottom = 744.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 1346.0
+margin_bottom = 670.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_right = 1346.0
+
+[node name="Button2" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 37.0
+margin_right = 1346.0
+margin_bottom = 70.0
+
+[node name="Button3" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 74.0
+margin_right = 1346.0
+margin_bottom = 107.0
+
+[node name="Button4" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 111.0
+margin_right = 1346.0
+margin_bottom = 144.0
+
+[node name="Button5" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+margin_top = 148.0
+margin_right = 1346.0
+margin_bottom = 181.0
+
+[node name="Control" type="Control" parent="."]
+margin_top = 748.0
+margin_right = 1346.0
+margin_bottom = 748.0
+script = ExtResource( 1 )

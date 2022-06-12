@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/transactions/transaction.gd" type="Script" id=1]
+
+[node name="Button" type="Button"]
+anchor_right = 1.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+buyer_name = "Sairam"
+seller_name = "Naman"
+item_name = "MACH"
+price = "6000"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 33.0
+
+[node name="Buyer" type="LinkButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 142.0
+margin_top = 5.0
+margin_right = 195.0
+margin_bottom = 28.0
+mouse_filter = 1
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "Sairam"
+underline = 1
+
+[node name="Seller" type="LinkButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 484.0
+margin_top = 5.0
+margin_right = 539.0
+margin_bottom = 28.0
+mouse_filter = 1
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "Naman"
+underline = 1
+
+[node name="Item" type="LinkButton" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 831.0
+margin_top = 5.0
+margin_right = 877.0
+margin_bottom = 28.0
+mouse_filter = 1
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "MACH"
+underline = 1
+
+[node name="Price" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 1151.0
+margin_top = 5.0
+margin_right = 1242.0
+margin_bottom = 28.0
+mouse_filter = 1
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "6000 tokens"
