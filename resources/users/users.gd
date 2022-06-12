@@ -68,7 +68,7 @@ func _option_selected(option_id, user_id):
 		1:
 			# deleting
 			delete_user_api(user_id)
-		# 2 is separator 
+		# 2 is separator
 		3:
 			# copy id
 			OS.clipboard = str(user_id)
@@ -108,7 +108,7 @@ func _request_completed(result: int, response_code: int, headers: PoolStringArra
 	if response_code != 200:
 		prints(response_code, "Something went terribly wrong when trying to signout.")
 		return
-	
+
 	get_tree().call_group("main", "logged_out")
 
 

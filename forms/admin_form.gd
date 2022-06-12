@@ -19,7 +19,7 @@ func ready():
 		$"%WheelButtons".buttons[$"%TabContainer".get_child(child_index).name] = preload("res://assets/images/PCF_Logo.png")
 	yield(get_tree(), "idle_frame")
 	$"%WheelButtons"._ready()
-	
+
 #	($"%Clubs" as Button).group.connect("pressed", self, "_button_pressed")
 
 
@@ -41,7 +41,7 @@ func logout():
 func _request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	http_req.queue_free()
 	if response_code != 200:
-		prints(response_code, "Something went terribly wrong when trying to signout.")
+		print_debug(response_code, " Something went wrong when trying to signout.")
 		return
 
 	get_tree().call_group("main", "logged_out")

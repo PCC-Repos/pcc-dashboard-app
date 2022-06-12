@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 func _on_BackButton_pressed() -> void:
-	get_tree().current_scene.get_node("TabContainer").current_tab = get_tree().current_scene.get_node("TabContainer").find_node("LoginForm").get_index()
+	get_tree().current_scene.get_node("%TabContainer").current_tab = get_tree().current_scene.get_node("%TabContainer").find_node("LoginForm").get_index()
 
 
 

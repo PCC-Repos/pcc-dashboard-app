@@ -1,13 +1,13 @@
 extends MouseButton
 
 
-var item_name
-var item_text
-var item_price
+var item_name: String
+var item_text: String
+var item_price: String
 
-onready var item_name_lbl = $VBoxContainer/Name
-onready var item_desc_lbl = $VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/Description
-onready var item_price_lbl = $VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Price
+onready var item_name_lbl = $"%Name"
+onready var item_desc_lbl = $"%Description"
+onready var item_price_lbl = $"%Price"
 
 func _ready():
 	item_name_lbl.text = item_name

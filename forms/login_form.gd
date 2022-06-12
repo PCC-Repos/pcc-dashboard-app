@@ -43,6 +43,7 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 			$"%Login".disabled = false
 			if response_code == 401:
 				print_debug(headers)
+				get_tree().current_scene.notif.set_text("Failed to Login.\nPlease check that you entered the details correctly or create a New Account.", get_tree().current_scene.notif.Type.Error)
 				emit_signal("access_token_received", null)
 			return
 	else:
@@ -62,5 +63,5 @@ func save_access_token(res: Dictionary):
 
 func _on_Register_pressed():
 	get_tree().current_scene.notif.set_text("Make a new Account here...")
-	get_tree().current_scene.get_node("TabContainer").current_tab = get_tree().current_scene.get_node("TabContainer").find_node("RegisterForm").get_index()
+	get_tree().current_scene.get_node("%TabContainer").current_tab = get_tree().current_scene.get_node("%TabContainer").find_node("RegisterForm").get_index()
 

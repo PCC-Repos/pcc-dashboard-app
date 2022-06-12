@@ -10,7 +10,7 @@ func ready():
 	fetch_items_api()
 
 func fetch_items_api():
-	clear_children(item_container)
+#	clear_children(item_container)
 	print("Fetching items")
 	var http_req = HTTPRequest.new()
 	http_req.connect("request_completed", self, "_fetch_items_api", [http_req])
@@ -24,7 +24,7 @@ func _fetch_items_api(result: int, response_code: int, headers: PoolStringArray,
 		print(headers)
 		print(body.get_string_from_utf8())
 		return
-	
+
 	var json = parse_json(body.get_string_from_utf8())
 	for item in json:
 		_create_item(item)
@@ -37,11 +37,11 @@ func _create_item(_item):
 	item.connect("mouse_pressed", self, "_show_popup_mouse", [_item["id"]])
 	item.connect("long_tap", self, "_show_popup_touch", [_item["id"]])
 	item_container.add_child(item)
-	
+
 
 func refresh():
 	fetch_items_api()
-	
+
 func clear_children(node: Node):
 	for child in node.get_children():
 		child.queue_free()

@@ -27,6 +27,7 @@ func _ready():
 	get_tree().call_group("api_base", "ready")
 
 	ready_tween()
+	notif.set_text("Welcome to PCF Dashboard")
 
 #func _notification(what):
 #	match what:
@@ -41,11 +42,12 @@ func _ready():
 func ready_tween():
 	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_QUART).set_parallel()
 	tween.tween_property($"%TabContainer", "rect_position:x", OS.window_size.x / 2 - (OS.window_size.y / 16), tween_duration).from(OS.window_size.x + 10)
-	tween.tween_property($"MarginContainer", "rect_position:x", 0.0, tween_duration).from(-$MarginContainer.rect_size.x - 10)
+	tween.tween_property($"%ImageContainer", "rect_position:x", 0.0, tween_duration).from(-$"%ImageContainer".rect_size.x - 10)
 
 func _on_LoginForm_access_token_received(_access_token):
 	if !_access_token:
-		notif.set_text("Failed to Login.\nPlease check that you entered the details correctly or create a New Account.", notif.Type.Error)
+		if debug:
+			notif.set_text("`Bad Access Token: %s`" % _access_token, notif.Type.Error)
 		notif.show()
 		return
 	access_token = _access_token

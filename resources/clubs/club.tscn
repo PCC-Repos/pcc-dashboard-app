@@ -5,10 +5,10 @@
 [node name="Club" type="Button"]
 anchor_right = 0.158203
 anchor_bottom = 0.0833333
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 theme_type_variation = "ListButton"
+toggle_mode = true
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
 event_button_mask = 2
+long_press_enabled = false

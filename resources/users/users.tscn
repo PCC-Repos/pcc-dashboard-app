@@ -14,15 +14,15 @@ script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 margin_right = 126.0
-margin_bottom = 14.0
+margin_bottom = 23.0
 text = "User"
 align = 1
 valign = 1
 
 [node name="Users" type="ScrollContainer" parent="."]
-margin_top = 18.0
+margin_top = 27.0
 margin_right = 126.0
-margin_bottom = 566.0
+margin_bottom = 553.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -30,7 +30,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Users"]
 margin_right = 126.0
-margin_bottom = 548.0
+margin_bottom = 526.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -39,9 +39,10 @@ default = 0
 null_is_allowed = true
 
 [node name="Create" type="Button" parent="."]
-margin_top = 570.0
+margin_top = 557.0
 margin_right = 126.0
 margin_bottom = 590.0
+mouse_default_cursor_shape = 2
 text = "Logout"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

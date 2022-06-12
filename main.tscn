@@ -63,7 +63,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("MarginContainer:rect_position")
+tracks/0/path = NodePath("HBoxContainer/ImageContainer:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -123,8 +123,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 14 )
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-margin_right = 598.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ImageContainer" type="MarginContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 616.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -134,29 +139,28 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="PcfLogoNoBackV2" type="TextureRect" parent="MarginContainer"]
+[node name="PcfLogoNoBackV2" type="TextureRect" parent="HBoxContainer/ImageContainer"]
 margin_left = 50.0
-margin_right = 548.0
+margin_right = 566.0
 margin_bottom = 768.0
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
-anchor_left = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -85.0
+margin_left = 620.0
+margin_right = 1366.0
+margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.21
 custom_styles/panel = SubResource( 16 )
 tabs_visible = false
 
-[node name="LoginForm" parent="TabContainer" instance=ExtResource( 2 )]
+[node name="LoginForm" parent="HBoxContainer/TabContainer" instance=ExtResource( 2 )]
 
-[node name="RegisterForm" parent="TabContainer" instance=ExtResource( 3 )]
+[node name="RegisterForm" parent="HBoxContainer/TabContainer" instance=ExtResource( 3 )]
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -180,6 +184,6 @@ layer = 2
 
 [node name="Notif" parent="CanvasLayer" instance=ExtResource( 4 )]
 
-[connection signal="access_token_received" from="TabContainer/LoginForm" to="." method="_on_LoginForm_access_token_received"]
-[connection signal="visibility_changed" from="TabContainer/LoginForm" to="." method="_on_Form_visibility_changed"]
-[connection signal="visibility_changed" from="TabContainer/RegisterForm" to="." method="_on_Form_visibility_changed"]
+[connection signal="access_token_received" from="HBoxContainer/TabContainer/LoginForm" to="." method="_on_LoginForm_access_token_received"]
+[connection signal="visibility_changed" from="HBoxContainer/TabContainer/LoginForm" to="." method="_on_Form_visibility_changed"]
+[connection signal="visibility_changed" from="HBoxContainer/TabContainer/RegisterForm" to="." method="_on_Form_visibility_changed"]
