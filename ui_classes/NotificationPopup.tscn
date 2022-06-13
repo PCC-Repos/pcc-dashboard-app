@@ -27,6 +27,7 @@ shadow_color = Color( 0.388235, 0.701961, 0.976471, 1 )
 shadow_size = 5
 
 [node name="Notif" type="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

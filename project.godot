@@ -312,6 +312,7 @@ enabled=PoolStringArray( "res://addons/file_protocols/plugin.cfg" )
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/use_hidpi=true
 theme/custom="res://themes/default.tres"
 
 [input]

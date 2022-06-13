@@ -18,9 +18,9 @@ margin_bottom = 33.0
 
 [node name="Buyer" type="LinkButton" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 142.0
+margin_left = 139.0
 margin_top = 5.0
-margin_right = 195.0
+margin_right = 192.0
 margin_bottom = 28.0
 mouse_filter = 1
 size_flags_horizontal = 6
@@ -28,11 +28,16 @@ size_flags_vertical = 6
 text = "Sairam"
 underline = 1
 
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+margin_left = 336.0
+margin_right = 340.0
+margin_bottom = 33.0
+
 [node name="Seller" type="LinkButton" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 484.0
+margin_left = 483.0
 margin_top = 5.0
-margin_right = 539.0
+margin_right = 538.0
 margin_bottom = 28.0
 mouse_filter = 1
 size_flags_horizontal = 6
@@ -40,11 +45,16 @@ size_flags_vertical = 6
 text = "Naman"
 underline = 1
 
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+margin_left = 681.0
+margin_right = 685.0
+margin_bottom = 33.0
+
 [node name="Item" type="LinkButton" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 831.0
+margin_left = 832.0
 margin_top = 5.0
-margin_right = 877.0
+margin_right = 878.0
 margin_bottom = 28.0
 mouse_filter = 1
 size_flags_horizontal = 6
@@ -52,11 +62,16 @@ size_flags_vertical = 6
 text = "MACH"
 underline = 1
 
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
+margin_left = 1025.0
+margin_right = 1029.0
+margin_bottom = 33.0
+
 [node name="Price" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 1151.0
+margin_left = 1154.0
 margin_top = 5.0
-margin_right = 1242.0
+margin_right = 1245.0
 margin_bottom = 28.0
 mouse_filter = 1
 size_flags_horizontal = 6
