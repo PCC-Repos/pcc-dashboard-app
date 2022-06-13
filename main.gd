@@ -25,7 +25,14 @@ func _ready():
 	prints("Using API base", api_base)
 	get_tree().set_group("api_base", "api_base", api_base)
 	get_tree().call_group("api_base", "ready")
+	var token = $HBoxContainer/TabContainer/LoginForm.get_access_token()
+	if token:
+		$HBoxContainer.hide()
+		$HBoxContainer/TabContainer/LoginForm.emit_signal("access_token_received", token)
+		return
+	ready()
 
+func ready():
 	ready_tween()
 	NotificationServer.push_notification(NotificationServer.ErrorType.INFO, "Welcome to PCF Dashboard!")
 
@@ -67,6 +74,9 @@ func _request_completed(_result: int, response_code: int, _headers: PoolStringAr
 		NotificationServer.push_notification(NotificationServer.ErrorType.ERROR, "Something went wrong, please check! %s" % response_code)
 		if response_code == 401:
 			print_debug(headers)
+		logged_in = false
+		$HBoxContainer.show()
+		ready()
 		return
 
 	var res = parse_json(body.get_string_from_utf8())
@@ -100,6 +110,8 @@ func logged_out():
 	admin_form.queue_free()
 
 	$"%TabContainer".show()
+	$HBoxContainer.show()
+	ready_tween()
 	$"%TabContainer/LoginForm"._ready()
 	$AudioStreamPlayer.play()
 

@@ -128,7 +128,7 @@ anchor_bottom = 1.0
 
 [node name="ImageContainer" type="MarginContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 616.0
+margin_right = 614.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -140,7 +140,7 @@ __meta__ = {
 
 [node name="PcfLogoNoBackV2" type="TextureRect" parent="HBoxContainer/ImageContainer"]
 margin_left = 50.0
-margin_right = 566.0
+margin_right = 564.0
 margin_bottom = 768.0
 texture = ExtResource( 5 )
 expand = true
@@ -148,7 +148,7 @@ stretch_mode = 6
 
 [node name="TabContainer" type="TabContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 620.0
+margin_left = 622.0
 margin_right = 1366.0
 margin_bottom = 768.0
 size_flags_horizontal = 3

@@ -7,6 +7,7 @@ var api_base
 
 var us_email
 var us_pass
+var token_file = "user://login/token.txt"
 
 onready var http: = $HTTPRequest
 onready var us_name_node = $VBoxContainer/Email
@@ -23,7 +24,7 @@ func ready():
 func _ready():
 	$"%Login".disabled = false
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(768, 768))
-
+	
 func _on_Login_pressed():
 	us_email = us_name_node.text
 	us_pass = us_pass_node.text
@@ -58,7 +59,24 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 
 
 func save_access_token(res: Dictionary):
-	pass
+	var file = File.new()
+	print("token saving")
+	if file.open_encrypted_with_pass(token_file, File.WRITE, "pcf_dashboard") == OK:
+		file.store_string(res["access_token"])
+		file.close()
+
+func get_access_token():
+	var file = File.new()
+	var directory = Directory.new()
+	if file.file_exists(token_file):
+		if file.open_encrypted_with_pass(token_file, File.READ, "pcf_dashboard") == OK:
+			var token = file.get_as_text()
+			print("token loading")
+			file.close()
+			return token
+	else:
+		directory.make_dir_recursive(token_file.get_base_dir())
+		
 
 
 func _on_Register_pressed():
