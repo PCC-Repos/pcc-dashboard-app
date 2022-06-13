@@ -26,7 +26,10 @@ corner_radius_bottom_left = 5
 shadow_color = Color( 0.388235, 0.701961, 0.976471, 1 )
 shadow_size = 5
 
-[node name="Notif" type="Control"]
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 2
+
+[node name="Notif" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,7 +37,7 @@ mouse_filter = 2
 script = ExtResource( 1 )
 height = 20.0
 
-[node name="Backlight" type="TextureRect" parent="."]
+[node name="Backlight" type="TextureRect" parent="Notif"]
 unique_name_in_owner = true
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
@@ -44,7 +47,7 @@ mouse_filter = 2
 texture = SubResource( 3 )
 expand = true
 
-[node name="NotifPopup" type="PanelContainer" parent="."]
+[node name="NotifPopup" type="PanelContainer" parent="Notif"]
 unique_name_in_owner = true
 anchor_top = 1.0
 anchor_right = 1.0
@@ -58,7 +61,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Text" type="Label" parent="NotifPopup"]
+[node name="Text" type="Label" parent="Notif/NotifPopup"]
 unique_name_in_owner = true
 margin_left = 2.0
 margin_top = 2.0

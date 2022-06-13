@@ -14,7 +14,7 @@ var access_token = ""
 var headers = PoolStringArray()
 var admin_form
 
-onready var notif = $CanvasLayer/Notif
+
 
 func _ready():
 	if OS.has_feature('debug') and debug:
@@ -27,7 +27,7 @@ func _ready():
 	get_tree().call_group("api_base", "ready")
 
 	ready_tween()
-	notif.set_text("Welcome to PCF Dashboard")
+	NotificationServer.push_notification(NotificationServer.ErrorType.INFO, "Welcome to PCF Dashboard!")
 
 #func _notification(what):
 #	match what:
@@ -47,8 +47,7 @@ func ready_tween():
 func _on_LoginForm_access_token_received(_access_token):
 	if !_access_token:
 		if debug:
-			notif.set_text("`Bad Access Token: %s`" % _access_token, notif.Type.Error)
-		notif.show()
+			NotificationServer.push_notification(NotificationServer.ErrorType.ERROR, "Bad Access Token Received: %s" % _access_token)
 		return
 	access_token = _access_token
 	logged_in = true
@@ -65,7 +64,7 @@ func _request_completed(_result: int, response_code: int, _headers: PoolStringAr
 	http_req.queue_free()
 	if response_code != 200:
 		print_debug(response_code, " Something went wrong, plz check!")
-		notif.text = "%s: Something went wrong, plz check!" % response_code
+		NotificationServer.push_notification(NotificationServer.ErrorType.ERROR, "Something went wrong, please check! %s" % response_code)
 		if response_code == 401:
 			print_debug(headers)
 		return

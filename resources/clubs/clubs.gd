@@ -59,7 +59,7 @@ func _create_club_api(result: int, response_code: int, headers: PoolStringArray,
 		print("Something went wrong")
 		print(body.get_string_from_utf8())
 		if parse_json(body.get_string_from_utf8()).detail == "Club can only be created by admins.":
-			get_tree().current_scene.notif.set_text("Sorry! You are not an Admin. Can't create a club!")
+			NotificationServer.push_notification(NotificationServer.ErrorType.ERROR, "Sorry! You are not an Admin. Can't create a club!")
 		return
 	http_req.queue_free()
 	_create_club(parse_json(body.get_string_from_utf8()))
