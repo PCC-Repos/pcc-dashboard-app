@@ -13,7 +13,7 @@ func ready():
 	account_btn.text = user.name
 	account_btn.get_popup().connect("id_pressed", self, "_id_pressed")
 	$"%TabContainer".set_tab_icon(0, load("res://assets/images/UI/Clubs.svg"))
-	NotificationServer.push_notification(NotificationServer.ErrorType.INFO, "Logged in as %s" % user.name)
+	NotificationServer.push_notification(NotificationServer.INFO, "Logged in as %s" % user.name)
 
 	$"%WheelButtons".buttons = {}
 	for child_index in $"%TabContainer".get_child_count():
@@ -40,7 +40,7 @@ func _request_completed(_result: int, response_code: int, _headers: PoolStringAr
 	http.queue_free()
 	if response_code != 200:
 		print_debug(response_code, " Something went wrong when trying to signout.")
-		NotificationServer.push_notification(NotificationServer.ErrorType.ERROR, "Could not Log Out.\nSomething went wrong!")
+		NotificationServer.push_notification(NotificationServer.ERROR, "Could not Log Out.\nSomething went wrong!")
 		return
 
 	get_tree().call_group("main", "logged_out")

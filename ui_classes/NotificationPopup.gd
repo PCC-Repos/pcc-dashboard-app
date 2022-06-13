@@ -18,6 +18,7 @@ onready var backlight: = $"%Backlight"
 onready var tween: SceneTreeTween = popup_panel.create_tween()
 
 
+# warning-ignore:unused_argument
 func set_text(new: String, type: int = Type.Normal):
 	if not new.empty():
 		text = new
@@ -29,6 +30,7 @@ func _ready() -> void:
 	tween_sequence()
 
 
+# warning-ignore:unused_argument
 func _process(delta):
 	while NotificationServer.is_notification_available():
 		show()
@@ -51,10 +53,10 @@ func tween_sequence(type: int = Type.Normal):
 # warning-ignore:return_value_discarded
 	tween.set_trans(Tween.TRANS_QUAD).set_parallel()
 	match type:
-		NotificationServer.ErrorType.ERROR:
+		NotificationServer.ERROR:
 # warning-ignore:return_value_discarded
 			tween.tween_property(backlight, "self_modulate:r", 5.0, wait_time/3)
-		NotificationServer.ErrorType.WARNING:
+		NotificationServer.WARNING:
 # warning-ignore:return_value_discarded
 			tween.tween_property(backlight, "self_modulate:r", 3.0, wait_time/3)
 # warning-ignore:return_value_discarded
@@ -75,14 +77,18 @@ func tween_sequence(type: int = Type.Normal):
 	tween.tween_property(popup_panel, "modulate:a", 1.0, fade_time).from(0.0)
 
 	match type:
-		NotificationServer.ErrorType.ERROR:
+		NotificationServer.ERROR:
 # warning-ignore:return_value_discarded
 			tween.tween_property(popup_panel, "modulate:r", 5.0, wait_time/3)
-		NotificationServer.ErrorType.WARNING:
+		NotificationServer.WARNING:
 # warning-ignore:return_value_discarded
 			tween.tween_property(popup_panel, "modulate:r", 3.0, wait_time/3)
 # warning-ignore:return_value_discarded
 			tween.tween_property(popup_panel, "modulate:g", 3.0, wait_time/3)
+		NotificationServer.CRITICAL:
+# warning-ignore:return_value_discarded
+			tween.tween_property(popup_panel, "modulate:r", 5.0, wait_time/3)
+			$"%Text".add_font_override("font", load("res://assets/fonts/Bold.tres"))
 		_:
 			popup_panel.self_modulate = Color.white
 # warning-ignore:return_value_discarded

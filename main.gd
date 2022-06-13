@@ -34,7 +34,7 @@ func _ready():
 
 func ready():
 	ready_tween()
-	NotificationServer.push_notification(NotificationServer.ErrorType.INFO, "Welcome to PCF Dashboard!")
+	NotificationServer.push_notification(NotificationServer.INFO, "Welcome to PCF Dashboard!")
 
 #func _notification(what):
 #	match what:
@@ -54,7 +54,7 @@ func ready_tween():
 func _on_LoginForm_access_token_received(_access_token):
 	if !_access_token:
 		if debug:
-			NotificationServer.push_notification(NotificationServer.ErrorType.ERROR, "Bad Access Token Received: %s" % _access_token)
+			NotificationServer.push_notification(NotificationServer.ERROR, "Bad Access Token Received: %s" % _access_token)
 		return
 	access_token = _access_token
 	logged_in = true
@@ -71,7 +71,7 @@ func _request_completed(_result: int, response_code: int, _headers: PoolStringAr
 	http_req.queue_free()
 	if response_code != 200:
 		print_debug(response_code, " Something went wrong, plz check!")
-		NotificationServer.push_notification(NotificationServer.ErrorType.ERROR, "Something went wrong, please check! %s" % response_code)
+		NotificationServer.push_notification(NotificationServer.ERROR, "Something went wrong, please check! %s" % response_code)
 		if response_code == 401:
 			print_debug(headers)
 		logged_in = false

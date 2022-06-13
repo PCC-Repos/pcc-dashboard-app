@@ -16,7 +16,7 @@ func _ready():
 	set("seller_name", seller_name)
 	set("item_name", item_name)
 	set("price", price)
-	
+
 
 func set_buyer_name(value: String):
 	buyer_name = value

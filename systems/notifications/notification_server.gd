@@ -3,7 +3,7 @@ extends Node
 
 var queue = []
 
-enum ErrorType {
+enum {
 	VERBOSE,
 	INFO,
 	WARNING,

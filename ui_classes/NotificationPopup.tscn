@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui_classes/NotificationPopup.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Normal.tres" type="DynamicFont" id=2]
 
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 0.262745, 0.454902, 0.945098, 1, 0.262745, 0.454902, 0.945098, 0 )
@@ -30,7 +31,6 @@ shadow_size = 5
 layer = 2
 
 [node name="Notif" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -67,9 +67,10 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 250.0
 margin_bottom = 51.0
+rect_min_size = Vector2( 0, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_type_variation = "NotifText"
+custom_fonts/font = ExtResource( 2 )
 text = "Example Notification."
 align = 1
 valign = 1

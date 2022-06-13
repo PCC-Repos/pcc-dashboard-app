@@ -110,7 +110,7 @@ func _delete_user_club_api(result: int, response_code: int, headers: PoolStringA
 
 func _delete_user_club(club_id):
 	find_node("*%s*" % club_id, true, false).queue_free()
-	
+
 
 func _on_JoinClubModal_submit(club_id):
 	create_club_api(club_id)

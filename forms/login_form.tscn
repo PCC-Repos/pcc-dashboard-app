@@ -24,9 +24,9 @@ custom_constants/separation = 15
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 131.0
+margin_top = 125.0
 margin_right = 1266.0
-margin_bottom = 241.0
+margin_bottom = 235.0
 rect_min_size = Vector2( 0, 35 )
 size_flags_vertical = 1
 theme_type_variation = "Titles"
@@ -36,9 +36,9 @@ valign = 1
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 256.0
+margin_top = 250.0
 margin_right = 250.0
-margin_bottom = 256.0
+margin_bottom = 250.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 0
 theme_type_variation = "LoginHSeperator"
@@ -46,44 +46,46 @@ theme_type_variation = "LoginHSeperator"
 [node name="Email" parent="VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 271.0
+margin_top = 265.0
 margin_right = 1266.0
-margin_bottom = 331.0
+margin_bottom = 329.0
 size_flags_vertical = 0
+text = "krishnendu.bhilaimc@gmail.com"
 field_name = "Email:"
 placeholder_text = "Enter Email..."
 
 [node name="Password" parent="VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 346.0
+margin_top = 344.0
 margin_right = 1266.0
-margin_bottom = 433.0
+margin_bottom = 439.0
 size_flags_vertical = 0
+text = "Klm"
 field_name = "Password:"
 password = true
 placeholder_text = "Enter Password..."
 
 [node name="ForgotPass" type="LinkButton" parent="VBoxContainer/Password"]
-margin_top = 64.0
+margin_top = 72.0
 margin_right = 128.0
-margin_bottom = 87.0
+margin_bottom = 95.0
 hint_tooltip = "Click it, if you forgot your password for logging in!"
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Forgot Password"
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 448.0
+margin_top = 454.0
 margin_right = 1266.0
-margin_bottom = 448.0
+margin_bottom = 454.0
 size_flags_horizontal = 3
 theme_type_variation = "LoginHSeperator"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 463.0
+margin_top = 469.0
 margin_right = 1266.0
-margin_bottom = 498.0
+margin_bottom = 504.0
 custom_constants/separation = 20
 alignment = 1
 
@@ -100,9 +102,9 @@ text = "Login"
 
 [node name="Register" type="LinkButton" parent="VBoxContainer"]
 margin_left = 516.0
-margin_top = 513.0
+margin_top = 519.0
 margin_right = 749.0
-margin_bottom = 536.0
+margin_bottom = 542.0
 hint_tooltip = "...or click it, if you want to create a different account."
 size_flags_horizontal = 6
 size_flags_vertical = 0

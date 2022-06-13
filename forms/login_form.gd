@@ -24,7 +24,7 @@ func ready():
 func _ready():
 	$"%Login".disabled = false
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(768, 768))
-	
+
 func _on_Login_pressed():
 	us_email = us_name_node.text
 	us_pass = us_pass_node.text
@@ -45,7 +45,7 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 			$"%Login".disabled = false
 			if response_code == 401:
 				print_debug(headers)
-				NotificationServer.push_notification(NotificationServer.ErrorType.ERROR, "Failed to Login.\nPlease check that you entered the details correctly or create a New Account.")
+				NotificationServer.push_notification(NotificationServer.ERROR, "Failed to Login.\nPlease check that you entered the details correctly or create a New Account.")
 				emit_signal("access_token_received", null)
 			return
 	else:
@@ -76,10 +76,10 @@ func get_access_token():
 			return token
 	else:
 		directory.make_dir_recursive(token_file.get_base_dir())
-		
+
 
 
 func _on_Register_pressed():
-	NotificationServer.push_notification(NotificationServer.ErrorType.INFO, "Make a new account here!")
+	NotificationServer.push_notification(NotificationServer.INFO, "Make a new account here!")
 	get_tree().current_scene.get_node("%TabContainer").current_tab = get_tree().current_scene.get_node("%TabContainer").find_node("RegisterForm").get_index()
 
