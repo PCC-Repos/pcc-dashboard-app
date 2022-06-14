@@ -139,6 +139,7 @@ margin_bottom = 35.0
 mouse_filter = 1
 pressed = true
 group = SubResource( 12 )
+text = "Club"
 icon = ExtResource( 11 )
 tab_container = NodePath("../../TabContainer")
 
@@ -148,7 +149,7 @@ margin_right = 525.0
 margin_bottom = 35.0
 mouse_filter = 1
 group = SubResource( 12 )
-text = "Players"
+text = "Player"
 icon = ExtResource( 21 )
 tab_container = NodePath("../../TabContainer")
 
@@ -168,7 +169,7 @@ margin_right = 1059.0
 margin_bottom = 35.0
 mouse_filter = 1
 group = SubResource( 12 )
-text = "Trasactions"
+text = "Transactions"
 icon = ExtResource( 28 )
 tab_container = NodePath("../../TabContainer")
 
@@ -657,7 +658,6 @@ __meta__ = {
 }
 
 [node name="AddMemberModal" parent="Modals" instance=ExtResource( 13 )]
-visible = false
 margin_left = -215.0
 margin_top = -112.0
 margin_right = 215.0

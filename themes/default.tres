@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=85 format=2]
+[gd_resource type="Theme" load_steps=86 format=2]
 
 [ext_resource path="res://assets/fonts/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/Emoji Fonts/seguisym.ttf" type="DynamicFontData" id=2]
@@ -425,6 +425,13 @@ content_margin_bottom = 50.0
 texture = SubResource( 6 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
+[sub_resource type="StyleBoxFlat" id=87]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+draw_center = false
+
 [sub_resource type="Gradient" id=170]
 colors = PoolColorArray( 0.0786552, 0.201731, 0.462891, 1, 0, 0.0251007, 0.0917969, 1 )
 
@@ -512,12 +519,12 @@ content_margin_left = 5.0
 content_margin_right = 5.0
 content_margin_top = 5.0
 content_margin_bottom = 5.0
-bg_color = Color( 0.470588, 0, 0, 1 )
+bg_color = Color( 0.772549, 0, 0, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color( 1, 0.278431, 0.278431, 1 )
+border_color = Color( 1, 0, 0, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -779,6 +786,8 @@ LoginHSeperator/constants/separation = 0
 LoginHSeperator/styles/separator = SubResource( 12 )
 LoginPanel/base_type = "PanelContainer"
 LoginPanel/styles/panel = SubResource( 4 )
+NotifText/base_type = "Label"
+NotifText/styles/normal = SubResource( 87 )
 Panel/styles/panel = SubResource( 172 )
 PanelContainer/styles/panel = SubResource( 3 )
 PopupMenu/fonts/font = SubResource( 2 )
