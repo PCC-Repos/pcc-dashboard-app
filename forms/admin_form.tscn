@@ -639,33 +639,59 @@ margin_right = 126.0
 margin_bottom = 581.0
 
 [node name="Modals" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CreateClubModal" parent="Modals" instance=ExtResource( 18 )]
-margin_left = 312.0
-margin_top = 201.0
-margin_right = 672.0
-margin_bottom = 411.0
+visible = false
+margin_left = -233.0
+margin_top = -140.0
+margin_right = 233.0
+margin_bottom = 140.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AddMemberModal" parent="Modals" instance=ExtResource( 13 )]
+visible = false
+margin_left = -215.0
+margin_top = -112.0
+margin_right = 215.0
+margin_bottom = 112.0
 __meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
+"_edit_group_": true
 }
 
 [node name="JoinClubModal" parent="Modals" instance=ExtResource( 19 )]
+visible = false
+margin_left = -160.0
+margin_right = 160.0
+margin_bottom = 56.0
 __meta__ = {
 "_edit_group_": true,
-"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
 [node name="EditClubModal" parent="Modals" instance=ExtResource( 15 )]
 visible = false
+margin_left = -247.0
+margin_top = -124.0
+margin_right = 247.0
+margin_bottom = 124.0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="EditUserModal" parent="Modals" instance=ExtResource( 20 )]
+visible = false
+margin_left = -207.0
+margin_top = -63.0
+margin_right = 189.0
+margin_bottom = 36.0
 __meta__ = {
 "_edit_group_": true
 }

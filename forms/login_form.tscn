@@ -50,7 +50,6 @@ margin_top = 265.0
 margin_right = 1266.0
 margin_bottom = 329.0
 size_flags_vertical = 0
-text = "krishnendu.bhilaimc@gmail.com"
 field_name = "Email:"
 placeholder_text = "Enter Email..."
 
@@ -61,7 +60,6 @@ margin_top = 344.0
 margin_right = 1266.0
 margin_bottom = 439.0
 size_flags_vertical = 0
-text = "Klm"
 field_name = "Password:"
 password = true
 placeholder_text = "Enter Password..."

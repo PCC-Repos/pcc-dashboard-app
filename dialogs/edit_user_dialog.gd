@@ -6,11 +6,9 @@ var us_id
 
 
 func _on_Save_pressed():
-	var us_name = $MarginContainer/VBoxContainer/Name/LineEdit.text
-	var us_reason = $MarginContainer/VBoxContainer/Reason/LineEdit.text
-	emit_signal("submit", us_id, us_name, us_reason)
-	$MarginContainer/VBoxContainer/Name/LineEdit.text = ""
-	$MarginContainer/VBoxContainer/Reason/LineEdit.text = ""
+	var us_name = $"%Name".text
+	emit_signal("submit", us_id, us_name, "")
+	$"%Name".text = ""
 	hide()
 
 

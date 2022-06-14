@@ -4,9 +4,9 @@ signal submit(club_id)
 
 
 func _on_Join_pressed():
-	var club_id = $MarginContainer/VBoxContainer/ID/LineEdit.text
+	var club_id = $"%ID".text
 	emit_signal("submit", club_id)
-	$MarginContainer/VBoxContainer/ID/LineEdit.text = ""
+	$"%ID".text = ""
 	hide()
 
 

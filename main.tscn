@@ -138,7 +138,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="PcfLogoNoBackV2" type="TextureRect" parent="HBoxContainer/ImageContainer"]
+[node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/ImageContainer"]
+
+[node name="PcfLogoNoBackV2" type="TextureRect" parent="HBoxContainer/ImageContainer/CanvasLayer"]
 margin_left = 50.0
 margin_right = 564.0
 margin_bottom = 768.0
@@ -178,6 +180,7 @@ volume_db = -6.021
 pitch_scale = 1.5
 autoplay = true
 
+[connection signal="visibility_changed" from="." to="." method="_on_Main_visibility_changed"]
 [connection signal="access_token_received" from="HBoxContainer/TabContainer/LoginForm" to="." method="_on_LoginForm_access_token_received"]
 [connection signal="visibility_changed" from="HBoxContainer/TabContainer/LoginForm" to="." method="_on_Form_visibility_changed"]
 [connection signal="visibility_changed" from="HBoxContainer/TabContainer/RegisterForm" to="." method="_on_Form_visibility_changed"]

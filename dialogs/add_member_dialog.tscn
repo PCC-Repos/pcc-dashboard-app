@@ -1,86 +1,90 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://dialogs/add_member_dialog.gd" type="Script" id=1]
+[ext_resource path="res://ui_classes/PlaceholderLineEdit.tscn" type="PackedScene" id=2]
 
 [node name="AddMemberModal" type="WindowDialog"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -258.0
-margin_top = -169.0
-margin_right = 258.0
-margin_bottom = 169.0
+margin_left = -206.0
+margin_top = -110.0
+margin_right = 206.0
+margin_bottom = 110.0
 window_title = "Add a Member"
+resizable = true
 script = ExtResource( 1 )
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -180.0
-margin_top = -101.0
-margin_right = 180.0
-margin_bottom = 101.0
-custom_constants/margin_right = 5
-custom_constants/margin_top = 5
-custom_constants/margin_left = 5
-custom_constants/margin_bottom = 5
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 355.0
-margin_bottom = 197.0
-
-[node name="ID" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_right = 350.0
-margin_bottom = 44.0
-size_flags_vertical = 0
+[node name="ID" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 392.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ID"]
+[node name="Label" type="Label" parent="VBoxContainer/ID"]
 margin_top = 5.0
-margin_right = 97.0
-margin_bottom = 39.0
+margin_right = 128.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
 text = "ID:           "
+valign = 1
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/ID"]
-margin_left = 101.0
-margin_right = 350.0
-margin_bottom = 44.0
+[node name="ID" type="LineEdit" parent="VBoxContainer/ID"]
+margin_left = 136.0
+margin_right = 392.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
-placeholder_text = "Enter the ID of the member"
+size_flags_stretch_ratio = 2.0
+placeholder_text = "What's the member's ID?"
 
-[node name="Reason" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 48.0
-margin_right = 350.0
-margin_bottom = 148.0
+[node name="Reason" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 41.0
+margin_right = 392.0
+margin_bottom = 159.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Reason"]
-margin_top = 33.0
-margin_right = 106.0
-margin_bottom = 67.0
-text = "Reason:   "
-align = 2
-
-[node name="LineEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/Reason"]
-margin_left = 110.0
-margin_right = 350.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
+[node name="Label" type="Label" parent="VBoxContainer/Reason"]
+margin_top = 47.0
+margin_right = 128.0
+margin_bottom = 70.0
 size_flags_horizontal = 3
+text = "Reason:   "
+valign = 1
 
-[node name="Add" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 152.0
-margin_right = 350.0
-margin_bottom = 192.0
+[node name="Reason" parent="VBoxContainer/Reason" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 136.0
+margin_top = 0.0
+margin_right = 392.0
+margin_bottom = 118.0
+size_flags_stretch_ratio = 2.0
+placeholder_text = "What was the reason?"
+
+[node name="Add" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+margin_left = 121.0
+margin_top = 167.0
+margin_right = 271.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 6
 text = "Add Member"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Add" to="." method="_on_Add_pressed"]
+[connection signal="pressed" from="VBoxContainer/Add" to="." method="_on_Add_pressed"]

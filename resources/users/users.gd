@@ -144,9 +144,9 @@ func _edit_user_api(result: int, response_code: int, headers: PoolStringArray, b
 	_edit_user(json)
 
 
-func _edit_user(user: Dictionary):
-	var user_button = find_node("*%s*" % user['id'], true, false)
-	user_button.text = user["name"]
+func _edit_user(_user: Dictionary):
+	var user_button = find_node("*%s*" % _user['id'], true, false)
+	user_button.text = _user["name"]
 
 
 func _on_CreateUserModal_submit(us_name, us_reason):

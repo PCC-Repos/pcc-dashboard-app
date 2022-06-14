@@ -3,85 +3,61 @@
 [ext_resource path="res://dialogs/join_club_dialog.gd" type="Script" id=1]
 
 [node name="JoinClubModal" type="WindowDialog"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -180.0
-margin_top = -79.0
-margin_right = 180.0
-margin_bottom = 79.0
+margin_left = -170.0
+margin_top = -56.0
+margin_right = 175.0
+margin_bottom = 61.0
 window_title = "Join a Club"
+resizable = true
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 5
-custom_constants/margin_top = 5
-custom_constants/margin_left = 5
-custom_constants/margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 355.0
-margin_bottom = 157.0
-
-[node name="ID" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_right = 350.0
-margin_bottom = 24.0
+[node name="ID" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 325.0
+margin_bottom = 33.0
 size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ID"]
+[node name="Label" type="Label" parent="VBoxContainer/ID"]
 margin_top = 5.0
-margin_right = 83.0
-margin_bottom = 19.0
+margin_right = 84.0
+margin_bottom = 28.0
 text = "ID:                "
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/ID"]
-margin_left = 87.0
-margin_right = 350.0
-margin_bottom = 24.0
+[node name="ID" type="LineEdit" parent="VBoxContainer/ID"]
+unique_name_in_owner = true
+margin_left = 92.0
+margin_right = 325.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 placeholder_text = "Enter the name"
 
-[node name="Description" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 28.0
-margin_right = 350.0
-margin_bottom = 128.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Description"]
-margin_top = 43.0
-margin_right = 82.0
-margin_bottom = 57.0
-text = "Reason:        "
-align = 2
-
-[node name="LineEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/Description"]
-margin_left = 86.0
-margin_right = 350.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 100 )
-size_flags_horizontal = 3
-
-[node name="Join" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 132.0
-margin_right = 350.0
-margin_bottom = 152.0
+[node name="Join" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+margin_left = 87.0
+margin_top = 53.0
+margin_right = 237.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 6
 text = "Join Club"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Join" to="." method="_on_Join_pressed"]
+[connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_Join_pressed"]

@@ -82,9 +82,12 @@ func _request_completed(_result: int, response_code: int, _headers: PoolStringAr
 	var res = parse_json(body.get_string_from_utf8())
 	user = res
 
+	$"%ImageContainer".get_node("CanvasLayer").visible = false
+
 	if not refresh:
 		call_deferred("init_admin")
 	else:
+		$"%ImageContainer".get_node("CanvasLayer").visible = true
 		get_tree().set_group("login_ready", "user", user)
 
 
@@ -122,3 +125,7 @@ func refresh():
 func _on_Form_visibility_changed() -> void:
 	$AnimationPlayer.play("LightsON")
 	ready_tween()
+
+
+func _on_Main_visibility_changed() -> void:
+	$"%ImageContainer".get_node("CanvasLayer").visible = visible

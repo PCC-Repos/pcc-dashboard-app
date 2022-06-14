@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui_classes/MouseButton.gd" type="Script" id=1]
+
+[sub_resource type="ButtonGroup" id=1]
+resource_local_to_scene = false
 
 [node name="Club" type="Button"]
 anchor_right = 0.158203
@@ -9,6 +12,7 @@ mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 theme_type_variation = "ListButton"
 toggle_mode = true
+group = SubResource( 1 )
 script = ExtResource( 1 )
 event_button_mask = 2
 long_press_enabled = false
