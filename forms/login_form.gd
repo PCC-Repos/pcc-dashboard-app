@@ -43,10 +43,13 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 		if response_code != 200:
 			print_debug(response_code, " Something went wrong, plz check!")
 			$"%Login".disabled = false
-			if response_code == 401:
-				print_debug(headers)
-				NotificationServer.push_notification(NotificationServer.ERROR, "Failed to Login.\nPlease check that you entered the details correctly or create a New Account.")
-				emit_signal("access_token_received", null)
+			match response_code:
+				HTTPClient.RESPONSE_UNAUTHORIZED:
+					print_debug(headers)
+					NotificationServer.push_notification(NotificationServer.ERROR, "Failed to Login.\nPlease check that you entered the details correctly or create a New Account.")
+					emit_signal("access_token_received", null)
+				HTTPClient.RESPONSE_UNPROCESSABLE_ENTITY:
+					NotificationServer.push_notification(NotificationServer.ERROR, "Enter your email first!")
 			return
 	else:
 		print_debug("There was some error with the HTTPRequest Node. `result` = ", result)

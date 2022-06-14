@@ -17,6 +17,8 @@ var admin_form
 
 
 func _ready():
+	$"%Logo".hide()
+
 	if OS.has_feature('debug') and debug:
 		api_base = DebugAPI_BASE
 	else:
@@ -30,7 +32,7 @@ func _ready():
 		$HBoxContainer.hide()
 		$HBoxContainer/TabContainer/LoginForm.emit_signal("access_token_received", token)
 		return
-	ready()
+
 
 func ready():
 	ready_tween()
@@ -47,9 +49,10 @@ func ready():
 #			get_tree().change_scene("res://closing_screen/closing_screen.tscn")
 
 func ready_tween():
+	$"%Logo".show()
 	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_QUART).set_parallel()
 	tween.tween_property($"%TabContainer", "rect_position:x", OS.window_size.x / 2 - (OS.window_size.y / 16), tween_duration).from(OS.window_size.x + 10)
-	tween.tween_property($"%ImageContainer", "rect_position:x", 0.0, tween_duration).from(-$"%ImageContainer".rect_size.x - 10)
+	tween.tween_property($"%Logo", "rect_position:x", 50.0, tween_duration).from(-$"%ImageContainer".rect_size.x - 10)
 
 func _on_LoginForm_access_token_received(_access_token):
 	if !_access_token:

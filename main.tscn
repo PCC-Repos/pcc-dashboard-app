@@ -140,7 +140,8 @@ __meta__ = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/ImageContainer"]
 
-[node name="PcfLogoNoBackV2" type="TextureRect" parent="HBoxContainer/ImageContainer/CanvasLayer"]
+[node name="Logo" type="TextureRect" parent="HBoxContainer/ImageContainer/CanvasLayer"]
+unique_name_in_owner = true
 margin_left = 50.0
 margin_right = 564.0
 margin_bottom = 768.0
