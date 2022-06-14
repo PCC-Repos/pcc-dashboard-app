@@ -5,23 +5,12 @@ export var fade_time: float = 0.5
 export var wait_time: float = 3
 export var height: float = 60
 
-enum Type {
-	Normal,
-	Warning,
-	Error
-}
 
 var text: String = ""
 
 onready var popup_panel: = $"%NotifPopup"
 onready var backlight: = $"%Backlight"
 onready var tween: SceneTreeTween = popup_panel.create_tween()
-
-
-# warning-ignore:unused_argument
-func set_text(new: String, type: int = Type.Normal):
-	if not new.empty():
-		text = new
 
 
 func _ready() -> void:
@@ -49,7 +38,7 @@ func _process(delta):
 		yield(tween, "finished")
 		hide()
 
-func tween_sequence(type: int = Type.Normal):
+func tween_sequence(type: int = NotificationServer.INFO):
 # warning-ignore:return_value_discarded
 	tween.set_trans(Tween.TRANS_QUAD).set_parallel()
 	match type:

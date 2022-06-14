@@ -12,7 +12,6 @@ enum {
 }
 
 func push_notification(error, notification_message: String):
-	print(error, notification_message)
 	queue.push_back([error, notification_message])
 
 func get_notification():
@@ -20,3 +19,4 @@ func get_notification():
 
 func is_notification_available():
 	return not queue.empty()
+

@@ -21,7 +21,6 @@ func ready():
 #	yield(get_tree(), "idle_frame")
 #	$"%WheelButtons"._ready()
 
-#	($"%Clubs" as Button).group.connect("pressed", self, "_button_pressed")
 
 
 func _id_pressed(id):
