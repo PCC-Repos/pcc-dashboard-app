@@ -36,7 +36,7 @@ func logout():
 	http.request(api_base + "auth/revoke/", headers, true, HTTPClient.METHOD_POST)
 
 func _request_completed(_result: int, response_code: int, _headers: PoolStringArray, _body: PoolByteArray):
-	if response_code != 200:
+	if response_code != 204:
 		print_debug(response_code, " Something went wrong when trying to signout.")
 		NotificationServer.push_notification(NotificationServer.ERROR, "Could not Log Out.\nSomething went wrong!")
 		return
