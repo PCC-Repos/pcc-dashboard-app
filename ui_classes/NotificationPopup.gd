@@ -41,6 +41,7 @@ func _process(delta):
 func tween_sequence(type: int = NotificationServer.INFO):
 # warning-ignore:return_value_discarded
 	tween.set_trans(Tween.TRANS_QUAD).set_parallel()
+	$"%Text".remove_font_override("font")
 	match type:
 		NotificationServer.ERROR:
 # warning-ignore:return_value_discarded

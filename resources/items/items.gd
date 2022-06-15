@@ -17,6 +17,7 @@ func fetch_items_api():
 	add_child(http_req)
 	http_req.request(api_base + "marketplace/items/", PoolStringArray(), true, HTTPClient.METHOD_GET)
 
+# warning-ignore:unused_argument
 func _fetch_items_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req):
 	http_req.queue_free()
 	if response_code != 200:

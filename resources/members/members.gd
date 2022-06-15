@@ -25,6 +25,11 @@ func fetch_members(club_id: int):
 	current_club_id = club_id
 
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _fetch_members(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	if response_code != 200:
 		print("Something went wrong")
@@ -94,6 +99,9 @@ func delete_member_api(club_id, user_id):
 	http_req.request(api_base + 'clubs/%s/members/%s/' % [club_id, user_id], headers, true, HTTPClient.METHOD_DELETE)
 
 
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _delete_member_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, user_id: String):
 	if response_code != 200:
 		print("Something went wrong")
@@ -106,6 +114,9 @@ func _delete_member(user_id):
 	find_node("*%s*" % user_id, true, false).queue_free()
 
 
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _create_member_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	if response_code != 200:
 		print("Something went wrong")

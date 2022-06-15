@@ -31,17 +31,24 @@ func fetch_users():
 	http_req.request(api_base + 'users/?agents=free')
 
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _fetch_users(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	if response_code != 200:
 		print("Something went wrong")
 		print(body.get_string_from_utf8())
 	http_req.queue_free()
 	var json = parse_json(body.get_string_from_utf8())
+# warning-ignore:shadowed_variable
 	for user in json:
 		_create_user(user)
 	$Agents/VBoxContainer.update()
 
 
+# warning-ignore:shadowed_variable
 func _create_user(user: Dictionary):
 	var user_button = UserButton.instance()
 	user_button.text = user["name"]
@@ -83,6 +90,11 @@ func delete_user_api(user_id):
 	http_req.request(api_base + 'users/%s/' % user_id, PoolStringArray(), true, HTTPClient.METHOD_DELETE)
 
 
+# warning-ignore:unused_argument
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _delete_user_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, user_id: String):
 	http_req.queue_free()
 	_delete_user(user_id)
@@ -128,6 +140,9 @@ func edit_agent_api(agent_type):
 	http_req.request(api_base + 'users/%s/' % user.id, PoolStringArray(["Content-Type: application/json"]) + headers, true, HTTPClient.METHOD_PATCH, to_json(dict))
 
 
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _join_agent_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, user_id: String):
 	if response_code != 200:
 		print("Something went wrong")

@@ -15,6 +15,11 @@ const ClubButton = preload("res://resources/clubs/club.tscn")
 func ready():
 	fetch_clubs()
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _fetch_clubs(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	if response_code != 200:
 		print("Something went wrong")
@@ -54,12 +59,15 @@ func create_club_api(club_name, club_description, club_public):
 	http_req.request(api_base + 'clubs/', PoolStringArray(["Content-Type: application/json"]) + headers, true, HTTPClient.METHOD_POST, to_json(dict))
 
 
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _create_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	if response_code != 200:
 		print("Something went wrong")
 		print(body.get_string_from_utf8())
 		if parse_json(body.get_string_from_utf8()).detail == "Club can only be created by admins.":
-			NotificationServer.push_notification(NotificationServer.ERROR, "Sorry! You are not an Admin. Can't create a club!")
+			NotificationServer.notify_error("Sorry! You are not an Admin. Can't create a club!")
 		return
 	http_req.queue_free()
 	_create_club(parse_json(body.get_string_from_utf8()))
@@ -112,6 +120,9 @@ func edit_club_api(club_id, club_name, club_description, _club_money):
 	http_req.request(api_base + 'clubs/%s/' % club_id, PoolStringArray(["Content-Type: application/json"]) + headers, true, HTTPClient.METHOD_PATCH, to_json(dict))
 
 
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _edit_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, club_id: String):
 	if response_code != 200:
 		print("Something went wrong")
@@ -128,6 +139,10 @@ func delete_club_api(club_id):
 	http_req.request(api_base + 'clubs/%s/' % club_id, headers, true, HTTPClient.METHOD_DELETE)
 
 
+# warning-ignore:unused_argument
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _delete_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, club_id: String):
 	if response_code != 200:
 		print("Something went wrong")

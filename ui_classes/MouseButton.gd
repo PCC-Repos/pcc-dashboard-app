@@ -3,8 +3,8 @@ class_name MouseButton
 
 export(int, FLAGS, "Mouse Left", "Mouse Right", "Mouse Middle") var event_button_mask = 1
 export(bool) var long_press_enabled = true
-export(float) var long_tap_time = 1
-export(float) var short_tap_time = 1
+export(float) var long_tap_time = 1.0
+export(float) var short_tap_time = 1.0
 
 signal mouse_button_up(button_index)
 signal mouse_button_down(button_index)

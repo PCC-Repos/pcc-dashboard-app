@@ -4,7 +4,6 @@ var video_anim_played = false
 
 
 func _ready():
-	OS.request_permissions()
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(768, 768))
 	$TextureRect.show()
 	$AnimationPlayer.play("hide_img_rect")
@@ -13,6 +12,7 @@ func _ready():
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	if video_anim_played:
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://main.tscn")
 	$VideoPlayer.self_modulate.a = 1
 	$VideoPlayer.play()

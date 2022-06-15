@@ -21,6 +21,11 @@ func _on_Users_user_changed(user_id):
 	current_user_id = user_id
 
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _fetch_clubs(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	if response_code != 200:
 		print("Something went wrong")
@@ -47,6 +52,9 @@ func create_club_api(club_id):
 	http_req.request(api_base + 'users/%s/clubs/' % current_user_id, PoolStringArray(["Content-Type: application/json"]) + headers, true, HTTPClient.METHOD_POST, to_json(dict))
 
 
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _create_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	if response_code != 200:
 		print("Something went wrong")
@@ -99,6 +107,11 @@ func delete_user_club_api(user_id, club_id):
 	http_req.request(api_base + 'users/%s/clubs/%s/' % [user_id, club_id], headers, true, HTTPClient.METHOD_DELETE)
 
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _delete_user_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, club_id: String):
 	if response_code != 200:
 		print("Something went wrong")

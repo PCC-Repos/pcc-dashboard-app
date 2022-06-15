@@ -15,6 +15,11 @@ const ClubButton = preload("res://resources/clubs/club.tscn")
 func ready():
 	fetch_clubs()
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _fetch_clubs(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	if response_code != 200:
 		print("Something went wrong")
@@ -53,6 +58,9 @@ func create_club_api(club_name, club_description, club_public):
 	http_req.request(api_base + 'clubs/', PoolStringArray(["Content-Type: application/json"]) + headers, true, HTTPClient.METHOD_POST, to_json(dict))
 
 
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _create_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	if response_code != 200:
 		print("Something went wrong")
@@ -108,6 +116,9 @@ func edit_club_api(club_id, club_name, club_description, _club_money):
 	http_req.request(api_base + 'clubs/%s/' % club_id, PoolStringArray(["Content-Type: application/json"]) + headers, true, HTTPClient.METHOD_PATCH, to_json(dict))
 
 
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _edit_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, club_id: String):
 	if response_code != 200:
 		print("Something went wrong")
@@ -124,6 +135,10 @@ func delete_club_api(club_id):
 	http_req.request(api_base + 'clubs/%s/' % club_id, headers, true, HTTPClient.METHOD_DELETE)
 
 
+# warning-ignore:unused_argument
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _delete_club_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, club_id: String):
 	if response_code != 200:
 		print("Something went wrong")

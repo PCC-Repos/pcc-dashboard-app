@@ -15,7 +15,6 @@ var headers = PoolStringArray()
 var admin_form
 
 
-
 func _ready():
 	$"%Logo".hide()
 
@@ -36,7 +35,7 @@ func _ready():
 
 func ready():
 	ready_tween()
-	NotificationServer.push_notification(NotificationServer.INFO, "Welcome to PCF Dashboard!")
+	NotificationServer.notify_info("Welcome to PCF Dashboard!")
 
 #func _notification(what):
 #	match what:
@@ -51,13 +50,15 @@ func ready():
 func ready_tween():
 	$"%Logo".show()
 	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_QUART).set_parallel()
+# warning-ignore:return_value_discarded
 	tween.tween_property($"%TabContainer", "rect_position:x", OS.window_size.x / 2 - (OS.window_size.y / 16), tween_duration).from(OS.window_size.x + 10)
+# warning-ignore:return_value_discarded
 	tween.tween_property($"%Logo", "rect_position:x", 50.0, tween_duration).from(-$"%ImageContainer".rect_size.x - 10)
 
 func _on_LoginForm_access_token_received(_access_token):
 	if !_access_token:
 		if debug:
-			NotificationServer.push_notification(NotificationServer.ERROR, "Bad Access Token Received: %s" % _access_token)
+			NotificationServer.notify_critical("Bad Access Token Received: %s" % _access_token)
 		return
 	access_token = _access_token
 	logged_in = true
@@ -74,7 +75,7 @@ func _request_completed(_result: int, response_code: int, _headers: PoolStringAr
 	http_req.queue_free()
 	if response_code != 200:
 		print_debug(response_code, " Something went wrong, plz check!")
-		NotificationServer.push_notification(NotificationServer.ERROR, "Something went wrong, please check! %s" % response_code)
+		NotificationServer.notify_critical("Something went wrong, please check! %s" % response_code)
 		if response_code == 401:
 			print_debug(headers)
 		logged_in = false
@@ -90,7 +91,6 @@ func _request_completed(_result: int, response_code: int, _headers: PoolStringAr
 	if not refresh:
 		call_deferred("init_admin")
 	else:
-		$"%ImageContainer".get_node("CanvasLayer").visible = true
 		get_tree().set_group("login_ready", "user", user)
 
 
@@ -117,6 +117,7 @@ func logged_out():
 
 	$"%TabContainer".show()
 	$HBoxContainer.show()
+	$"%ImageContainer".get_node("CanvasLayer").visible = true
 	ready_tween()
 	$"%TabContainer/LoginForm"._ready()
 	$AudioStreamPlayer.play()
@@ -125,10 +126,8 @@ func refresh():
 	fetch_current_user(true)
 
 
-func _on_Form_visibility_changed() -> void:
-	$AnimationPlayer.play("LightsON")
-	ready_tween()
-
-
 func _on_Main_visibility_changed() -> void:
 	$"%ImageContainer".get_node("CanvasLayer").visible = visible
+
+func _on_TabContainer_tab_changed(_tab: int):
+	ready_tween()

@@ -6,4 +6,5 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
+theme_type_variation = "ListButton"
 script = ExtResource( 1 )

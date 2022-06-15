@@ -115,7 +115,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 9 )
-debug = false
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
@@ -182,6 +181,5 @@ pitch_scale = 1.5
 autoplay = true
 
 [connection signal="visibility_changed" from="." to="." method="_on_Main_visibility_changed"]
+[connection signal="tab_changed" from="HBoxContainer/TabContainer" to="." method="_on_TabContainer_tab_changed"]
 [connection signal="access_token_received" from="HBoxContainer/TabContainer/LoginForm" to="." method="_on_LoginForm_access_token_received"]
-[connection signal="visibility_changed" from="HBoxContainer/TabContainer/LoginForm" to="." method="_on_Form_visibility_changed"]
-[connection signal="visibility_changed" from="HBoxContainer/TabContainer/RegisterForm" to="." method="_on_Form_visibility_changed"]

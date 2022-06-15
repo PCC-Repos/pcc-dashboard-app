@@ -22,10 +22,13 @@ func _on_Create_pressed():
 	us_pass = $"%Pass".text
 	var us_conf_pass = $"%ConPass".text
 	if us_pass == us_conf_pass:
-		prints(us_conf_pass, us_pass, "Passwords didn't match!")
+		NotificationServer.notify_warning("Passwords don't match.")
+		return
 
 	create_user_api(us_name, us_email, us_pass)
 
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
 func create_user_api(us_name, us_email, us_pass):
 	var http_req = HTTPRequest.new()
 	http_req.connect("request_completed", self, "_create_user_api", [http_req])
@@ -33,11 +36,15 @@ func create_user_api(us_name, us_email, us_pass):
 	var dict = {"name": us_name, 'email': us_email, "password": us_pass}
 	http_req.request(api_base + 'users/', PoolStringArray(["Content-Type: application/json"]), true, HTTPClient.METHOD_POST, to_json(dict))
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _create_user_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	if response_code != 200:
 		print("Something went wrong")
 		print(body.get_string_from_utf8())
+		return
 	http_req.queue_free()
+# warning-ignore:unused_variable
 	var json = parse_json(body.get_string_from_utf8())
 
 	get_tree().current_scene.get_node("TabContainer").find_node("LoginForm").call_deferred("login", us_email, us_pass)

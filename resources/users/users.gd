@@ -37,6 +37,7 @@ func ready():
 #	$Users/VBoxContainer.update()
 
 
+# warning-ignore:shadowed_variable
 func _create_user(user: Dictionary):
 	var user_button = UserButton.instance()
 	user_button.text = user["name"]
@@ -81,6 +82,13 @@ func delete_user_api(user_id):
 	http_req.request(api_base + 'users/%s/' % user_id, PoolStringArray(), true, HTTPClient.METHOD_DELETE)
 
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _delete_user_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, user_id: String):
 	http_req.queue_free()
 	_delete_user(user_id)
@@ -103,6 +111,9 @@ func logout():
 	add_child(http_req)
 	http_req.request(api_base + "auth/revoke/", headers, true, HTTPClient.METHOD_POST)
 
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	http_req.queue_free()
 	if response_code != 200:
@@ -135,6 +146,10 @@ func edit_user_api(us_id, us_name):
 	http_req.request(api_base + 'users/%s/' % us_id, PoolStringArray(["Content-Type: application/json"]) + headers, true, HTTPClient.METHOD_PATCH, to_json(dict))
 
 
+# warning-ignore:unused_argument
+# warning-ignore:shadowed_variable
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _edit_user_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest, user_id: String):
 	if response_code != 200:
 		print("Something went wrong")

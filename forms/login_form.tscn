@@ -110,6 +110,7 @@ text = "New user? Create an Account..."
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
+[connection signal="pressed" from="VBoxContainer/Password/ForgotPass" to="." method="_on_ForgotPass_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/Login" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="VBoxContainer/Register" to="." method="_on_Register_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

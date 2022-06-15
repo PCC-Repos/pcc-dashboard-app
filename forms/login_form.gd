@@ -46,10 +46,10 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 			match response_code:
 				HTTPClient.RESPONSE_UNAUTHORIZED:
 					print_debug(headers)
-					NotificationServer.push_notification(NotificationServer.ERROR, "Failed to Login.\nPlease check that you entered the details correctly or create a New Account.")
+					NotificationServer.notify_critical("Failed to Login.\nPlease check that you entered the details correctly or create a New Account.")
 					emit_signal("access_token_received", null)
 				HTTPClient.RESPONSE_UNPROCESSABLE_ENTITY:
-					NotificationServer.push_notification(NotificationServer.ERROR, "Enter your email first!")
+					NotificationServer.notify_critical("Enter your email first!")
 			return
 	else:
 		print_debug("There was some error with the HTTPRequest Node. `result` = ", result)
@@ -83,6 +83,9 @@ func get_access_token():
 
 
 func _on_Register_pressed():
-	NotificationServer.push_notification(NotificationServer.INFO, "Make a new account here!")
+	NotificationServer.notify_info("Make a new account here!")
 	get_tree().current_scene.get_node("%TabContainer").current_tab = get_tree().current_scene.get_node("%TabContainer").find_node("RegisterForm").get_index()
 
+
+func _on_ForgotPass_pressed():
+	NotificationServer.notify_info("Not yet implemented.")
