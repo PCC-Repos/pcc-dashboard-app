@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=86 format=2]
+[gd_resource type="Theme" load_steps=83 format=2]
 
 [ext_resource path="res://assets/fonts/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/Emoji Fonts/seguisym.ttf" type="DynamicFontData" id=2]
@@ -432,20 +432,6 @@ content_margin_top = 10.0
 content_margin_bottom = 10.0
 draw_center = false
 
-[sub_resource type="Gradient" id=170]
-colors = PoolColorArray( 0.0786552, 0.201731, 0.462891, 1, 0, 0.0251007, 0.0917969, 1 )
-
-[sub_resource type="GradientTexture2D" id=171]
-flags = 15
-gradient = SubResource( 170 )
-fill = 1
-fill_from = Vector2( 0.5, 0.5 )
-fill_to = Vector2( 0.5, 0 )
-
-[sub_resource type="StyleBoxTexture" id=172]
-texture = SubResource( 171 )
-region_rect = Rect2( 0, 0, 64, 64 )
-
 [sub_resource type="StyleBoxFlat" id=3]
 content_margin_left = 10.0
 content_margin_right = 10.0
@@ -788,7 +774,7 @@ LoginPanel/base_type = "PanelContainer"
 LoginPanel/styles/panel = SubResource( 4 )
 NotifText/base_type = "Label"
 NotifText/styles/normal = SubResource( 87 )
-Panel/styles/panel = SubResource( 172 )
+Panel/styles/panel = SubResource( 3 )
 PanelContainer/styles/panel = SubResource( 3 )
 PopupMenu/fonts/font = SubResource( 2 )
 PopupMenu/styles/hover = SubResource( 29 )

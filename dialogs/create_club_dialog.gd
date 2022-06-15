@@ -1,10 +1,10 @@
-extends WindowDialog
+extends CustomWinDia
 
 signal submit(club_name, club_description, club_public)
 
 
 func _on_Clubs_show_create_club_modal():
-	popup_centered()
+	popup(true)
 
 
 func _on_Create_pressed():
