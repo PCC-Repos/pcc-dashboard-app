@@ -14,6 +14,7 @@ onready var tween: SceneTreeTween = popup_panel.create_tween()
 
 
 func _ready() -> void:
+	hide()
 	backlight.rect_size.y = height + popup_panel.rect_size.y
 	backlight.self_modulate = 0
 	tween_sequence()

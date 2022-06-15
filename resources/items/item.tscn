@@ -7,6 +7,7 @@ margin_right = 250.0
 margin_bottom = 250.0
 rect_min_size = Vector2( 250, 250 )
 mouse_filter = 1
+theme_type_variation = "ListButton"
 script = ExtResource( 1 )
 event_button_mask = 3
 
@@ -61,4 +62,5 @@ margin_top = 217.0
 margin_right = 250.0
 margin_bottom = 250.0
 mouse_default_cursor_shape = 2
+theme_type_variation = "ListButton"
 text = "Buy"

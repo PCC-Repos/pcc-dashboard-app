@@ -26,7 +26,7 @@ draw_center = false
 
 [sub_resource type="Animation" id=15]
 resource_name = "LightsMoving"
-length = 30.0
+length = 20.0
 loop = true
 step = 1.0
 tracks/0/type = "value"
@@ -36,10 +36,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 6, 12, 18, 24, 30 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 5, 10, 15, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolRealArray( 0, 1 ), PoolRealArray( 0, 1.25 ), PoolRealArray( 0, 0.75 ), PoolRealArray( 0, 1.25 ), PoolRealArray( 0, 1 ), PoolRealArray( 0, 0.75 ) ]
+"values": [ PoolRealArray( 0, 1 ), PoolRealArray( 0, 1.25 ), PoolRealArray( 0, 1 ), PoolRealArray( 0, 0.75 ), PoolRealArray( 0, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -115,6 +115,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 9 )
+debug = false
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
