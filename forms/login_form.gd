@@ -7,7 +7,7 @@ var api_base
 
 var us_email
 var us_pass
-var token_file = "user://login/token.txt"
+
 
 onready var http: = $HTTPRequest
 onready var us_name_node = $VBoxContainer/Email
@@ -20,15 +20,19 @@ func ready():
 #func _process(delta: float) -> void:
 #	OS.set_window_title(str(OS.window_size))
 
+var token_file
 # Called by the engine.
 func _ready():
+	token_file = GlobalUserState.token_file
 	$"%Login".disabled = false
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(768, 768))
 
 func _on_Login_pressed():
 	us_email = us_name_node.text
 	us_pass = us_pass_node.text
-	login()
+
+	GlobalUserState.login(us_email, us_pass)
+	
 	$"%Login".disabled = true
 
 func login(_us_email = us_email, _us_pass = us_pass):
@@ -58,27 +62,7 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 	if res.has("access_token"):
 		emit_signal("access_token_received", res["access_token"])
 
-	save_access_token(res)
-
-
-func save_access_token(res: Dictionary):
-	var file = File.new()
-	print("token saving")
-	if file.open_encrypted_with_pass(token_file, File.WRITE, "pcf_dashboard") == OK:
-		file.store_string(res["access_token"])
-		file.close()
-
-func get_access_token():
-	var file = File.new()
-	var directory = Directory.new()
-	if file.file_exists(token_file):
-		if file.open_encrypted_with_pass(token_file, File.READ, "pcf_dashboard") == OK:
-			var token = file.get_as_text()
-			print("token loading")
-			file.close()
-			return token
-	else:
-		directory.make_dir_recursive(token_file.get_base_dir())
+	GlobalUserState.save_access_token(res)
 
 
 

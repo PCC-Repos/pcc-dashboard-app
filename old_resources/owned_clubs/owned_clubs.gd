@@ -2,7 +2,7 @@ extends VBoxContainer
 
 signal show_join_club_modal()
 
-const UserClubButton = preload("res://resources/user_clubs/user_club.tscn")
+const UserClubButton = preload("res://old_resources/user_clubs/user_club.tscn")
 
 var api_base
 var current_user_id = -1

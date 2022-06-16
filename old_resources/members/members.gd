@@ -2,7 +2,7 @@ extends VBoxContainer
 
 signal show_add_member_modal()
 
-const MemberButton = preload("res://resources/members/member.tscn")
+const MemberButton = preload("res://old_resources/members/member.tscn")
 
 var api_base
 

@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://resources/clubs/clubs.gd" type="Script" id=1]
+[ext_resource path="res://old_resources/clubs/clubs.gd" type="Script" id=1]
 [ext_resource path="res://themes/default.tres" type="Theme" id=3]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=4]
+
 
 [sub_resource type="ButtonGroup" id=1]
 

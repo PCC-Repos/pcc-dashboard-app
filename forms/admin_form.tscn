@@ -1,19 +1,22 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://forms/admin_form.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=2]
 [ext_resource path="res://audio/audio_stream_random_player.gd" type="Script" id=3]
-[ext_resource path="res://resources/free_agents/free_agents.gd" type="Script" id=5]
-[ext_resource path="res://resources/members/members.gd" type="Script" id=6]
-[ext_resource path="res://resources/items/items.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/fonts/BigTitle.tres" type="DynamicFont" id=4]
+[ext_resource path="res://old_resources/free_agents/free_agents.gd" type="Script" id=5]
+[ext_resource path="res://old_resources/members/members.gd" type="Script" id=6]
+[ext_resource path="res://resources/items/items.gd" type="Script" id=7]
 [ext_resource path="res://assets/images/UI/AdminBadge.svg" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/TitleFont.tres" type="DynamicFont" id=9]
 [ext_resource path="res://ui_classes/TabButtons.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/images/UI/Clubs.svg" type="Texture" id=11]
+[ext_resource path="res://resources/transactions/transactions.gd" type="Script" id=12]
 [ext_resource path="res://dialogs/add_member_dialog.tscn" type="PackedScene" id=13]
-[ext_resource path="res://resources/clubs/clubs.gd" type="Script" id=14]
+[ext_resource path="res://old_resources/clubs/clubs.gd" type="Script" id=14]
 [ext_resource path="res://dialogs/edit_club_dialog.tscn" type="PackedScene" id=15]
-[ext_resource path="res://resources/invites/invites.gd" type="Script" id=16]
+[ext_resource path="res://old_resources/invites/invites.gd" type="Script" id=16]
+[ext_resource path="res://resources/players/Players.gd" type="Script" id=17]
 [ext_resource path="res://dialogs/create_club_dialog.tscn" type="PackedScene" id=18]
 [ext_resource path="res://dialogs/join_club_dialog.tscn" type="PackedScene" id=19]
 [ext_resource path="res://dialogs/edit_user_dialog.tscn" type="PackedScene" id=20]
@@ -26,7 +29,10 @@
 [ext_resource path="res://assets/music/music3.mp3" type="AudioStream" id=27]
 [ext_resource path="res://assets/images/UI/Transactions.svg" type="Texture" id=28]
 [ext_resource path="res://ui_classes/VButtonContainer.gd" type="Script" id=29]
-[ext_resource path="res://resources/transactions/transactions.tscn" type="PackedScene" id=30]
+[ext_resource path="res://ui_classes/WindowDialog.tscn" type="PackedScene" id=30]
+[ext_resource path="res://resources/transactions/transaction.tscn" type="PackedScene" id=31]
+[ext_resource path="res://ui_classes/PlaceholderLineEdit.tscn" type="PackedScene" id=32]
+[ext_resource path="res://resources/clubs/Clubs.gd" type="Script" id=33]
 
 [sub_resource type="Gradient" id=8]
 interpolation_mode = 2
@@ -131,7 +137,7 @@ margin_right = 1326.0
 margin_bottom = 35.0
 
 [node name="Users" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
-margin_right = 325.0
+margin_right = 258.0
 margin_bottom = 35.0
 mouse_filter = 1
 pressed = true
@@ -142,8 +148,8 @@ tab_container = NodePath("../../TabContainer")
 
 [node name="Clubs" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
 unique_name_in_owner = true
-margin_left = 333.0
-margin_right = 659.0
+margin_left = 266.0
+margin_right = 525.0
 margin_bottom = 35.0
 mouse_filter = 1
 group = SubResource( 12 )
@@ -152,8 +158,9 @@ icon = ExtResource( 11 )
 tab_container = NodePath("../../TabContainer")
 
 [node name="Marketplace" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
-margin_left = 667.0
-margin_right = 992.0
+unique_name_in_owner = true
+margin_left = 533.0
+margin_right = 792.0
 margin_bottom = 35.0
 mouse_filter = 1
 group = SubResource( 12 )
@@ -162,8 +169,8 @@ icon = ExtResource( 23 )
 tab_container = NodePath("../../TabContainer")
 
 [node name="Transactions" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
-margin_left = 1000.0
-margin_right = 1326.0
+margin_left = 800.0
+margin_right = 1059.0
 margin_bottom = 35.0
 mouse_filter = 1
 group = SubResource( 12 )
@@ -171,15 +178,15 @@ text = "Transactions"
 icon = ExtResource( 28 )
 tab_container = NodePath("../../TabContainer")
 
-[node name="FreeAgents" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
-visible = false
+[node name="Admin" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
+unique_name_in_owner = true
 margin_left = 1067.0
 margin_right = 1326.0
 margin_bottom = 35.0
 mouse_filter = 1
 group = SubResource( 12 )
-text = "Free Agents"
-icon = ExtResource( 21 )
+text = "Admin"
+icon = ExtResource( 8 )
 tab_container = NodePath("../../TabContainer")
 
 [node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer"]
@@ -207,6 +214,7 @@ margin_right = -20.0
 margin_bottom = -20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 17 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players"]
 margin_right = 1286.0
@@ -247,6 +255,7 @@ margin_right = 412.0
 margin_bottom = 39.0
 
 [node name="Invites" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites"]
+unique_name_in_owner = true
 margin_top = 47.0
 margin_right = 412.0
 margin_bottom = 531.0
@@ -260,10 +269,6 @@ margin_right = 412.0
 margin_bottom = 484.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 29 )
-toggle_mode = true
-default = 0
-null_is_allowed = true
 
 [node name="Create" type="Button" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites"]
 visible = false
@@ -307,6 +312,7 @@ margin_right = 413.0
 margin_bottom = 39.0
 
 [node name="Applications" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications"]
+unique_name_in_owner = true
 margin_top = 47.0
 margin_right = 413.0
 margin_bottom = 490.0
@@ -316,8 +322,6 @@ scroll_horizontal_enabled = false
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications/Applications"]
 margin_right = 413.0
 size_flags_horizontal = 3
-script = ExtResource( 29 )
-toggle_mode = false
 
 [node name="JoinClubButton" type="Button" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications"]
 margin_top = 498.0
@@ -362,6 +366,7 @@ margin_right = 413.0
 margin_bottom = 39.0
 
 [node name="Awards" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards"]
+unique_name_in_owner = true
 margin_top = 47.0
 margin_right = 413.0
 margin_bottom = 531.0
@@ -400,6 +405,7 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = -20.0
 margin_bottom = -20.0
+script = ExtResource( 33 )
 
 [node name="Name" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club"]
 margin_right = 1286.0
@@ -692,7 +698,7 @@ margin_bottom = 92.0
 theme = ExtResource( 24 )
 items = [ "Invite", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Copy ID", null, 0, false, false, 3, 0, null, "", false ]
 
-[node name="TransferMarket" type="Control" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
+[node name="TransferMarket" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -700,30 +706,180 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = -20.0
 margin_bottom = -20.0
+script = ExtResource( 7 )
 
-[node name="Items" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/TransferMarket" groups=["login_ready"] instance=ExtResource( 7 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1286.0
-margin_bottom = 581.0
-size_flags_horizontal = 3
+[node name="Items" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/TransferMarket"]
+margin_right = 1366.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+custom_fonts/font = ExtResource( 9 )
+text = "Items"
+align = 1
+valign = 1
 
-[node name="Transactions" type="Control" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/TransferMarket"]
+margin_top = 38.0
+margin_right = 1366.0
+margin_bottom = 42.0
 
-[node name="Transactions" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions" instance=ExtResource( 30 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 1286.0
-margin_bottom = 581.0
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/TransferMarket"]
+margin_top = 46.0
+margin_right = 1366.0
+margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/TransferMarket/ScrollContainer"]
+margin_right = 1366.0
+margin_bottom = 722.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/TransferMarket"]
+
+[node name="ItemsMenu" type="PopupMenu" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/TransferMarket/CanvasLayer"]
+margin_right = 130.0
+margin_bottom = 92.0
+theme = ExtResource( 24 )
+items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "Delete", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Copy ID", null, 0, false, false, 3, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Transactions" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+script = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions"]
+margin_right = 1346.0
+margin_bottom = 26.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 9 )
+text = "Transactions"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions"]
+margin_top = 30.0
+margin_right = 1346.0
+margin_bottom = 34.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions"]
+margin_top = 38.0
+margin_right = 1346.0
+margin_bottom = 81.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions/PanelContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1336.0
+margin_bottom = 33.0
+rect_pivot_offset = Vector2( -565, -113 )
+
+[node name="Button5" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions/PanelContainer/HBoxContainer"]
+margin_right = 322.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Buyer"
+align = 1
+valign = 1
+
+[node name="VSeparator" type="VSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions/PanelContainer/HBoxContainer"]
+margin_left = 326.0
+margin_right = 330.0
+margin_bottom = 23.0
+
+[node name="Button2" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions/PanelContainer/HBoxContainer"]
+margin_left = 334.0
+margin_right = 657.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Seller"
+align = 1
+valign = 1
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions/PanelContainer/HBoxContainer"]
+margin_left = 661.0
+margin_right = 665.0
+margin_bottom = 23.0
+
+[node name="Button3" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions/PanelContainer/HBoxContainer"]
+margin_left = 669.0
+margin_right = 991.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Item"
+align = 1
+valign = 1
+
+[node name="VSeparator3" type="VSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions/PanelContainer/HBoxContainer"]
+margin_left = 995.0
+margin_right = 999.0
+margin_bottom = 23.0
+
+[node name="Button4" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions/PanelContainer/HBoxContainer"]
+margin_left = 1003.0
+margin_right = 1326.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Price"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions"]
+margin_top = 85.0
+margin_right = 1346.0
+margin_bottom = 748.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Transactions" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions/ScrollContainer"]
+margin_right = 1346.0
+margin_bottom = 663.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions/ScrollContainer/Transactions" instance=ExtResource( 31 )]
+anchor_right = 0.0
+margin_right = 1346.0
+
+[node name="Button2" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Transactions/ScrollContainer/Transactions" instance=ExtResource( 31 )]
+anchor_right = 0.0
+margin_top = 37.0
+margin_right = 1346.0
+margin_bottom = 70.0
+
+[node name="Admin" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Admin"]
+margin_right = 1286.0
+margin_bottom = 581.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Coming Soon"
+align = 1
+valign = 1
 
 [node name="Modals" type="Control" parent="."]
 anchor_right = 1.0
@@ -753,7 +909,6 @@ __meta__ = {
 }
 
 [node name="JoinClubModal" parent="Modals" instance=ExtResource( 19 )]
-visible = false
 margin_left = -160.0
 margin_right = 160.0
 margin_bottom = 56.0
@@ -782,6 +937,67 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="Panel" parent="Modals" instance=ExtResource( 30 )]
+title = "Apply for club"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Modals/Panel"]
+margin_left = 432.0
+margin_top = 244.0
+margin_right = 905.0
+margin_bottom = 513.0
+custom_constants/separation = 20
+
+[node name="ID" type="VBoxContainer" parent="Modals/Panel/VBoxContainer"]
+margin_right = 473.0
+margin_bottom = 65.0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Modals/Panel/VBoxContainer/ID"]
+margin_right = 473.0
+margin_bottom = 23.0
+text = "Club"
+
+[node name="ID" type="OptionButton" parent="Modals/Panel/VBoxContainer/ID"]
+unique_name_in_owner = true
+margin_top = 31.0
+margin_right = 473.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+text = "Indie Dev's Club"
+items = [ "Indie Dev's Club", null, false, 0, null, "Pluribus Unum", null, false, 1, null, "Test Club", null, false, 2, null, "Pluribus Dragons", null, false, 3, null ]
+selected = 0
+
+[node name="Reason" type="VBoxContainer" parent="Modals/Panel/VBoxContainer"]
+margin_top = 85.0
+margin_right = 473.0
+margin_bottom = 216.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Modals/Panel/VBoxContainer/Reason"]
+margin_right = 473.0
+margin_bottom = 23.0
+text = "Reason"
+
+[node name="ID2" parent="Modals/Panel/VBoxContainer/Reason" instance=ExtResource( 32 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 31.0
+margin_right = 473.0
+margin_bottom = 131.0
+placeholder_text = "Your reason to join the club?"
+
+[node name="Join" type="Button" parent="Modals/Panel/VBoxContainer"]
+unique_name_in_owner = true
+margin_left = 161.0
+margin_top = 236.0
+margin_right = 311.0
+margin_bottom = 269.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 6
+size_flags_vertical = 8
+text = "Join Club"
+
 [node name="AudioStreamRandomPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 22 )
 bus = "Music"
@@ -790,24 +1006,15 @@ audio_stream_list = [ ExtResource( 22 ), ExtResource( 25 ), ExtResource( 27 ), E
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[connection signal="button_toggled" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites/Invites/VBoxContainer" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites" method="_on_VBoxContainer_button_toggled"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites/Create" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites" method="_on_Create_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications/JoinClubButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications" method="_on_JoinClubButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards/JoinClubButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards" method="_on_JoinClubButton_pressed"]
 [connection signal="club_changed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Members" method="_on_Clubs_club_changed"]
-[connection signal="show_create_club_modal" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs" to="Modals/CreateClubModal" method="_on_Clubs_show_create_club_modal"]
-[connection signal="show_edit_club_modal" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs" to="Modals/EditClubModal" method="_on_Clubs_show_edit_club_modal"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs/CreateNewButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs" method="_on_CreateNewButton_pressed"]
 [connection signal="button_toggled" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Applications/Applications/VBoxContainer" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Applications" method="_on_VBoxContainer_button_toggled"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Applications/CreateNewButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Applications" method="_on_CreateNewButton_pressed"]
-[connection signal="show_add_member_modal" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Members" to="Modals/AddMemberModal" method="_on_Members_show_add_member_modal"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Members/Add" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Members" method="_on_Add_pressed"]
 [connection signal="button_toggled" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Agents/Agents/VBoxContainer" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Agents" method="_on_VBoxContainer_button_toggled"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Agents/Invite" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Agents" method="_on_Invite_pressed"]
-[connection signal="submit" from="Modals/CreateClubModal" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs" method="_on_CreateClubModal_submit"]
-[connection signal="submit" from="Modals/AddMemberModal" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Members" method="_on_AddMemberModal_submit"]
-[connection signal="submit" from="Modals/JoinClubModal" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards" method="_on_JoinClubModal_submit"]
-[connection signal="submit" from="Modals/EditClubModal" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs" method="_on_EditClubModal_submit"]
-[connection signal="submit" from="Modals/EditUserModal" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites" method="_on_EditUserModal_submit"]
 [connection signal="finished" from="AudioStreamRandomPlayer" to="AudioStreamRandomPlayer" method="_on_AudioStreamRandomPlayer_finished"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_request_completed"]

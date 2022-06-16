@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="ThemedButton" type="Button"]
+margin_right = 85.0
+margin_bottom = 33.0
+theme_type_variation = "ListButton"

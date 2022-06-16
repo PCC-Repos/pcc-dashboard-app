@@ -7,7 +7,8 @@ var api_base
 onready var item_container = $ScrollContainer/HFlowContainer
 
 func ready():
-	fetch_items_api()
+	pass
+#	fetch_items_api()
 
 func fetch_items_api():
 #	clear_children(item_container)

@@ -303,6 +303,7 @@ config/quit_on_go_back=false
 
 NotificationServer="*res://systems/notifications/notification_server.gd"
 NotificationPopup="*res://ui_classes/NotificationPopup.tscn"
+GlobalUserState="*res://autoloads/GlobalUserState.gd"
 
 [display]
 

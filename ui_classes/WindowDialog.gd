@@ -1,3 +1,4 @@
+tool
 extends Panel
 class_name CustomWinDia
 
@@ -8,13 +9,18 @@ export var tween_speed: float = 3 # The greater, the faster! (pixels/second)
 
 
 func _ready() -> void:
+	set("title", title)
+	set("resizable", resizable)
+	set("tween_speed", tween_speed)
 	$"%WindowDialog".get_close_button().hide()
 	$"%WindowDialog".resizable = resizable
 	$"%WindowDialog".rect_min_size.x = $"%TitleBar".rect_size.x + 20 + $"%CloseButton".rect_size.x
 	$"%TitleBar".rect_position.y = 10
 	$"%CloseButton".rect_position = Vector2($"%WindowDialog".rect_size.x - $"%CloseButton".rect_size.x, $"%CloseButton".rect_size.y)
-	popup(true)
-
+	if not Engine.editor_hint:
+		for idx in range(1, get_child_count()):
+			change_parent_to_body(get_child(idx))
+		popup(true)
 
 func popup(show: bool = true):
 #	$"%"
@@ -55,8 +61,16 @@ func _on_ScrollContainer_resized() -> void:
 
 func set_title(new: String):
 	title = new
+	if !is_inside_tree():
+		return
 	$"%TitleBar".text = title
 
 func set_resizable(new: bool):
 	resizable = new
+	if !is_inside_tree():
+		return
 	$"%WindowDialog".resizable = resizable
+
+func change_parent_to_body(node):
+	node.get_parent().remove_child(node)
+	$"%Body".add_child(node)

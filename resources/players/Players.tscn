@@ -1,0 +1,207 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui_classes/VButtonContainer.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/TitleFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://themes/default.tres" type="Theme" id=3]
+[ext_resource path="res://resources/players/Players.gd" type="Script" id=4]
+
+[node name="Players" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+margin_right = 1326.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 2 )
+text = "Player name"
+align = 1
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_top = 34.0
+margin_right = 1326.0
+margin_bottom = 42.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 50.0
+margin_right = 1326.0
+margin_bottom = 728.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Invites" type="VBoxContainer" parent="HBoxContainer" groups=["login_ready"]]
+margin_right = 426.0
+margin_bottom = 678.0
+rect_min_size = Vector2( 126, 0 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Invites"]
+margin_right = 426.0
+margin_bottom = 23.0
+text = "Invites"
+align = 1
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Invites"]
+margin_top = 31.0
+margin_right = 426.0
+margin_bottom = 39.0
+
+[node name="Invites" type="ScrollContainer" parent="HBoxContainer/Invites"]
+margin_top = 47.0
+margin_right = 426.0
+margin_bottom = 678.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Invites/Invites"]
+margin_right = 426.0
+margin_bottom = 631.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+toggle_mode = true
+default = 0
+null_is_allowed = true
+
+[node name="Create" type="Button" parent="HBoxContainer/Invites"]
+visible = false
+margin_top = 498.0
+margin_right = 418.0
+margin_bottom = 531.0
+mouse_default_cursor_shape = 2
+theme_type_variation = "RedButton"
+text = "Logout"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/Invites"]
+
+[node name="UsersMenu" type="PopupMenu" parent="HBoxContainer/Invites/CanvasLayer"]
+margin_right = 130.0
+margin_bottom = 92.0
+theme = ExtResource( 3 )
+items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "Delete", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Copy ID", null, 0, false, false, 3, 0, null, "", false ]
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+margin_left = 434.0
+margin_right = 442.0
+margin_bottom = 678.0
+
+[node name="Applications" type="VBoxContainer" parent="HBoxContainer" groups=["login_ready"]]
+margin_left = 450.0
+margin_right = 876.0
+margin_bottom = 678.0
+rect_min_size = Vector2( 126, 0 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Applications"]
+margin_right = 426.0
+margin_bottom = 23.0
+text = "Applications"
+align = 1
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Applications"]
+margin_top = 31.0
+margin_right = 426.0
+margin_bottom = 39.0
+
+[node name="Applications" type="ScrollContainer" parent="HBoxContainer/Applications"]
+margin_top = 47.0
+margin_right = 426.0
+margin_bottom = 637.0
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Applications/Applications"]
+margin_right = 426.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+toggle_mode = false
+
+[node name="JoinClubButton" type="Button" parent="HBoxContainer/Applications"]
+margin_top = 645.0
+margin_right = 426.0
+margin_bottom = 678.0
+theme_type_variation = "GreenButton"
+text = "➕ Join a club"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/Applications"]
+
+[node name="UserClubsMenu" type="PopupMenu" parent="HBoxContainer/Applications/CanvasLayer"]
+margin_right = 130.0
+margin_bottom = 74.0
+theme = ExtResource( 3 )
+items = [ "Delete", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, false, 1, 0, null, "", true, "Copy ID", null, 0, false, false, 2, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+margin_left = 884.0
+margin_right = 892.0
+margin_bottom = 678.0
+
+[node name="Awards" type="VBoxContainer" parent="HBoxContainer" groups=["login_ready"]]
+margin_left = 900.0
+margin_right = 1326.0
+margin_bottom = 678.0
+rect_min_size = Vector2( 126, 0 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Awards"]
+margin_right = 426.0
+margin_bottom = 23.0
+text = "Awards"
+align = 1
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Awards"]
+margin_top = 31.0
+margin_right = 426.0
+margin_bottom = 39.0
+
+[node name="Awards" type="ScrollContainer" parent="HBoxContainer/Awards"]
+margin_top = 47.0
+margin_right = 426.0
+margin_bottom = 678.0
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Awards/Awards"]
+margin_right = 426.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+toggle_mode = false
+
+[node name="JoinClubButton" type="Button" parent="HBoxContainer/Awards"]
+visible = false
+margin_top = 498.0
+margin_right = 413.0
+margin_bottom = 531.0
+text = "Join a Club"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/Awards"]
+
+[node name="UserClubsMenu" type="PopupMenu" parent="HBoxContainer/Awards/CanvasLayer"]
+margin_right = 130.0
+margin_bottom = 74.0
+theme = ExtResource( 3 )
+items = [ "Leave", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, false, 1, 0, null, "", true, "Copy ID", null, 0, false, false, 2, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_toggled" from="HBoxContainer/Invites/Invites/VBoxContainer" to="HBoxContainer/Invites" method="_on_VBoxContainer_button_toggled"]
+[connection signal="pressed" from="HBoxContainer/Invites/Create" to="HBoxContainer/Invites" method="_on_Create_pressed"]
+[connection signal="pressed" from="HBoxContainer/Applications/JoinClubButton" to="HBoxContainer/Applications" method="_on_JoinClubButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/Awards/JoinClubButton" to="HBoxContainer/Awards" method="_on_JoinClubButton_pressed"]

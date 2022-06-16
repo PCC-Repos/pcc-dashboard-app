@@ -3,7 +3,6 @@
 [ext_resource path="res://dialogs/join_club_dialog.gd" type="Script" id=1]
 
 [node name="JoinClubModal" type="WindowDialog"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

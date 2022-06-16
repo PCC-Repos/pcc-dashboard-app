@@ -21,7 +21,7 @@ func _on_Create_pressed():
 	us_email = $"%Email".text
 	us_pass = $"%Pass".text
 	var us_conf_pass = $"%ConPass".text
-	if us_pass == us_conf_pass:
+	if us_pass != us_conf_pass:
 		NotificationServer.notify_warning("Passwords don't match.")
 		return
 
@@ -39,7 +39,7 @@ func create_user_api(us_name, us_email, us_pass):
 # warning-ignore:unused_argument
 # warning-ignore:unused_argument
 func _create_user_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
-	if response_code != 200:
+	if response_code != 201:
 		print("Something went wrong")
 		print(body.get_string_from_utf8())
 		return

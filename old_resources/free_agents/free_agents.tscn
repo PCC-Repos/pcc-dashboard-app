@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://resources/free_agents/free_agents.gd" type="Script" id=1]
+[ext_resource path="res://old_resources/free_agents/free_agents.gd" type="Script" id=1]
 [ext_resource path="res://ui_classes/VButtonContainer.gd" type="Script" id=2]
 [ext_resource path="res://themes/default.tres" type="Theme" id=3]
+
 
 [node name="Agents" type="VBoxContainer"]
 margin_left = 888.0

@@ -3,7 +3,7 @@ extends VBoxContainer
 signal user_changed(user_id)
 signal show_edit_user_modal(user_id)
 
-const UserButton = preload("res://resources/users/user.tscn")
+const UserButton = preload("res://old_resources/users/user.tscn")
 
 var api_base
 

@@ -9,11 +9,12 @@ var api_base
 var headers
 var user
 
-const ClubButton = preload("res://resources/clubs/club.tscn")
+const ClubButton = preload("res://old_resources/clubs/club.tscn")
 
 
 func ready():
-	fetch_clubs()
+	pass
+#	fetch_clubs()
 
 # warning-ignore:unused_argument
 # warning-ignore:unused_argument
@@ -27,6 +28,7 @@ func _fetch_clubs(result: int, response_code: int, headers: PoolStringArray, bod
 	print("Response recieved, fetched clubs.")
 	http_req.queue_free()
 	var json = parse_json(body.get_string_from_utf8())
+	print(json)
 	for club in json:
 		_create_club(club)
 
@@ -65,9 +67,11 @@ func _create_club_api(result: int, response_code: int, headers: PoolStringArray,
 	if response_code != 200:
 		print("Something went wrong")
 		print(body.get_string_from_utf8())
+		if parse_json(body.get_string_from_utf8()).detail == "Club can only be created by admins.":
+			NotificationServer.notify_error("Sorry! You are not an Admin. Can't create a club!")
+		return
 	http_req.queue_free()
-	var json = parse_json(body.get_string_from_utf8())
-	_create_club(json)
+	_create_club(parse_json(body.get_string_from_utf8()))
 
 
 func _create_club(club: Dictionary):
@@ -79,6 +83,7 @@ func _create_club(club: Dictionary):
 	club_btn.connect("long_tap", self, "_show_popup_touch", [club["id"]])
 	$Clubs/VBoxContainer.add_child(club_btn)
 	$Clubs/VBoxContainer.update()
+	print("club created")
 
 
 func _show_popup_mouse(button_index, club_id):

@@ -3,7 +3,7 @@ extends VBoxContainer
 signal user_changed(user_id)
 signal show_invite_user_modal(user_id)
 
-const UserButton = preload("res://resources/free_agents/user.tscn")
+const UserButton = preload("res://old_resources/free_agents/user.tscn")
 
 var api_base
 
@@ -12,14 +12,15 @@ var user
 var user_agent
 
 func ready():
-	fetch_users()
-	$Agents/VBoxContainer.update()
-	user_agent = user.agent_type
-	match user_agent:
-		"not_interested":
-			$Invite.text = "Join as free agent"
-		"free":
-			$Invite.text = "Leave free agent"
+	pass
+#	fetch_users()
+#	$Agents/VBoxContainer.update()
+#	user_agent = user.agent_type
+#	match user_agent:
+#		"not_interested":
+#			$Invite.text = "Join as free agent"
+#		"free":
+#			$Invite.text = "Leave free agent"
 
 
 func fetch_users():
