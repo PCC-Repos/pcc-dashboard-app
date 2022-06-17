@@ -31,7 +31,7 @@
 [ext_resource path="res://ui_classes/VButtonContainer.gd" type="Script" id=29]
 [ext_resource path="res://ui_classes/WindowDialog.tscn" type="PackedScene" id=30]
 [ext_resource path="res://resources/transactions/transaction.tscn" type="PackedScene" id=31]
-[ext_resource path="res://ui_classes/PlaceholderLineEdit.tscn" type="PackedScene" id=32]
+[ext_resource path="res://ui_classes/PlaceholderTextEdit.tscn" type="PackedScene" id=32]
 [ext_resource path="res://resources/clubs/Clubs.gd" type="Script" id=33]
 
 [sub_resource type="Gradient" id=8]
@@ -93,8 +93,8 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 53.0
-margin_right = 200.0
+margin_left = 49.0
+margin_right = 196.0
 margin_bottom = 42.0
 size_flags_vertical = 3
 theme_type_variation = "Titles"
@@ -137,7 +137,7 @@ margin_right = 1326.0
 margin_bottom = 35.0
 
 [node name="Users" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
-margin_right = 258.0
+margin_right = 262.0
 margin_bottom = 35.0
 mouse_filter = 1
 pressed = true
@@ -149,7 +149,7 @@ tab_container = NodePath("../../TabContainer")
 [node name="Clubs" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
 unique_name_in_owner = true
 margin_left = 266.0
-margin_right = 525.0
+margin_right = 528.0
 margin_bottom = 35.0
 mouse_filter = 1
 group = SubResource( 12 )
@@ -159,8 +159,8 @@ tab_container = NodePath("../../TabContainer")
 
 [node name="Marketplace" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
 unique_name_in_owner = true
-margin_left = 533.0
-margin_right = 792.0
+margin_left = 532.0
+margin_right = 794.0
 margin_bottom = 35.0
 mouse_filter = 1
 group = SubResource( 12 )
@@ -169,8 +169,8 @@ icon = ExtResource( 23 )
 tab_container = NodePath("../../TabContainer")
 
 [node name="Transactions" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
-margin_left = 800.0
-margin_right = 1059.0
+margin_left = 798.0
+margin_right = 1060.0
 margin_bottom = 35.0
 mouse_filter = 1
 group = SubResource( 12 )
@@ -180,7 +180,7 @@ tab_container = NodePath("../../TabContainer")
 
 [node name="Admin" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabButtons" instance=ExtResource( 10 )]
 unique_name_in_owner = true
-margin_left = 1067.0
+margin_left = 1064.0
 margin_right = 1326.0
 margin_bottom = 35.0
 mouse_filter = 1
@@ -216,7 +216,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 17 )
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players"]
+[node name="PlayerName" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players"]
+unique_name_in_owner = true
 margin_right = 1286.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 9 )
@@ -225,59 +226,50 @@ align = 1
 valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players"]
-margin_top = 34.0
+margin_top = 30.0
 margin_right = 1286.0
-margin_bottom = 42.0
+margin_bottom = 34.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players"]
-margin_top = 50.0
+margin_top = 38.0
 margin_right = 1286.0
 margin_bottom = 581.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Invites" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer" groups=["login_ready"]]
-margin_right = 412.0
-margin_bottom = 531.0
+margin_right = 420.0
+margin_bottom = 543.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites"]
-margin_right = 412.0
+margin_right = 420.0
 margin_bottom = 23.0
 text = "Invites"
 align = 1
 valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites"]
-margin_top = 31.0
-margin_right = 412.0
-margin_bottom = 39.0
+margin_top = 27.0
+margin_right = 420.0
+margin_bottom = 31.0
 
 [node name="Invites" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites"]
 unique_name_in_owner = true
-margin_top = 47.0
-margin_right = 412.0
-margin_bottom = 531.0
+margin_top = 35.0
+margin_right = 420.0
+margin_bottom = 543.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites/Invites"]
-margin_right = 412.0
-margin_bottom = 484.0
+margin_right = 420.0
+margin_bottom = 508.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Create" type="Button" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites"]
-visible = false
-margin_top = 498.0
-margin_right = 418.0
-margin_bottom = 531.0
-mouse_default_cursor_shape = 2
-theme_type_variation = "RedButton"
-text = "Logout"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites"]
 
@@ -288,45 +280,45 @@ theme = ExtResource( 24 )
 items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "Delete", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Copy ID", null, 0, false, false, 3, 0, null, "", false ]
 
 [node name="VSeparator" type="VSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer"]
-margin_left = 420.0
+margin_left = 424.0
 margin_right = 428.0
-margin_bottom = 531.0
+margin_bottom = 543.0
 
 [node name="Applications" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer" groups=["login_ready"]]
-margin_left = 436.0
-margin_right = 849.0
-margin_bottom = 531.0
+margin_left = 432.0
+margin_right = 853.0
+margin_bottom = 543.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications"]
-margin_right = 413.0
+margin_right = 421.0
 margin_bottom = 23.0
 text = "Applications"
 align = 1
 valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications"]
-margin_top = 31.0
-margin_right = 413.0
-margin_bottom = 39.0
+margin_top = 27.0
+margin_right = 421.0
+margin_bottom = 31.0
 
 [node name="Applications" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications"]
 unique_name_in_owner = true
-margin_top = 47.0
-margin_right = 413.0
-margin_bottom = 490.0
+margin_top = 35.0
+margin_right = 421.0
+margin_bottom = 506.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications/Applications"]
-margin_right = 413.0
+margin_right = 421.0
 size_flags_horizontal = 3
 
 [node name="JoinClubButton" type="Button" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications"]
-margin_top = 498.0
-margin_right = 413.0
-margin_bottom = 531.0
+margin_top = 510.0
+margin_right = 421.0
+margin_bottom = 543.0
 theme_type_variation = "GreenButton"
 text = "➕ Join a club"
 
@@ -343,38 +335,38 @@ __meta__ = {
 
 [node name="VSeparator2" type="VSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer"]
 margin_left = 857.0
-margin_right = 865.0
-margin_bottom = 531.0
+margin_right = 861.0
+margin_bottom = 543.0
 
 [node name="Awards" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer" groups=["login_ready"]]
-margin_left = 873.0
+margin_left = 865.0
 margin_right = 1286.0
-margin_bottom = 531.0
+margin_bottom = 543.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards"]
-margin_right = 413.0
+margin_right = 421.0
 margin_bottom = 23.0
 text = "Awards"
 align = 1
 valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards"]
-margin_top = 31.0
-margin_right = 413.0
-margin_bottom = 39.0
+margin_top = 27.0
+margin_right = 421.0
+margin_bottom = 31.0
 
 [node name="Awards" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards"]
 unique_name_in_owner = true
-margin_top = 47.0
-margin_right = 413.0
-margin_bottom = 531.0
+margin_top = 35.0
+margin_right = 421.0
+margin_bottom = 543.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards/Awards"]
-margin_right = 413.0
+margin_right = 421.0
 size_flags_horizontal = 3
 script = ExtResource( 29 )
 toggle_mode = false
@@ -938,7 +930,11 @@ __meta__ = {
 }
 
 [node name="Panel" parent="Modals" instance=ExtResource( 30 )]
-title = "Apply for club"
+visible = false
+__meta__ = {
+"_edit_group_": true
+}
+title = "Apply for Club"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Modals/Panel"]
 margin_left = 432.0
@@ -986,6 +982,7 @@ margin_top = 31.0
 margin_right = 473.0
 margin_bottom = 131.0
 placeholder_text = "Your reason to join the club?"
+placeholder_alpha = 0.5
 
 [node name="Join" type="Button" parent="Modals/Panel/VBoxContainer"]
 unique_name_in_owner = true
@@ -1006,7 +1003,6 @@ audio_stream_list = [ ExtResource( 22 ), ExtResource( 25 ), ExtResource( 27 ), E
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites/Create" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Invites" method="_on_Create_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications/JoinClubButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications" method="_on_JoinClubButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards/JoinClubButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards" method="_on_JoinClubButton_pressed"]
 [connection signal="club_changed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Members" method="_on_Clubs_club_changed"]

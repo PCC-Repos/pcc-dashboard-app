@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://ui_classes/PlaceholderLineEdit.gd" type="Script" id=1]
+[ext_resource path="res://ui_classes/PlaceholderTextEdit.gd" type="Script" id=1]
 
-[node name="LineEdit" type="TextEdit"]
+[node name="TextEdit" type="TextEdit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -12,13 +12,16 @@ margin_bottom = -10.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
 script = ExtResource( 1 )
+placeholder_text = "Placeholder Text"
 
 [node name="Label" type="Label" parent="."]
 self_modulate = Color( 1, 1, 1, 0.486275 )
 anchor_right = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = 23.0
+margin_left = 13.0
+margin_top = 5.0
+margin_right = -13.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Placeholder Text"
 
 [connection signal="text_changed" from="." to="." method="_on_LineEdit_text_changed"]

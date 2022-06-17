@@ -32,7 +32,7 @@ func _on_Login_pressed():
 	us_pass = us_pass_node.text
 
 	GlobalUserState.login(us_email, us_pass)
-	
+
 	$"%Login".disabled = true
 
 func login(_us_email = us_email, _us_pass = us_pass):

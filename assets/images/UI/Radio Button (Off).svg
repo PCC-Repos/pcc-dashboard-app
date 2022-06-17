@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="Radio Button (Off).svg"
+   width="32"
+   height="32"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6" />
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="19.94984"
+     inkscape:cx="10.401086"
+     inkscape:cy="15.413657"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2"
+     inkscape:snap-page="true"
+     showguides="false" />
+  <circle
+     style="fill:#4bb1da;fill-opacity:1;stroke-width:7.50628;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+     id="path1050"
+     cx="15.969989"
+     cy="15.969989"
+     r="12.010057" />
+  <path
+     style="fill:#003177;fill-opacity:1;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+     id="circle1821"
+     sodipodi:type="arc"
+     sodipodi:cx="15.969989"
+     sodipodi:cy="15.969989"
+     sodipodi:rx="12.010057"
+     sodipodi:ry="12.010057"
+     sodipodi:start="0.58286452"
+     sodipodi:end="5.6938524"
+     sodipodi:arc-type="slice"
+     d="M 25.997058,22.580538 A 12.010057,12.010057 0 0 1 12.537813,27.479187 12.010057,12.010057 0 0 1 3.9599942,16.008832 12.010057,12.010057 0 0 1 12.46344,4.4832315 12.010057,12.010057 0 0 1 25.954089,9.2947198 l -9.9841,6.6752692 z" />
+  <circle
+     style="fill:#4bb1da;fill-opacity:1;stroke-width:5.31929;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+     id="circle2261"
+     cx="15.969989"
+     cy="15.969989"
+     r="8.5108585" />
+</svg>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="Radio Button (On).svg"
+   width="32"
+   height="32"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6" />
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="19.94984"
+     inkscape:cx="13.559006"
+     inkscape:cy="14.762023"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2"
+     inkscape:snap-page="false" />
+  <path
+     style="fill:#003785;fill-opacity:1;stroke:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     id="path848"
+     sodipodi:type="arc"
+     sodipodi:cx="16.025394"
+     sodipodi:cy="16.025358"
+     sodipodi:rx="11.944358"
+     sodipodi:ry="11.944414"
+     sodipodi:start="0.61970968"
+     sodipodi:end="5.662173"
+     sodipodi:arc-type="slice"
+     d="M 25.748664,22.96266 A 11.944358,11.944414 0 0 1 12.387021,27.402139 11.944358,11.944414 0 0 1 4.0810391,16.033138 11.944358,11.944414 0 0 1 12.372204,4.6533265 11.944358,11.944414 0 0 1 25.73962,9.0753962 l -9.714226,6.9499618 z" />
+  <circle
+     style="fill:#30c2ff;fill-opacity:1;stroke:none;stroke-width:2.4958;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     id="circle1938"
+     cx="16.025394"
+     cy="16.025358"
+     r="9.2198029" />
+  <circle
+     style="fill:#003785;fill-opacity:1;stroke:none;stroke-width:1.48785;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     id="circle1127"
+     cx="16.025394"
+     cy="16.025358"
+     r="5.4963212" />
+  <path
+     style="fill:#003785;fill-opacity:1;stroke:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     id="path1568"
+     sodipodi:type="arc"
+     sodipodi:cx="16.025394"
+     sodipodi:cy="16.025358"
+     sodipodi:rx="11.944358"
+     sodipodi:ry="11.944414"
+     sodipodi:start="5.6583205"
+     sodipodi:end="0.62383074"
+     sodipodi:arc-type="slice"
+     d="m 25.712773,9.0380237 a 11.944358,11.944414 0 0 1 0.0072,13.9646483 l -9.694599,-6.977314 z" />
+</svg>

@@ -205,6 +205,7 @@ size = 36
 font_data = ExtResource( 1 )
 
 [sub_resource type="ViewportTexture" id=5]
+flags = 7
 viewport_path = NodePath("Viewport")
 
 [node name="Control" type="ColorRect"]

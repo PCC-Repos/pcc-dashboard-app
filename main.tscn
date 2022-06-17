@@ -128,7 +128,7 @@ anchor_bottom = 1.0
 
 [node name="ImageContainer" type="MarginContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 614.0
+margin_right = 616.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -151,7 +151,7 @@ stretch_mode = 6
 
 [node name="TabContainer" type="TabContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 622.0
+margin_left = 620.0
 margin_right = 1366.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
@@ -183,4 +183,3 @@ autoplay = true
 
 [connection signal="visibility_changed" from="." to="." method="_on_Main_visibility_changed"]
 [connection signal="tab_changed" from="HBoxContainer/TabContainer" to="." method="_on_TabContainer_tab_changed"]
-[connection signal="access_token_received" from="HBoxContainer/TabContainer/LoginForm" to="." method="_on_LoginForm_access_token_received"]

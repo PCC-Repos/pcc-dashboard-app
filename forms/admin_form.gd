@@ -27,7 +27,7 @@ func ready():
 	account_btn.text = user.name
 	account_btn.get_popup().connect("id_pressed", self, "_id_pressed")
 	NotificationServer.notify_info("Logged in as %s" % user.name)
-	
+
 #	$"%WheelButtons".buttons = {}
 #	for child_index in $"%TabContainer".get_child_count():
 #		$"%WheelButtons".buttons[$"%TabContainer".get_child(child_index).name] = preload("res://assets/images/PCF_Logo.png")

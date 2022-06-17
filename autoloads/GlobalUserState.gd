@@ -52,7 +52,7 @@ func login(us_email, us_password):
 	save_access_token(token)
 	if try_load_user():
 		emit_signal("logged_in")
-	
+
 
 func logout():
 	yield(client.get_rest_client().revoke(), "completed")
@@ -72,7 +72,7 @@ func try_load_user():
 		user = res
 		logged_in = true
 		print_debug("Loaded User, logged in!")
-		res = yield(GlobalUserState.client.get_rest_client().get_permissions(int(user.id)), "completed")
+		res = yield(GlobalUserState.client.get_rest_client().get_permissions(str(user.id)), "completed")
 		if res is HTTPResponse and res.is_error():
 			NotificationServer.notify_critical("Unable to fetch permissions.")
 		else:

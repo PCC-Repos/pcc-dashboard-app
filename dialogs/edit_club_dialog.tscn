@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://dialogs/edit_club_dialog.gd" type="Script" id=1]
-[ext_resource path="res://ui_classes/PlaceholderLineEdit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui_classes/PlaceholderTextEdit.tscn" type="PackedScene" id=2]
 
 [node name="EditClubModal" type="WindowDialog"]
 visible = true

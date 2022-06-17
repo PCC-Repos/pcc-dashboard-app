@@ -29,4 +29,4 @@ func _notification(what):
 func _on_StartTimer_timeout():
 	$Viewport/AnimationPlayer.play("RotatingLogo")
 	$Viewport/AnimationPlayer2.play("Text Animation")
-	
+

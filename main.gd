@@ -90,6 +90,20 @@ func ready_tween():
 #	user = res
 
 
+func logged_out():
+	print("logged out")
+#	get_tree().set_group("login_ready", "headers", PoolStringArray())
+#	get_tree().set_group("login_ready", "user", Dictionary())
+
+	admin_form.queue_free()
+
+	$"%TabContainer".show()
+	$HBoxContainer.show()
+	$"%ImageContainer".get_node("CanvasLayer").visible = true
+	ready_tween()
+	$"%TabContainer/LoginForm"._ready()
+	$AudioStreamPlayer.play()
+
 func logged_in():
 	$"%ImageContainer".get_node("CanvasLayer").visible = false
 
@@ -112,19 +126,6 @@ func init_admin():
 
 	$AudioStreamPlayer.stop()
 
-func logged_out():
-	print("logged out")
-#	get_tree().set_group("login_ready", "headers", PoolStringArray())
-#	get_tree().set_group("login_ready", "user", Dictionary())
-
-	admin_form.queue_free()
-
-	$"%TabContainer".show()
-	$HBoxContainer.show()
-	$"%ImageContainer".get_node("CanvasLayer").visible = true
-	ready_tween()
-	$"%TabContainer/LoginForm"._ready()
-	$AudioStreamPlayer.play()
 
 func refresh():
 	pass

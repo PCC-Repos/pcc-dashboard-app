@@ -1,20 +1,20 @@
 extends VBoxContainer
 
 
+var themed_btn = preload("res://ui_classes/ThemedButton.tscn")
+var button_group_invite = ButtonGroup.new()
+var button_group_award = ButtonGroup.new()
+
+
 func _ready():
-	$Label.text = GlobalUserState.user.name
-	
+	$"%PlayerName".text = GlobalUserState.user.name
+
 	var invites = GlobalUserState.user.invites
 	for invite in invites:
 		_create_invite(invite)
 	var awards = GlobalUserState.user.awards
 	for award in awards:
 		_create_invite(award)
-			
-	
-var themed_btn = preload("res://ui_classes/ThemedButton.tscn")
-var button_group_invite = ButtonGroup.new()
-var button_group_award = ButtonGroup.new()
 
 
 func _create_invite(invite: PartialInvite):
