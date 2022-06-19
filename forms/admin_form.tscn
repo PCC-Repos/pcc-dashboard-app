@@ -927,6 +927,7 @@ mouse_filter = 2
 visible = false
 
 [node name="ApplyClubDialog" parent="NextGenDialogs" instance=ExtResource( 30 )]
+visible = false
 
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications/JoinClubButton" to="NextGenDialogs/ApplyClubDialog" method="_on_JoinClubButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards/JoinClubButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards" method="_on_JoinClubButton_pressed"]

@@ -11,26 +11,26 @@ title = "Welcome"
 margin_left = -312.0
 margin_top = -197.0
 margin_right = 312.0
-margin_bottom = 215.0
+margin_bottom = 240.0
 
 [node name="ScrollContainer" parent="WindowDialog/VBoxContainer" index="0"]
 margin_right = 590.0
-margin_bottom = 372.0
+margin_bottom = 397.0
 
 [node name="Body" parent="WindowDialog/VBoxContainer/ScrollContainer" index="0"]
 margin_right = 590.0
-margin_bottom = 372.0
+margin_bottom = 397.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog/VBoxContainer/ScrollContainer/Body" index="0"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 580.0
-margin_bottom = 362.0
+margin_bottom = 387.0
 alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="0"]
 margin_right = 570.0
-margin_bottom = 315.0
+margin_bottom = 340.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
@@ -41,7 +41,8 @@ Pro Clubs Federation Dashboard.
 This is the first preview of the app for Managers only.[/color]
 
 [color=#ff7070][u]🐛 Alpha Stage 🐛[/u]
-The app is still buggy. The inconvenience caused is deeply regretted. The developers are already working to fix many issues. Please report any new issue if found![/color]
+The app is in Alpha stages, we regret the inconvinience caused, we're working on fixing bugs. Please provide your valuable feedback and report bugs as soon as possible!
+[/color]
 
 [color=yellow]📝Note: Managers have to be gated in to use this app.[/color]
 [/center]"
@@ -52,7 +53,8 @@ Pro Clubs Federation Dashboard.
 This is the first preview of the app for Managers only.
 
 🐛 Alpha Stage 🐛
-The app is still buggy. The inconvenience caused is deeply regretted. The developers are already working to fix many issues. Please report any new issue if found!
+The app is in Alpha stages, we regret the inconvinience caused, we're working on fixing bugs. Please provide your valuable feedback and report bugs as soon as possible!
+
 
 📝Note: Managers have to be gated in to use this app.
 "
@@ -60,9 +62,9 @@ fit_content_height = true
 
 [node name="Ok" type="Button" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="1"]
 margin_left = 240.0
-margin_top = 319.0
+margin_top = 344.0
 margin_right = 330.0
-margin_bottom = 352.0
+margin_bottom = 377.0
 rect_min_size = Vector2( 90, 0 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 6
