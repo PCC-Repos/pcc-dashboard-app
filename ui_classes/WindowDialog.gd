@@ -16,14 +16,18 @@ func _ready() -> void:
 	$"%WindowDialog".get_close_button().hide()
 	$"%WindowDialog".resizable = resizable
 	$"%WindowDialog".rect_min_size.x = $"%TitleBar".rect_size.x + 20 + $"%CloseButton".rect_size.x
-	$"%TitleBar".rect_position.y = 10
-	$"%CloseButton".rect_position = Vector2($"%WindowDialog".rect_size.x - $"%CloseButton".rect_size.x, $"%CloseButton".rect_size.y)
+	if not Engine.editor_hint:
+		$"%TitleBar".rect_position.y = 10
+		$"%CloseButton".rect_position = Vector2($"%WindowDialog".rect_size.x - $"%CloseButton".rect_size.x, $"%CloseButton".rect_size.y)
 #	$"%WindowDialog".rect_pivot_offset = $"%WindowDialog".rect_size/2
 	if not Engine.editor_hint:
 		for idx in range(1, get_child_count()):
 			print(idx)
 			change_parent_to_body(get_child(idx))
 	pre_rect_size = $"%WindowDialog".rect_position
+
+	get_recursive_children()
+
 
 func popup(show: bool = true):
 	if show:
@@ -67,18 +71,16 @@ func _on_ScrollContainer_resized() -> void:
 
 func set_title(new: String):
 	title = new
-	if !is_inside_tree():
-		return
-	$"%TitleBar".text = title
+	if is_inside_tree():
+		$"%TitleBar".text = title
 
 func set_resizable(new: bool):
 	resizable = new
-	if !is_inside_tree():
-		return
-	$"%WindowDialog".resizable = resizable
+	if is_inside_tree():
+		$"%WindowDialog".resizable = resizable
 
 func change_parent_to_body(node: Node):
-	var unique_node = node.unique_name_in_owner
+	var unique_node: = node.unique_name_in_owner
 	node.get_parent().remove_child(node)
 	$"%Body".add_child(node)
 	node.unique_name_in_owner = unique_node
@@ -88,3 +90,12 @@ func get_close_button():
 
 func close():
 	popup(false)
+
+func get_recursive_children(root: Node = self):
+	for node in root.get_children():
+		if node.get_child_count() == 0:
+			match node.get_class():
+				"Button":
+					node.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		else:
+			get_recursive_children(node)

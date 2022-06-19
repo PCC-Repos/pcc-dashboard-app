@@ -60,4 +60,5 @@ texture_pressed = ExtResource( 3 )
 expand = true
 stretch_mode = 3
 
+[connection signal="text_entered" from="Value" to="." method="_on_Value_text_entered"]
 [connection signal="toggled" from="Value/Show" to="." method="_on_Show_toggled"]

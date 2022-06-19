@@ -7,45 +7,65 @@
 script = ExtResource( 2 )
 title = "Welcome"
 
+[node name="WindowDialog" parent="." index="0"]
+margin_left = -312.0
+margin_top = -197.0
+margin_right = 312.0
+margin_bottom = 215.0
+
+[node name="ScrollContainer" parent="WindowDialog/VBoxContainer" index="0"]
+margin_right = 590.0
+margin_bottom = 372.0
+
+[node name="Body" parent="WindowDialog/VBoxContainer/ScrollContainer" index="0"]
+margin_right = 590.0
+margin_bottom = 372.0
+
 [node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog/VBoxContainer/ScrollContainer/Body" index="0"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 512.0
-margin_bottom = 308.0
-custom_constants/separation = 14
+margin_right = 580.0
+margin_bottom = 362.0
 alignment = 1
 
-[node name="Welcome" type="Label" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="0"]
-margin_top = 22.0
-margin_right = 502.0
-margin_bottom = 71.0
-size_flags_vertical = 10
-text = "Welcome to 
-Pro Clubs Federation Dashboard."
-align = 1
-valign = 1
+[node name="RichTextLabel" type="RichTextLabel" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="0"]
+margin_right = 570.0
+margin_bottom = 315.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[center]
+[color=#51acff]Welcome to 
+Pro Clubs Federation Dashboard.
 
-[node name="Status" type="Label" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="1"]
-margin_top = 85.0
-margin_right = 502.0
-margin_bottom = 212.0
-size_flags_vertical = 2
-text = "This app is still work in progress.
-Please expect this to be broken or incomplete.
+This is the first preview of the app for Managers only.[/color]
+
+[color=#ff7070][u]🐛 Alpha Stage 🐛[/u]
+The app is still buggy. The inconvenience caused is deeply regretted. The developers are already working to fix many issues. Please report any new issue if found![/color]
+
+[color=yellow]📝Note: Managers have to be gated in to use this app.[/color]
+[/center]"
+text = "
+Welcome to 
+Pro Clubs Federation Dashboard.
 
 This is the first preview of the app for Managers only.
-Note: Managers have to be gated in to use this app."
-align = 1
-valign = 1
 
-[node name="Ok" type="Button" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="2"]
-margin_left = 206.0
-margin_top = 265.0
-margin_right = 296.0
-margin_bottom = 298.0
+🐛 Alpha Stage 🐛
+The app is still buggy. The inconvenience caused is deeply regretted. The developers are already working to fix many issues. Please report any new issue if found!
+
+📝Note: Managers have to be gated in to use this app.
+"
+fit_content_height = true
+
+[node name="Ok" type="Button" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="1"]
+margin_left = 240.0
+margin_top = 319.0
+margin_right = 330.0
+margin_bottom = 352.0
 rect_min_size = Vector2( 90, 0 )
-size_flags_horizontal = 4
-size_flags_vertical = 10
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 6
 text = "OK"
 
 [connection signal="pressed" from="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer/Ok" to="." method="_on_Ok_pressed"]

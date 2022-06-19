@@ -50,10 +50,10 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 			match response_code:
 				HTTPClient.RESPONSE_UNAUTHORIZED:
 					print_debug(headers)
-					NotificationServer.notify_critical("Failed to Login.\nPlease check that you entered the details correctly or create a New Account.")
+					NotificationServer.notify_error("Failed to Login.\nPlease check that you entered the details correctly or create a New Account.")
 					emit_signal("access_token_received", null)
 				HTTPClient.RESPONSE_UNPROCESSABLE_ENTITY:
-					NotificationServer.notify_critical("Enter your email first!")
+					NotificationServer.notify_error("Please enter a correct email address in the \"Email\" Field.")
 			return
 	else:
 		print_debug("There was some error with the HTTPRequest Node. `result` = ", result)

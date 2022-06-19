@@ -939,14 +939,14 @@ audio_stream_list = [ ExtResource( 22 ), ExtResource( 25 ), ExtResource( 27 ), E
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="NextGenDialogs" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="WelcomeDialog" parent="NextGenDialogs" instance=ExtResource( 32 )]
 visible = false
 
 [node name="ApplyClubDialog" parent="NextGenDialogs" instance=ExtResource( 30 )]
-visible = false
 
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications/JoinClubButton" to="NextGenDialogs/ApplyClubDialog" method="_on_JoinClubButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards/JoinClubButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards" method="_on_JoinClubButton_pressed"]

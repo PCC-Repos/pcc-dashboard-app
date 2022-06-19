@@ -2,10 +2,10 @@ tool
 extends VBoxContainer
 class_name Fields
 
-export(String, MULTILINE) var text setget set_text, get_text
 export(String, MULTILINE) var field_name setget set_field_name, get_field_name
-export(bool) var password setget set_password, get_password
 export(String, MULTILINE) var placeholder_text setget set_placeholder_text, get_placeholder_text
+export(String, MULTILINE) var text setget set_text, get_text
+export(bool) var password setget set_password, get_password
 
 onready var label: = $"%Label"
 onready var verify_label: = $"%Verify"
@@ -67,3 +67,8 @@ func get_password():
 
 func _on_Show_toggled(button_pressed: bool) -> void:
 	self.password = not button_pressed
+
+
+func _on_Value_text_entered(_new_text: String) -> void:
+	if focus_next:
+		get_node(focus_next).grab_focus()
