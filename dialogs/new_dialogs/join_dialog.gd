@@ -1,10 +1,11 @@
 extends CustomWinDia
 
+
 signal submit(club_id, desc)
 
 
 func _on_Join_pressed():
-	var club_id = get_body_node().get_node("%ID").text
+	var club_id = $"%ID".text
 	var desc = $"%Reason".text
 	
 	emit_signal("submit", club_id, desc)

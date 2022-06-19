@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://dialogs/join_club_dialog.gd" type="Script" id=1]
+[gd_scene format=2]
 
 [node name="JoinClubModal" type="WindowDialog"]
 anchor_left = 0.5
@@ -13,7 +11,6 @@ margin_right = 175.0
 margin_bottom = 61.0
 window_title = "Join a Club"
 resizable = true
-script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }

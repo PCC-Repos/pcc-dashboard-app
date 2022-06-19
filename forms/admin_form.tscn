@@ -29,9 +29,9 @@
 [ext_resource path="res://assets/music/music3.mp3" type="AudioStream" id=27]
 [ext_resource path="res://assets/images/UI/Transactions.svg" type="Texture" id=28]
 [ext_resource path="res://ui_classes/VButtonContainer.gd" type="Script" id=29]
-[ext_resource path="res://ui_classes/WindowDialog.tscn" type="PackedScene" id=30]
+[ext_resource path="res://dialogs/new_dialogs/join_dialog.tscn" type="PackedScene" id=30]
 [ext_resource path="res://resources/transactions/transaction.tscn" type="PackedScene" id=31]
-[ext_resource path="res://ui_classes/PlaceholderTextEdit.tscn" type="PackedScene" id=32]
+[ext_resource path="res://dialogs/new_dialogs/welcome_dialog.tscn" type="PackedScene" id=32]
 [ext_resource path="res://resources/clubs/Clubs.gd" type="Script" id=33]
 
 [sub_resource type="Gradient" id=8]
@@ -319,6 +319,7 @@ size_flags_horizontal = 3
 margin_top = 510.0
 margin_right = 421.0
 margin_bottom = 543.0
+mouse_default_cursor_shape = 2
 theme_type_variation = "GreenButton"
 text = "➕ Join a club"
 
@@ -929,72 +930,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Panel" parent="Modals" instance=ExtResource( 30 )]
-visible = false
-__meta__ = {
-"_edit_group_": true
-}
-title = "Apply for Club"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Modals/Panel"]
-margin_left = 432.0
-margin_top = 244.0
-margin_right = 905.0
-margin_bottom = 513.0
-custom_constants/separation = 20
-
-[node name="ID" type="VBoxContainer" parent="Modals/Panel/VBoxContainer"]
-margin_right = 473.0
-margin_bottom = 65.0
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="Modals/Panel/VBoxContainer/ID"]
-margin_right = 473.0
-margin_bottom = 23.0
-text = "Club"
-
-[node name="ID" type="OptionButton" parent="Modals/Panel/VBoxContainer/ID"]
-unique_name_in_owner = true
-margin_top = 31.0
-margin_right = 473.0
-margin_bottom = 65.0
-size_flags_horizontal = 3
-text = "Indie Dev's Club"
-items = [ "Indie Dev's Club", null, false, 0, null, "Pluribus Unum", null, false, 1, null, "Test Club", null, false, 2, null, "Pluribus Dragons", null, false, 3, null ]
-selected = 0
-
-[node name="Reason" type="VBoxContainer" parent="Modals/Panel/VBoxContainer"]
-margin_top = 85.0
-margin_right = 473.0
-margin_bottom = 216.0
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="Modals/Panel/VBoxContainer/Reason"]
-margin_right = 473.0
-margin_bottom = 23.0
-text = "Reason"
-
-[node name="ID2" parent="Modals/Panel/VBoxContainer/Reason" instance=ExtResource( 32 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 0.0
-margin_top = 31.0
-margin_right = 473.0
-margin_bottom = 131.0
-placeholder_text = "Your reason to join the club?"
-placeholder_alpha = 0.5
-
-[node name="Join" type="Button" parent="Modals/Panel/VBoxContainer"]
-unique_name_in_owner = true
-margin_left = 161.0
-margin_top = 236.0
-margin_right = 311.0
-margin_bottom = 269.0
-rect_min_size = Vector2( 150, 0 )
-size_flags_horizontal = 6
-size_flags_vertical = 8
-text = "Join Club"
-
 [node name="AudioStreamRandomPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 22 )
 bus = "Music"
@@ -1003,7 +938,17 @@ audio_stream_list = [ ExtResource( 22 ), ExtResource( 25 ), ExtResource( 27 ), E
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications/JoinClubButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications" method="_on_JoinClubButton_pressed"]
+[node name="NextGenDialogs" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="WelcomeDialog" parent="NextGenDialogs" instance=ExtResource( 32 )]
+visible = false
+
+[node name="ApplyClubDialog" parent="NextGenDialogs" instance=ExtResource( 30 )]
+visible = false
+
+[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications/JoinClubButton" to="NextGenDialogs/ApplyClubDialog" method="_on_JoinClubButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards/JoinClubButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards" method="_on_JoinClubButton_pressed"]
 [connection signal="club_changed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Members" method="_on_Clubs_club_changed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs/CreateNewButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs" method="_on_CreateNewButton_pressed"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui_classes/WindowDialog.tscn" type="PackedScene" id=1]
+[ext_resource path="res://dialogs/new_dialogs/welcome_dialog.gd" type="Script" id=2]
+
+[node name="Panel" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+title = "Welcome"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog/VBoxContainer/ScrollContainer/Body" index="0"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 512.0
+margin_bottom = 308.0
+custom_constants/separation = 14
+alignment = 1
+
+[node name="Welcome" type="Label" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="0"]
+margin_top = 22.0
+margin_right = 502.0
+margin_bottom = 71.0
+size_flags_vertical = 10
+text = "Welcome to 
+Pro Clubs Federation Dashboard."
+align = 1
+valign = 1
+
+[node name="Status" type="Label" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="1"]
+margin_top = 85.0
+margin_right = 502.0
+margin_bottom = 212.0
+size_flags_vertical = 2
+text = "This app is still work in progress.
+Please expect this to be broken or incomplete.
+
+This is the first preview of the app for Managers only.
+Note: Managers have to be gated in to use this app."
+align = 1
+valign = 1
+
+[node name="Ok" type="Button" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="2"]
+margin_left = 206.0
+margin_top = 265.0
+margin_right = 296.0
+margin_bottom = 298.0
+rect_min_size = Vector2( 90, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "OK"
+
+[connection signal="pressed" from="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer/Ok" to="." method="_on_Ok_pressed"]

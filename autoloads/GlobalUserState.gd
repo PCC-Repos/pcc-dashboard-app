@@ -18,8 +18,12 @@ func _ready():
 			"access_token": token
 		})
 		client.set_token(auth_token)
-		if not try_load_user():
+		var output = yield(try_load_user(false), "completed")
+		if not output:
 			print_debug("Invalid access token, loading login screen.")
+		else:
+			client.get_ws_client().init()
+			emit_signal("logged_in")
 
 func get_access_token():
 	var file = File.new()
@@ -41,16 +45,20 @@ func save_access_token(res: Token):
 		file.close()
 
 func login(us_email, us_password):
+	print("logging in")
 	var auth_params = AuthorizeParams.new()
 	auth_params.email_id = us_email
 	auth_params.password = us_password
 	var token = yield(client.get_rest_client().authorize(auth_params), "completed")
+	print("something wrong?")
 	if token is HTTPResponse and token.is_error():
+		print("something broken?")
 		match_error(token)
 		return
 	client.set_token(token)
 	save_access_token(token)
-	if try_load_user():
+	if yield(try_load_user(), "completed"):
+		print("logging in")
 		emit_signal("logged_in")
 
 
@@ -64,17 +72,21 @@ func match_error(res: HTTPResponse):
 	elif res.is_unauthorized_error():
 		NotificationServer.notify_critical("Failed to Login.\nPlease check that you entered the details correctly or create a New Account.")
 
-func try_load_user():
+func try_load_user(show_notifications = true):
 	var res = yield(client.get_rest_client().get_current_user(), "completed")
+	print(res)
 	if res is HTTPResponse and res.is_error():
-		NotificationServer.notify_critical("Something terribly went wrong while trying to fetch user.")
+		print("Critical error, maybe unauthorized?")
+		if show_notifications:
+			NotificationServer.notify_critical("Something terribly went wrong while trying to fetch user.")
 	else:
 		user = res
 		logged_in = true
 		print_debug("Loaded User, logged in!")
-		res = yield(GlobalUserState.client.get_rest_client().get_permissions(str(user.id)), "completed")
+		res = yield(client.get_rest_client().get_permissions(str(user.id)), "completed")
 		if res is HTTPResponse and res.is_error():
-			NotificationServer.notify_critical("Unable to fetch permissions.")
+			if show_notifications:
+				NotificationServer.notify_critical("Unable to fetch permissions.")
 		else:
 			permissions = res.permissions
 			return true
