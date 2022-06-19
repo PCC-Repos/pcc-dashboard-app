@@ -13,6 +13,8 @@ var access_token = ""
 var headers = PoolStringArray()
 var admin_form
 
+#var logged_in
+#var login_failed
 
 func _ready():
 	$"%Logo".hide()
@@ -27,14 +29,10 @@ func _ready():
 	get_tree().call_group("api_base", "ready")
 	GlobalUserState.connect("logged_out", self, "logged_out")
 	GlobalUserState.connect("logged_in", self, "logged_in")
+	GlobalUserState.connect("login_failed", self, "login_failed")
+	
 	if GlobalUserState.user:
-		$HBoxContainer.hide()
 		logged_in()
-		return
-	else:
-		$HBoxContainer.show()
-		ready()
-
 
 func ready():
 	ready_tween()
@@ -105,11 +103,18 @@ func logged_out():
 	$AudioStreamPlayer.play()
 
 func logged_in():
+	push_warning("logged_in called!")
+	$HBoxContainer.hide()
+
 	$"%ImageContainer".get_node("CanvasLayer").visible = false
 
 
 	call_deferred("init_admin")
 
+
+func login_failed():
+	$HBoxContainer.show()
+	ready()
 
 func init_admin():
 	admin_form = load("res://forms/admin_form.tscn").instance()

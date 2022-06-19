@@ -1,11 +1,12 @@
 extends Node
 
 signal logged_in
+signal login_failed
 signal logged_out
 
 var token_file = "user://login/token.txt"
 var user: User
-var logged_in = false
+var log_in = false
 var client: PCFClient
 var permissions: int
 
@@ -21,7 +22,9 @@ func _ready():
 		var output = yield(try_load_user(false), "completed")
 		if not output:
 			print_debug("Invalid access token, loading login screen.")
+			emit_signal("login_failed")
 		else:
+			print_debug("Login successful! Starting WebSocket!")
 			client.get_ws_client().init()
 			emit_signal("logged_in")
 
@@ -74,14 +77,13 @@ func match_error(res: HTTPResponse):
 
 func try_load_user(show_notifications = true):
 	var res = yield(client.get_rest_client().get_current_user(), "completed")
-	print(res)
 	if res is HTTPResponse and res.is_error():
 		print("Critical error, maybe unauthorized?")
 		if show_notifications:
 			NotificationServer.notify_critical("Something terribly went wrong while trying to fetch user.")
 	else:
 		user = res
-		logged_in = true
+		log_in = true
 		print_debug("Loaded User, logged in!")
 		res = yield(client.get_rest_client().get_permissions(str(user.id)), "completed")
 		if res is HTTPResponse and res.is_error():

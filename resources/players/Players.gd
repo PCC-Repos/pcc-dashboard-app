@@ -14,7 +14,7 @@ func _ready():
 		_create_invite(invite)
 	var awards = GlobalUserState.user.awards
 	for award in awards:
-		_create_invite(award)
+		_create_award(award)
 
 
 func _create_invite(invite: PartialInvite):
