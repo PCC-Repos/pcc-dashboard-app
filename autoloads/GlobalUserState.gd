@@ -7,6 +7,7 @@ signal logged_out
 var token_file = "user://login/token.txt"
 var user: User
 var log_in = false
+var login_failed = false
 var client: PCFClient
 var permissions: int
 
@@ -23,6 +24,7 @@ func _ready():
 		if not output:
 			print_debug("Invalid access token, loading login screen.")
 			emit_signal("login_failed")
+			login_failed = true
 		else:
 			print_debug("Login successful! Starting WebSocket!")
 			client.get_ws_client().init()

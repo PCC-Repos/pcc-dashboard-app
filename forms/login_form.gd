@@ -8,6 +8,7 @@ var api_base
 var us_email
 var us_pass
 
+var registed_changed_once = false
 
 onready var http: = $HTTPRequest
 onready var us_name_node = $VBoxContainer/Email
@@ -67,7 +68,9 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 
 
 func _on_Register_pressed():
-	NotificationServer.notify_info("Make a new account here!")
+	if not registed_changed_once:
+		NotificationServer.notify_info("Make a new account here!")
+		registed_changed_once = true
 	get_tree().current_scene.get_node("%TabContainer").current_tab = get_tree().current_scene.get_node("%TabContainer").find_node("RegisterForm").get_index()
 
 

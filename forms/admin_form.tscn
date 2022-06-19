@@ -540,6 +540,7 @@ mouse_default_cursor_shape = 2
 size_flags_horizontal = 6
 theme_type_variation = "ListButton"
 toggle_mode = true
+pressed = true
 group = SubResource( 13 )
 text = "Invite"
 

@@ -33,10 +33,13 @@ func _ready():
 	
 	if GlobalUserState.user:
 		logged_in()
+	elif GlobalUserState.login_failed:
+		login_failed()
 
 func ready():
 	ready_tween()
 	NotificationServer.notify_info("Welcome to PCF Dashboard!")
+
 
 #func _notification(what):
 #	match what:
@@ -113,7 +116,9 @@ func logged_in():
 
 
 func login_failed():
+	print("something broke!")
 	$HBoxContainer.show()
+	$"%ImageContainer".get_node("CanvasLayer").visible = true
 	ready()
 
 func init_admin():
