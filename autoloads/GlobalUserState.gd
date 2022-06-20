@@ -36,7 +36,7 @@ func get_access_token():
 	if file.file_exists(token_file):
 		if file.open_encrypted_with_pass(token_file, File.READ, "pcf_dashboard") == OK:
 			var token = file.get_as_text()
-			print("token loading")
+			print_debug("Loading Token...")
 			file.close()
 			return token
 	else:
@@ -46,18 +46,17 @@ func save_access_token(res: Token):
 	var file = File.new()
 	if file.open_encrypted_with_pass(token_file, File.WRITE, "pcf_dashboard") == OK:
 		file.store_string(res["access_token"])
-		print("token saving")
+		print_debug("Saving Token...")
 		file.close()
 
 func login(us_email, us_password):
-	print("logging in")
+	print("Logging In...")
 	var auth_params = AuthorizeParams.new()
 	auth_params.email_id = us_email
 	auth_params.password = us_password
 	var token = yield(client.get_rest_client().authorize(auth_params), "completed")
-	print("something wrong?")
 	if token is HTTPResponse and token.is_error():
-		print("something broken?")
+		print_debug("There's something broken...")
 		match_error(token)
 		return
 	client.set_token(token)
@@ -80,17 +79,21 @@ func match_error(res: HTTPResponse):
 func try_load_user(show_notifications = true):
 	var res = yield(client.get_rest_client().get_current_user(), "completed")
 	if res is HTTPResponse and res.is_error():
-		print("Critical error, maybe unauthorized?")
+		print_debug("Error, maybe unauthorized?", " Error: ", res.response_code)
 		if show_notifications:
-			NotificationServer.notify_critical("Something terribly went wrong while trying to fetch user.")
+			NotificationServer.notify_critical("Some error occured!")
 	else:
 		user = res
 		log_in = true
 		print_debug("Loaded User, logged in!")
 		res = yield(client.get_rest_client().get_permissions(str(user.id)), "completed")
 		if res is HTTPResponse and res.is_error():
+			print_debug("Unable to load permissons!", " Error: ", res.response_code)
 			if show_notifications:
-				NotificationServer.notify_critical("Unable to fetch permissions.")
+				if res.response_code == 0:
+					NotificationServer.notify_error("No Internet!\nCheck your Internet Connection then try again.")
+				else:
+					NotificationServer.notify_error("Unable to load permissions!")
 		else:
 			permissions = res.permissions
 			return true

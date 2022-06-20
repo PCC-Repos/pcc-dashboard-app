@@ -40,12 +40,13 @@ func create_user_api(us_name, us_email, us_pass):
 # warning-ignore:unused_argument
 func _create_user_api(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http_req: HTTPRequest):
 	if response_code != 201:
-		print("Something went wrong")
+		print_debug("Something went wrong")
+		NotificationServer.notify_info("You are already registered with us.\nGo to Login Screen and retry...")
 		print(body.get_string_from_utf8())
 		return
 	http_req.queue_free()
 # warning-ignore:unused_variable
 	var json = parse_json(body.get_string_from_utf8())
 
-	get_tree().current_scene.get_node("TabContainer").find_node("LoginForm").call_deferred("login", us_email, us_pass)
+	get_tree().current_scene.get_node("%TabContainer").find_node("LoginForm").call_deferred("login", us_email, us_pass)
 

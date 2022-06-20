@@ -6,6 +6,7 @@ var headers
 var api_base
 
 onready var account_btn = $"%AccountButton"
+onready var dialogs = $NextGenDialogs
 onready var http: = $HTTPRequest
 enum {
 	USER = 1,
@@ -25,7 +26,7 @@ func ready():
 		MANAGER:
 			$"%Admin".hide()
 	account_btn.text = user.name
-	account_btn.get_popup().connect("id_pressed", self, "_id_pressed")
+	account_btn.get_popup().connect("index_pressed", self, "AccountButton_popup_index_pressed")
 	NotificationServer.notify_info("Logged in as %s" % user.name)
 
 #	$"%WheelButtons".buttons = {}
@@ -35,15 +36,17 @@ func ready():
 #	$"%WheelButtons"._ready()
 
 
-
-func _id_pressed(id):
-	match id:
-		2:
-			print("logging out")
-			GlobalUserState.logout()
-		0:
+func AccountButton_popup_index_pressed(index: int):
+	var item: String = account_btn.get_popup().get_item_text(index)
+	match item:
+		"Refresh":
 			print("refreshing")
 			refresh_main()
+		"Settings":
+			dialogs.get_node("SettingsDialog").popup()
+		"Log Out":
+			print("logging out")
+			GlobalUserState.logout()
 
 func logout():
 	http.request(api_base + "auth/revoke/", headers, true, HTTPClient.METHOD_POST)

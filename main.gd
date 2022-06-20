@@ -27,10 +27,13 @@ func _ready():
 	prints("Using API base", api_base)
 	get_tree().set_group("api_base", "api_base", api_base)
 	get_tree().call_group("api_base", "ready")
+# warning-ignore:return_value_discarded
 	GlobalUserState.connect("logged_out", self, "logged_out")
+# warning-ignore:return_value_discarded
 	GlobalUserState.connect("logged_in", self, "logged_in")
+# warning-ignore:return_value_discarded
 	GlobalUserState.connect("login_failed", self, "login_failed")
-	
+
 	if GlobalUserState.user:
 		logged_in()
 	elif GlobalUserState.login_failed:

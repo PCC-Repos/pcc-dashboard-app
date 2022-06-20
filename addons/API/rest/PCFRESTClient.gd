@@ -496,3 +496,5 @@ func _send_request(slug: String, payload := {}, method := HTTPClient.METHOD_GET)
 
 	var json = res.get_json()
 	return json
+
+# 500 Lines Of Code!
