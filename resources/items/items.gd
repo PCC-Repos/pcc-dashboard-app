@@ -84,3 +84,7 @@ func _show_popup(item_id):
 
 func _show_popup_touch(_index, _long_tap_time, item_id):
 	_show_popup(item_id)
+
+
+func _on_TransferMarket_visibility_changed() -> void:
+	if visible: owner.get_recursive_children(self)

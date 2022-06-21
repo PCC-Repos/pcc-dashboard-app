@@ -14,7 +14,7 @@ size_flags_vertical = 3
 theme_type_variation = "TabButtons"
 toggle_mode = true
 group = SubResource( 1 )
-text = "Clubs"
+text = "TabButton"
 expand_icon = true
 script = ExtResource( 1 )
 

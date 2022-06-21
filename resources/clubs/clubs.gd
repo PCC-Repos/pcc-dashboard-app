@@ -53,3 +53,7 @@ func _create_agent(agent: PartialUser):
 	btn.text = agent.name
 	btn.group = button_group_agent
 	$"%Agents/VBoxContainer".add_child(btn)
+
+
+func _on_Club_visibility_changed() -> void:
+	if visible: owner.get_recursive_children(self)

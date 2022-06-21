@@ -1,8 +1,6 @@
 extends VBoxContainer
 
 
-func _ready() -> void:
-	Settings.get_setting("Basic")
 
 func _on_Glow_toggled(button_pressed: bool) -> void:
 	get_tree().current_scene.get_node("WorldEnvironment").environment.glow_enabled = button_pressed

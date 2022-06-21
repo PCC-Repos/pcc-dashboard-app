@@ -1,16 +1,12 @@
 extends Control
 
 
-# Declare member variables here. Examples:
-# var a = 
-# var b = "text"
+onready var content_scroll = $ScrollContainer
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_Transactions_visibility_changed() -> void:
+	if visible:
+		var tween: = create_tween()
+		rect_pivot_offset = rect_size/2
+		tween.tween_property(self, "rect_scale:y", 1.0, 0.3/owner.speed).from(0.0)
+		owner.get_recursive_children(self)

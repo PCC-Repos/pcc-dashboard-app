@@ -1,80 +1,90 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://resources/transactions/transaction.gd" type="Script" id=1]
 
-[node name="Button" type="Button"]
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.0470588, 0.34902, 0.670588, 0.231373 )
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.262745, 0.576471, 0.827451, 1 )
+
+[node name="Card" type="PanelContainer"]
 anchor_right = 1.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
 theme_type_variation = "ListButton"
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
-buyer_name = "Sairam"
-seller_name = "Naman"
-item_name = "MACH"
-price = "6000"
+buyer_name = "Buyer Name"
+seller_name = "Seller Name"
+item_name = "Item Name"
+price = "1000"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_right = 1.0
-margin_bottom = 33.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1361.0
+margin_bottom = 28.0
 
 [node name="Buyer" type="LinkButton" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 135.0
-margin_top = 5.0
-margin_right = 188.0
-margin_bottom = 28.0
+margin_left = 118.0
+margin_right = 211.0
+margin_bottom = 23.0
 mouse_filter = 1
 size_flags_horizontal = 6
 size_flags_vertical = 6
-text = "Sairam"
+text = "Buyer Name"
 underline = 1
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
-margin_left = 331.0
-margin_right = 339.0
-margin_bottom = 33.0
+margin_left = 334.0
+margin_right = 338.0
+margin_bottom = 23.0
 
 [node name="Seller" type="LinkButton" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 481.0
-margin_top = 5.0
-margin_right = 536.0
-margin_bottom = 28.0
+margin_left = 461.0
+margin_right = 552.0
+margin_bottom = 23.0
 mouse_filter = 1
 size_flags_horizontal = 6
 size_flags_vertical = 6
-text = "Naman"
+text = "Seller Name"
 underline = 1
 
 [node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
-margin_left = 679.0
-margin_right = 687.0
-margin_bottom = 33.0
+margin_left = 676.0
+margin_right = 680.0
+margin_bottom = 23.0
 
 [node name="Item" type="LinkButton" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 833.0
-margin_top = 5.0
-margin_right = 879.0
-margin_bottom = 28.0
+margin_left = 807.0
+margin_right = 890.0
+margin_bottom = 23.0
 mouse_filter = 1
 size_flags_horizontal = 6
 size_flags_vertical = 6
-text = "MACH"
+text = "Item Name"
 underline = 1
 
 [node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
-margin_left = 1026.0
-margin_right = 1034.0
-margin_bottom = 33.0
+margin_left = 1018.0
+margin_right = 1022.0
+margin_bottom = 23.0
 
 [node name="Price" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 1158.0
-margin_top = 5.0
-margin_right = 1249.0
-margin_bottom = 28.0
+margin_left = 1145.0
+margin_right = 1236.0
+margin_bottom = 23.0
 mouse_filter = 1
 size_flags_horizontal = 6
 size_flags_vertical = 6
-text = "6000 tokens"
+text = "1000 tokens"

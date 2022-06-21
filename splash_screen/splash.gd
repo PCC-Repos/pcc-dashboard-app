@@ -22,9 +22,3 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 func _on_VideoPlayer_finished():
 	$AnimationPlayer.play_backwards("show_splash_screen")
 	video_anim_played = true
-
-
-func _notification(what):
-	match what:
-		NOTIFICATION_WM_QUIT_REQUEST:
-			get_tree().quit()

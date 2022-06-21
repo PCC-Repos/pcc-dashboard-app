@@ -1,5 +1,8 @@
 extends Control
 
+
+export var speed: float = 3
+
 var user
 var logged_in
 var headers
@@ -66,3 +69,21 @@ func refresh_main():
 
 func refresh(): # do nothing
 	pass
+
+func get_recursive_children(root: Control):
+	if root != null and root.get_child_count() != 0:
+		for child in root.get_children():
+			if child.get_child_count():
+				get_recursive_children(child)
+
+			var tween: = create_tween().set_parallel()
+			if child is VSeparator:
+				child.rect_pivot_offset.y = child.rect_size.y/2
+				tween.tween_property(child, "rect_scale:y", 1.0, 1/speed).from(0.0)
+			elif child is HSeparator:
+				child.rect_pivot_offset.x = child.rect_size.x/2
+				tween.tween_property(child, "rect_scale:x", 1.0, 1/speed).from(0.0)
+			elif child is Label:
+				tween.tween_property(child, "percent_visible", 1.0, 1/speed).from(0.0)
+			else:
+				tween.kill()

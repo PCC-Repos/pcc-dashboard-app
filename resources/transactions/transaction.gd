@@ -1,5 +1,5 @@
 tool
-extends Button
+extends PanelContainer
 
 
 export var buyer_name: String setget set_buyer_name
