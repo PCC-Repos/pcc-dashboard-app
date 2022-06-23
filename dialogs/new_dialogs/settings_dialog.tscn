@@ -24,8 +24,8 @@ margin_right = 692.0
 margin_bottom = 376.0
 
 [node name="Body" parent="WindowDialog/VBoxContainer/ScrollContainer" index="0"]
-margin_right = 692.0
-margin_bottom = 376.0
+margin_right = 670.0
+margin_bottom = 52.0
 
 [node name="HSplitContainer" type="HSplitContainer" parent="WindowDialog/VBoxContainer/ScrollContainer/Body" index="0"]
 margin_left = 10.0
@@ -51,8 +51,8 @@ size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="MarginContainer" type="MarginContainer" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/HSplitContainer/PanelContainer/ScrollContainer" index="0"]
-margin_right = 150.0
-margin_bottom = 336.0
+margin_right = 138.0
+margin_bottom = 89.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 5
@@ -101,8 +101,8 @@ scroll_horizontal_enabled = false
 
 [node name="TabContainer" type="TabContainer" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/HSplitContainer/ScrollContainer" index="0"]
 unique_name_in_owner = true
-margin_right = 490.0
-margin_bottom = 356.0
+margin_right = 478.0
+margin_bottom = 124.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tabs_visible = false
