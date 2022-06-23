@@ -344,7 +344,7 @@ enabled=PoolStringArray(  )
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
-theme/custom="res://themes/default.tres"
+theme/custom="res://themes/default_theme.tres"
 
 [input]
 

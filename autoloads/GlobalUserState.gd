@@ -34,7 +34,7 @@ func get_access_token():
 	var file = File.new()
 	var directory = Directory.new()
 	if file.file_exists(token_file):
-		if file.open_encrypted_with_pass(token_file, File.READ, "pcf_dashboard") == OK:
+		if file.open_encrypted_with_pass(token_file, File.READ, "PcF_d@$hb0ard!") == OK:
 			var token = file.get_as_text()
 			print_debug("Loading Token...")
 			file.close()

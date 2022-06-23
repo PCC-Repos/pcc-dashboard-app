@@ -7,7 +7,8 @@
 [ext_resource path="res://ui_classes/VButtonContainer.gd" type="Script" id=5]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=6]
 [ext_resource path="res://assets/fonts/TitleFont.tres" type="DynamicFont" id=7]
-[ext_resource path="res://themes/default.tres" type="Theme" id=8]
+[ext_resource path="res://themes/default_theme.tres" type="Theme" id=8]
+
 
 [sub_resource type="ButtonGroup" id=13]
 

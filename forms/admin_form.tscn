@@ -23,7 +23,7 @@
 [ext_resource path="res://assets/images/UI/Users.svg" type="Texture" id=21]
 [ext_resource path="res://assets/music/music1.mp3" type="AudioStream" id=22]
 [ext_resource path="res://assets/images/UI/Marketplace.svg" type="Texture" id=23]
-[ext_resource path="res://themes/default.tres" type="Theme" id=24]
+[ext_resource path="res://themes/default_theme.tres" type="Theme" id=24]
 [ext_resource path="res://assets/music/music2.mp3" type="AudioStream" id=25]
 [ext_resource path="res://assets/music/music4.mp3" type="AudioStream" id=26]
 [ext_resource path="res://assets/music/music3.mp3" type="AudioStream" id=27]
@@ -33,6 +33,7 @@
 [ext_resource path="res://resources/transactions/transaction.tscn" type="PackedScene" id=31]
 [ext_resource path="res://dialogs/new_dialogs/welcome_dialog.tscn" type="PackedScene" id=32]
 [ext_resource path="res://resources/admin/admin.gd" type="Script" id=33]
+
 
 [sub_resource type="Gradient" id=8]
 interpolation_mode = 2
