@@ -21,8 +21,8 @@ enum {
 
 func ready():
 	$AudioStreamRandomPlayer.play()
-	user = GlobalUserState.user
-	match GlobalUserState.permissions:
+	user = Store.user
+	match Store.permissions:
 		USER:
 			$"%Admin".hide()
 			$"%Marketplace".hide()
@@ -49,14 +49,14 @@ func AccountButton_popup_index_pressed(index: int):
 			dialogs.get_node("SettingsDialog").popup()
 		"Log Out":
 			print("logging out")
-			GlobalUserState.logout()
+			Store.logout()
 
 func logout():
 	http.request(api_base + "auth/revoke/", headers, true, HTTPClient.METHOD_POST)
 
 func _request_completed(_result: int, response_code: int, _headers: PoolStringArray, _body: PoolByteArray):
 	if response_code != 204:
-		print_debug(response_code, " Something went wrong when trying to signout.")
+		print(response_code, " Something went wrong when trying to signout.")
 		NotificationServer.notify_critical("Could not Log Out.\nSomething went wrong!")
 		return
 

@@ -9,12 +9,12 @@ var button_group_award = ButtonGroup.new()
 
 
 func _ready():
-	$"%PlayerName".text = GlobalUserState.user.name
+	$"%PlayerName".text = Store.user.name
 
-	var invites = GlobalUserState.user.invites
+	var invites = Store.user.invites
 	for invite in invites:
 		_create_invite(invite)
-	var awards = GlobalUserState.user.awards
+	var awards = Store.user.awards
 	for award in awards:
 		_create_award(award)
 

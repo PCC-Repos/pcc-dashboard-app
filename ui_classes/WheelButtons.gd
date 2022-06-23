@@ -114,7 +114,7 @@ func button_pressed(index: int):
 	get_node(button_container).get_child(index).pressed = false
 	yield(get_tree(), "idle_frame")
 	get_node(button_container).get_child(index).pressed = true
-	print_debug("Switched Tab")
+	print("Switched Tab")
 
 #func is_mouse_in(value: bool) -> void:
 #	is_mouse_in = value

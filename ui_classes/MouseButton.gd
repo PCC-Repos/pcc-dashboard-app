@@ -35,7 +35,7 @@ func _gui_input(event):
 func _process(delta):
 	for key in index_time_dict:
 		index_time_dict[key] += delta
-		print_debug(index_time_dict[key])
+		print(index_time_dict[key])
 		if index_time_dict[key] > long_tap_time:
 			print("long press")
 			emit_signal("long_tap", key, index_time_dict[key])

@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=2]
 
-[ext_resource path="res://forms/admin_form.gd" type="Script" id=1]
+[ext_resource path="res://forms/AdminForm/admin_form.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=2]
 [ext_resource path="res://audio/audio_stream_random_player.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/BigTitle.tres" type="DynamicFont" id=4]
@@ -33,6 +33,7 @@
 [ext_resource path="res://resources/transactions/transaction.tscn" type="PackedScene" id=31]
 [ext_resource path="res://dialogs/new_dialogs/welcome_dialog.tscn" type="PackedScene" id=32]
 [ext_resource path="res://resources/admin/admin.gd" type="Script" id=33]
+
 
 
 [sub_resource type="Gradient" id=8]

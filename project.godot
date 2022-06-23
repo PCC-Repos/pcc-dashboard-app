@@ -90,7 +90,7 @@ _global_script_classes=[ {
 "path": "res://ui_classes/WindowDialog.gd"
 }, {
 "base": "VBoxContainer",
-"class": "Fields",
+"class": "Field",
 "language": "GDScript",
 "path": "res://ui_classes/Field.gd"
 }, {
@@ -271,7 +271,7 @@ _global_script_class_icons={
 "CreateTransactionParams": "",
 "CreateUserParams": "",
 "CustomWinDia": "",
-"Fields": "",
+"Field": "",
 "GiveAwardParams": "",
 "HButtonContainer": "",
 "HTTPResponse": "",
@@ -319,10 +319,11 @@ config/quit_on_go_back=false
 
 [autoload]
 
-NotificationServer="*res://systems/notifications/notification_server.gd"
+NotificationServer="*res://scripts/NotificationServer.gd"
 NotificationPopup="*res://ui_classes/NotificationPopup.tscn"
-GlobalUserState="*res://autoloads/GlobalUserState.gd"
-Settings="*res://systems/settings/Settings.gd"
+Store="*res://autoloads/Store.gd"
+Settings="*res://scripts/Settings.gd"
+API="*res://scripts/API.gd"
 
 [display]
 
@@ -335,6 +336,7 @@ window/vsync/vsync_via_compositor=true
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation="sensor"
 window/stretch/mode="2d"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 

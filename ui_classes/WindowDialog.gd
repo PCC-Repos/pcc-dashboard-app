@@ -22,7 +22,7 @@ func _ready() -> void:
 #	$"%WindowDialog".rect_pivot_offset = $"%WindowDialog".rect_size/2
 	if not Engine.editor_hint:
 		for idx in range(1, get_child_count()):
-			print_debug(idx)
+			print(idx)
 			change_parent_to_body(get_child(idx))
 	pre_rect_size = $"%WindowDialog".rect_position
 
