@@ -9,6 +9,7 @@ onready var item_container = $ScrollContainer/HFlowContainer
 func ready():
 	pass
 #	fetch_items_api()
+	connect("visibility_changed", self, "_on_visibility_changed")
 
 func fetch_items_api():
 #	clear_children(item_container)
@@ -86,5 +87,5 @@ func _show_popup_touch(_index, _long_tap_time, item_id):
 	_show_popup(item_id)
 
 
-func _on_TransferMarket_visibility_changed() -> void:
+func _on_visibility_changed() -> void:
 	if visible: owner.get_recursive_children(self)

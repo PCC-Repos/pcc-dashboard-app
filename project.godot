@@ -253,11 +253,6 @@ _global_script_classes=[ {
 "class": "UserPermissions",
 "language": "GDScript",
 "path": "res://addons/proclubsfederation-api-godot/entity/UserPermissions.gd"
-}, {
-"base": "VBoxContainer",
-"class": "VButtonContainer",
-"language": "GDScript",
-"path": "res://ui_classes/VButtonContainer.gd"
 } ]
 _global_script_class_icons={
 "Application": "",
@@ -308,8 +303,7 @@ _global_script_class_icons={
 "Transaction": "",
 "User": "",
 "UserAward": "",
-"UserPermissions": "",
-"VButtonContainer": ""
+"UserPermissions": ""
 }
 
 [application]

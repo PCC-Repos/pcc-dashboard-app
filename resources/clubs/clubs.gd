@@ -8,6 +8,8 @@ var button_group_agent = ButtonGroup.new()
 
 
 func _ready():
+	connect("visibility_changed", self, "_on_visibility_changed")
+
 	if not OS.is_debug_build():
 		var partial_club: PartialClub = Store.user.clubs[0]
 		$"%Name".text = partial_club.name
@@ -55,5 +57,5 @@ func _create_agent(agent: PartialUser):
 	$"%Agents/VBoxContainer".add_child(btn)
 
 
-func _on_Club_visibility_changed() -> void:
+func _on_visibility_changed() -> void:
 	if visible: owner.get_recursive_children(self)

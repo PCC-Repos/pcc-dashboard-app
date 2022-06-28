@@ -3,8 +3,10 @@ extends Control
 
 onready var content_scroll = $ScrollContainer
 
+func _ready() -> void:
+	connect("visibility_changed", self, "_on_visibility_changed")
 
-func _on_Transactions_visibility_changed() -> void:
+func _on_visibility_changed() -> void:
 	if visible:
 		var tween: = create_tween()
 		rect_pivot_offset = rect_size/2
