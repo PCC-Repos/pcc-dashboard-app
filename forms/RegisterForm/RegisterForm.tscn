@@ -50,8 +50,8 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 1.23
 
 [node name="MC" type="MarginContainer" parent="VB/SC"]
-margin_right = 1266.0
-margin_bottom = 415.0
+margin_right = 220.0
+margin_bottom = 272.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 10
@@ -74,8 +74,6 @@ margin_left = 0.0
 margin_right = 1246.0
 margin_bottom = 60.0
 theme_type_variation = "RegisterLabels"
-field_name = "PSN Username:"
-placeholder_text = "Enter your Playstation Network username..."
 
 [node name="Name" parent="VB/SC/MC/VB" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -83,8 +81,6 @@ margin_left = 0.0
 margin_right = 1246.0
 margin_bottom = 60.0
 theme_type_variation = "RegisterLabels"
-field_name = "Player/Avatar Name:"
-placeholder_text = "Enter your player / avatar name..."
 
 [node name="Email" parent="VB/SC/MC/VB" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -93,8 +89,6 @@ margin_top = 64.0
 margin_right = 1246.0
 margin_bottom = 124.0
 theme_type_variation = "RegisterLabels"
-field_name = "Email:"
-placeholder_text = "Enter your email..."
 
 [node name="Pass" parent="VB/SC/MC/VB" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -103,8 +97,6 @@ margin_top = 128.0
 margin_right = 1246.0
 margin_bottom = 188.0
 theme_type_variation = "RegisterLabels"
-field_name = "Password:"
-placeholder_text = "Enter a password..."
 password = true
 
 [node name="ConfirmPass" parent="VB/SC/MC/VB" instance=ExtResource( 1 )]
@@ -114,8 +106,6 @@ margin_top = 192.0
 margin_right = 1246.0
 margin_bottom = 252.0
 theme_type_variation = "RegisterLabels"
-field_name = "Confirm Password:"
-placeholder_text = "Re-enter the above typed password..."
 password = true
 
 [node name="HS2" type="HSeparator" parent="VB"]

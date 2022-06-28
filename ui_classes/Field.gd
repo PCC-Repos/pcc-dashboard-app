@@ -68,7 +68,8 @@ func get_password() -> bool:
 	return password
 
 func _on_show_btn_toggled(button_pressed: bool) -> void:
-	password = not button_pressed
+	#password = not button_pressed
+	set_password(not button_pressed)
 
 func _on_value_text_entered(_new_text: String) -> void:
 	if focus_next:

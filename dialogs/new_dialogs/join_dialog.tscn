@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://ui_classes/WindowDialog.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui_classes/CustomWindowDialog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui_classes/PlaceholderTextEdit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dialogs/new_dialogs/join_dialog.gd" type="Script" id=3]
 

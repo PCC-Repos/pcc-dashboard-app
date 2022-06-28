@@ -87,7 +87,7 @@ _global_script_classes=[ {
 "base": "Panel",
 "class": "CustomWinDia",
 "language": "GDScript",
-"path": "res://ui_classes/WindowDialog.gd"
+"path": "res://ui_classes/CustomWindowDialog.gd"
 }, {
 "base": "VBoxContainer",
 "class": "Field",

@@ -9,26 +9,8 @@ var user: User
 var login_failed = false
 var permissions: int
 var main_screen_tab_controller
+var admin_scene
 
-func _ready():
-	var access_token = get_access_token()
-
-	if not access_token:
-		return
-
-	NotificationServer.notify_info("Auto logging in...")
-
-	var auth_token = Token.new()
-	auth_token.access_token = access_token
-	API.client.set_token(auth_token)
-
-	var res = yield(try_load_user(false), "completed")
-
-	if not res:
-		emit_signal("login_failed")
-	else:
-		API.ws.init()
-		emit_signal("logged_in")
 
 func get_access_token():
 	var file = File.new()
@@ -47,6 +29,7 @@ func get_access_token():
 		var token = file.get_as_text()
 		file.close()
 		return token
+
 
 func save_access_token(access_token: String):
 	var file = File.new()
@@ -94,6 +77,7 @@ func match_login_error(err: HTTPResponse):
 	elif err.is_validation_error():
 		NotificationServer.notify_critical("Enter a valid email address.")
 
+
 func try_load_user(show_notifications = true) -> bool:
 	user = null
 	var res = yield(API.rest.get_current_user(), "completed")
@@ -116,3 +100,23 @@ func try_load_user(show_notifications = true) -> bool:
 	else:
 		permissions = res.permissions
 		return true
+
+
+func try_autologin():
+	var access_token = get_access_token()
+
+	if not access_token:
+		return
+
+	NotificationServer.notify_info("Auto logging in...")
+
+	var auth_token = Token.new()
+	auth_token.access_token = access_token
+	API.client.set_token(auth_token)
+
+	var res = yield(try_load_user(false), "completed")
+	if not res:
+		emit_signal("login_failed")
+	else:
+		API.ws.init()
+		emit_signal("logged_in")

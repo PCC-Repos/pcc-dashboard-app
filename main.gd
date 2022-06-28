@@ -11,7 +11,6 @@ onready var hbox = $HB
 onready var audio_player = $AudioStreamPlayer
 
 onready var AdminForm = preload("res://forms/AdminForm/AdminForm.tscn")
-var admin_scene = null
 
 func _ready():
 	if api_debug:
@@ -23,6 +22,8 @@ func _ready():
 	_c = Store.connect("logged_out", self, "_on_logged_out")
 	_c = connect("visibility_changed", self, "_on_visibility_changed")
 	_c = tab_container.connect("tab_changed", self, "_on_tab_container_tab_changed")
+
+	Store.try_autologin()
 
 func ready_tween():
 	logo.show()
@@ -37,16 +38,16 @@ func _on_logged_in():
 
 func _on_logged_out():
 	hbox.visible = true
-	if admin_scene:
-		admin_scene.queue_free()
-		admin_scene = null
+	if Store.admin_scene:
+		Store.admin_scene.queue_free()
+		Store.admin_scene = null
 	#ready_tween()
 	audio_player.play()
 
 func init_admin():
 	print("initing admin")
-	admin_scene = AdminForm.instance()
-	hbox.get_parent().add_child(admin_scene)
+	Store.admin_scene = AdminForm.instance()
+	hbox.get_parent().add_child(Store.admin_scene)
 
 func _on_visibility_changed() -> void:
 	print("Main visibility changed")

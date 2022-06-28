@@ -175,7 +175,7 @@ next/LightsON = "LightsMoving"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 11 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["audio_players"]]
 stream = ExtResource( 6 )
 volume_db = -6.021
 pitch_scale = 1.5
