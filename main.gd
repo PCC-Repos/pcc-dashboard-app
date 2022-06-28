@@ -10,6 +10,9 @@ onready var image_container = $HB/ImageContainer
 onready var hbox = $HB
 onready var audio_player = $AudioStreamPlayer
 
+onready var AdminForm = preload("res://forms/AdminForm/AdminForm.tscn")
+var admin_scene = null
+
 func _ready():
 	if api_debug:
 		API.rest._base_url = "https://api.proclubsfederation.com/dev/"
@@ -34,11 +37,16 @@ func _on_logged_in():
 
 func _on_logged_out():
 	hbox.visible = true
-	ready_tween()
+	if admin_scene:
+		admin_scene.queue_free()
+		admin_scene = null
+	#ready_tween()
 	audio_player.play()
 
 func init_admin():
 	print("initing admin")
+	admin_scene = AdminForm.instance()
+	hbox.get_parent().add_child(admin_scene)
 
 func _on_visibility_changed() -> void:
 	print("Main visibility changed")

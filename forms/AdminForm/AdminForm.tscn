@@ -1,6 +1,6 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=39 format=2]
 
-[ext_resource path="res://forms/AdminForm/admin_form.gd" type="Script" id=1]
+[ext_resource path="res://forms/AdminForm/AdminForm.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=2]
 [ext_resource path="res://audio/audio_stream_random_player.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/BigTitle.tres" type="DynamicFont" id=4]
@@ -13,9 +13,7 @@
 [ext_resource path="res://assets/images/UI/Clubs.svg" type="Texture" id=11]
 [ext_resource path="res://resources/transactions/transactions.gd" type="Script" id=12]
 [ext_resource path="res://dialogs/add_member_dialog.tscn" type="PackedScene" id=13]
-[ext_resource path="res://old_resources/clubs/clubs.gd" type="Script" id=14]
 [ext_resource path="res://dialogs/edit_club_dialog.tscn" type="PackedScene" id=15]
-[ext_resource path="res://old_resources/invites/invites.gd" type="Script" id=16]
 [ext_resource path="res://resources/players/Players.gd" type="Script" id=17]
 [ext_resource path="res://dialogs/create_club_dialog.tscn" type="PackedScene" id=18]
 [ext_resource path="res://dialogs/join_club_dialog.tscn" type="PackedScene" id=19]
@@ -33,8 +31,6 @@
 [ext_resource path="res://resources/transactions/transaction.tscn" type="PackedScene" id=31]
 [ext_resource path="res://dialogs/new_dialogs/welcome_dialog.tscn" type="PackedScene" id=32]
 [ext_resource path="res://resources/admin/admin.gd" type="Script" id=33]
-
-
 
 [sub_resource type="Gradient" id=8]
 interpolation_mode = 2
@@ -464,7 +460,6 @@ margin_right = 418.0
 margin_bottom = 581.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 3
-script = ExtResource( 14 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs"]
 margin_right = 418.0
@@ -534,7 +529,6 @@ margin_right = 412.0
 margin_bottom = 500.0
 rect_min_size = Vector2( 148, 0 )
 size_flags_horizontal = 3
-script = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Applications"]
 margin_right = 412.0
@@ -757,6 +751,7 @@ __meta__ = {
 }
 
 [node name="Transactions" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
@@ -913,7 +908,6 @@ __meta__ = {
 }
 
 [node name="AddMemberModal" parent="Modals" instance=ExtResource( 13 )]
-visible = false
 margin_left = -215.0
 margin_top = -112.0
 margin_right = 215.0
@@ -980,7 +974,6 @@ visible = false
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Applications/JoinClubButton" to="NextGenDialogs/ApplyClubDialog" method="_on_JoinClubButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards/JoinClubButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Players/HBoxContainer/Awards" method="_on_JoinClubButton_pressed"]
 [connection signal="visibility_changed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club" method="_on_Club_visibility_changed"]
-[connection signal="club_changed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Members" method="_on_Clubs_club_changed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs/CreateNewButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Clubs" method="_on_CreateNewButton_pressed"]
 [connection signal="button_toggled" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Applications/ClubApplications/VBoxContainer" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Applications" method="_on_VBoxContainer_button_toggled"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Applications/CreateNewButton" to="Panel/VBoxContainer/PanelContainer2/VBoxContainer/TabContainer/Club/Clubs/Applications" method="_on_CreateNewButton_pressed"]
