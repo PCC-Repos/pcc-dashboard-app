@@ -125,6 +125,11 @@ _global_script_classes=[ {
 "path": "res://addons/proclubsfederation-api-godot/rest/param_entity/JoinClubParams.gd"
 }, {
 "base": "Reference",
+"class": "L",
+"language": "GDScript",
+"path": "res://scripts/L.gd"
+}, {
+"base": "Reference",
 "class": "ModifyAwardParams",
 "language": "GDScript",
 "path": "res://addons/proclubsfederation-api-godot/rest/param_entity/ModifyAwardParams.gd"
@@ -278,6 +283,7 @@ _global_script_class_icons={
 "Invite": "",
 "Item": "",
 "JoinClubParams": "",
+"L": "",
 "ModifyAwardParams": "",
 "ModifyClubParams": "",
 "ModifyItemParams": "",
@@ -321,9 +327,9 @@ config/quit_on_go_back=false
 
 NotificationServer="*res://scripts/NotificationServer.gd"
 NotificationPopup="*res://ui_classes/NotificationPopup.tscn"
+API="*res://scripts/API.gd"
 Store="*res://autoloads/Store.gd"
 Settings="*res://scripts/Settings.gd"
-API="*res://scripts/API.gd"
 
 [display]
 

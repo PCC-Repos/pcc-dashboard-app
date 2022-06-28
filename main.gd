@@ -11,13 +11,13 @@ onready var hbox = $HB
 onready var audio_player = $AudioStreamPlayer
 
 func _ready():
-	API.rest._base_url = "https://api.proclubsfederation.com/dev/"
-	print("API Base: ", API.rest._base_url)
+	if api_debug:
+		API.rest._base_url = "https://api.proclubsfederation.com/dev/"
+	L.debug("API Base URL", API.rest._base_url)
 
 	var _c
 	_c = Store.connect("logged_in", self, "_on_logged_in")
 	_c = Store.connect("logged_out", self, "_on_logged_out")
-	_c = Store.connect("login_failed", self, "_on_login_failed")
 	_c = connect("visibility_changed", self, "_on_visibility_changed")
 	_c = tab_container.connect("tab_changed", self, "_on_tab_container_tab_changed")
 
@@ -36,11 +36,6 @@ func _on_logged_out():
 	hbox.visible = true
 	ready_tween()
 	audio_player.play()
-
-func _on_login_failed():
-	$HBoxContainer.show()
-	$"%ImageContainer".get_node("CanvasLayer").visible = true
-	#ready()
 
 func init_admin():
 	print("initing admin")

@@ -20,11 +20,10 @@ func _on_login_btn_pressed():
 		return NotificationServer.notify_warning("Enter a password")
 
 	login_btn.disabled = true
+	NotificationServer.notify_info("Logging in...")
 	var success = yield(Store.login(email, password), "completed")
-	if not success:
-		login_btn.disabled = false
+	login_btn.disabled = false
 
 func _on_register_btn_pessed():
-#	get_tree().current_scene.get_node("%TabContainer").current_tab = get_tree().current_scene.get_node("%TabContainer").find_node("RegisterForm").get_index()
-	pass
+	Store.main_screen_tab_controller.show_form("register")
 
