@@ -17,5 +17,3 @@ group = SubResource( 1 )
 text = "TabButton"
 expand_icon = true
 script = ExtResource( 1 )
-
-[connection signal="toggled" from="." to="." method="_on_Button_toggled"]
