@@ -1,24 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://themes/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui_classes/VButtonContainer.gd" type="Script" id=2]
 [ext_resource path="res://containers/UserContainer/UserContainer.gd" type="Script" id=3]
 [ext_resource path="res://ui_classes/ThemedButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/TitleFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://containers/UserContainer/UserContainerInvites.gd" type="Script" id=6]
 
 [node name="UserContainer" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="PlayerName" type="Label" parent="."]
-margin_right = 1286.0
+margin_right = 1366.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 5 )
 text = "Player name"
@@ -27,24 +24,25 @@ valign = 1
 
 [node name="HS" type="HSeparator" parent="."]
 margin_top = 30.0
-margin_right = 1286.0
+margin_right = 1366.0
 margin_bottom = 34.0
 
 [node name="HB" type="HBoxContainer" parent="."]
 margin_top = 38.0
-margin_right = 1286.0
-margin_bottom = 581.0
+margin_right = 1366.0
+margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Invites" type="VBoxContainer" parent="HB"]
-margin_right = 420.0
-margin_bottom = 543.0
+margin_right = 447.0
+margin_bottom = 730.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
+script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="HB/Invites"]
-margin_right = 420.0
+margin_right = 447.0
 margin_bottom = 23.0
 text = "Invites"
 align = 1
@@ -52,59 +50,57 @@ valign = 1
 
 [node name="HS" type="HSeparator" parent="HB/Invites"]
 margin_top = 27.0
-margin_right = 420.0
+margin_right = 447.0
 margin_bottom = 31.0
 
 [node name="SC" type="ScrollContainer" parent="HB/Invites"]
 margin_top = 35.0
-margin_right = 420.0
-margin_bottom = 543.0
+margin_right = 447.0
+margin_bottom = 730.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VB" type="VBoxContainer" parent="HB/Invites/SC"]
-margin_right = 420.0
-margin_bottom = 508.0
+margin_right = 447.0
+margin_bottom = 695.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 8
 
-[node name="Invite1" type="Button" parent="HB/Invites/SC/VB" instance=ExtResource( 4 )]
-margin_right = 420.0
-margin_bottom = 33.0
-theme_type_variation = "ListButton"
+[node name="Invite1" parent="HB/Invites/SC/VB" instance=ExtResource( 4 )]
+margin_right = 447.0
 text = "Test Invite"
 
-[node name="Invite2" type="Button" parent="HB/Invites/SC/VB" instance=ExtResource( 4 )]
+[node name="Invite2" parent="HB/Invites/SC/VB" instance=ExtResource( 4 )]
 margin_top = 41.0
-margin_right = 420.0
+margin_right = 447.0
 margin_bottom = 74.0
-theme_type_variation = "ListButton"
 text = "Test Invite 2"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HB/Invites"]
 
-[node name="InvitesMenu" type="PopupMenu" parent="HB/Invites/CanvasLayer"]
-margin_right = 130.0
-margin_bottom = 92.0
-items = [ "Accept", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Copy ID", null, 0, false, false, 3, 0, null, "", false ]
+[node name="InviteMenu" type="PopupMenu" parent="HB/Invites/CanvasLayer"]
+margin_right = 78.0
+margin_bottom = 101.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="VS" type="VSeparator" parent="HB"]
-margin_left = 424.0
-margin_right = 428.0
-margin_bottom = 543.0
+margin_left = 451.0
+margin_right = 455.0
+margin_bottom = 730.0
 
 [node name="Applications" type="VBoxContainer" parent="HB"]
-margin_left = 432.0
-margin_right = 853.0
-margin_bottom = 543.0
+margin_left = 459.0
+margin_right = 906.0
+margin_bottom = 730.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HB/Applications"]
-margin_right = 421.0
+margin_right = 447.0
 margin_bottom = 23.0
 text = "Applications"
 align = 1
@@ -112,38 +108,35 @@ valign = 1
 
 [node name="HS" type="HSeparator" parent="HB/Applications"]
 margin_top = 27.0
-margin_right = 421.0
+margin_right = 447.0
 margin_bottom = 31.0
 
 [node name="SC" type="ScrollContainer" parent="HB/Applications"]
 margin_top = 35.0
-margin_right = 421.0
-margin_bottom = 506.0
+margin_right = 447.0
+margin_bottom = 693.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="VB" type="VBoxContainer" parent="HB/Applications/SC"]
-margin_right = 421.0
+margin_right = 447.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 
-[node name="Application1" type="Button" parent="HB/Applications/SC/VB" instance=ExtResource( 4 )]
-margin_right = 421.0
-margin_bottom = 33.0
-theme_type_variation = "ListButton"
+[node name="Application1" parent="HB/Applications/SC/VB" instance=ExtResource( 4 )]
+margin_right = 447.0
 text = "Test Application"
 
-[node name="Application2" type="Button" parent="HB/Applications/SC/VB" instance=ExtResource( 4 )]
+[node name="Application2" parent="HB/Applications/SC/VB" instance=ExtResource( 4 )]
 margin_top = 37.0
-margin_right = 421.0
+margin_right = 447.0
 margin_bottom = 70.0
-theme_type_variation = "ListButton"
 text = "Test Application 2"
 
 [node name="JoinClubButton" type="Button" parent="HB/Applications"]
-margin_top = 510.0
-margin_right = 421.0
-margin_bottom = 543.0
+margin_top = 697.0
+margin_right = 447.0
+margin_bottom = 730.0
 mouse_default_cursor_shape = 2
 theme_type_variation = "GreenButton"
 text = "➕ Join a club"
@@ -160,19 +153,19 @@ __meta__ = {
 }
 
 [node name="VS2" type="VSeparator" parent="HB"]
-margin_left = 857.0
-margin_right = 861.0
-margin_bottom = 543.0
+margin_left = 910.0
+margin_right = 914.0
+margin_bottom = 730.0
 
 [node name="Awards" type="VBoxContainer" parent="HB"]
-margin_left = 865.0
-margin_right = 1286.0
-margin_bottom = 543.0
+margin_left = 918.0
+margin_right = 1366.0
+margin_bottom = 730.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HB/Awards"]
-margin_right = 421.0
+margin_right = 448.0
 margin_bottom = 23.0
 text = "Awards"
 align = 1
@@ -180,31 +173,28 @@ valign = 1
 
 [node name="HS" type="HSeparator" parent="HB/Awards"]
 margin_top = 27.0
-margin_right = 421.0
+margin_right = 448.0
 margin_bottom = 31.0
 
 [node name="SC" type="ScrollContainer" parent="HB/Awards"]
 margin_top = 35.0
-margin_right = 421.0
-margin_bottom = 543.0
+margin_right = 448.0
+margin_bottom = 730.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="VB" type="VBoxContainer" parent="HB/Awards/SC"]
-margin_right = 421.0
+margin_right = 448.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 
-[node name="Award1" type="Button" parent="HB/Awards/SC/VB" instance=ExtResource( 4 )]
-margin_right = 421.0
-margin_bottom = 33.0
-theme_type_variation = "ListButton"
+[node name="Award1" parent="HB/Awards/SC/VB" instance=ExtResource( 4 )]
+margin_right = 448.0
 text = "Test Award 1"
 
-[node name="Award2" type="Button" parent="HB/Awards/SC/VB" instance=ExtResource( 4 )]
+[node name="Award2" parent="HB/Awards/SC/VB" instance=ExtResource( 4 )]
 margin_top = 37.0
-margin_right = 421.0
+margin_right = 448.0
 margin_bottom = 70.0
-theme_type_variation = "ListButton"
 text = "Test Award 2"

@@ -17,7 +17,7 @@ func _on_back_btn_pressed() -> void:
 
 func _on_register_btn_pressed() -> void:
 	if name_field.get_text() == "":
-		return NotificationServer.notify_warning("Enter an avatar name")
+		return NotificationServer.notify_warning("Enter a name")
 	if email_field.get_text() == "":
 		return NotificationServer.notify_warning("Enter an email")
 	if pass_field.get_text() == "":
@@ -44,4 +44,8 @@ func _on_register_btn_pressed() -> void:
 
 	NotificationServer.notify_info("Logging in...")
 	var res = yield(Store.login(create_user_params.email, create_user_params.password), "completed")
+	name_field.set_text("")
+	email_field.set_text("")
+	pass_field.set_text("")
+	confirm_pass_field.set_text("")
 	register_btn.disabled = false

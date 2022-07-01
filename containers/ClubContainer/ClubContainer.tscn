@@ -11,15 +11,11 @@
 [node name="ClubContainer" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
 script = ExtResource( 2 )
 
 [node name="Name" type="Label" parent="."]
 unique_name_in_owner = true
-margin_right = 1286.0
+margin_right = 1366.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 4 )
 text = "Club Name"
@@ -28,20 +24,20 @@ align = 1
 [node name="Description" type="Label" parent="."]
 unique_name_in_owner = true
 margin_top = 30.0
-margin_right = 1286.0
+margin_right = 1366.0
 margin_bottom = 53.0
 text = "Club Description"
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="."]
 margin_top = 57.0
-margin_right = 1286.0
+margin_right = 1366.0
 margin_bottom = 61.0
 
 [node name="Clubs" type="HBoxContainer" parent="."]
 margin_top = 65.0
-margin_right = 1286.0
-margin_bottom = 581.0
+margin_right = 1366.0
+margin_bottom = 768.0
 size_flags_vertical = 3
 
 [node name="Clubs" type="VBoxContainer" parent="Clubs" groups=["login_ready"]]
@@ -115,13 +111,13 @@ __meta__ = {
 }
 
 [node name="Applications" type="VBoxContainer" parent="Clubs"]
-margin_right = 420.0
-margin_bottom = 516.0
+margin_right = 447.0
+margin_bottom = 703.0
 rect_min_size = Vector2( 148, 0 )
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Clubs/Applications"]
-margin_right = 420.0
+margin_right = 447.0
 margin_bottom = 23.0
 text = "Applications"
 align = 1
@@ -129,25 +125,25 @@ valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="Clubs/Applications"]
 margin_top = 27.0
-margin_right = 420.0
+margin_right = 447.0
 margin_bottom = 31.0
 
 [node name="ClubApplications" type="ScrollContainer" parent="Clubs/Applications"]
 unique_name_in_owner = true
 margin_top = 35.0
-margin_right = 420.0
-margin_bottom = 516.0
+margin_right = 447.0
+margin_bottom = 703.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Clubs/Applications/ClubApplications"]
-margin_right = 420.0
+margin_right = 447.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
 script = ExtResource( 3 )
 
 [node name="Invite" type="Button" parent="Clubs/Applications/ClubApplications/VBoxContainer"]
-margin_left = 110.0
-margin_right = 310.0
+margin_left = 123.0
+margin_right = 323.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 200, 0 )
 mouse_default_cursor_shape = 2
@@ -177,19 +173,19 @@ __meta__ = {
 }
 
 [node name="VSeparator2" type="VSeparator" parent="Clubs"]
-margin_left = 424.0
-margin_right = 428.0
-margin_bottom = 516.0
+margin_left = 451.0
+margin_right = 455.0
+margin_bottom = 703.0
 
 [node name="Members" type="VBoxContainer" parent="Clubs" groups=["login_ready"]]
-margin_left = 432.0
-margin_right = 853.0
-margin_bottom = 516.0
+margin_left = 459.0
+margin_right = 906.0
+margin_bottom = 703.0
 rect_min_size = Vector2( 200, 0 )
 size_flags_horizontal = 7
 
 [node name="Label" type="Label" parent="Clubs/Members"]
-margin_right = 421.0
+margin_right = 447.0
 margin_bottom = 23.0
 text = "Members"
 align = 1
@@ -197,22 +193,22 @@ valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="Clubs/Members"]
 margin_top = 27.0
-margin_right = 421.0
+margin_right = 447.0
 margin_bottom = 31.0
 
 [node name="Members" type="ScrollContainer" parent="Clubs/Members"]
 unique_name_in_owner = true
 margin_top = 35.0
-margin_right = 421.0
-margin_bottom = 516.0
+margin_right = 447.0
+margin_bottom = 703.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Clubs/Members/Members"]
-margin_right = 421.0
-margin_bottom = 481.0
+margin_right = 447.0
+margin_bottom = 668.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -232,19 +228,19 @@ theme = ExtResource( 1 )
 items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "Kick", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Copy ID", null, 0, false, false, 3, 0, null, "", false ]
 
 [node name="VSeparator" type="VSeparator" parent="Clubs"]
-margin_left = 857.0
-margin_right = 861.0
-margin_bottom = 516.0
+margin_left = 910.0
+margin_right = 914.0
+margin_bottom = 703.0
 
 [node name="Agents" type="VBoxContainer" parent="Clubs" groups=["api_base", "login_ready"]]
-margin_left = 865.0
-margin_right = 1286.0
-margin_bottom = 516.0
+margin_left = 918.0
+margin_right = 1366.0
+margin_bottom = 703.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Clubs/Agents"]
-margin_right = 421.0
+margin_right = 448.0
 margin_bottom = 23.0
 text = "Agents"
 align = 1
@@ -252,22 +248,22 @@ valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="Clubs/Agents"]
 margin_top = 27.0
-margin_right = 421.0
+margin_right = 448.0
 margin_bottom = 31.0
 
 [node name="Agents" type="ScrollContainer" parent="Clubs/Agents"]
 unique_name_in_owner = true
 margin_top = 35.0
-margin_right = 421.0
-margin_bottom = 516.0
+margin_right = 448.0
+margin_bottom = 703.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Clubs/Agents/Agents"]
-margin_right = 421.0
-margin_bottom = 481.0
+margin_right = 448.0
+margin_bottom = 668.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

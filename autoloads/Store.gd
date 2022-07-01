@@ -11,6 +11,13 @@ var permissions: int
 var main_screen_tab_controller
 var admin_scene
 
+enum UserPermissionsEnum {
+	USER = 1,
+	MANAGER = 2,
+	ADMIN = 4,
+	PREMIUM_USER = 8,
+	CO_MANAGER = 16
+}
 
 func get_access_token():
 	var file = File.new()
@@ -37,6 +44,12 @@ func save_access_token(access_token: String):
 		file.store_string(access_token)
 		L.print("Store", "Saving access token to file...")
 		file.close()
+
+func delete_access_token() -> void:
+	var dir = Directory.new()
+	if not dir.file_exists(TOKEN_FILEPATH):
+		return
+	dir.remove(TOKEN_FILEPATH)
 
 
 # -----------------
@@ -66,6 +79,7 @@ func login(p_email: String, p_password: String) -> bool:
 
 func logout():
 	yield(API.rest.revoke(), "completed")
+	delete_access_token()
 	emit_signal("logged_out")
 
 
@@ -118,5 +132,17 @@ func try_autologin():
 	if not res:
 		emit_signal("login_failed")
 	else:
-		API.ws.init()
+		#TODO: Uncomment this to connect to WS
+		#API.ws.init()
 		emit_signal("logged_in")
+
+
+func get_user_permission_as_string() -> String:
+	if not permissions: return ""
+	return UserPermissionsEnum.keys()[UserPermissionsEnum.values().find(permissions)]
+
+func is_self_admin(): return permissions == UserPermissionsEnum.ADMIN
+func is_self_manager(): return permissions == UserPermissionsEnum.MANAGER
+func is_self_user(): return permissions == UserPermissionsEnum.USER
+func is_self_premium_user(): return permissions == UserPermissionsEnum.PREMIUM_USER
+func is_self_co_manager(): return permissions == UserPermissionsEnum.CO_MANAGER

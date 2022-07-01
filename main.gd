@@ -12,6 +12,8 @@ onready var audio_player = $AudioStreamPlayer
 
 onready var AdminForm = preload("res://forms/AdminForm/AdminForm.tscn")
 
+var dev_helper = null
+
 func _ready():
 	if api_debug:
 		API.rest._base_url = "https://api.proclubsfederation.com/dev/"
@@ -24,6 +26,11 @@ func _ready():
 	_c = tab_container.connect("tab_changed", self, "_on_tab_container_tab_changed")
 
 	Store.try_autologin()
+
+	#TODO: remove this DevHelper once dashboard app is completed
+	if not dev_helper:
+		dev_helper = DevHelper.new()
+		add_child(dev_helper)
 
 func ready_tween():
 	logo.show()
@@ -41,16 +48,16 @@ func _on_logged_out():
 	if Store.admin_scene:
 		Store.admin_scene.queue_free()
 		Store.admin_scene = null
-	#ready_tween()
+	ready_tween()
 	audio_player.play()
 
 func init_admin():
-	print("initing admin")
 	Store.admin_scene = AdminForm.instance()
 	hbox.get_parent().add_child(Store.admin_scene)
 
 func _on_visibility_changed() -> void:
-	print("Main visibility changed")
+	# TODO: What is to be done here?
+	pass
 
 func _on_tab_container_tab_changed(_tab: int):
 	ready_tween()

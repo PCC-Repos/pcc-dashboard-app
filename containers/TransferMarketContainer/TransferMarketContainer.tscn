@@ -5,17 +5,12 @@
 [ext_resource path="res://assets/fonts/TitleFont.tres" type="DynamicFont" id=3]
 
 [node name="TransferMarketContainer" type="VBoxContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
 script = ExtResource( 2 )
 
 [node name="Items" type="Label" parent="."]
-margin_right = 1286.0
+margin_right = 1366.0
 margin_bottom = 34.0
 rect_min_size = Vector2( 0, 34 )
 custom_fonts/font = ExtResource( 3 )
@@ -25,20 +20,20 @@ valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="."]
 margin_top = 38.0
-margin_right = 1286.0
+margin_right = 1366.0
 margin_bottom = 42.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_top = 46.0
-margin_right = 1286.0
-margin_bottom = 581.0
+margin_right = 1366.0
+margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="HFlowContainer" type="HFlowContainer" parent="ScrollContainer"]
-margin_right = 1286.0
-margin_bottom = 535.0
+margin_right = 1366.0
+margin_bottom = 722.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/vseparation = 10

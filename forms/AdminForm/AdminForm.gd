@@ -8,24 +8,16 @@ onready var dialogs = $NextGenDialogs
 onready var admin_btn = $Panel/VB/PC/VB/TabButtons/AdminBtn
 onready var marketplace_btn = $Panel/VB/PC/VB/TabButtons/MarketplaceBtn
 
-enum UserPermissionsEnum {
-	USER = 1,
-	MANAGER = 2,
-	ADMIN = 4,
-	PREMIUM_USER = 8,
-	CO_MANAGER = 16
-}
-
 
 func _ready():
 	$AudioStreamRandomPlayer.play()
 	match Store.permissions:
-		UserPermissionsEnum.USER:
+		Store.UserPermissionsEnum.USER:
 			admin_btn.hide()
 			marketplace_btn.hide()
-		UserPermissionsEnum.MANAGER:
+		Store.UserPermissionsEnum.MANAGER:
 			admin_btn.hide()
-	account_btn.text = "[%s]%s" % [UserPermissionsEnum.keys()[UserPermissionsEnum.values().find(Store.permissions)], Store.user.name]
+	account_btn.text = "[%s]%s" % [Store.get_user_permission_as_string(), Store.user.name]
 	account_btn.get_popup().connect("index_pressed", self, "_on_account_btn_index_pressed")
 	NotificationServer.notify_info("Logged in as %s" % Store.user.name)
 

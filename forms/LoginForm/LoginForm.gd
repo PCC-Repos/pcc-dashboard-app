@@ -22,6 +22,8 @@ func _on_login_btn_pressed():
 	login_btn.disabled = true
 	NotificationServer.notify_info("Logging in...")
 	var success = yield(Store.login(email, password), "completed")
+	if success:
+		email_field.set_text("")
 	login_btn.disabled = false
 
 func _on_register_btn_pessed():
