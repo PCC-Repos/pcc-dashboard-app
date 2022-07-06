@@ -1,11 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://themes/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://containers/UserContainer/UserContainerApplicationPopup.gd" type="Script" id=1]
 [ext_resource path="res://ui_classes/VButtonContainer.gd" type="Script" id=2]
 [ext_resource path="res://containers/UserContainer/UserContainer.gd" type="Script" id=3]
 [ext_resource path="res://ui_classes/ThemedButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/fonts/TitleFont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://containers/UserContainer/UserContainerInvites.gd" type="Script" id=6]
+[ext_resource path="res://assets/fonts/Bold.tres" type="DynamicFont" id=7]
+[ext_resource path="res://ui_classes/CustomWindowDialog.tscn" type="PackedScene" id=8]
+[ext_resource path="res://containers/UserContainer/UserContainerInvitePopup.gd" type="Script" id=9]
+[ext_resource path="res://containers/UserContainer/UserContainerApplications.gd" type="Script" id=10]
+[ext_resource path="res://containers/UserContainer/UserContainerAwardPopup.gd" type="Script" id=11]
+[ext_resource path="res://containers/UserContainer/UserContainerAwards.gd" type="Script" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="UserContainer" type="VBoxContainer"]
 anchor_right = 1.0
@@ -81,11 +91,128 @@ text = "Test Invite 2"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HB/Invites"]
 
-[node name="InviteMenu" type="PopupMenu" parent="HB/Invites/CanvasLayer"]
-margin_right = 78.0
-margin_bottom = 101.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="InvitePopup" parent="HB/Invites/CanvasLayer" instance=ExtResource( 8 )]
+visible = false
+script = ExtResource( 9 )
+title = "Invite"
+
+[node name="SC" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB" index="0"]
+margin_bottom = 244.0
+
+[node name="Body" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC" index="0"]
+margin_bottom = 244.0
+
+[node name="VB" type="VBoxContainer" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body" index="0"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 500.0
+margin_bottom = 242.0
+
+[node name="Name" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
+margin_right = 490.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 7 )
+text = "Invite Name"
+align = 1
+autowrap = true
+
+[node name="Label" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
+margin_top = 27.0
+margin_right = 490.0
+margin_bottom = 50.0
+text = "You are invited by"
+align = 1
+autowrap = true
+
+[node name="InviterName" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
+margin_top = 54.0
+margin_right = 490.0
+margin_bottom = 77.0
+text = "User001"
+align = 1
+autowrap = true
+
+[node name="Label3" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
+margin_top = 81.0
+margin_right = 490.0
+margin_bottom = 104.0
+text = "to join the club"
+align = 1
+autowrap = true
+
+[node name="ClubName" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
+margin_top = 108.0
+margin_right = 490.0
+margin_bottom = 131.0
+text = "Club001"
+align = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
+margin_top = 135.0
+margin_right = 490.0
+margin_bottom = 158.0
+custom_fonts/font = ExtResource( 7 )
+text = "Description"
+autowrap = true
+
+[node name="Description" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
+margin_top = 162.0
+margin_right = 490.0
+margin_bottom = 185.0
+text = "Lorem ipsum dolor sit amet"
+autowrap = true
+
+[node name="CreatedAt" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
+margin_top = 189.0
+margin_right = 490.0
+margin_bottom = 212.0
+text = "Created: 2999-12-31 00:00:00"
+autowrap = true
+
+[node name="VS" type="VSeparator" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
+margin_top = 216.0
+margin_right = 490.0
+margin_bottom = 232.0
+rect_min_size = Vector2( 0, 16 )
+custom_styles/separator = SubResource( 1 )
+
+[node name="HB" type="HBoxContainer" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB" index="1"]
+margin_left = 182.0
+margin_top = 248.0
+margin_right = 339.0
+margin_bottom = 281.0
+size_flags_horizontal = 4
+
+[node name="RejectBtn" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/HB" instance=ExtResource( 4 )]
+margin_right = 56.0
+text = "Reject"
+
+[node name="HS" type="HSeparator" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/HB"]
+margin_left = 60.0
+margin_right = 92.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 32, 0 )
+custom_styles/separator = SubResource( 2 )
+
+[node name="AcceptBtn" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/HB" instance=ExtResource( 4 )]
+margin_left = 96.0
+margin_right = 157.0
+text = "Accept"
+
+[node name="CopyIdBtn" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB" index="2" instance=ExtResource( 4 )]
+margin_left = 456.0
+margin_top = 285.0
+margin_right = 522.0
+margin_bottom = 318.0
+size_flags_horizontal = 8
+text = "Copy Id"
+
+[node name="CloseBtn" parent="HB/Invites/CanvasLayer/InvitePopup/WD" index="2"]
+visible = false
+
+[node name="TitleBar" parent="HB/Invites/CanvasLayer/InvitePopup/WD" index="3"]
+text = "Invite"
 
 [node name="VS" type="VSeparator" parent="HB"]
 margin_left = 451.0
@@ -98,6 +225,7 @@ margin_right = 906.0
 margin_bottom = 730.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
+script = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="HB/Applications"]
 margin_right = 447.0
@@ -143,14 +271,108 @@ text = "➕ Join a club"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HB/Applications"]
 
-[node name="ApplicationMenu" type="PopupMenu" parent="HB/Applications/CanvasLayer"]
-margin_right = 130.0
-margin_bottom = 74.0
-theme = ExtResource( 1 )
-items = [ "Delete", null, 0, false, false, 0, 0, null, "", false, "", null, 0, false, false, 1, 0, null, "", true, "Copy ID", null, 0, false, false, 2, 0, null, "", false ]
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ApplicationPopup" parent="HB/Applications/CanvasLayer" instance=ExtResource( 8 )]
+visible = false
+script = ExtResource( 1 )
+title = "Application"
+
+[node name="SC" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB" index="0"]
+margin_bottom = 244.0
+
+[node name="Body" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC" index="0"]
+margin_bottom = 244.0
+
+[node name="VB" type="VBoxContainer" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body" index="0"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 512.0
+margin_bottom = 234.0
+
+[node name="ApplicantName" type="Label" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
+margin_right = 502.0
+margin_bottom = 23.0
+text = "User001"
+align = 1
+autowrap = true
+
+[node name="Label" type="Label" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
+margin_top = 27.0
+margin_right = 502.0
+margin_bottom = 50.0
+text = "wants to join the club"
+align = 1
+autowrap = true
+
+[node name="ClubName" type="Label" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
+margin_top = 54.0
+margin_right = 502.0
+margin_bottom = 77.0
+text = "Club001"
+align = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
+margin_top = 81.0
+margin_right = 502.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 7 )
+text = "Description"
+autowrap = true
+
+[node name="Description" type="Label" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
+margin_top = 108.0
+margin_right = 502.0
+margin_bottom = 131.0
+text = "Lorem ipsum dolor sit amet"
+autowrap = true
+
+[node name="CreatedAt" type="Label" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
+margin_top = 135.0
+margin_right = 502.0
+margin_bottom = 158.0
+text = "Created: 2999-12-31 00:00:00"
+autowrap = true
+
+[node name="VS" type="VSeparator" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
+margin_top = 162.0
+margin_right = 502.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 0, 16 )
+custom_styles/separator = SubResource( 1 )
+
+[node name="HB" type="HBoxContainer" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB" index="1"]
+margin_left = 181.0
+margin_top = 248.0
+margin_right = 341.0
+margin_bottom = 281.0
+size_flags_horizontal = 4
+
+[node name="DeleteBtn" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/HB" instance=ExtResource( 4 )]
+margin_right = 59.0
+text = "Delete"
+
+[node name="HS" type="HSeparator" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/HB"]
+margin_left = 63.0
+margin_right = 95.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 32, 0 )
+custom_styles/separator = SubResource( 2 )
+
+[node name="AcceptBtn" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/HB" instance=ExtResource( 4 )]
+margin_left = 99.0
+margin_right = 160.0
+text = "Accept"
+
+[node name="CopyIdBtn" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB" index="2" instance=ExtResource( 4 )]
+margin_left = 456.0
+margin_top = 285.0
+margin_right = 522.0
+margin_bottom = 318.0
+size_flags_horizontal = 8
+text = "Copy Id"
+
+[node name="TitleBar" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD" index="3"]
+text = "Application"
 
 [node name="VS2" type="VSeparator" parent="HB"]
 margin_left = 910.0
@@ -163,6 +385,7 @@ margin_right = 1366.0
 margin_bottom = 730.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
+script = ExtResource( 12 )
 
 [node name="Label" type="Label" parent="HB/Awards"]
 margin_right = 448.0
@@ -198,3 +421,82 @@ margin_top = 37.0
 margin_right = 448.0
 margin_bottom = 70.0
 text = "Test Award 2"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HB/Awards"]
+
+[node name="AwardPopup" parent="HB/Awards/CanvasLayer" instance=ExtResource( 8 )]
+visible = false
+script = ExtResource( 11 )
+title = "Award"
+
+[node name="SC" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB" index="0"]
+margin_bottom = 281.0
+
+[node name="Body" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB/SC" index="0"]
+margin_bottom = 281.0
+
+[node name="VB" type="VBoxContainer" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB/SC/Body" index="0"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 512.0
+margin_bottom = 271.0
+
+[node name="Name" type="Label" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB/SC/Body/VB"]
+margin_right = 502.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 7 )
+text = "User001"
+align = 1
+autowrap = true
+
+[node name="MC" type="MarginContainer" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB/SC/Body/VB"]
+margin_top = 27.0
+margin_right = 502.0
+margin_bottom = 66.0
+custom_constants/margin_top = 8
+custom_constants/margin_bottom = 8
+
+[node name="Modifier" type="Label" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB/SC/Body/VB/MC"]
+margin_top = 8.0
+margin_right = 502.0
+margin_bottom = 31.0
+text = "Modifier is"
+autowrap = true
+
+[node name="Label2" type="Label" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB/SC/Body/VB"]
+margin_top = 70.0
+margin_right = 502.0
+margin_bottom = 93.0
+custom_fonts/font = ExtResource( 7 )
+text = "Description"
+autowrap = true
+
+[node name="Description" type="Label" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB/SC/Body/VB"]
+margin_top = 97.0
+margin_right = 502.0
+margin_bottom = 120.0
+text = "Lorem ipsum dolor sit amet"
+autowrap = true
+
+[node name="AwardedAt" type="Label" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB/SC/Body/VB"]
+visible = false
+margin_top = 124.0
+margin_right = 502.0
+margin_bottom = 147.0
+text = "Awarded At: 2999-12-31 00:00:00"
+autowrap = true
+
+[node name="CopyIdBtn" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB" index="1" instance=ExtResource( 4 )]
+margin_left = 456.0
+margin_top = 285.0
+margin_right = 522.0
+margin_bottom = 318.0
+size_flags_horizontal = 8
+text = "Copy Id"
+
+[node name="TitleBar" parent="HB/Awards/CanvasLayer/AwardPopup/WD" index="3"]
+text = "Award"
+
+[editable path="HB/Invites/CanvasLayer/InvitePopup"]
+[editable path="HB/Applications/CanvasLayer/ApplicationPopup"]
+[editable path="HB/Awards/CanvasLayer/AwardPopup"]

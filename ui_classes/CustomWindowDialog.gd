@@ -25,6 +25,7 @@ func _ready() -> void:
 	window_dialog.rect_min_size.x = title_bar.rect_size.x + 20 + close_btn.rect_size.x
 
 	if not Engine.editor_hint:
+		hide()
 		title_bar.rect_position.y = 10
 		close_btn.rect_position = Vector2(window_dialog.rect_size.x - close_btn.rect_size.x, close_btn.rect_size.y)
 

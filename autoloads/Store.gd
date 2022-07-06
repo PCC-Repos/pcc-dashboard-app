@@ -92,7 +92,7 @@ func match_login_error(err: HTTPResponse):
 		NotificationServer.notify_critical("Enter a valid email address.")
 
 
-func try_load_user(show_notifications = true) -> bool:
+func try_load_user(show_notifications = true, with_permissions = true) -> bool:
 	user = null
 	var res = yield(API.rest.get_current_user(), "completed")
 	if res is HTTPResponse and res.is_error():
@@ -102,6 +102,8 @@ func try_load_user(show_notifications = true) -> bool:
 		return false
 
 	user = res
+	if not with_permissions:
+		return true
 
 	res = yield(API.rest.get_permissions(user.id), "completed")
 	if res is HTTPResponse and res.is_error():
@@ -111,9 +113,9 @@ func try_load_user(show_notifications = true) -> bool:
 			else:
 				NotificationServer.notify_error("Unable to load permissions!")
 		return false
-	else:
-		permissions = res.permissions
-		return true
+
+	permissions = res.permissions
+	return true
 
 
 func try_autologin():

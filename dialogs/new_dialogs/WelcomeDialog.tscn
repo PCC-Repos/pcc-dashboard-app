@@ -5,6 +5,7 @@
 
 [node name="WelcomeDialog" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+title = "Welcome"
 
 [node name="SC" parent="WD/VB" index="0"]
 margin_bottom = 281.0

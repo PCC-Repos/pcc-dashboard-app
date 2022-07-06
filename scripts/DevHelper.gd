@@ -39,3 +39,24 @@ func _input(event: InputEvent) -> void:
 			params.club_id = "44459814478311424"
 			params.description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis eros et odio scelerisque lobortis."
 			L.debug("DevHelper", "Creating invite", yield(API.rest.create_invite(params), "completed"))
+
+		elif event.scancode == KEY_B:
+			var params = CreateApplicationParams.new()
+			params.description = "Desc of application"
+			params.application_type = "club_application"
+			params.club_id = "44459814478311424"
+			L.debug("DevHelper", "Creating application", yield(API.rest.create_application(params), "completed"))
+
+		elif event.scancode == KEY_N:
+			var params = CreateAwardParams.new()
+			params.name = "Award 02"
+			params.modifier = 15
+			params.description = "Test award 2 desc"
+
+			print(yield(API.rest.create_award(params), "completed"))
+
+		elif event.scancode == KEY_M:
+			var params = GiveAwardParams.new()
+			params.name = "User award name 01"
+			params.award_id = "46209355028131840"
+			print(yield(API.rest.give_award("44460336795361280", params), "completed"))
