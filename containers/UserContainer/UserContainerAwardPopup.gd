@@ -5,7 +5,7 @@ onready var modifer_label = $WD/VB/SC/Body/VB/MC/Modifier
 onready var description_label = $WD/VB/SC/Body/VB/Description
 onready var awarded_at_label = $WD/VB/SC/Body/VB/AwardedAt
 
-onready var copyid_btn = $WD/VB/CopyIdBtn
+onready var copyid_btn = $"WD/VB/DebugConsole/Panel/CopyIdBtn"
 
 var _award: PartialAward
 

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=104 format=2]
+[gd_resource type="Theme" load_steps=105 format=2]
 
 [ext_resource path="res://assets/fonts/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/Emoji Fonts/seguisym.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/fonts/Normal.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/images/UI/Radio Button (Off).svg" type="Texture" id=5]
 [ext_resource path="res://assets/images/UI/Radio Button (On).svg" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/Bold.tres" type="DynamicFont" id=7]
 
 [sub_resource type="StyleBoxFlat" id=8]
 content_margin_left = 5.0
@@ -1001,6 +1002,8 @@ RedButton/styles/focus = SubResource( 134 )
 RedButton/styles/hover = SubResource( 143 )
 RedButton/styles/normal = SubResource( 161 )
 RedButton/styles/pressed = SubResource( 152 )
+RichTextLabel/fonts/bold_font = ExtResource( 7 )
+RichTextLabel/fonts/normal_font = ExtResource( 4 )
 TabButtons/base_type = "Button"
 TabButtons/styles/disabled = SubResource( 43 )
 TabButtons/styles/focus = SubResource( 35 )

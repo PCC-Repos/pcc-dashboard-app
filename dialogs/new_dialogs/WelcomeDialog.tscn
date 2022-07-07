@@ -7,9 +7,6 @@
 script = ExtResource( 2 )
 title = "Welcome"
 
-[node name="SC" parent="WD/VB" index="0"]
-margin_bottom = 281.0
-
 [node name="Body" parent="WD/VB/SC" index="0"]
 margin_right = 510.0
 margin_bottom = 356.0
@@ -52,12 +49,15 @@ The app is in Alpha stages, we regret the inconvinience caused, we're working on
 "
 fit_content_height = true
 
-[node name="OkBtn" type="Button" parent="WD/VB" index="1"]
-margin_left = 216.0
-margin_top = 285.0
-margin_right = 306.0
-margin_bottom = 318.0
+[node name="OK" parent="WD/VB/FooterContainer" index="0"]
+unique_name_in_owner = true
+margin_left = 84.0
+margin_right = 174.0
 rect_min_size = Vector2( 90, 0 )
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 6
-text = "OK"
+size_flags_vertical = 1
+
+[node name="TitleBar" parent="WD" index="3"]
+text = ""
+
+[connection signal="pressed" from="WD/VB/FooterContainer/OK" to="." method="_on_OK_pressed"]

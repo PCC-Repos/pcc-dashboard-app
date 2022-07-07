@@ -1,22 +1,19 @@
 extends CustomWinDia
 
 onready var name_label = $WD/VB/SC/Body/VB/Name
-onready var inviter_name_label = $WD/VB/SC/Body/VB/InviterName
-onready var club_name_label = $WD/VB/SC/Body/VB/ClubName
+onready var inviter_name_label = $WD/VB/SC/Body/VB/InviterNameLabel
 onready var description_label = $WD/VB/SC/Body/VB/Description
 onready var created_at_label = $WD/VB/SC/Body/VB/CreatedAt
 
-onready var accept_btn = $WD/VB/HB/AcceptBtn
-onready var reject_btn = $WD/VB/HB/RejectBtn
-onready var copyid_btn = $WD/VB/CopyIdBtn
+onready var accept_btn = footer.get_node("OK")
+onready var reject_btn = footer.get_node("Cancel")
+
+onready var copyid_btn = $"WD/VB/DebugConsole/Panel/CopyIdBtn"
 
 var _invite: PartialInvite
 
 func _ready() -> void:
 	_invite = null
-	accept_btn.connect("pressed", self, "_on_accept_btn_pressed")
-	reject_btn.connect("pressed", self, "_on_reject_btn_pressed")
-	copyid_btn.connect("pressed", self, "_on_copyid_btn_pressed")
 
 	if Store.is_self_user():
 		reject_btn.text = "Reject"
@@ -29,26 +26,23 @@ func _ready() -> void:
 
 func from_object(invite: PartialInvite):
 	_invite = invite
-	name_label.text = invite.name
+	name_label.text = "%s  %s" % [invite.club.name, invite.name]
 #	TODO: add this in the API
 #	inviter_name_label.text = invite.inviter.name
-	club_name_label.text = invite.club.name
 	if invite.description:
-		description_label.text = invite.description
+		description_label.text = "[center][u][b]Description:[/b][/u]\n%s" % invite.description
 	created_at_label.text = "Created At: " + invite.created_at
 
 	if invite.accepted:
-		accept_btn.visible = false
-		reject_btn.visible = false
+		window_type = Type.Basic
 	else:
-		accept_btn.visible = true
-		reject_btn.visible = true
+		window_type = Type.Confirmation
 
-func _on_accept_btn_pressed():
-	accept_btn.disabled = true
+func _on_OK_pressed(button: BaseButton):
+	button.disabled = true
 	NotificationServer.notify_info("Accepting Invite...")
 	var res = yield(API.rest.accept_invite(_invite.id), "completed")
-	accept_btn.disabled = false
+	button.disabled = false
 
 	print(res)
 	if res is HTTPResponse and res.is_error():
@@ -59,8 +53,8 @@ func _on_accept_btn_pressed():
 	_invite.accepted = true
 
 
-func _on_reject_btn_pressed():
-	reject_btn.disabled = true
+func _on_Cancel_pressed(button: BaseButton):
+	button.disabled = true
 
 	var action_string = "Revoking"
 	var action_complete_string = "revoked"
@@ -70,7 +64,7 @@ func _on_reject_btn_pressed():
 
 	NotificationServer.notify_info("%s Invite..." % action_string)
 	var res = yield(API.rest.delete_invite(_invite.id), "completed")
-	reject_btn.disabled = false
+	button.disabled = false
 
 	print(res)
 	if res is HTTPResponse and res.is_error():
