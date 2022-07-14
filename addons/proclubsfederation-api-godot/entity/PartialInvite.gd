@@ -22,10 +22,8 @@ func from_json(json: Dictionary) -> PartialInvite:
 	description = PCFUtils.get_or_default(json, "description", null)
 	return self
 
-
 func get_class() -> String:
 	return "PartialInvite"
 
-
 func _to_string() -> String:
-	return "PartialInvite(name=%s, id=%s, created_at=%s, club=%s, user=%s, accepted=%s, description=%s, )" % [name, id, created_at, club, user, accepted, description]
+	return "PartialInvite(name=%s, id=%s, created_at=%s, club=%s, user=%s, accepted=%s, description=%s)" % [name, id, created_at, club, user, accepted, description]
