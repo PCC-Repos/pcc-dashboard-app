@@ -154,7 +154,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 text = "Cancel"
 
-[node name="DebugConsole" type="Button" parent="WD/VB"]
+[node name="DebugButton" type="Button" parent="WD/VB"]
 unique_name_in_owner = true
 margin_top = 296.0
 margin_right = 522.0
@@ -166,7 +166,7 @@ text = "Debug Console"
 icon = ExtResource( 4 )
 clip_text = true
 
-[node name="Panel" type="Panel" parent="WD/VB/DebugConsole"]
+[node name="Panel" type="Panel" parent="WD/VB/DebugButton"]
 visible = false
 anchor_top = 1.0
 anchor_right = 1.0
@@ -204,5 +204,7 @@ custom_styles/normal = SubResource( 2 )
 text = "INdIE's Chosen Title"
 align = 1
 
-[connection signal="toggled" from="WD/VB/DebugConsole" to="." method="_on_DebugConsole_toggled"]
+[connection signal="gui_input" from="." to="." method="_on_CustomWindowDialog_gui_input"]
+[connection signal="resized" from="WD/VB/SC" to="." method="_on_SC_resized"]
+[connection signal="toggled" from="WD/VB/DebugButton" to="." method="_on_DebugConsole_toggled"]
 [connection signal="pressed" from="WD/CloseButton" to="." method="close"]

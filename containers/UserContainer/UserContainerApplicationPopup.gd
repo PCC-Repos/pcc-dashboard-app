@@ -6,7 +6,7 @@ onready var created_at_label = $WD/VB/SC/Body/VB/CreatedAt
 
 onready var accept_btn = footer.get_node("OK")
 onready var delete_btn = footer.get_node("Cancel")
-onready var copyid_btn = $"WD/VB/DebugConsole/Panel/CopyIdBtn"
+onready var copyid_btn = $"WD/VB/DebugButton/Panel/CopyIdBtn"
 
 var _application: Application
 

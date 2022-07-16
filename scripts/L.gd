@@ -1,4 +1,5 @@
 class_name L
+#Used for printing text to the stdout fast
 
 # Debug print
 static func debug(a, b="", c="", d="", e="", f=""):

@@ -24,7 +24,7 @@ onready var body: = $"%Body"
 onready var footer: = $"%FooterContainer"
 onready var ok_button: = footer.get_node("OK")
 onready var cancel_button: = footer.get_node("Cancel")
-onready var debug_button: = $"%DebugConsole"
+onready var debug_button: = $"%DebugButton"
 
 
 func _ready() -> void:
@@ -83,20 +83,6 @@ func popup(show: bool = true):
 		hide()
 
 
-func _on_CloseButton_pressed() -> void:
-	popup(false)
-
-
-func _on_Panel_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and not exclusive:
-			popup(false)
-
-func _on_ScrollContainer_resized() -> void:
-	if is_zero_approx(body.get_parent().rect_size.y):
-		window_dialog.rect_min_size.y = window_dialog.rect_size.y
-
-
 func set_title(new: String):
 	title = new
 	if is_inside_tree():
@@ -145,3 +131,14 @@ func _on_Cancel_pressed(button: BaseButton) -> void:
 func _on_DebugConsole_toggled(button_pressed: bool) -> void:
 	debug_button.icon = preload("res://assets/images/UI/Eye Open.svg") if button_pressed else preload("res://assets/images/UI/Eye Close.svg")
 	debug_button.get_node("Panel").visible = button_pressed
+
+
+func _on_SC_resized() -> void:
+	if is_zero_approx(body.get_parent().rect_size.y):
+		window_dialog.rect_min_size.y = window_dialog.rect_size.y
+
+
+func _on_CustomWindowDialog_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and not exclusive:
+			popup(false)
