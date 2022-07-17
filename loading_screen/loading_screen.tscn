@@ -1,113 +1,106 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/fonts/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/splash_screen_video/PCF_Animated_mp4.ogv" type="VideoStream" id=1]
 [ext_resource path="res://themes/default_theme.tres" type="Theme" id=2]
 [ext_resource path="res://closing_screen/closing_screen.gd" type="Script" id=3]
-[ext_resource path="res://assets/images/PCF_Logo_no_back_v2.png" type="Texture" id=4]
-[ext_resource path="res://assets/music/closing_msx.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/fonts/Open_Sans/OpenSans-LightItalic.ttf" type="DynamicFontData" id=4]
 
+[sub_resource type="DynamicFont" id=1]
+size = 97
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=3]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Spatial/Sprite3D:rotation_degrees")
+[sub_resource type="Animation" id=6]
+resource_name = "Label Stretching In"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Label:custom_fonts/font:extra_spacing_char")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
+"points": PoolRealArray( 700, -0.25, 0, 0.2, -138.309, 0, -0.2, 129.691, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Sprite3D:flip_h")
+tracks/1/path = NodePath("ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("../MarginContainer/VBoxContainer/RichTextLabel:visible_characters")
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -1 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../MarginContainer/VBoxContainer/RichTextLabel:percent_visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.737 ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "RotatingLogo"
-length = 2.0
-loop = true
-step = 0.025
-tracks/0/type = "value"
-tracks/0/path = NodePath("Spatial/Sprite3D:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Sprite3D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( -0.1, 0.5, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "Text Animation"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("../MarginContainer/VBoxContainer/RichTextLabel:percent_visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0.7, 0.8, 0.9, 1.0 ]
+"values": [ {
+"args": [ "status_changed", "started" ],
+"method": "emit_signal"
+}, {
+"args": [ "status_changed", "waiting" ],
+"method": "emit_signal"
+} ]
 }
 
 [sub_resource type="Animation" id=7]
+resource_name = "Label Stretching Out"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Label:custom_fonts/font:extra_spacing_char")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.2, 129.691, 0.25, 0, 700, -0.25, 0, 0.2, -138.309 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "status_changed", "finishing" ],
+"method": "emit_signal"
+}, {
+"args": [ "status_changed", "finished" ],
+"method": "emit_signal"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Spatial/Sprite3D:rotation_degrees")
+tracks/0/path = NodePath("Label:custom_fonts/font:extra_spacing_char")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -116,10 +109,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
+"values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Sprite3D:flip_h")
+tracks/1/path = NodePath("Label:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -127,11 +120,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../MarginContainer/VBoxContainer/RichTextLabel:visible_characters")
+tracks/2/path = NodePath("ColorRect:color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -140,163 +133,47 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -1 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../MarginContainer/VBoxContainer/RichTextLabel:percent_visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.737 ]
+"values": [ Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "RotatingLogo"
-length = 2.0
-loop = true
-step = 0.025
-tracks/0/type = "value"
-tracks/0/path = NodePath("Spatial/Sprite3D:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/Sprite3D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( -0.1, 0.5, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-
-[sub_resource type="Animation" id=9]
-resource_name = "Text Animation"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("../MarginContainer/VBoxContainer/RichTextLabel:percent_visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0.7, 0.8, 0.9, 1.0 ]
-}
-
-[sub_resource type="DynamicFont" id=1]
-size = 36
-font_data = ExtResource( 1 )
-
-[sub_resource type="ViewportTexture" id=5]
-flags = 7
-viewport_path = NodePath("Viewport")
-
-[node name="Control" type="ColorRect"]
+[node name="LoadingScreen" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 3 )
 
-[node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 7680, 4320 )
-own_world = true
-transparent_bg = true
-render_target_v_flip = true
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -234.5
+margin_top = 69.0
+margin_right = 234.5
+margin_bottom = 538.0
+stream = ExtResource( 1 )
+autoplay = true
 
-[node name="Spatial" type="Spatial" parent="Viewport"]
-
-[node name="Sprite3D" type="Sprite3D" parent="Viewport/Spatial"]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
-texture = ExtResource( 4 )
-
-[node name="Camera" type="Camera" parent="Viewport/Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Viewport"]
-playback_speed = 0.75
-anims/RESET = SubResource( 3 )
-anims/RotatingLogo = SubResource( 4 )
-"anims/Text Animation" = SubResource( 6 )
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Viewport"]
-playback_speed = 0.75
-anims/RESET = SubResource( 7 )
-anims/RotatingLogo = SubResource( 8 )
-"anims/Text Animation" = SubResource( 9 )
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Label" type="Label" parent="."]
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 25
-custom_constants/margin_top = 25
-custom_constants/margin_left = 25
-custom_constants/margin_bottom = 25
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 1341.0
-margin_bottom = 743.0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-margin_right = 1316.0
-margin_bottom = 231.0
-size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-fit_content_height = true
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-margin_top = 239.0
-margin_right = 1316.0
-margin_bottom = 479.0
-rect_min_size = Vector2( 480, 240 )
-size_flags_vertical = 6
-texture = SubResource( 5 )
-expand = true
-stretch_mode = 6
-
-[node name="RichTextLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-margin_top = 487.0
-margin_right = 1316.0
-margin_bottom = 718.0
-size_flags_vertical = 3
+margin_top = -200.0
 custom_fonts/font = SubResource( 1 )
-text = "Loading..."
+text = "Loading"
 align = 1
-percent_visible = 0.737
+valign = 1
+clip_text = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Label Stretching In"
+"anims/Label Stretching In" = SubResource( 6 )
+"anims/Label Stretching Out" = SubResource( 7 )
+anims/RESET = SubResource( 5 )
+"next/Label Stretching In" = "RESET"
 
-[node name="StartTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-volume_db = -6.021
-
-[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/Label" to="." method="_on_Label_meta_clicked"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]

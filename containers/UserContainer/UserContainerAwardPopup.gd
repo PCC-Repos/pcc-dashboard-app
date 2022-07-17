@@ -1,7 +1,8 @@
+tool
 extends CustomWinDia
 
 onready var name_label = $WD/VB/SC/Body/VB/Name
-onready var modifer_label = $WD/VB/SC/Body/VB/MC/Modifier
+onready var modifer_label = $WD/VB/SC/Body/VB/Modifier
 onready var description_label = $WD/VB/SC/Body/VB/Description
 onready var awarded_at_label = $WD/VB/SC/Body/VB/AwardedAt
 

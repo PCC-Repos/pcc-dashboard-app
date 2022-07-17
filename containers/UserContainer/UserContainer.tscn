@@ -21,45 +21,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )
 
-[node name="HB@Awards@CanvasLayer@AwardPopup@WD@VB@DebugConsole@Panel@CopyIdBtn" type="LinkButton" parent="."]
-margin_right = 1366.0
-margin_bottom = 23.0
-text = "Copy ID"
-
-[node name="HB@Applications@CanvasLayer@ApplicationPopup@WD@VB@DebugConsole@Panel@CopyIdBtn" type="LinkButton" parent="."]
-margin_left = 654.0
-margin_top = 339.0
-margin_right = 712.0
-margin_bottom = 362.0
-size_flags_horizontal = 4
-size_flags_vertical = 10
-text = "Copy ID"
-
-[node name="HB@Invites@CanvasLayer@InvitePopup@WD@VB@DebugConsole@Panel@CopyIdBtn" type="LinkButton" parent="."]
-margin_left = 654.0
-margin_top = 366.0
-margin_right = 712.0
-margin_bottom = 389.0
-size_flags_horizontal = 6
-size_flags_vertical = 8
-text = "Copy ID"
-
 [node name="PlayerName" type="Label" parent="."]
-margin_top = 393.0
 margin_right = 1366.0
-margin_bottom = 421.0
+margin_bottom = 28.0
 custom_fonts/font = ExtResource( 5 )
 text = "Player name"
 align = 1
 valign = 1
 
 [node name="HS" type="HSeparator" parent="."]
-margin_top = 425.0
+margin_top = 32.0
 margin_right = 1366.0
-margin_bottom = 429.0
+margin_bottom = 36.0
 
 [node name="HB" type="HBoxContainer" parent="."]
-margin_top = 433.0
+margin_top = 40.0
 margin_right = 1366.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
@@ -67,7 +43,7 @@ size_flags_vertical = 3
 
 [node name="Invites" type="VBoxContainer" parent="HB"]
 margin_right = 447.0
-margin_bottom = 335.0
+margin_bottom = 728.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
 script = ExtResource( 6 )
@@ -87,7 +63,7 @@ margin_bottom = 31.0
 [node name="SC" type="ScrollContainer" parent="HB/Invites"]
 margin_top = 35.0
 margin_right = 447.0
-margin_bottom = 335.0
+margin_bottom = 728.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -95,7 +71,7 @@ __meta__ = {
 
 [node name="VB" type="VBoxContainer" parent="HB/Invites/SC"]
 margin_right = 447.0
-margin_bottom = 300.0
+margin_bottom = 693.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 8
@@ -126,20 +102,20 @@ margin_bottom = 240.0
 
 [node name="SC" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB" index="0"]
 margin_right = 684.0
-margin_bottom = 373.0
+margin_bottom = 340.0
 
 [node name="Body" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC" index="0"]
 margin_right = 684.0
-margin_bottom = 373.0
+margin_bottom = 340.0
 
 [node name="VB" type="VBoxContainer" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body" index="0"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 674.0
-margin_bottom = 363.0
+margin_right = 662.0
+margin_bottom = 341.0
 
 [node name="Name" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
-margin_right = 664.0
+margin_right = 652.0
 margin_bottom = 213.0
 custom_fonts/font = ExtResource( 13 )
 text = "Club001
@@ -156,8 +132,8 @@ margin_bottom = 240.0
 
 [node name="Description" type="RichTextLabel" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
 margin_top = 217.0
-margin_right = 664.0
-margin_bottom = 335.0
+margin_right = 652.0
+margin_bottom = 313.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
@@ -172,9 +148,9 @@ Lorem ipsum dolor sit amet"
 fit_content_height = true
 
 [node name="CreatedAt" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
-margin_top = 339.0
-margin_right = 664.0
-margin_bottom = 353.0
+margin_top = 317.0
+margin_right = 652.0
+margin_bottom = 331.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 14 )
@@ -183,23 +159,25 @@ align = 2
 autowrap = true
 
 [node name="HSeparator" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB" index="1"]
-margin_top = 377.0
+margin_top = 344.0
 margin_right = 684.0
-margin_bottom = 392.0
+margin_bottom = 359.0
 
 [node name="FooterContainer" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB" index="2"]
-margin_top = 396.0
+margin_top = 363.0
 margin_right = 684.0
 margin_bottom = 396.0
 
 [node name="OK" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/FooterContainer" index="0"]
-margin_left = 139.0
-margin_right = 200.0
+visible = true
+margin_left = 120.0
+margin_right = 220.0
 text = "Accept"
 
 [node name="Cancel" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/FooterContainer" index="1"]
-margin_left = 486.0
-margin_right = 542.0
+visible = true
+margin_left = 464.0
+margin_right = 564.0
 text = "Reject"
 
 [node name="DebugButton" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB" index="3"]
@@ -221,12 +199,12 @@ text = "Invite"
 [node name="VS" type="VSeparator" parent="HB"]
 margin_left = 451.0
 margin_right = 455.0
-margin_bottom = 335.0
+margin_bottom = 728.0
 
 [node name="Applications" type="VBoxContainer" parent="HB"]
 margin_left = 459.0
 margin_right = 906.0
-margin_bottom = 335.0
+margin_bottom = 728.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
 script = ExtResource( 10 )
@@ -246,7 +224,7 @@ margin_bottom = 31.0
 [node name="SC" type="ScrollContainer" parent="HB/Applications"]
 margin_top = 35.0
 margin_right = 447.0
-margin_bottom = 298.0
+margin_bottom = 691.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
@@ -266,9 +244,9 @@ margin_bottom = 70.0
 text = "Test Application 2"
 
 [node name="JoinClubButton" type="Button" parent="HB/Applications"]
-margin_top = 302.0
+margin_top = 695.0
 margin_right = 447.0
-margin_bottom = 335.0
+margin_bottom = 728.0
 mouse_default_cursor_shape = 2
 theme_type_variation = "GreenButton"
 text = "➕ Join a club"
@@ -289,17 +267,17 @@ margin_bottom = 239.0
 
 [node name="SC" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB" index="0"]
 margin_right = 682.0
-margin_bottom = 371.0
+margin_bottom = 338.0
 
 [node name="Body" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC" index="0"]
 margin_right = 682.0
-margin_bottom = 371.0
+margin_bottom = 338.0
 
 [node name="VB" type="VBoxContainer" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body" index="0"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 672.0
-margin_bottom = 361.0
+margin_bottom = 328.0
 
 [node name="Name" type="Label" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
 margin_right = 662.0
@@ -316,23 +294,23 @@ margin_top = 217.0
 margin_right = 662.0
 margin_bottom = 221.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
+[node name="Description" type="RichTextLabel" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
 margin_top = 225.0
 margin_right = 662.0
-margin_bottom = 286.0
+margin_bottom = 273.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "[center][u][b]Description[/b][/u]
+bbcode_text = "[center][u][b]Description:[/b][/u]
 Lorem ipsum dolor sit amet"
-text = "Description
+text = "Description:
 Lorem ipsum dolor sit amet"
 fit_content_height = true
 
 [node name="CreatedAt" type="Label" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
-margin_top = 337.0
+margin_top = 304.0
 margin_right = 662.0
-margin_bottom = 351.0
+margin_bottom = 318.0
 size_flags_horizontal = 3
 size_flags_vertical = 10
 custom_fonts/font = ExtResource( 14 )
@@ -342,22 +320,26 @@ valign = 2
 autowrap = true
 
 [node name="HSeparator" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB" index="1"]
-margin_top = 375.0
+margin_top = 342.0
 margin_right = 682.0
-margin_bottom = 390.0
+margin_bottom = 357.0
 
 [node name="FooterContainer" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB" index="2"]
-margin_top = 394.0
+margin_top = 361.0
 margin_right = 682.0
 margin_bottom = 394.0
 
 [node name="OK" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/FooterContainer" index="0"]
-margin_left = 153.0
-margin_right = 185.0
+visible = true
+margin_left = 119.0
+margin_right = 219.0
+text = "Accept"
 
 [node name="Cancel" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/FooterContainer" index="1"]
-margin_left = 482.0
-margin_right = 542.0
+visible = true
+margin_left = 462.0
+margin_right = 562.0
+text = "Reject"
 
 [node name="DebugButton" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB" index="3"]
 margin_top = 398.0
@@ -375,12 +357,12 @@ text = "Application"
 [node name="VS2" type="VSeparator" parent="HB"]
 margin_left = 910.0
 margin_right = 914.0
-margin_bottom = 335.0
+margin_bottom = 728.0
 
 [node name="Awards" type="VBoxContainer" parent="HB"]
 margin_left = 918.0
 margin_right = 1366.0
-margin_bottom = 335.0
+margin_bottom = 728.0
 rect_min_size = Vector2( 126, 0 )
 size_flags_horizontal = 3
 script = ExtResource( 12 )
@@ -400,7 +382,7 @@ margin_bottom = 31.0
 [node name="SC" type="ScrollContainer" parent="HB/Awards"]
 margin_top = 35.0
 margin_right = 448.0
-margin_bottom = 335.0
+margin_bottom = 728.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
@@ -460,6 +442,7 @@ margin_top = 73.0
 margin_right = 592.0
 margin_bottom = 96.0
 text = "Modifier is"
+align = 1
 autowrap = true
 
 [node name="Description" type="RichTextLabel" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB/SC/Body/VB"]
@@ -498,6 +481,11 @@ margin_right = 202.0
 [node name="Cancel" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB/FooterContainer" index="1"]
 margin_left = 410.0
 margin_right = 510.0
+
+[node name="DebugButton" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB" index="3"]
+margin_top = 354.0
+margin_right = 612.0
+margin_bottom = 376.0
 
 [node name="CopyIdBtn" type="LinkButton" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB/DebugButton/Panel" index="0"]
 margin_left = -35.0

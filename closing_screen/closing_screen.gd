@@ -1,31 +1,22 @@
 extends ColorRect
 
 
+# warning-ignore:unused_signal
+signal status_changed
+
+onready var video: = $VideoPlayer
+onready var anim_player: = $AnimationPlayer
+
 func _ready():
-	OS.request_attention()
-	$MarginContainer/VBoxContainer/TextureRect.texture.viewport_path = $Viewport.get_path()
-#	$Timer.start($AudioStreamPlayer.stream.get_length())
-	$AudioStreamPlayer.play()
+	pass
 
 
-func _on_Timer_timeout():
-	get_tree().quit(0)
+# Doing this cause there's no looping property found either in the Video Resource or the `VideoPlayer` Node
+func _on_VideoPlayer_finished() -> void:
+	video.play()
 
 
-func _on_Label_meta_clicked(meta: String):
-	if meta.begins_with("http"):
-		OS.shell_open(meta)
-
-
-func _notification(what):
-	match what:
-		NOTIFICATION_WM_QUIT_REQUEST:
-			get_tree().quit()
-		NOTIFICATION_WM_GO_BACK_REQUEST:
-			get_tree().quit()
-
-
-func _on_StartTimer_timeout():
-	$Viewport/AnimationPlayer.play("RotatingLogo")
-	$Viewport/AnimationPlayer2.play("Text Animation")
-
+func close(delete_from_memory: bool):
+	yield(video, "finished")
+	anim_player.play("Label Stretching Out")
+	if delete_from_memory: queue_free(); else: hide()
