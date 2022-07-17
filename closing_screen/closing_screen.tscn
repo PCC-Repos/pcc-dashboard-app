@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/fonts/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://themes/default_theme.tres" type="Theme" id=2]
-[ext_resource path="res://closing_screen/closing_screen.gd" type="Script" id=3]
+[ext_resource path="res://loading_screen/loading_screen.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/PCF_Logo_no_back_v2.png" type="Texture" id=4]
 [ext_resource path="res://assets/music/closing_msx.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/fonts/Open_Sans/OpenSans-ExtraBold.ttf" type="DynamicFontData" id=6]
