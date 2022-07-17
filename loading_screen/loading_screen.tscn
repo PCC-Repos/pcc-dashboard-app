@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/splash_screen_video/PCF_Animated_mp4.ogv" type="VideoStream" id=1]
 [ext_resource path="res://themes/default_theme.tres" type="Theme" id=2]
-[ext_resource path="res://closing_screen/closing_screen.gd" type="Script" id=3]
+[ext_resource path="res://loading_screen/loading_screen.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/Open_Sans/OpenSans-LightItalic.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
