@@ -414,6 +414,7 @@ margin_left = -323.0
 margin_top = -208.0
 margin_right = 323.0
 margin_bottom = 208.0
+rect_min_size = Vector2( 327.595, 0 )
 
 [node name="SC" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB" index="0"]
 margin_right = 612.0

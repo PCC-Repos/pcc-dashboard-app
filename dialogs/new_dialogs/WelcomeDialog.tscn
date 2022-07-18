@@ -27,7 +27,7 @@ bbcode_text = "[center]
 [color=#51acff]Welcome to 
 Pro Clubs Federation Dashboard.
 
-This is the first preview of the app for Managers only.[/color]
+This is an early preview of the PCF Dashboard.[/color]
 
 [color=#ff7070][u]🐛 Alpha Stage 🐛[/u]
 The app is in Alpha stages, we regret the inconvinience caused, we're working on fixing bugs. Please provide your valuable feedback and report bugs as soon as possible!
@@ -39,7 +39,7 @@ text = "
 Welcome to 
 Pro Clubs Federation Dashboard.
 
-This is the first preview of the app for Managers only.
+This is an early preview of the PCF Dashboard.
 
 🐛 Alpha Stage 🐛
 The app is in Alpha stages, we regret the inconvinience caused, we're working on fixing bugs. Please provide your valuable feedback and report bugs as soon as possible!
@@ -54,7 +54,6 @@ unique_name_in_owner = true
 margin_left = 84.0
 margin_right = 174.0
 rect_min_size = Vector2( 90, 0 )
-mouse_default_cursor_shape = 2
 size_flags_vertical = 1
 
 [node name="TitleBar" parent="WD" index="3"]
