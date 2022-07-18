@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/fonts/Emoji Fonts/seguiemj.ttf" type="DynamicFontData" id=2]
 
 [resource]
-size = 10
+size = 12
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )

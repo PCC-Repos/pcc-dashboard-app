@@ -7,8 +7,8 @@ onready var tab_container: = $WD/VB/SC/Body/HSC/SC/SettingsTabContainer
 
 func _ready() -> void:
 
-	basic_btn.connect("pressed", self, "_on_basic_btn_pressed")
-	advanced_btn.connect("pressed", self, "_on_advanced_btn_pressed")
+	basic_btn.connect("pressed", self, "_on_basic_btn_pressed") # warning-ignore:return_value_discarded
+	advanced_btn.connect("pressed", self, "_on_advanced_btn_pressed") # warning-ignore:return_value_discarded
 
 	if get_parent() == get_tree().root:
 		popup()

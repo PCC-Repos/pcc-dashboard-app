@@ -10,6 +10,7 @@ func _ready() -> void:
 		child.queue_free()
 
 	for invite in Store.user.invites:
+		if invite.accepted: continue
 		_create_invite(invite)
 
 
@@ -22,7 +23,6 @@ func _create_invite(invite: PartialInvite):
 
 
 func _on_invite_pressed(which: Button, invite: PartialInvite):
-	print(invite)
 	var bounds = which.get_global_rect()
 	bounds.position += Vector2(which.rect_size.x, 0)
 	invite_popup.popup()

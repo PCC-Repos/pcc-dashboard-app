@@ -14,11 +14,11 @@ func _ready() -> void:
 		_create_award(award)
 
 
-func _create_award(award: PartialAward):
+func _create_award(user_award: PartialUserAward):
 	var btn = themed_btn.instance()
-	btn.name = award.id
-	btn.text = award.name
-	btn.connect("pressed", self, "_on_award_pressed", [btn, award])
+	btn.name = user_award.award.id
+	btn.text = user_award.name
+	btn.connect("pressed", self, "_on_award_pressed", [btn, user_award])
 	awards_vb.add_child(btn)
 
 

@@ -11,7 +11,7 @@ onready var awards_vb = $HB/Awards/SC/VB
 
 func _ready():
 	player_name_label.text = Store.user.name
-	connect("visibility_changed", self, "_on_visibility_changed")
+	connect("visibility_changed", self, "_on_visibility_changed") # warning-ignore:return_value_discarded
 
 
 func _on_visibility_changed() -> void:

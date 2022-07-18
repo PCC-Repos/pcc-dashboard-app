@@ -6,5 +6,5 @@ func _ready():
 		popup()
 
 
-func _on_OK_pressed(button: BaseButton) -> void:
+func _on_ok_btn_pressed(_button: BaseButton) -> void:
 	close()

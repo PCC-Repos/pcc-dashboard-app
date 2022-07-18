@@ -4,7 +4,7 @@ export var tab_container: NodePath
 
 
 func _ready() -> void:
-	connect("toggled", self, "_on_toggled")
+	connect("toggled", self, "_on_toggled") # warning-ignore:return_value_discarded
 
 
 func _get_configuration_warning() -> String:
