@@ -30,7 +30,7 @@ func from_object(invite: PartialInvite):
 #	TODO: add this in the API
 #	inviter_name_label.text = invite.inviter.name
 	if invite.description:
-		description_label.text = "[center][u][b]Description:[/b][/u]\n%s" % invite.description
+		description_label.bbcode_text = "[center][u][b]Description:[/b][/u]\n%s" % invite.description
 	created_at_label.text = "Created At: " + invite.created_at
 
 	if invite.accepted:

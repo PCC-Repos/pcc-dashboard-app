@@ -135,7 +135,8 @@ func try_autologin():
 		emit_signal("login_failed")
 	else:
 		#TODO: Uncomment this to connect to WS
-		#API.ws.init()
+		API.ws._init_wss()
+		L.debug("Initing Websocket Service")
 		emit_signal("logged_in")
 
 

@@ -23,7 +23,7 @@ func from_object(award: PartialAward):
 	name_label.text = award.name
 	modifer_label.text = "Modifier is " + str(award.modifier)
 	description_label.text = award.description
-	#awarded_at_label.text = "Awarded At: " + awarded_at
+#	awarded_at_label.text = "Awarded At: " + award.awarded_at
 
 
 func _on_copyid_btn_pressed():

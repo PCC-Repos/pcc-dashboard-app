@@ -7,6 +7,7 @@ export var height: float = 60
 
 
 var text: String = ""
+var currently_tweening = false
 
 onready var popup_panel: = $"%NotifPopup"
 onready var backlight: = $"%Backlight"
@@ -22,7 +23,8 @@ func _ready() -> void:
 
 # warning-ignore:unused_argument
 func _process(delta):
-	while NotificationServer.is_notification_available():
+	while NotificationServer.is_notification_available() and not currently_tweening:
+		currently_tweening = true
 		show()
 		var notification = NotificationServer.get_notification()
 		$"%Text".text = notification[1]
@@ -32,12 +34,14 @@ func _process(delta):
 		popup_panel.modulate = Color.white
 		yield(get_tree(), "idle_frame")
 		popup_panel.rect_global_position = Vector2(OS.window_size.x/2 - popup_panel.rect_size.x/2, -popup_panel.rect_size.y - 10)
-		tween.kill()
 		tween = popup_panel.create_tween()
 		tween_sequence(notification[0])
 		tween.play()
-		yield(tween, "finished")
-		hide()
+		tween.connect("finished", self, "_tween_finished")
+
+func _tween_finished():
+	hide()
+	currently_tweening = false
 
 func tween_sequence(type: int = NotificationServer.INFO):
 	# warning-ignore:return_value_discarded
