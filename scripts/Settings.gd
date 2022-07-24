@@ -11,14 +11,14 @@ func _ready() -> void:
 	err = f.load(default_path)
 	if err != OK:
 		push_error("Error Loading Setting File! Error: %s" % err)
-	# else:
-	# 	get_settings()
+	else:
+		get_settings()
 
 func get_setting(section: String = "Basic", key: String = ""):
 	return f.get_value(section, key)
 
 func get_settings() -> Array:
-	var array: Array = []
+	var array: Array
 
 	var current_section: String
 	for section in f.get_sections():

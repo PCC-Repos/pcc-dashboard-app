@@ -10,8 +10,7 @@ onready var marketplace_btn = $Panel/VB/PC/VB/TabButtons/MarketplaceBtn
 
 
 func _ready():
-	if not OS.is_debug_build():
-		$AudioStreamRandomPlayer.play()
+	$AudioStreamRandomPlayer.play()
 	match Store.permissions:
 		Store.UserPermissionsEnum.USER:
 			admin_btn.hide()
@@ -44,11 +43,11 @@ func get_recursive_children(root: Control):
 			var tween: = create_tween().set_parallel()
 			if child is VSeparator:
 				child.rect_pivot_offset.y = child.rect_size.y/2
-				tween.tween_property(child, "rect_scale:y", 1.0, 1/speed).from(0.0) # warning-ignore:return_value_discarded
+				tween.tween_property(child, "rect_scale:y", 1.0, 1/speed).from(0.0)
 			elif child is HSeparator:
 				child.rect_pivot_offset.x = child.rect_size.x/2
-				tween.tween_property(child, "rect_scale:x", 1.0, 1/speed).from(0.0) # warning-ignore:return_value_discarded
+				tween.tween_property(child, "rect_scale:x", 1.0, 1/speed).from(0.0)
 			elif child is Label:
-				tween.tween_property(child, "percent_visible", 1.0, 1/speed).from(0.0) # warning-ignore:return_value_discarded
+				tween.tween_property(child, "percent_visible", 1.0, 1/speed).from(0.0)
 			else:
 				tween.kill()

@@ -18,8 +18,8 @@ func _on_music_btn_toggled(button_pressed: bool) -> void:
 
 	for audio_player in get_tree().get_nodes_in_group("audio_players"):
 		if button_pressed:
-			tween.set_ease(Tween.EASE_OUT) # warning-ignore:return_value_discarded
-			tween.tween_property(audio_player, "volume_db", 0.0, 1.5) # warning-ignore:return_value_discarded
+			tween.set_ease(Tween.EASE_OUT)
+			tween.tween_property(audio_player, "volume_db", 0.0, 1.5)
 		else:
-			tween.set_ease(Tween.EASE_IN) # warning-ignore:return_value_discarded
-			tween.tween_property(audio_player, "volume_db", -80.0, 1.5) # warning-ignore:return_value_discarded
+			tween.set_ease(Tween.EASE_IN)
+			tween.tween_property(audio_player, "volume_db", -80.0, 1.5)

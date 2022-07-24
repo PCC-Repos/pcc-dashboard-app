@@ -44,10 +44,6 @@ func _on_register_btn_pressed() -> void:
 
 	NotificationServer.notify_info("Logging in...")
 	var res = yield(Store.login(create_user_params.email, create_user_params.password), "completed")
-	if res is HTTPResponse and res.is_error():
-		NotificationServer.notify_error("An error occured while signin up.")
-		L.debug("RegisterForm", "_on_register_btn_pressed", "error", res)
-
 	name_field.set_text("")
 	email_field.set_text("")
 	pass_field.set_text("")

@@ -6,13 +6,11 @@ class_name DevHelper
 
 var is_active = false
 
-
 func _ready() -> void:
 	if not OS.is_debug_build():
 		return
 
 	L.debug("DevHelper", "ready")
-
 
 func _input(event: InputEvent) -> void:
 	if not OS.is_debug_build():

@@ -8,7 +8,7 @@ var button_group_agent = ButtonGroup.new()
 
 
 func _ready():
-	connect("visibility_changed", self, "_on_visibility_changed") # warning-ignore:return_value_discarded
+	connect("visibility_changed", self, "_on_visibility_changed")
 
 	if not OS.is_debug_build():
 		var partial_club: PartialClub = Store.user.clubs[0]

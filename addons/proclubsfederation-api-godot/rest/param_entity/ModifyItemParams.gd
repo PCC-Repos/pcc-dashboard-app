@@ -2,12 +2,23 @@
 # MIT LICENSE
 # https://github.com/3ddelano/proclubsfederation-api-godot
 
-class_name ModifyItemParams extends PCFDataclass
+class_name ModifyItemParams
+extends Reference
+var name = null
+var description = null
+var cost = null
+var stock = null
 
-var name = null # [String]
-var description = null # [String]
-var cost = null # [int]
-var stock = null # [int]
+func to_dict() -> Dictionary:
+	var json = {}
+	PCFUtils.set_if_not_null(json, "name", name)
+	PCFUtils.set_if_not_null(json, "description", description)
+	PCFUtils.set_if_not_null(json, "cost", cost)
+	PCFUtils.set_if_not_null(json, "stock", stock)
+	return json
 
+func get_class() -> String:
+	return "ModifyItemParams"
 
-func _init(p_dict = null).(p_dict, "ModifyItemParams"): pass
+func _to_string() -> String:
+	return "ModifyItemParams(name=%s, description=%s, cost=%s, stock=%s)" % [name, description, cost, stock]

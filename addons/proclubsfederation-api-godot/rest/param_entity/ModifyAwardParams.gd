@@ -2,11 +2,21 @@
 # MIT LICENSE
 # https://github.com/3ddelano/proclubsfederation-api-godot
 
-class_name ModifyAwardParams extends PCFDataclass
+class_name ModifyAwardParams
+extends Reference
+var name = null
+var description = null
+var modifier = null
 
-var name = null # [String]
-var description = null # [String]
-var modifier = null # [String]
+func to_dict() -> Dictionary:
+	var json = {}
+	PCFUtils.set_if_not_null(json, "name", name)
+	PCFUtils.set_if_not_null(json, "description", description)
+	PCFUtils.set_if_not_null(json, "modifier", modifier)
+	return json
 
+func get_class() -> String:
+	return "ModifyClubParams"
 
-func _init(p_dict = null).(p_dict, "ModifyAwardParams"): pass
+func _to_string() -> String:
+	return "ModifyClubParams(name=%s, description=%s, modifier=%s)" % [name, description, modifier]

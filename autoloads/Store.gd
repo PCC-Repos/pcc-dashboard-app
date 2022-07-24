@@ -11,9 +11,6 @@ var permissions: int
 var main_screen_tab_controller
 var admin_scene
 
-# WS
-var ws_url = "wss://gateway.proclubsfederation.com/v1" # Different url based on public, dev, or local
-
 enum UserPermissionsEnum {
 	USER = 1,
 	MANAGER = 2,
@@ -63,7 +60,6 @@ func login(p_email: String, p_password: String) -> bool:
 	auth_params.email_id = p_email
 	auth_params.password = p_password
 
-	L.debug("Store", "login", "trying login")
 	var token = yield(API.rest.authorize(auth_params), "completed")
 	if token is HTTPResponse and token.is_error():
 		L.debug("Store", "login", "error", token)
@@ -96,19 +92,29 @@ func match_login_error(err: HTTPResponse):
 		NotificationServer.notify_critical("Enter a valid email address.")
 
 
-func try_load_user(show_notifications = true) -> bool:
+func try_load_user(show_notifications = true, with_permissions = true) -> bool:
 	user = null
 	var res = yield(API.rest.get_current_user(), "completed")
 	if res is HTTPResponse and res.is_error():
+		L.debug("Store", "try_load_user", res)
 		if show_notifications:
-			L.debug("Store", "try_load_user", res)
-			if res.result == ERR_CANT_CONNECT:
+			NotificationServer.notify_critical("Some error occured!")
+		return false
+
+	user = res
+	if not with_permissions:
+		return true
+
+	res = yield(API.rest.get_permissions(user.id), "completed")
+	if res is HTTPResponse and res.is_error():
+		if show_notifications:
+			if res.response_code == 0:
 				NotificationServer.notify_error("No Internet!\nCheck your Internet Connection then try again.")
 			else:
-				NotificationServer.notify_critical("Some error occured!")
+				NotificationServer.notify_error("Unable to load permissions!")
 		return false
-	user = res
-	permissions = user.permissions
+
+	permissions = res.permissions
 	return true
 
 
@@ -126,17 +132,10 @@ func try_autologin():
 
 	var res = yield(try_load_user(false), "completed")
 	if not res:
-		print("deleted")
-		delete_access_token()
 		emit_signal("login_failed")
 	else:
-		print("WS:Starting...")
-		API.ws._wss_url = ws_url
-		API.ws._enabled = true
-		if API.ws._client:
-			API.ws._disconnect_ws()
-		if API.ws._enabled:
-			API.ws._init_wss()
+		#TODO: Uncomment this to connect to WS
+		#API.ws.init()
 		emit_signal("logged_in")
 
 

@@ -178,3 +178,4 @@ environment = SubResource( 11 )
 stream = ExtResource( 6 )
 volume_db = -6.021
 pitch_scale = 1.5
+autoplay = true

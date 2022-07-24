@@ -11,12 +11,11 @@ onready var audio_player = $AudioStreamPlayer
 func _ready():
 	if OS.is_debug_build():
 		# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://main.tscn")
-		audio_player.play()
+		get_tree().change_scene("res://Main.tscn")
 
 	logo.show()
 	anim.play("hide_img_rect")
-
+	audio_player.play()
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	if video_anim_played:

@@ -2,9 +2,18 @@
 # MIT LICENSE
 # https://github.com/3ddelano/proclubsfederation-api-godot
 
-class_name ModifyMemberSlotsParams extends PCFDataclass
+class_name ModifyMemberSlotsParams
+extends Reference
+var slots: int
 
-var slots: int = -1 # Forces the user to set a valid number
+func to_dict() -> Dictionary:
+	var json = {
+		slots = slots,
+	}
+	return json
 
+func get_class() -> String:
+	return "ModifyMemberSlotsParams"
 
-func _init(p_dict = null).(p_dict, "ModifyMemberSlotsParams"): pass
+func _to_string() -> String:
+	return "ModifyMemberSlotsParams(slots=%s)" % [slots]

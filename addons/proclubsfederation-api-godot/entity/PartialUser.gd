@@ -2,14 +2,25 @@
 # MIT LICENSE
 # https://github.com/3ddelano/proclubsfederation-api-godot
 
-class_name PartialUser extends PCFDataclass
-
-var id: String
+class_name PartialUser
+extends Reference
 var name: String
+var id: String
 var money: int
 var created_at: String
-var permissions: int
+var agent_type = "free"
 
-var agent_type := "free" # One of "free", "signed", "not_interested"
+func from_json(json: Dictionary) -> PartialUser:
+	name = json["name"]
+	id = json["id"]
+	money = json["money"]
+	created_at = json["created_at"]
+	if "agent_type" in json and json["agent_type"] != null:
+		agent_type = json["agent_type"]
+	return self
 
-func _init(p_dict = null).(p_dict, "PartialUser"): pass
+func get_class() -> String:
+	return "PartialUser"
+
+func _to_string() -> String:
+	return "PartialUser(name=%s, id=%s, money=%s, created_at=%s, agent_type=%s)" % [name, id, money, created_at, agent_type]

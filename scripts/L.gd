@@ -10,7 +10,7 @@ static func debug(a, b="", c="", d="", e="", f=""):
 	if e: arr.append(str(e))
 	if f: arr.append(str(f))
 
-	printerr("DEBUG::", arr.join("::"))
+	print_debug("DEBUG::", arr.join("::"))
 
 # Normal print
 static func print(a, b="", c="", d="", e="", f=""):

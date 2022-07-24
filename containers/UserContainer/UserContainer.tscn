@@ -124,25 +124,22 @@ margin_top = -222.0
 margin_right = 359.0
 margin_bottom = 240.0
 
-[node name="TitleBar" parent="HB/Invites/CanvasLayer/InvitePopup/WD" index="1"]
-text = "Invite"
-
 [node name="SC" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB" index="0"]
 margin_right = 684.0
-margin_bottom = 340.0
+margin_bottom = 373.0
 
 [node name="Body" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC" index="0"]
 margin_right = 684.0
-margin_bottom = 340.0
+margin_bottom = 373.0
 
 [node name="VB" type="VBoxContainer" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body" index="0"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 662.0
-margin_bottom = 352.0
+margin_right = 674.0
+margin_bottom = 363.0
 
 [node name="Name" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
-margin_right = 652.0
+margin_right = 664.0
 margin_bottom = 213.0
 custom_fonts/font = ExtResource( 13 )
 text = "Club001
@@ -157,15 +154,10 @@ margin_top = 217.0
 margin_right = 652.0
 margin_bottom = 240.0
 
-[node name="HS" type="HSeparator" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
-margin_top = 217.0
-margin_right = 652.0
-margin_bottom = 221.0
-
 [node name="Description" type="RichTextLabel" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
-margin_top = 225.0
-margin_right = 652.0
-margin_bottom = 321.0
+margin_top = 217.0
+margin_right = 664.0
+margin_bottom = 335.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
@@ -180,9 +172,9 @@ Lorem ipsum dolor sit amet"
 fit_content_height = true
 
 [node name="CreatedAt" type="Label" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/SC/Body/VB"]
-margin_top = 325.0
-margin_right = 652.0
-margin_bottom = 342.0
+margin_top = 339.0
+margin_right = 664.0
+margin_bottom = 353.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 14 )
@@ -191,24 +183,24 @@ align = 2
 autowrap = true
 
 [node name="HSeparator" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB" index="1"]
-margin_top = 344.0
+margin_top = 377.0
 margin_right = 684.0
-margin_bottom = 359.0
+margin_bottom = 392.0
 
 [node name="FooterContainer" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB" index="2"]
-margin_top = 363.0
+margin_top = 396.0
 margin_right = 684.0
 margin_bottom = 396.0
 
 [node name="OK" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/FooterContainer" index="0"]
-visible = true
-margin_left = 120.0
-margin_right = 220.0
+margin_left = 139.0
+margin_right = 200.0
+text = "Accept"
 
 [node name="Cancel" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB/FooterContainer" index="1"]
-visible = true
-margin_left = 464.0
-margin_right = 564.0
+margin_left = 486.0
+margin_right = 542.0
+text = "Reject"
 
 [node name="DebugButton" parent="HB/Invites/CanvasLayer/InvitePopup/WD/VB" index="3"]
 margin_top = 400.0
@@ -287,15 +279,13 @@ text = "➕ Join a club"
 visible = false
 script = ExtResource( 1 )
 title = "Application"
+window_type = 2
 
 [node name="WD" parent="HB/Applications/CanvasLayer/ApplicationPopup" index="0"]
 margin_left = -358.0
 margin_top = -221.0
 margin_right = 358.0
 margin_bottom = 239.0
-
-[node name="TitleBar" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD" index="1"]
-text = "Application"
 
 [node name="SC" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB" index="0"]
 margin_right = 682.0
@@ -321,12 +311,12 @@ text = "User001
 align = 1
 autowrap = true
 
-[node name="HS" type="HSeparator" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
+[node name="HSeparator" type="HSeparator" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
 margin_top = 217.0
 margin_right = 662.0
 margin_bottom = 221.0
 
-[node name="Description" type="RichTextLabel" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
+[node name="RichTextLabel" type="RichTextLabel" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
 margin_top = 225.0
 margin_right = 662.0
 margin_bottom = 286.0
@@ -340,7 +330,7 @@ Lorem ipsum dolor sit amet"
 fit_content_height = true
 
 [node name="CreatedAt" type="Label" parent="HB/Applications/CanvasLayer/ApplicationPopup/WD/VB/SC/Body/VB"]
-margin_top = 334.0
+margin_top = 337.0
 margin_right = 662.0
 margin_bottom = 351.0
 size_flags_horizontal = 3
@@ -433,6 +423,7 @@ text = "Test Award 2"
 [node name="CanvasLayer" type="CanvasLayer" parent="HB/Awards"]
 
 [node name="AwardPopup" parent="HB/Awards/CanvasLayer" instance=ExtResource( 8 )]
+visible = false
 script = ExtResource( 11 )
 title = "Award"
 
@@ -441,9 +432,6 @@ margin_left = -323.0
 margin_top = -208.0
 margin_right = 323.0
 margin_bottom = 208.0
-
-[node name="TitleBar" parent="HB/Awards/CanvasLayer/AwardPopup/WD" index="1"]
-text = "Award"
 
 [node name="SC" parent="HB/Awards/CanvasLayer/AwardPopup/WD/VB" index="0"]
 margin_right = 612.0

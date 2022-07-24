@@ -27,8 +27,8 @@ func _ready() -> void:
 	set("placeholder_text", placeholder_text)
 
 	show_btn.visible = password
-	show_btn.connect("toggled", self, "_on_show_btn_toggled") # warning-ignore:return_value_discarded
-	value.connect("text_entered", self, "_on_value_text_entered") # warning-ignore:return_value_discarded
+	show_btn.connect("toggled", self, "_on_show_btn_toggled")
+	value.connect("text_entered", self, "_on_value_text_entered")
 
 func _assign_vars() -> void:
 	label = $HB/FieldNameLabel
