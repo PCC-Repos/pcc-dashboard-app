@@ -9,7 +9,7 @@ onready var item_container = $ScrollContainer/HFlowContainer
 func ready():
 	pass
 #	fetch_items_api()
-	connect("visibility_changed", self, "_on_visibility_changed")
+	connect("visibility_changed", self, "_on_visibility_changed") # warning-ignore:return_value_discarded
 
 func fetch_items_api():
 #	clear_children(item_container)

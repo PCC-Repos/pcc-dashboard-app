@@ -26,39 +26,58 @@ onready var ok_button: = footer.get_node("OK")
 onready var cancel_button: = footer.get_node("Cancel")
 onready var debug_button: = $"%DebugButton"
 
+# Needed because script is tool, so onready vars load only when running the scene
+# not in editor
+func _init_vars():
+	window_dialog = $WD
+	title_bar = window_dialog.get_node("TitleBar")
+	close_button = window_dialog.get_node("CloseButton")
+	body = $"%Body"
+	footer = $"%FooterContainer"
+	ok_button = footer.get_node("OK")
+	cancel_button = footer.get_node("Cancel")
+	debug_console = $"%DebugConsole/Panel"
+	copy_id_btn = debug_console.get_node("CopyId")
 
 func _ready() -> void:
-# warning-ignore:return_value_discarded
-	ok_button.connect("pressed", self, "_on_OK_pressed", [ok_button])
-# warning-ignore:return_value_discarded
-	cancel_button.connect("pressed", self, "_on_Cancel_pressed", [cancel_button])
+	_init_vars()
+	ok_button.connect("pressed", self, "_on_ok_btn_pressed", [ok_button]) # warning-ignore:return_value_discarded
+	close_button.connect("pressed", self, "_on_close_btn_pressed", [close_button]) # warning-ignore:return_value_discarded
+	cancel_button.connect("pressed", self, "_on_cancel_btn_pressed", [cancel_button]) # warning-ignore:return_value_discarded
+	debug_console.get_parent().connect("toggled", self, "_on_debug_console_toggled") # warning-ignore:return_value_discarded
+	body.get_parent().connect("resized", self, "_on_scroll_container_resized") # warning-ignore:return_value_discarded
+	copy_id_btn.connect("pressed", self, "_on_copyid_btn_pressed", [copy_id_btn]) # warning-ignore:return_value_discarded
 
 	set("title", title)
 	set("resizable", resizable)
 	set("tween_speed", tween_speed)
 	set("window_type", window_type)
+
+	# Hide original WindowDialog's close btn
 	window_dialog.get_close_button().hide()
 	window_dialog.resizable = resizable
 	window_dialog.rect_min_size.x = title_bar.rect_size.x + 20 + close_button.rect_size.x
 
-	#If we are not running in tool mode
+	# If we are not running in tool mode
 	if not Engine.editor_hint:
 		title_bar.rect_position.y = 10
 		close_button.rect_position = Vector2(window_dialog.rect_size.x - close_button.rect_size.x, close_button.rect_size.y)
-#	window_dialog.rect_pivot_offset = window_dialog.rect_size/2
 	pre_rect_size = window_dialog.rect_position
 
 	get_recursive_children()
 
-	#If this is a "debug" build
-	debug_button.visible = OS.is_debug_build()
+	debug_console.visible = OS.is_debug_build()
 
-
-	#For Standalone Debugging purpose only
+	# For Standalone Debugging purpose only
 	if get_parent() == get_tree().root:
 		popup()
 		self.window_type = window_type
 
+	hide()
+
+func _init():
+	if is_inside_tree():
+		_init_vars()
 
 func popup(show: bool = true):
 	if show:
@@ -81,7 +100,19 @@ func popup(show: bool = true):
 		pre_rect_size = window_dialog.rect_position
 		window_dialog.hide()
 		hide()
+	_reset_debug_console()
 
+func _on_close_btn_pressed(_button: BaseButton) -> void:
+	popup(false)
+
+func _on_panel_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and not exclusive:
+			popup(false)
+
+func _on_scroll_container_resized() -> void:
+	if is_zero_approx(body.get_parent().rect_size.y):
+		window_dialog.rect_min_size.y = window_dialog.rect_size.y
 
 func set_title(new: String):
 	title = new
@@ -104,10 +135,8 @@ func set_type(new: int):
 		ok_button.visible = not (window_type == Type.Basic or window_type == Type.Accept)
 		cancel_button.visible = not (window_type == Type.Basic)
 
-
 func close():
 	popup(false)
-
 
 func get_recursive_children(root: Node = self):
 	for node in root.get_children():
@@ -117,28 +146,23 @@ func get_recursive_children(root: Node = self):
 		else:
 			get_recursive_children(node)
 
-
-# warning-ignore:unused_argument
-func _on_OK_pressed(button: BaseButton) -> void:
+func _on_ok_btn_pressed(_button: BaseButton) -> void:
 	pass # Replace with function body.
 
-
-# warning-ignore:unused_argument
-func _on_Cancel_pressed(button: BaseButton) -> void:
+func _on_cancel_btn_pressed(_button: BaseButton) -> void:
 	pass # Replace with function body.
 
+func _on_copyid_btn_pressed(_button: BaseButton) -> void:
+	pass
 
-func _on_DebugConsole_toggled(button_pressed: bool) -> void:
-	debug_button.icon = preload("res://assets/images/UI/Eye Open.svg") if button_pressed else preload("res://assets/images/UI/Eye Close.svg")
-	debug_button.get_node("Panel").visible = button_pressed
+func _reset_debug_console():
+	debug_console.get_parent().pressed = false
+	debug_console.visible = false
 
+func _on_debug_console_toggled(button_pressed: bool) -> void:
+	if button_pressed:
+		debug_console.get_parent().icon = preload("res://assets/images/UI/Eye Open.svg")
+	else:
+		debug_console.get_parent().icon = preload("res://assets/images/UI/Eye Close.svg")
 
-func _on_SC_resized() -> void:
-	if is_zero_approx(body.get_parent().rect_size.y):
-		window_dialog.rect_min_size.y = window_dialog.rect_size.y
-
-
-func _on_CustomWindowDialog_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and not exclusive:
-			popup(false)
+	debug_console.visible = not debug_console.visibles

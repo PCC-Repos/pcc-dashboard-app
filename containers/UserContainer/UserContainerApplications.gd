@@ -12,6 +12,11 @@ func _ready() -> void:
 
 	var partial_applications = yield(API.rest.get_applications("club"), "completed")
 	var applications = []
+	if partial_applications is HTTPResponse:
+		NotificationServer.notify_error("Error in loading applications")
+		L.debug("", "get_applications: ", partial_applications)
+		return
+
 	for partial_application in partial_applications:
 		applications.append(yield(API.rest.get_application(partial_application.id), "completed"))
 	for application in applications:
