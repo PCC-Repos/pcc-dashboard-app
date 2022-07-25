@@ -45,14 +45,14 @@ func set_price(value: String):
 		return
 	$"%Price".text = price + " tokens"
 
-func set_buyer(value):
+func set_buyer(value: PartialUser):
 	buyer = value
-	self.buyer_name = value["name"]
+	self.buyer_name = buyer.name
 
-func set_seller(value):
+func set_seller(value: PartialUser):
 	seller = value
-	self.seller_name = value["name"]
+	self.seller_name = seller.name
 
-func set_item(value):
+func set_item(value: PartialItem):
 	item = value
-	self.item_name = value["name"]
+	self.item_name = item.name

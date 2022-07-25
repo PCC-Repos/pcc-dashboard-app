@@ -19,7 +19,7 @@ func from_json(json: Dictionary) -> PartialClub:
 	id = json["id"]
 	created_at = json["created_at"]
 	money = json["money"]
-	member_limit = json["member_limit"]
+	member_limit = json.get("slots", json.get('member_limit', null))
 	return self
 
 func get_class() -> String:

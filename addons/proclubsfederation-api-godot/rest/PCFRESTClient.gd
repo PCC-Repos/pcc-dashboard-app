@@ -257,7 +257,7 @@ func get_transactions(filter_by: String, object_id: String) -> Array:
 	if not filter_by in ["seller", "buyer"]:
 		print("Invalid filter_by in get_transactions()")
 		return null
-	var data = yield(_send_request(ENDPOINTS.TRANSACTIONS + "?filter_by=%s&object_id=%s%" % [filter_by, object_id]), "completed")
+	var data = yield(_send_request(ENDPOINTS.TRANSACTIONS + "?filter_by=%s&object_id=%s" % [filter_by, object_id]), "completed")
 	if typeof(data) == TYPE_OBJECT and data.has_method("is_error"):
 		return data
 

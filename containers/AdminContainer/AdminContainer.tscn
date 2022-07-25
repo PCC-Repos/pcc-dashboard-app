@@ -25,45 +25,49 @@ margin_top = 32.0
 margin_right = 1366.0
 margin_bottom = 36.0
 
-[node name="Clubs" type="VBoxContainer" parent="." groups=["login_ready"]]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 40.0
-margin_right = 447.0
+margin_right = 1366.0
 margin_bottom = 768.0
-rect_min_size = Vector2( 447, 0 )
-size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="Clubs" type="VBoxContainer" parent="HBoxContainer" groups=["login_ready"]]
+margin_right = 338.0
+margin_bottom = 728.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="Clubs"]
-margin_right = 447.0
+[node name="Label" type="Label" parent="HBoxContainer/Clubs"]
+margin_right = 338.0
 margin_bottom = 23.0
 text = "Clubs"
 align = 1
 valign = 1
 
-[node name="HSeparator" type="HSeparator" parent="Clubs"]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Clubs"]
 margin_top = 27.0
-margin_right = 447.0
+margin_right = 338.0
 margin_bottom = 31.0
 mouse_filter = 1
 size_flags_horizontal = 3
 
-[node name="SC" type="ScrollContainer" parent="Clubs"]
+[node name="SC" type="ScrollContainer" parent="HBoxContainer/Clubs"]
 margin_top = 35.0
-margin_right = 447.0
+margin_right = 338.0
 margin_bottom = 691.0
 mouse_filter = 1
 size_flags_vertical = 3
 
-[node name="VB" type="VBoxContainer" parent="Clubs/SC"]
-margin_right = 447.0
+[node name="VB" type="VBoxContainer" parent="HBoxContainer/Clubs/SC"]
+margin_right = 338.0
 margin_bottom = 656.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CreateNewButton" type="Button" parent="Clubs"]
+[node name="CreateNewButton" type="Button" parent="HBoxContainer/Clubs"]
 margin_top = 695.0
-margin_right = 447.0
+margin_right = 338.0
 margin_bottom = 728.0
 rect_min_size = Vector2( 160, 0 )
 mouse_default_cursor_shape = 2
@@ -74,9 +78,188 @@ icon = ExtResource( 4 )
 icon_align = 2
 expand_icon = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Clubs"]
+[node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/Clubs"]
 
-[node name="ClubsMenu" type="PopupMenu" parent="Clubs/CanvasLayer"]
+[node name="ClubsMenu" type="PopupMenu" parent="HBoxContainer/Clubs/CanvasLayer"]
+margin_right = 130.0
+margin_bottom = 92.0
+theme = ExtResource( 3 )
+items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "Delete", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Copy ID", null, 0, false, false, 3, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Awards" type="VBoxContainer" parent="HBoxContainer" groups=["login_ready"]]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 728.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Awards"]
+margin_right = 339.0
+margin_bottom = 23.0
+text = "Awards"
+align = 1
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Awards"]
+margin_top = 27.0
+margin_right = 339.0
+margin_bottom = 31.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="SC" type="ScrollContainer" parent="HBoxContainer/Awards"]
+margin_top = 35.0
+margin_right = 339.0
+margin_bottom = 691.0
+mouse_filter = 1
+size_flags_vertical = 3
+
+[node name="VB" type="VBoxContainer" parent="HBoxContainer/Awards/SC"]
+margin_right = 339.0
+margin_bottom = 656.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CreateNewButton" type="Button" parent="HBoxContainer/Awards"]
+margin_top = 695.0
+margin_right = 339.0
+margin_bottom = 728.0
+rect_min_size = Vector2( 160, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+theme_type_variation = "GreenButton"
+text = "➕ Create Award "
+icon = ExtResource( 4 )
+icon_align = 2
+expand_icon = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/Awards"]
+
+[node name="ClubsMenu" type="PopupMenu" parent="HBoxContainer/Awards/CanvasLayer"]
+margin_right = 130.0
+margin_bottom = 92.0
+theme = ExtResource( 3 )
+items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "Delete", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Copy ID", null, 0, false, false, 3, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Users" type="VBoxContainer" parent="HBoxContainer" groups=["login_ready"]]
+margin_left = 685.0
+margin_right = 1023.0
+margin_bottom = 728.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/Users"]
+margin_right = 338.0
+margin_bottom = 23.0
+text = "Users"
+align = 1
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Users"]
+margin_top = 27.0
+margin_right = 338.0
+margin_bottom = 31.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="SC" type="ScrollContainer" parent="HBoxContainer/Users"]
+margin_top = 35.0
+margin_right = 338.0
+margin_bottom = 728.0
+mouse_filter = 1
+size_flags_vertical = 3
+
+[node name="VB" type="VBoxContainer" parent="HBoxContainer/Users/SC"]
+margin_right = 338.0
+margin_bottom = 693.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CreateNewButton" type="Button" parent="HBoxContainer/Users"]
+visible = false
+margin_top = 695.0
+margin_right = 338.0
+margin_bottom = 728.0
+rect_min_size = Vector2( 160, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+theme_type_variation = "GreenButton"
+text = "➕ Create Club "
+icon = ExtResource( 4 )
+icon_align = 2
+expand_icon = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/Users"]
+
+[node name="ClubsMenu" type="PopupMenu" parent="HBoxContainer/Users/CanvasLayer"]
+margin_right = 130.0
+margin_bottom = 92.0
+theme = ExtResource( 3 )
+items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "Delete", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Copy ID", null, 0, false, false, 3, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManagerApplication" type="VBoxContainer" parent="HBoxContainer" groups=["login_ready"]]
+margin_left = 1027.0
+margin_right = 1366.0
+margin_bottom = 728.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HBoxContainer/ManagerApplication"]
+margin_right = 339.0
+margin_bottom = 23.0
+text = "Manager Applications"
+align = 1
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/ManagerApplication"]
+margin_top = 27.0
+margin_right = 339.0
+margin_bottom = 31.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="SC" type="ScrollContainer" parent="HBoxContainer/ManagerApplication"]
+margin_top = 35.0
+margin_right = 339.0
+margin_bottom = 728.0
+mouse_filter = 1
+size_flags_vertical = 3
+
+[node name="VB" type="VBoxContainer" parent="HBoxContainer/ManagerApplication/SC"]
+margin_right = 339.0
+margin_bottom = 693.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CreateNewButton" type="Button" parent="HBoxContainer/ManagerApplication"]
+visible = false
+margin_top = 695.0
+margin_right = 339.0
+margin_bottom = 728.0
+rect_min_size = Vector2( 160, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+theme_type_variation = "GreenButton"
+text = "➕ Create Club "
+icon = ExtResource( 4 )
+icon_align = 2
+expand_icon = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/ManagerApplication"]
+
+[node name="ClubsMenu" type="PopupMenu" parent="HBoxContainer/ManagerApplication/CanvasLayer"]
 margin_right = 130.0
 margin_bottom = 92.0
 theme = ExtResource( 3 )
