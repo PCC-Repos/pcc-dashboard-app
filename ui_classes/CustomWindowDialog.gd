@@ -29,9 +29,9 @@ onready var debug_button: = $"%DebugButton"
 
 func _ready() -> void:
 # warning-ignore:return_value_discarded
-	ok_button.connect("pressed", self, "_on_OK_pressed", [ok_button])
+	if not ok_button.is_connected("pressed", self, "_on_OK_pressed"): ok_button.connect("pressed", self, "_on_OK_pressed", [ok_button])
 # warning-ignore:return_value_discarded
-	cancel_button.connect("pressed", self, "_on_Cancel_pressed", [cancel_button])
+	if not cancel_button.is_connected("pressed", self, "_on_Cancel_pressed"): cancel_button.connect("pressed", self, "_on_Cancel_pressed", [cancel_button])
 
 	set("title", title)
 	set("resizable", resizable)

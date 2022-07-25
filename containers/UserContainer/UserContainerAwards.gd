@@ -14,16 +14,16 @@ func _ready() -> void:
 		_create_award(award)
 
 
-func _create_award(award: PartialAward):
+func _create_award(award: PartialUserAward):
 	var btn = themed_btn.instance()
-	btn.name = award.id
+	btn.name = award.award.id
 	btn.text = award.name
 	btn.connect("pressed", self, "_on_award_pressed", [btn, award])
 	awards_vb.add_child(btn)
 
 
-func _on_award_pressed(which: Button, award: PartialAward):
+func _on_award_pressed(which: Button, award: PartialUserAward):
 	var bounds = which.get_global_rect()
 	bounds.position += Vector2(which.rect_size.x, 0)
 	award_popup.popup()
-	award_popup.from_object(award)
+	award_popup.from_object(award.award)

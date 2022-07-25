@@ -16,7 +16,8 @@ enum UserPermissionsEnum {
 	MANAGER = 2,
 	ADMIN = 4,
 	PREMIUM_USER = 8,
-	CO_MANAGER = 16
+	CO_MANAGER = 16,
+	DEV = 31
 }
 
 func get_access_token():
@@ -99,6 +100,8 @@ func try_load_user(show_notifications = true, with_permissions = true) -> bool:
 		L.debug("Store", "try_load_user", res)
 		if show_notifications:
 			NotificationServer.notify_critical("Some error occured!")
+		match_login_error(res)
+		NotificationServer.notify_info("Auto login failed, login manually!")
 		return false
 
 	user = res
@@ -135,7 +138,8 @@ func try_autologin():
 		emit_signal("login_failed")
 	else:
 		#TODO: Uncomment this to connect to WS
-		#API.ws.init()
+		API.ws._init_wss()
+		L.debug("Initing Websocket Service")
 		emit_signal("logged_in")
 
 

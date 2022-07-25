@@ -17,6 +17,7 @@ var dev_helper = null
 func _ready():
 	if api_debug:
 		API.rest._base_url = "https://api.proclubsfederation.com/dev/"
+		API.ws._wss_url = "wss://gateway.proclubsfederation.com/dev"
 	L.debug("API Base URL", API.rest._base_url)
 
 	var _c
