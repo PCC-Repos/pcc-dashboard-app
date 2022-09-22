@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui_classes/Field.tscn" type="PackedScene" id=1]
+[ext_resource path="res://forms/LoginForm/LoginForm.gd" type="Script" id=2]
+[ext_resource path="res://themes/default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/fonts/BigTitle.tres" type="DynamicFont" id=4]
+
+[node name="LoginForm" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+theme_type_variation = "LoginPanel"
+script = ExtResource( 2 )
+
+[node name="VB" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = -50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.23
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="Label" parent="VB"]
+margin_top = 145.0
+margin_right = 1266.0
+margin_bottom = 255.0
+rect_min_size = Vector2( 0, 35 )
+size_flags_vertical = 1
+theme_type_variation = "Titles"
+custom_fonts/font = ExtResource( 4 )
+text = "login"
+valign = 1
+uppercase = true
+
+[node name="HS" type="HSeparator" parent="VB"]
+margin_top = 270.0
+margin_right = 250.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 0
+theme_type_variation = "LoginHSeperator"
+
+[node name="Email" parent="VB" instance=ExtResource( 1 )]
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 285.0
+margin_right = 1266.0
+margin_bottom = 345.0
+hint_tooltip = "If not registered, then first register yourself, by creating a new account"
+field_name = "Email:"
+placeholder_text = "Enter your email..."
+
+[node name="Password" parent="VB" instance=ExtResource( 1 )]
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 360.0
+margin_right = 1266.0
+margin_bottom = 420.0
+field_name = "Password:"
+placeholder_text = "Enter your password"
+password = true
+
+[node name="HS2" type="HSeparator" parent="VB"]
+margin_top = 435.0
+margin_right = 1266.0
+margin_bottom = 435.0
+size_flags_horizontal = 3
+theme_type_variation = "LoginHSeperator"
+
+[node name="HB" type="HBoxContainer" parent="VB"]
+margin_top = 450.0
+margin_right = 1266.0
+margin_bottom = 485.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="LoginBtn" type="Button" parent="VB/HB"]
+margin_right = 1266.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 75, 35 )
+hint_tooltip = "Log into your Dashboard."
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Login"
+
+[node name="RegisterBtn" type="LinkButton" parent="VB"]
+margin_left = 516.0
+margin_top = 500.0
+margin_right = 749.0
+margin_bottom = 523.0
+hint_tooltip = "...or click it, if you want to create a different account."
+size_flags_horizontal = 6
+size_flags_vertical = 0
+text = "New user? Create an Account..."

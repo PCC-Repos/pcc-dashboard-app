@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://ui_classes/WindowDialog.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui_classes/CustomWindowDialog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui_classes/PlaceholderTextEdit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dialogs/new_dialogs/join_dialog.gd" type="Script" id=3]
 
@@ -8,45 +8,12 @@
 script = ExtResource( 3 )
 title = "Apply for club"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog/VBoxContainer/ScrollContainer/Body" index="0"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 512.0
-margin_bottom = 308.0
-custom_constants/separation = 20
-
-[node name="ID" type="VBoxContainer" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="0"]
-margin_right = 502.0
-margin_bottom = 60.0
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer/ID" index="0"]
-margin_right = 502.0
-margin_bottom = 23.0
-text = "Club"
-
-[node name="ID" type="OptionButton" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer/ID" index="1"]
-unique_name_in_owner = true
-margin_top = 27.0
-margin_right = 502.0
-margin_bottom = 60.0
-size_flags_horizontal = 3
-text = "Indie Dev's Club"
-items = [ "Indie Dev's Club", null, false, 0, null, "Pluribus Unum", null, false, 1, null, "Test Club", null, false, 2, null, "Pluribus Dragons", null, false, 3, null ]
-selected = 0
-
-[node name="Reason" type="VBoxContainer" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="1"]
-margin_top = 80.0
-margin_right = 502.0
-margin_bottom = 245.0
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer/Reason" index="0"]
+[node name="WindowDialog@VBoxContainer@ScrollContainer@Body@VBoxContainer@Reason@Label" type="Label" parent="." index="1"]
 margin_right = 502.0
 margin_bottom = 23.0
 text = "Reason"
 
-[node name="Reason" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer/Reason" index="1" instance=ExtResource( 2 )]
+[node name="WindowDialog@VBoxContainer@ScrollContainer@Body@VBoxContainer@Reason@Reason" parent="." index="2" instance=ExtResource( 2 )]
 unique_name_in_owner = true
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -57,7 +24,7 @@ margin_bottom = 127.0
 placeholder_text = "Your reason to join the club?"
 placeholder_alpha = 0.5
 
-[node name="Join" type="Button" parent="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer" index="2"]
+[node name="WindowDialog@VBoxContainer@ScrollContainer@Body@VBoxContainer@Join" type="Button" parent="." index="3"]
 unique_name_in_owner = true
 margin_left = 176.0
 margin_top = 265.0
@@ -69,7 +36,35 @@ size_flags_horizontal = 6
 size_flags_vertical = 8
 text = "Apply for Club"
 
-[node name="TitleBar" parent="WindowDialog" index="3"]
-text = "Join Club"
+[node name="WindowDialog@VBoxContainer@ScrollContainer@Body@VBoxContainer@ID@Label" type="Label" parent="." index="4"]
+margin_right = 502.0
+margin_bottom = 23.0
+text = "Club"
 
-[connection signal="pressed" from="WindowDialog/VBoxContainer/ScrollContainer/Body/VBoxContainer/Join" to="." method="_on_Join_pressed"]
+[node name="WindowDialog@VBoxContainer@ScrollContainer@Body@VBoxContainer@Reason" type="VBoxContainer" parent="." index="5"]
+margin_top = 80.0
+margin_right = 502.0
+margin_bottom = 245.0
+size_flags_vertical = 3
+
+[node name="WindowDialog@VBoxContainer@ScrollContainer@Body@VBoxContainer@ID@ID" type="OptionButton" parent="." index="6"]
+unique_name_in_owner = true
+margin_top = 27.0
+margin_right = 502.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+text = "Indie Dev's Club"
+items = [ "Indie Dev's Club", null, false, 0, null, "Pluribus Unum", null, false, 1, null, "Test Club", null, false, 2, null, "Pluribus Dragons", null, false, 3, null ]
+selected = 0
+
+[node name="WindowDialog@VBoxContainer@ScrollContainer@Body@VBoxContainer@ID" type="VBoxContainer" parent="." index="7"]
+margin_right = 502.0
+margin_bottom = 60.0
+size_flags_vertical = 0
+
+[node name="WindowDialog@VBoxContainer@ScrollContainer@Body@VBoxContainer" type="VBoxContainer" parent="." index="8"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 512.0
+margin_bottom = 308.0
+custom_constants/separation = 20

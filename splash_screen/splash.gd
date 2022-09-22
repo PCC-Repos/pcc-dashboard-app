@@ -2,23 +2,29 @@ extends ColorRect
 
 var video_anim_played = false
 
+onready var anim = $Anim
+onready var logo = $TextureRect
+onready var video_player = $VideoPlayer
+onready var audio_player = $AudioStreamPlayer
+
 
 func _ready():
-	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(768, 768))
-	$TextureRect.show()
-	$AnimationPlayer.play("hide_img_rect")
-	$AudioStreamPlayer.play()
+	if OS.is_debug_build():
+		# warning-ignore:return_value_discarded
+		get_tree().change_scene("res://Main.tscn")
 
+	logo.show()
+	anim.play("hide_img_rect")
+	audio_player.play()
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	if video_anim_played:
-# warning-ignore:return_value_discarded
+		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://main.tscn")
-	$VideoPlayer.self_modulate.a = 1
-	$VideoPlayer.play()
-	$TextureRect.hide()
-
+	video_player.self_modulate.a = 1
+	video_player.play()
+	logo.hide()
 
 func _on_VideoPlayer_finished():
-	$AnimationPlayer.play_backwards("show_splash_screen")
+	anim.play_backwards("show_splash_screen")
 	video_anim_played = true

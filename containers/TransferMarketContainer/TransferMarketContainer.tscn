@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://themes/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://containers/TransferMarketContainer/TransferMarketContainer.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/TitleFont.tres" type="DynamicFont" id=3]
+
+[node name="TransferMarketContainer" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Items" type="Label" parent="."]
+margin_right = 1366.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 34 )
+custom_fonts/font = ExtResource( 3 )
+text = "Items"
+align = 1
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_top = 38.0
+margin_right = 1366.0
+margin_bottom = 42.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_top = 46.0
+margin_right = 1366.0
+margin_bottom = 768.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="HFlowContainer" type="HFlowContainer" parent="ScrollContainer"]
+margin_right = 1366.0
+margin_bottom = 722.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ItemsMenu" type="PopupMenu" parent="CanvasLayer"]
+margin_right = 130.0
+margin_bottom = 92.0
+theme = ExtResource( 1 )
+items = [ "Edit", null, 0, false, false, 0, 0, null, "", false, "Delete", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", true, "Copy ID", null, 0, false, false, 3, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}

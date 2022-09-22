@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui_classes/CustomWindowDialog.tscn" type="PackedScene" id=1]
+[ext_resource path="res://dialogs/new_dialogs/WelcomeDialog.gd" type="Script" id=2]
+
+[node name="WelcomeDialog" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+title = "Welcome"
+
+[node name="Body" parent="WD/VB/SC" index="0"]
+margin_right = 510.0
+margin_bottom = 356.0
+
+[node name="VB" type="VBoxContainer" parent="WD/VB/SC/Body" index="0"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 500.0
+margin_bottom = 346.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WD/VB/SC/Body/VB" index="0"]
+margin_right = 490.0
+margin_bottom = 336.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[center]
+[color=#51acff]Welcome to 
+Pro Clubs Federation Dashboard.
+
+This is the first preview of the app for Managers only.[/color]
+
+[color=#ff7070][u]🐛 Alpha Stage 🐛[/u]
+The app is in Alpha stages, we regret the inconvinience caused, we're working on fixing bugs. Please provide your valuable feedback and report bugs as soon as possible!
+[/color]
+
+[color=yellow]📝Note: Managers have to be gated in to use this app.[/color]
+[/center]"
+text = "
+Welcome to 
+Pro Clubs Federation Dashboard.
+
+This is the first preview of the app for Managers only.
+
+🐛 Alpha Stage 🐛
+The app is in Alpha stages, we regret the inconvinience caused, we're working on fixing bugs. Please provide your valuable feedback and report bugs as soon as possible!
+
+
+📝Note: Managers have to be gated in to use this app.
+"
+fit_content_height = true
+
+[node name="OK" parent="WD/VB/FooterContainer" index="0"]
+unique_name_in_owner = true
+margin_left = 84.0
+margin_right = 174.0
+rect_min_size = Vector2( 90, 0 )
+mouse_default_cursor_shape = 2
+size_flags_vertical = 1
+
+[node name="TitleBar" parent="WD" index="3"]
+text = ""
+
+[connection signal="pressed" from="WD/VB/FooterContainer/OK" to="." method="_on_OK_pressed"]

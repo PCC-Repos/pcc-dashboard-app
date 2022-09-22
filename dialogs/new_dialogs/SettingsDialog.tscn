@@ -1,0 +1,174 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/TitleFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui_classes/CustomWindowDialog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/fonts/SettingsFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://dialogs/new_dialogs/SettingsContainer.gd" type="Script" id=4]
+[ext_resource path="res://dialogs/new_dialogs/SettingsDialog.gd" type="Script" id=5]
+
+[sub_resource type="ButtonGroup" id=1]
+
+[node name="SettingsDialog" instance=ExtResource( 2 )]
+script = ExtResource( 5 )
+title = "Settings"
+exclusive = true
+
+[node name="HSC" type="HSplitContainer" parent="WD/VB/SC/Body" index="0"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 512.0
+margin_bottom = 308.0
+split_offset = -313
+
+[node name="PC" type="PanelContainer" parent="WD/VB/SC/Body/HSC" index="0"]
+margin_right = 120.0
+margin_bottom = 298.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SideButtonContainer" type="VBoxContainer" parent="WD/VB/SC/Body/HSC/PC" index="0"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 110.0
+margin_bottom = 288.0
+size_flags_vertical = 3
+custom_constants/separation = 13
+
+[node name="BasicBtn" type="Button" parent="WD/VB/SC/Body/HSC/PC/SideButtonContainer" index="0"]
+margin_right = 100.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 100, 0 )
+mouse_default_cursor_shape = 2
+theme_type_variation = "ListButton"
+toggle_mode = true
+pressed = true
+group = SubResource( 1 )
+text = "Basic"
+
+[node name="AdvancedBtn" type="Button" parent="WD/VB/SC/Body/HSC/PC/SideButtonContainer" index="1"]
+margin_top = 46.0
+margin_right = 100.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 100, 0 )
+mouse_default_cursor_shape = 2
+theme_type_variation = "ListButton"
+toggle_mode = true
+group = SubResource( 1 )
+text = "Advanced"
+
+[node name="SC" type="ScrollContainer" parent="WD/VB/SC/Body/HSC" index="1"]
+margin_left = 132.0
+margin_right = 502.0
+margin_bottom = 298.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="SettingsTabContainer" type="TabContainer" parent="WD/VB/SC/Body/HSC/SC" index="0"]
+margin_right = 370.0
+margin_bottom = 298.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="Basic" type="HBoxContainer" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+size_flags_horizontal = 6
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer/Basic" index="0"]
+margin_left = 2.0
+margin_right = 6.0
+margin_bottom = 258.0
+
+[node name="SettingsContainer" type="VBoxContainer" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer/Basic" index="1"]
+margin_left = 10.0
+margin_right = 320.0
+margin_bottom = 258.0
+custom_constants/separation = 22
+alignment = 1
+script = ExtResource( 4 )
+
+[node name="HB" type="HBoxContainer" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer/Basic/SettingsContainer" index="0"]
+margin_top = 87.0
+margin_right = 310.0
+margin_bottom = 118.0
+rect_min_size = Vector2( 310, 0 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer/Basic/SettingsContainer/HB" index="0"]
+margin_right = 153.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Glow"
+align = 2
+valign = 1
+
+[node name="GlowBtn" type="CheckButton" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer/Basic/SettingsContainer/HB" index="1"]
+margin_left = 157.0
+margin_right = 207.0
+margin_bottom = 31.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
+pressed = true
+
+[node name="HB2" type="HBoxContainer" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer/Basic/SettingsContainer" index="1"]
+margin_top = 140.0
+margin_right = 310.0
+margin_bottom = 171.0
+rect_min_size = Vector2( 310, 0 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer/Basic/SettingsContainer/HB2" index="0"]
+margin_right = 153.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Music"
+align = 2
+valign = 1
+
+[node name="MusicBtn" type="CheckButton" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer/Basic/SettingsContainer/HB2" index="1"]
+margin_left = 157.0
+margin_right = 207.0
+margin_bottom = 31.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
+pressed = true
+
+[node name="VSeparator2" type="VSeparator" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer/Basic" index="2"]
+margin_left = 324.0
+margin_right = 328.0
+margin_bottom = 258.0
+
+[node name="Advanced" type="HBoxContainer" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer" index="1"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+size_flags_horizontal = 6
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="WD/VB/SC/Body/HSC/SC/SettingsTabContainer/Advanced" index="0"]
+margin_top = 95.0
+margin_right = 350.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 350, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "Suggest \"Advanced\" options you would like to the developers."
+align = 1
+valign = 1
+autowrap = true

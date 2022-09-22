@@ -166,7 +166,7 @@ rect_pivot_offset = Vector2( 225, 225 )
 stream = ExtResource( 1 )
 volume_db = -6.02
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Anim" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/hide_img_rect = SubResource( 4 )
 anims/show_img_rect = SubResource( 3 )
@@ -194,4 +194,4 @@ pitch_scale = 0.75
 bus = "Music"
 
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="Anim" to="." method="_on_AnimationPlayer_animation_finished"]

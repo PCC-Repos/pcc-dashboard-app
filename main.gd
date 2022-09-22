@@ -1,152 +1,63 @@
 extends Control
 
-const API_BASE = "https://api.proclubsfederation.com/v2/"
-const DebugAPI_BASE = "http://127.0.0.1:8000/"
-
-
 export(bool) var debug: = true
+export(bool) var api_debug: = true
 export(float) var tween_duration: = 0.5
 
-var api_base
-var user
-var access_token = ""
-var headers = PoolStringArray()
-var admin_form
+onready var logo = $HB/ImageContainer/Logo
+onready var tab_container = $HB/MainScreenTabController
+onready var image_container = $HB/ImageContainer
+onready var hbox = $HB
+onready var audio_player = $AudioStreamPlayer
 
-#var logged_in
-#var login_failed
+onready var AdminForm = preload("res://forms/AdminForm/AdminForm.tscn")
+
+var dev_helper = null
 
 func _ready():
-	$"%Logo".hide()
+	if api_debug:
+		API.rest._base_url = "https://api.proclubsfederation.com/dev/"
+	L.debug("API Base URL", API.rest._base_url)
 
-	if OS.has_feature('debug') and debug:
-		api_base = DebugAPI_BASE
-	else:
-		api_base = API_BASE
-	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_DISABLED, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(768, 768))
-	prints("Using API base", api_base)
-	get_tree().set_group("api_base", "api_base", api_base)
-	get_tree().call_group("api_base", "ready")
-# warning-ignore:return_value_discarded
-	GlobalUserState.connect("logged_out", self, "logged_out")
-# warning-ignore:return_value_discarded
-	GlobalUserState.connect("logged_in", self, "logged_in")
-# warning-ignore:return_value_discarded
-	GlobalUserState.connect("login_failed", self, "login_failed")
+	var _c
+	_c = Store.connect("logged_in", self, "_on_logged_in")
+	_c = Store.connect("logged_out", self, "_on_logged_out")
+	_c = connect("visibility_changed", self, "_on_visibility_changed")
+	_c = tab_container.connect("tab_changed", self, "_on_tab_container_tab_changed")
 
-	if GlobalUserState.user:
-		logged_in()
-	elif GlobalUserState.login_failed:
-		login_failed()
+	Store.try_autologin()
 
-func ready():
-	ready_tween()
-	NotificationServer.notify_info("Welcome to PCF Dashboard!")
-
-
-#func _notification(what):
-#	match what:
-#		NOTIFICATION_WM_QUIT_REQUEST:
-#			print("Quit request")
-## warning-ignore:return_value_discarded
-#			get_tree().change_scene("res://closing_screen/closing_screen.tscn")
-#		NOTIFICATION_WM_GO_BACK_REQUEST:
-## warning-ignore:return_value_discarded
-#			get_tree().change_scene("res://closing_screen/closing_screen.tscn")
+	#TODO: remove this DevHelper once dashboard app is completed
+	if not dev_helper:
+		dev_helper = DevHelper.new()
+		add_child(dev_helper)
 
 func ready_tween():
-	$"%Logo".show()
+	logo.show()
 	var tween: SceneTreeTween = create_tween().set_trans(Tween.TRANS_QUART).set_parallel()
-# warning-ignore:return_value_discarded
-	tween.tween_property($"%TabContainer", "rect_position:x", OS.window_size.x / 2 - (OS.window_size.y / 16), tween_duration).from(OS.window_size.x + 10)
-# warning-ignore:return_value_discarded
-	tween.tween_property($"%Logo", "rect_position:x", 50.0, tween_duration).from(-$"%ImageContainer".rect_size.x - 10)
+	tween.tween_property(tab_container, "rect_position:x", OS.window_size.x / 2 - (OS.window_size.y / 16), tween_duration).from(OS.window_size.x + 10)
+	tween.tween_property(logo, "rect_position:x", 50.0, tween_duration).from(-image_container.rect_size.x - 10)
 
-#func _on_LoginForm_access_token_received(_access_token):
-#	if !_access_token:
-#		if debug:
-#			NotificationServer.notify_critical("Bad Access Token Received: %s" % _access_token)
-#		return
-#	access_token = _access_token
-#	logged_in = true
-#	headers = PoolStringArray(["Authorization: Bearer %s" % access_token])
-#	fetch_current_user()
-#
-#func fetch_current_user(refresh = false):
-#	var http_req = HTTPRequest.new()
-#	http_req.connect("request_completed", self, "_request_completed", [http_req, refresh])
-#	add_child(http_req)
-#	http_req.request((api_base + "users/@me/").http_unescape(), headers, true, HTTPClient.METHOD_GET)
-#
-#func _request_completed(_result: int, response_code: int, _headers: PoolStringArray, body: PoolByteArray, http_req, refresh: bool):
-#	http_req.queue_free()
-#	if response_code != 200:
-#		print_debug(response_code, " Something went wrong, plz check!")
-#		NotificationServer.notify_critical("Something went wrong, please check! %s" % response_code)
-#		if response_code == 401:
-#			print_debug(headers)
-#		logged_in = false
-#		$HBoxContainer.show()
-#		ready()
-#		return
-#
-#	var res = parse_json(body.get_string_from_utf8())
-#	user = res
-
-
-func logged_out():
-	print("logged out")
-#	get_tree().set_group("login_ready", "headers", PoolStringArray())
-#	get_tree().set_group("login_ready", "user", Dictionary())
-
-	admin_form.queue_free()
-
-	$"%TabContainer".show()
-	$HBoxContainer.show()
-	$"%ImageContainer".get_node("CanvasLayer").visible = true
-	ready_tween()
-	$"%TabContainer/LoginForm"._ready()
-	$AudioStreamPlayer.play()
-
-func logged_in():
-	push_warning("logged_in called!")
-	$HBoxContainer.hide()
-
-	$"%ImageContainer".get_node("CanvasLayer").visible = false
-
-
+func _on_logged_in():
+	hbox.visible = false
+	audio_player.stop()
 	call_deferred("init_admin")
 
-
-func login_failed():
-	print("something broke!")
-	$HBoxContainer.show()
-	$"%ImageContainer".get_node("CanvasLayer").visible = true
-	ready()
+func _on_logged_out():
+	hbox.visible = true
+	if Store.admin_scene:
+		Store.admin_scene.queue_free()
+		Store.admin_scene = null
+	ready_tween()
+	audio_player.play()
 
 func init_admin():
-	admin_form = load("res://forms/admin_form.tscn").instance()
-	add_child(admin_form)
+	Store.admin_scene = AdminForm.instance()
+	hbox.get_parent().add_child(Store.admin_scene)
 
-
-	get_tree().set_group("login_ready", "headers", headers)
-	get_tree().set_group("login_ready", "api_base", api_base)
-	get_tree().set_group("login_ready", "user", user)
-
-	get_tree().call_group("login_ready", "ready")
-
-	$"%TabContainer".hide()
-
-	$AudioStreamPlayer.stop()
-
-
-func refresh():
+func _on_visibility_changed() -> void:
+	# TODO: What is to be done here?
 	pass
-#	fetch_current_user(true)
 
-
-func _on_Main_visibility_changed() -> void:
-	$"%ImageContainer".get_node("CanvasLayer").visible = visible
-
-func _on_TabContainer_tab_changed(_tab: int):
+func _on_tab_container_tab_changed(_tab: int):
 	ready_tween()

@@ -40,31 +40,31 @@ func _process(delta):
 		hide()
 
 func tween_sequence(type: int = NotificationServer.INFO):
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	tween.set_trans(Tween.TRANS_QUAD).set_parallel()
 	$"%Text".remove_font_override("font")
 	check_type(backlight, type)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	tween.tween_property(backlight, "self_modulate:a", 1.0, wait_time/3).from(0.0)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	tween.set_trans(Tween.TRANS_BACK)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	tween.tween_property(popup_panel, "rect_position:y", height, fade_time)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	tween.tween_property($"%Text", "self_modulate:a", 1.0, wait_time/1.5).from(0.0)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	tween.tween_property($"%Text", "percent_visible", 1.0, wait_time/1.5).from(0.0)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	tween.tween_property(popup_panel, "modulate:a", 1.0, fade_time).from(0.0)
 
 	check_type(popup_panel, type)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	tween.tween_interval(wait_time)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	tween.chain().tween_property(popup_panel, "rect_position:y", -popup_panel.rect_size.y, fade_time)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	tween.tween_property(backlight, "self_modulate:a", 0.0, wait_time/3)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	tween.tween_property(popup_panel, "modulate:a", 0.0, fade_time)
 	tween.stop()
 
@@ -72,15 +72,15 @@ func tween_sequence(type: int = NotificationServer.INFO):
 func check_type(node: Control, type: int):
 	match type:
 		NotificationServer.ERROR:
-# warning-ignore:return_value_discarded
+			# warning-ignore:return_value_discarded
 			tween.tween_property(node, "modulate:r", 5.0, wait_time/3)
 		NotificationServer.WARNING:
-# warning-ignore:return_value_discarded
+			# warning-ignore:return_value_discarded
 			tween.tween_property(node, "modulate:r", 3.0, wait_time/3)
-# warning-ignore:return_value_discarded
+			# warning-ignore:return_value_discarded
 			tween.tween_property(node, "modulate:g", 3.0, wait_time/3)
 		NotificationServer.CRITICAL:
-# warning-ignore:return_value_discarded
+			# warning-ignore:return_value_discarded
 			tween.tween_property(node, "modulate:r", 5.0, wait_time/3)
 			$"%Text".add_font_override("font", load("res://assets/fonts/Bold.tres"))
 		_:

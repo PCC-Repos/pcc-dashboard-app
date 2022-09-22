@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://themes/default.tres" type="Theme" id=1]
-[ext_resource path="res://forms/login_form.tscn" type="PackedScene" id=2]
-[ext_resource path="res://forms/register_form.tscn" type="PackedScene" id=3]
+[ext_resource path="res://themes/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://forms/LoginForm/LoginForm.tscn" type="PackedScene" id=2]
+[ext_resource path="res://forms/RegisterForm/RegisterForm.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/MainScreenTabController.gd" type="Script" id=4]
 [ext_resource path="res://assets/images/PCF_Logo.png" type="Texture" id=5]
 [ext_resource path="res://assets/music/closing_msx.ogg" type="AudioStream" id=6]
-[ext_resource path="res://main.gd" type="Script" id=9]
+[ext_resource path="res://main.gd" type="Script" id=7]
 
 [sub_resource type="Gradient" id=8]
 interpolation_mode = 2
@@ -62,7 +63,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("HBoxContainer/ImageContainer:rect_position")
+tracks/0/path = NodePath("HB/ImageContainer:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -110,24 +111,22 @@ glow_bloom = 1.0
 glow_bicubic_upscale = true
 glow_high_quality = true
 
-[node name="Main" type="Control" groups=["main"]]
+[node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
-script = ExtResource( 9 )
-debug = false
+script = ExtResource( 7 )
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 14 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HB" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="ImageContainer" type="MarginContainer" parent="HBoxContainer"]
-unique_name_in_owner = true
+[node name="ImageContainer" type="MarginContainer" parent="HB"]
 margin_right = 616.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
@@ -138,19 +137,18 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="HBoxContainer/ImageContainer"]
-
-[node name="Logo" type="TextureRect" parent="HBoxContainer/ImageContainer/CanvasLayer"]
-unique_name_in_owner = true
+[node name="Logo" type="TextureRect" parent="HB/ImageContainer"]
 margin_left = 50.0
-margin_right = 564.0
+margin_right = 566.0
 margin_bottom = 768.0
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
-[node name="TabContainer" type="TabContainer" parent="HBoxContainer"]
-unique_name_in_owner = true
+[node name="CanvasLayer" type="CanvasLayer" parent="HB/ImageContainer"]
+visible = false
+
+[node name="MainScreenTabController" type="TabContainer" parent="HB"]
 margin_left = 620.0
 margin_right = 1366.0
 margin_bottom = 768.0
@@ -159,13 +157,14 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 1.21
 custom_styles/panel = SubResource( 16 )
 tabs_visible = false
+script = ExtResource( 4 )
 
-[node name="LoginForm" parent="HBoxContainer/TabContainer" instance=ExtResource( 2 )]
+[node name="LoginForm" parent="HB/MainScreenTabController" instance=ExtResource( 2 )]
 
-[node name="RegisterForm" parent="HBoxContainer/TabContainer" instance=ExtResource( 3 )]
+[node name="RegisterForm" parent="HB/MainScreenTabController" instance=ExtResource( 3 )]
 visible = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Anim" type="AnimationPlayer" parent="."]
 autoplay = "LightsON"
 anims/LightsMoving = SubResource( 15 )
 anims/LightsON = SubResource( 7 )
@@ -175,11 +174,8 @@ next/LightsON = "LightsMoving"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 11 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["audio_players"]]
 stream = ExtResource( 6 )
 volume_db = -6.021
 pitch_scale = 1.5
 autoplay = true
-
-[connection signal="visibility_changed" from="." to="." method="_on_Main_visibility_changed"]
-[connection signal="tab_changed" from="HBoxContainer/TabContainer" to="." method="_on_TabContainer_tab_changed"]

@@ -3,7 +3,6 @@ extends ColorRect
 
 func _ready():
 	OS.request_attention()
-	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_EXPAND, Vector2(768, 768))
 	$MarginContainer/VBoxContainer/TextureRect.texture.viewport_path = $Viewport.get_path()
 #	$Timer.start($AudioStreamPlayer.stream.get_length())
 	$AudioStreamPlayer.play()
